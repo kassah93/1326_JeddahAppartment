@@ -1,0 +1,115 @@
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC2\PLC2.MCF'
+ 
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC2\PLC2.MCF'
+
+; ***** RESOURCE - CPM
+#reg PrgDiningRoom DiningRoom
+#srcline 4 ;    PROGRAM DiningRoom WITH FreeWheeling : PrgDiningRoom ();
+P     0
+ LEA  DiningRoom
+ CAL  PrgDiningRoom_L0
+E     0
+
+; Initialize - program
+P     58
+ LEA  DiningRoom
+ CAL  PrgDiningRoom__InstanceInit__
+E     58
+
+; ***** RESOURCE - CPM
+#reg PrgLivingRoom LivingRoom
+#srcline 5 ;    PROGRAM LivingRoom WITH FreeWheeling : PrgLivingRoom ();
+P     0
+ LEA  LivingRoom
+ CAL  PrgLivingRoom_L0
+E     0
+
+; Initialize - program
+P     58
+ LEA  LivingRoom
+ CAL  PrgLivingRoom__InstanceInit__
+E     58
+
+; ***** RESOURCE - CPM
+#reg PrgKitchen Kitchen
+#srcline 6 ;    PROGRAM Kitchen WITH FreeWheeling : PrgKitchen ();
+P     0
+ LEA  Kitchen
+ CAL  PrgKitchen_L0
+E     0
+
+; Initialize - program
+P     58
+ LEA  Kitchen
+ CAL  PrgKitchen__InstanceInit__
+E     58
+
+; ***** RESOURCE - CPM
+#reg PrgServiceRoom ServiceRoom
+#srcline 7 ;    PROGRAM ServiceRoom WITH FreeWheeling : PrgServiceRoom ();
+P     0
+ LEA  ServiceRoom
+ CAL  PrgServiceRoom_L0
+E     0
+
+; Initialize - program
+P     58
+ LEA  ServiceRoom
+ CAL  PrgServiceRoom__InstanceInit__
+E     58
+
+; ***** RESOURCE - CPM
+#reg PrgMasterRoom MasterRoom
+#srcline 8 ;    PROGRAM MasterRoom WITH FreeWheeling : PrgMasterRoom ();
+P     0
+ LEA  MasterRoom
+ CAL  PrgMasterRoom_L0
+E     0
+
+; Initialize - program
+P     58
+ LEA  MasterRoom
+ CAL  PrgMasterRoom__InstanceInit__
+E     58
+
+; ***** RESOURCE - CPM
+#reg PrgRoom4 Room4
+#srcline 9 ;    PROGRAM Room4 WITH FreeWheeling : PrgRoom4 ();
+P     0
+ LEA  Room4
+ CAL  PrgRoom4_L0
+E     0
+
+; Initialize - program
+P     58
+ LEA  Room4
+ CAL  PrgRoom4__InstanceInit__
+E     58
+
+; ***** RESOURCE - CPM
+#reg PrgInterance Interance
+#srcline 10 ;    PROGRAM Interance WITH FreeWheeling : PrgInterance ();
+P     0
+ LEA  Interance
+ CAL  PrgInterance_L0
+E     0
+
+; Initialize - program
+P     58
+ LEA  Interance
+ CAL  PrgInterance__InstanceInit__
+E     58
+
+; ***** RESOURCE - CPM
+#reg prgMain Main
+#srcline 11 ;    PROGRAM Main WITH FreeWheeling : PrgMain ();
+P     0
+ LEA  Main
+ CAL  prgMain_L0
+E     0
+
+
+
+ 
+
+#srcfile ''

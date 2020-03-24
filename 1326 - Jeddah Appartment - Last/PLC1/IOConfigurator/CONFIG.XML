@@ -1,0 +1,667 @@
+<TecoConfiguration xmlns="http://www.tecomat.com">
+  <Configuration version="2019.2b" system="FOXTROT">
+    <Global>
+      <Editor left="171" top="134" width="1283" height="798" maximized="false"/>
+      <Selector left="462" top="164" width="996" height="713" maximized="false" params="0"/>
+    </Global>
+    <Device xmlns="http://www.tecomat.com" alias="Central Unit" rack="0" position="0" idString="CP-1001 A8H0900 F1 0171 TECO" statLoc="%S100" validStat="A2" expanded="true">
+      <Info>
+        <ProductCode>1001</ProductCode>
+        <ProductName>CP-1001</ProductName>
+        <VendorID>00000000</VendorID>
+        <DeviceGroup>CPU</DeviceGroup>
+        <Descriptor>1001_CP-1001.tdd</Descriptor>
+      </Info>
+      <Objects>
+        <Data/>
+      </Objects>
+      <SerialChannels expandable="3">
+        <Channel xmlns="http://www.tecomat.com" Mode="UNI" Alias="General channel" Options="PC PLC UNI MPC MDB PFB" Name="CH1" LAddr="0101" SysMap="CH1" SysMapCode="0101">
+          <Info>
+            <Descriptor>UNI_SC.tdd</Descriptor>
+          </Info>
+          <Objects>
+            <Data/>
+          </Objects>
+          <Interfaces/>
+          <Editor/>
+          <Network/>
+        </Channel>
+      </SerialChannels>
+      <Ethernets>
+        <Ethernet Name="ETH1" LAddr="E1" expanded="true">
+          <Channel Options="PC" Name="SOCK0"/>
+          <Channel Options="PLC" Name="SOCK1"/>
+          <Channel xmlns="http://www.tecomat.com" Mode="PLCx" Alias="Channel of PLCx" enabled="true" Options="PLCx" Name="PLCx0" LAddr="06E1" expanded="true">
+            <Info>
+              <Descriptor>PLCx_ETH.tdd</Descriptor>
+            </Info>
+            <Objects xmlns="http://www.tecomat.com">
+              <Aliases>
+                <ObjectAlias name="PLCx_{CHANNEL}_ADR3_RX" public="false" publicAPI="false" userDef="false">PLC3</ObjectAlias>
+                <ObjectAlias name="PLCx_{CHANNEL}_ADR1_TX" public="false" publicAPI="false" userDef="false">PLC1_Curtains</ObjectAlias>
+              </Aliases>
+              <Data>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_PLCx_{CHANNEL}.ComAddress">01</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_PLCx_{CHANNEL}.ZoneSize">3200</ObjectData>
+              </Data>
+              <Notes>
+                <ObjectNote name="r{RACK}_p{POSITION}_Module_PLCx_{CHANNEL}">PLCx_ETH declaration</ObjectNote>
+              </Notes>
+            </Objects>
+            <Interfaces/>
+            <Editor/>
+            <Network configFile="..\..\Networks.xml" id="0" addr="1" crc="4568"/>
+          </Channel>
+          <Channel Options="BAC" Name="SOCK3"/>
+          <Channel xmlns="http://www.tecomat.com" Mode="UNI" Alias="Majles1" enabled="true" Options="UNI" Name="UNI0" LAddr="07E1">
+            <Info>
+              <Descriptor>UNI_ETH.tdd</Descriptor>
+            </Info>
+            <Objects xmlns="http://www.tecomat.com">
+              <Aliases>
+                <ObjectAlias name="r{RACK}_p{POSITION}_Statistic_{CHANNEL}" public="false" publicAPI="false" userDef="false">Majles1_Statistic_ETH1_UNI0</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_IN" public="false" publicAPI="false" userDef="false">Majles1_UNI_ETH1_UNI0_IN</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_IN.DATA" public="false" publicAPI="false" userDef="true">ETH1_uni0_IN</ObjectAlias>
+                <ObjectAlias name="r{RACK}_p{POSITION}_Control_{CHANNEL}" public="false" publicAPI="false" userDef="false">Majles1_Control_ETH1_UNI0</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_OUT" public="false" publicAPI="false" userDef="false">Majles1_UNI_ETH1_UNI0_OUT</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_OUT.DATA" public="false" publicAPI="false" userDef="true">ETH1_uni0_OUT</ObjectAlias>
+              </Aliases>
+              <Data>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.ReceiveZoneSize">4605</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.TransmitZoneSize">4605</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.Protocol">10</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.RemoteIp">1E00A8C0</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.RemotePort">0D0D</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.uniInit.lendi">4A05</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.uniInit.lendo">4A05</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.uniInit.prot">10</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.his_ip">1E00A8C0</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.his_port">0D0D</ObjectData>
+              </Data>
+              <Notes>
+                <ObjectNote name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}">Initialization table of UNI Ethernet channel mode</ObjectNote>
+                <ObjectNote name="r{RACK}_p{POSITION}_Module_UNI_{CHANNEL}">UNI_ETH declaration</ObjectNote>
+              </Notes>
+            </Objects>
+            <Interfaces/>
+            <Editor/>
+            <Network/>
+          </Channel>
+          <Channel xmlns="http://www.tecomat.com" Mode="UNI" Alias="Majles2" enabled="true" Options="UNI" Name="UNI1" LAddr="17E1">
+            <Info>
+              <Descriptor>UNI_ETH.tdd</Descriptor>
+            </Info>
+            <Objects xmlns="http://www.tecomat.com">
+              <Aliases>
+                <ObjectAlias name="r{RACK}_p{POSITION}_Statistic_{CHANNEL}" public="false" publicAPI="false" userDef="false">Majles2_Statistic_ETH1_UNI1</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_IN" public="false" publicAPI="false" userDef="false">Majles2_UNI_ETH1_UNI1_IN</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_IN.DATA" public="false" publicAPI="false" userDef="true">ETH1_uni1_IN</ObjectAlias>
+                <ObjectAlias name="r{RACK}_p{POSITION}_Control_{CHANNEL}" public="false" publicAPI="false" userDef="false">Majles2_Control_ETH1_UNI1</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_OUT" public="false" publicAPI="false" userDef="false">Majles2_UNI_ETH1_UNI1_OUT</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_OUT.DATA" public="false" publicAPI="false" userDef="true">ETH1_uni1_OUT</ObjectAlias>
+              </Aliases>
+              <Data>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.ReceiveZoneSize">4605</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.TransmitZoneSize">4605</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.Protocol">10</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.RemoteIp">1800A8C0</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.RemotePort">0D0D</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.LocalPort">49EE</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.uniInit.lendi">4A05</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.uniInit.lendo">4A05</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.uniInit.prot">10</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.his_ip">1800A8C0</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.his_port">0D0D</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.my_port">49EE</ObjectData>
+              </Data>
+              <Notes>
+                <ObjectNote name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}">Initialization table of UNI Ethernet channel mode</ObjectNote>
+                <ObjectNote name="r{RACK}_p{POSITION}_Module_UNI_{CHANNEL}">UNI_ETH declaration</ObjectNote>
+              </Notes>
+            </Objects>
+            <Interfaces/>
+            <Editor/>
+            <Network/>
+          </Channel>
+          <Channel xmlns="http://www.tecomat.com" Mode="UNI" Alias="Room1" enabled="true" Options="UNI" Name="UNI2" LAddr="27E1">
+            <Info>
+              <Descriptor>UNI_ETH.tdd</Descriptor>
+            </Info>
+            <Objects xmlns="http://www.tecomat.com">
+              <Aliases>
+                <ObjectAlias name="r{RACK}_p{POSITION}_Statistic_{CHANNEL}" public="false" publicAPI="false" userDef="false">Room1_Statistic_ETH1_UNI2</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_IN" public="false" publicAPI="false" userDef="false">Room1_UNI_ETH1_UNI2_IN</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_IN.DATA" public="false" publicAPI="false" userDef="true">ETH1_uni2_IN</ObjectAlias>
+                <ObjectAlias name="r{RACK}_p{POSITION}_Control_{CHANNEL}" public="false" publicAPI="false" userDef="false">Room1_Control_ETH1_UNI2</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_OUT" public="false" publicAPI="false" userDef="false">Room1_UNI_ETH1_UNI2_OUT</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_OUT.DATA" public="false" publicAPI="false" userDef="true">ETH1_uni2_OUT</ObjectAlias>
+              </Aliases>
+              <Data>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.ReceiveZoneSize">4605</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.TransmitZoneSize">4605</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.Protocol">10</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.RemoteIp">1700A8C0</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.RemotePort">0D0D</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.LocalPort">4AEE</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.uniInit.lendi">4A05</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.uniInit.lendo">4A05</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.uniInit.prot">10</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.his_ip">1700A8C0</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.his_port">0D0D</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.my_port">4AEE</ObjectData>
+              </Data>
+              <Notes>
+                <ObjectNote name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}">Initialization table of UNI Ethernet channel mode</ObjectNote>
+                <ObjectNote name="r{RACK}_p{POSITION}_Module_UNI_{CHANNEL}">UNI_ETH declaration</ObjectNote>
+              </Notes>
+            </Objects>
+            <Interfaces/>
+            <Editor/>
+            <Network/>
+          </Channel>
+          <Channel xmlns="http://www.tecomat.com" Mode="UNI" Alias="Room2" enabled="true" Options="UNI" Name="UNI3" LAddr="37E1">
+            <Info>
+              <Descriptor>UNI_ETH.tdd</Descriptor>
+            </Info>
+            <Objects xmlns="http://www.tecomat.com">
+              <Aliases>
+                <ObjectAlias name="r{RACK}_p{POSITION}_Statistic_{CHANNEL}" public="false" publicAPI="false" userDef="false">Room2_Statistic_ETH1_UNI3</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_IN" public="false" publicAPI="false" userDef="false">Room2_UNI_ETH1_UNI3_IN</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_IN.DATA" public="false" publicAPI="false" userDef="true">ETH1_uni3_IN</ObjectAlias>
+                <ObjectAlias name="r{RACK}_p{POSITION}_Control_{CHANNEL}" public="false" publicAPI="false" userDef="false">Room2_Control_ETH1_UNI3</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_OUT" public="false" publicAPI="false" userDef="false">Room2_UNI_ETH1_UNI3_OUT</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_OUT.DATA" public="false" publicAPI="false" userDef="true">ETH1_uni3_OUT</ObjectAlias>
+              </Aliases>
+              <Data>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.ReceiveZoneSize">4605</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.TransmitZoneSize">4605</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.Protocol">10</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.RemoteIp">1A00A8C0</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.RemotePort">0D0D</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.LocalPort">4BEE</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.uniInit.lendi">4A05</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.uniInit.lendo">4A05</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.uniInit.prot">10</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.his_ip">1A00A8C0</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.his_port">0D0D</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.my_port">4BEE</ObjectData>
+              </Data>
+              <Notes>
+                <ObjectNote name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}">Initialization table of UNI Ethernet channel mode</ObjectNote>
+                <ObjectNote name="r{RACK}_p{POSITION}_Module_UNI_{CHANNEL}">UNI_ETH declaration</ObjectNote>
+              </Notes>
+            </Objects>
+            <Interfaces/>
+            <Editor/>
+            <Network/>
+          </Channel>
+          <Channel xmlns="http://www.tecomat.com" Mode="UNI" Alias="Room3" enabled="true" Options="UNI" Name="UNI4" LAddr="47E1">
+            <Info>
+              <Descriptor>UNI_ETH.tdd</Descriptor>
+            </Info>
+            <Objects xmlns="http://www.tecomat.com">
+              <Aliases>
+                <ObjectAlias name="r{RACK}_p{POSITION}_Statistic_{CHANNEL}" public="false" publicAPI="false" userDef="false">Room3_Statistic_ETH1_UNI4</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_IN" public="false" publicAPI="false" userDef="false">Room3_UNI_ETH1_UNI4_IN</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_IN.DATA" public="false" publicAPI="false" userDef="true">ETH1_uni4_IN</ObjectAlias>
+                <ObjectAlias name="r{RACK}_p{POSITION}_Control_{CHANNEL}" public="false" publicAPI="false" userDef="false">Room3_Control_ETH1_UNI4</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_OUT" public="false" publicAPI="false" userDef="false">Room3_UNI_ETH1_UNI4_OUT</ObjectAlias>
+                <ObjectAlias name="UNI_{CHANNEL}_OUT.DATA" public="false" publicAPI="false" userDef="true">ETH1_uni4_OUT</ObjectAlias>
+              </Aliases>
+              <Data>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.ReceiveZoneSize">4605</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.TransmitZoneSize">4605</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.Protocol">10</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.RemoteIp">1B00A8C0</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.RemotePort">0D0D</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_{CHANNEL}.LocalPort">4CEE</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.uniInit.lendi">4A05</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.uniInit.lendo">4A05</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.uniInit.prot">10</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.his_ip">1B00A8C0</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.his_port">0D0D</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.my_port">4CEE</ObjectData>
+              </Data>
+              <Notes>
+                <ObjectNote name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}">Initialization table of UNI Ethernet channel mode</ObjectNote>
+                <ObjectNote name="r{RACK}_p{POSITION}_Module_UNI_{CHANNEL}">UNI_ETH declaration</ObjectNote>
+              </Notes>
+            </Objects>
+            <Interfaces/>
+            <Editor/>
+            <Network/>
+          </Channel>
+          <Channel Options="UNI" Name="SOCK9"/>
+          <Channel Options="UNI" Name="SOCK10"/>
+          <Channel Options="UNI" Name="SOCK11"/>
+        </Ethernet>
+      </Ethernets>
+      <Piggybacks expanded="true">
+        <Piggyback xmlns="http://www.tecomat.com" slot="0" expanded="true">
+          <Info>
+            <ProductCode>114</ProductCode>
+            <ProductName>MR-0114</ProductName>
+            <VendorID>00000000</VendorID>
+            <DeviceGroup>SC</DeviceGroup>
+            <Descriptor>0114_MR-0114.tdd</Descriptor>
+          </Info>
+          <Objects xmlns="http://www.tecomat.com">
+            <Data/>
+          </Objects>
+          <SerialChannels>
+            <Channel xmlns="http://www.tecomat.com" Mode="UNI" Alias="General channel" enabled="true" Options="PC PLC UNI MPC MDB PFB" Name="CH2" LAddr="0102" SysMap="CH2" SysMapCode="0202">
+              <Info>
+                <Descriptor>UNI_SC.tdd</Descriptor>
+              </Info>
+              <Objects xmlns="http://www.tecomat.com">
+                <Aliases>
+                  <ObjectAlias name="r{RACK}_p{POSITION}_UNI_{CHANNEL}_IN.DATA" public="false" publicAPI="false" userDef="true">CH2_IN</ObjectAlias>
+                  <ObjectAlias name="r{RACK}_p{POSITION}_UNI_{CHANNEL}_OUT.DATA" public="false" publicAPI="false" userDef="true">CH2_OUT</ObjectAlias>
+                </Aliases>
+                <Data>
+                  <ObjectData name="r{RACK}_p{POSITION}_Settings_UNI_{CHANNEL}.BaudRate">0A000000</ObjectData>
+                  <ObjectData name="r{RACK}_p{POSITION}_Settings_UNI_{CHANNEL}.ReceiveZoneSize">0001</ObjectData>
+                  <ObjectData name="r{RACK}_p{POSITION}_Settings_UNI_{CHANNEL}.TransmitZoneSize">0001</ObjectData>
+                  <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.speed">0A</ObjectData>
+                  <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.lendi">0401</ObjectData>
+                  <ObjectData name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}.lendo">0401</ObjectData>
+                </Data>
+                <Notes>
+                  <ObjectNote name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}">Initialization table of UNI channel mode</ObjectNote>
+                  <ObjectNote name="r{RACK}_p{POSITION}_Module_UNI_{CHANNEL}">UNI_SC declaration</ObjectNote>
+                </Notes>
+              </Objects>
+              <Interfaces/>
+              <Editor/>
+              <Network/>
+            </Channel>
+          </SerialChannels>
+          <Ethernets/>
+          <Piggybacks/>
+          <Interfaces/>
+          <Editor/>
+        </Piggyback>
+      </Piggybacks>
+      <Interfaces>
+        <Interface Class="TCL2" SubClass="INTERN" alias="Internal bus" rackOffset="0" busID="0" expanded="true">
+          <Peripheries>
+            <Device xmlns="http://www.tecomat.com" alias="CIB Master" rack="0" position="2" default="true" expanded="true" statLoc="%S102" validStat="A2">
+              <Info>
+                <ProductCode>1141</ProductCode>
+                <ProductName>CF-1140</ProductName>
+                <VendorID>00000000</VendorID>
+                <DeviceGroup>CFM</DeviceGroup>
+                <Descriptor>1141_CF-1140.tdd</Descriptor>
+              </Info>
+              <Objects>
+                <Data/>
+              </Objects>
+              <SerialChannels/>
+              <Ethernets/>
+              <Piggybacks/>
+              <Interfaces>
+                <Interface Class="CIB" SubClass="UNDEF" rackOffset="0" busID="8" expanded="true">
+                  <Peripheries>
+                    <Device xmlns="http://www.tecomat.com" physAddr="0000" rack="8" position="0" default="false" enabled="true" alias="FCU1_Majles1" statLoc="r0_p2_CIB_STAT[0]" validStat="87" errLoc="r0_p2_CIB_ERR[0]">
+                      <Info>
+                        <ProductCode>3324</ProductCode>
+                        <ProductName>C-HM-0308M</ProductName>
+                        <VendorID>00000000</VendorID>
+                        <DeviceGroup>CFOX</DeviceGroup>
+                        <Descriptor>3324_C-HM-0308M.tdd</Descriptor>
+                      </Info>
+                      <Objects xmlns="http://www.tecomat.com" inputsAddr="r0_p2_CIB_IN" outputsAddr="r0_p2_CIB_OUT" inputsLen="14" outputsLen="9">
+                        <Aliases>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_IN" public="false" publicAPI="false" userDef="false">FCU1_Majles1_IN</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT" public="false" publicAPI="false" userDef="false">FCU1_Majles1_OUT</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO1" public="false" publicAPI="false" userDef="true">FCU_fanLow_Majles1</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO2" public="false" publicAPI="false" userDef="true">FCU_fanMed_Majles1</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO3" public="false" publicAPI="false" userDef="true">FCU_fanHigh_Majles1</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO4" public="false" publicAPI="false" userDef="true">FCU_valve_Majles1</ObjectAlias>
+                        </Aliases>
+                        <Data>
+                          <ObjectData name="Devices.AnalogOutputsDevice.Enabled">00</ObjectData>
+                          <ObjectData name="Devices.BinaryInputsDevice">00</ObjectData>
+                          <ObjectData name="r{RACK}_p{POSITION}_C_HM_0308M_init.Dev[2].typdev">00</ObjectData>
+                          <ObjectData name="r{RACK}_p{POSITION}_C_HM_0308M_init.Dev[3].typdev">00</ObjectData>
+                        </Data>
+                        <Notes>
+                          <ObjectNote name="r{RACK}_p{POSITION}_C_HM_0308M_init">Initialization table of C-HM-0308M unit</ObjectNote>
+                        </Notes>
+                      </Objects>
+                      <SerialChannels/>
+                      <Ethernets/>
+                      <Piggybacks/>
+                      <Interfaces/>
+                      <Editor xmlns="http://www.tecomat.com"/>
+                    </Device>
+                    <Device xmlns="http://www.tecomat.com" physAddr="0000" rack="8" position="1" default="false" enabled="true" alias="FCU2_Majles2" statLoc="r0_p2_CIB_STAT[1]" validStat="87" errLoc="r0_p2_CIB_ERR[1]">
+                      <Info>
+                        <ProductCode>3324</ProductCode>
+                        <ProductName>C-HM-0308M</ProductName>
+                        <VendorID>00000000</VendorID>
+                        <DeviceGroup>CFOX</DeviceGroup>
+                        <Descriptor>3324_C-HM-0308M.tdd</Descriptor>
+                      </Info>
+                      <Objects xmlns="http://www.tecomat.com" inputsAddr="r0_p2_CIB_IN" outputsAddr="r0_p2_CIB_OUT" inputsLen="14" outputsLen="9">
+                        <Aliases>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_IN" public="false" publicAPI="false" userDef="false">FCU2_Majles2_IN</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT" public="false" publicAPI="false" userDef="false">FCU2_Majles2_OUT</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO1" public="false" publicAPI="false" userDef="true">FCU_fanLow_Majles2</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO2" public="false" publicAPI="false" userDef="true">FCU_fanMed_Majles2</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO3" public="false" publicAPI="false" userDef="true">FCU_fanHigh_Majles2</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO4" public="false" publicAPI="false" userDef="true">FCU_valve_Majles2</ObjectAlias>
+                        </Aliases>
+                        <Data>
+                          <ObjectData name="Devices.AnalogOutputsDevice.Enabled">00</ObjectData>
+                          <ObjectData name="Devices.BinaryInputsDevice">00</ObjectData>
+                          <ObjectData name="r{RACK}_p{POSITION}_C_HM_0308M_init.Dev[2].typdev">00</ObjectData>
+                          <ObjectData name="r{RACK}_p{POSITION}_C_HM_0308M_init.Dev[3].typdev">00</ObjectData>
+                        </Data>
+                        <Notes>
+                          <ObjectNote name="r{RACK}_p{POSITION}_C_HM_0308M_init">Initialization table of C-HM-0308M unit</ObjectNote>
+                        </Notes>
+                      </Objects>
+                      <SerialChannels/>
+                      <Ethernets/>
+                      <Piggybacks/>
+                      <Interfaces/>
+                      <Editor xmlns="http://www.tecomat.com"/>
+                    </Device>
+                    <Device xmlns="http://www.tecomat.com" physAddr="0000" rack="8" position="2" default="false" enabled="true" alias="TS1_Majles1" statLoc="r0_p2_CIB_STAT[2]" validStat="87" errLoc="r0_p2_CIB_ERR[2]">
+                      <Info>
+                        <ProductCode>3319</ProductCode>
+                        <ProductName>C-IT-0200R</ProductName>
+                        <VendorID>00000000</VendorID>
+                        <DeviceGroup>CFOX</DeviceGroup>
+                        <Descriptor>3319_C-IT-0200R.tdd</Descriptor>
+                      </Info>
+                      <Objects xmlns="http://www.tecomat.com" inputsAddr="r0_p2_CIB_IN" outputsAddr="r0_p2_CIB_OUT" inputsLen="9" outputsLen="0">
+                        <Aliases>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_IN" public="false" publicAPI="false" userDef="false">TS1_Majles1_IN</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_IN.iTHERM" public="false" publicAPI="false" userDef="true">FCU_Temp_Majles1</ObjectAlias>
+                        </Aliases>
+                        <Data>
+                          <ObjectData name="Devices.StateDevice">00</ObjectData>
+                          <ObjectData name="r{RACK}_p{POSITION}_C_IT_0200R_init.Dev[0].typdev">00</ObjectData>
+                        </Data>
+                      </Objects>
+                      <SerialChannels/>
+                      <Ethernets/>
+                      <Piggybacks/>
+                      <Interfaces/>
+                      <Editor xmlns="http://www.tecomat.com"/>
+                    </Device>
+                    <Device xmlns="http://www.tecomat.com" physAddr="0000" rack="8" position="3" default="false" enabled="true" alias="TS2_Majles2" statLoc="r0_p2_CIB_STAT[3]" validStat="87" errLoc="r0_p2_CIB_ERR[3]">
+                      <Info>
+                        <ProductCode>3319</ProductCode>
+                        <ProductName>C-IT-0200R</ProductName>
+                        <VendorID>00000000</VendorID>
+                        <DeviceGroup>CFOX</DeviceGroup>
+                        <Descriptor>3319_C-IT-0200R.tdd</Descriptor>
+                      </Info>
+                      <Objects xmlns="http://www.tecomat.com" inputsAddr="r0_p2_CIB_IN" outputsAddr="r0_p2_CIB_OUT" inputsLen="9" outputsLen="0">
+                        <Aliases>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_IN" public="false" publicAPI="false" userDef="false">TS2_Majles2_IN</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_IN.iTHERM" public="false" publicAPI="false" userDef="true">FCU_Temp_Majles2</ObjectAlias>
+                        </Aliases>
+                        <Data>
+                          <ObjectData name="Devices.StateDevice">00</ObjectData>
+                          <ObjectData name="r{RACK}_p{POSITION}_C_IT_0200R_init.Dev[0].typdev">00</ObjectData>
+                        </Data>
+                      </Objects>
+                      <SerialChannels/>
+                      <Ethernets/>
+                      <Piggybacks/>
+                      <Interfaces/>
+                      <Editor xmlns="http://www.tecomat.com"/>
+                    </Device>
+                  </Peripheries>
+                </Interface>
+              </Interfaces>
+              <Editor/>
+            </Device>
+            <Device xmlns="http://www.tecomat.com" alias="CIB Master" rack="0" position="3" default="true" expanded="true" statLoc="%S103" validStat="A2">
+              <Info>
+                <ProductCode>1141</ProductCode>
+                <ProductName>CF-1140</ProductName>
+                <VendorID>00000000</VendorID>
+                <DeviceGroup>CFM</DeviceGroup>
+                <Descriptor>1141_CF-1140.tdd</Descriptor>
+              </Info>
+              <Objects>
+                <Data/>
+              </Objects>
+              <SerialChannels/>
+              <Ethernets/>
+              <Piggybacks/>
+              <Interfaces>
+                <Interface Class="CIB" SubClass="UNDEF" rackOffset="1" busID="9" expanded="true">
+                  <Peripheries>
+                    <Device xmlns="http://www.tecomat.com" physAddr="0000" rack="8" position="0" default="false" enabled="true" alias="FCU6_Room1" statLoc="r0_p3_CIB_STAT[0]" validStat="87" errLoc="r0_p3_CIB_ERR[0]">
+                      <Info>
+                        <ProductCode>3324</ProductCode>
+                        <ProductName>C-HM-0308M</ProductName>
+                        <VendorID>00000000</VendorID>
+                        <DeviceGroup>CFOX</DeviceGroup>
+                        <Descriptor>3324_C-HM-0308M.tdd</Descriptor>
+                      </Info>
+                      <Objects xmlns="http://www.tecomat.com" inputsAddr="r0_p3_CIB_IN" outputsAddr="r0_p3_CIB_OUT" inputsLen="14" outputsLen="9">
+                        <Aliases>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_IN" public="false" publicAPI="false" userDef="false">FCU6_Room1_IN</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT" public="false" publicAPI="false" userDef="false">FCU6_Room1_OUT</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO1" public="false" publicAPI="false" userDef="true">FCU_fanLow_Room1</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO2" public="false" publicAPI="false" userDef="true">FCU_fanMed_Room1</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO3" public="false" publicAPI="false" userDef="true">FCU_fanHigh_Room1</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO4" public="false" publicAPI="false" userDef="true">FCU_valve_Room1</ObjectAlias>
+                        </Aliases>
+                        <Data>
+                          <ObjectData name="Devices.AnalogOutputsDevice.Enabled">00</ObjectData>
+                          <ObjectData name="Devices.BinaryInputsDevice">00</ObjectData>
+                          <ObjectData name="r{RACK}_p{POSITION}_C_HM_0308M_init.Dev[2].typdev">00</ObjectData>
+                          <ObjectData name="r{RACK}_p{POSITION}_C_HM_0308M_init.Dev[3].typdev">00</ObjectData>
+                        </Data>
+                        <Notes>
+                          <ObjectNote name="r{RACK}_p{POSITION}_C_HM_0308M_init">Initialization table of C-HM-0308M unit</ObjectNote>
+                        </Notes>
+                      </Objects>
+                      <SerialChannels/>
+                      <Ethernets/>
+                      <Piggybacks/>
+                      <Interfaces/>
+                      <Editor xmlns="http://www.tecomat.com"/>
+                    </Device>
+                    <Device xmlns="http://www.tecomat.com" physAddr="0000" rack="8" position="1" default="false" enabled="true" alias="FCU7_Room2" statLoc="r0_p3_CIB_STAT[1]" validStat="87" errLoc="r0_p3_CIB_ERR[1]">
+                      <Info>
+                        <ProductCode>3324</ProductCode>
+                        <ProductName>C-HM-0308M</ProductName>
+                        <VendorID>00000000</VendorID>
+                        <DeviceGroup>CFOX</DeviceGroup>
+                        <Descriptor>3324_C-HM-0308M.tdd</Descriptor>
+                      </Info>
+                      <Objects xmlns="http://www.tecomat.com" inputsAddr="r0_p3_CIB_IN" outputsAddr="r0_p3_CIB_OUT" inputsLen="14" outputsLen="9">
+                        <Aliases>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_IN" public="false" publicAPI="false" userDef="false">FCU7_Room2_IN</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT" public="false" publicAPI="false" userDef="false">FCU7_Room2_OUT</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO1" public="false" publicAPI="false" userDef="true">FCU_fanLow_Room2</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO2" public="false" publicAPI="false" userDef="true">FCU_fanMed_Room2</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO3" public="false" publicAPI="false" userDef="true">FCU_fanHigh_Room2</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO4" public="false" publicAPI="false" userDef="true">FCU_valve_Room2</ObjectAlias>
+                        </Aliases>
+                        <Data>
+                          <ObjectData name="Devices.AnalogOutputsDevice.Enabled">00</ObjectData>
+                          <ObjectData name="Devices.BinaryInputsDevice">00</ObjectData>
+                          <ObjectData name="r{RACK}_p{POSITION}_C_HM_0308M_init.Dev[2].typdev">00</ObjectData>
+                          <ObjectData name="r{RACK}_p{POSITION}_C_HM_0308M_init.Dev[3].typdev">00</ObjectData>
+                        </Data>
+                        <Notes>
+                          <ObjectNote name="r{RACK}_p{POSITION}_C_HM_0308M_init">Initialization table of C-HM-0308M unit</ObjectNote>
+                        </Notes>
+                      </Objects>
+                      <SerialChannels/>
+                      <Ethernets/>
+                      <Piggybacks/>
+                      <Interfaces/>
+                      <Editor xmlns="http://www.tecomat.com"/>
+                    </Device>
+                    <Device xmlns="http://www.tecomat.com" physAddr="0000" rack="8" position="2" default="false" enabled="true" alias="FCU8_Room3" statLoc="r0_p3_CIB_STAT[2]" validStat="87" errLoc="r0_p3_CIB_ERR[2]">
+                      <Info>
+                        <ProductCode>3324</ProductCode>
+                        <ProductName>C-HM-0308M</ProductName>
+                        <VendorID>00000000</VendorID>
+                        <DeviceGroup>CFOX</DeviceGroup>
+                        <Descriptor>3324_C-HM-0308M.tdd</Descriptor>
+                      </Info>
+                      <Objects xmlns="http://www.tecomat.com" inputsAddr="r0_p3_CIB_IN" outputsAddr="r0_p3_CIB_OUT" inputsLen="14" outputsLen="9">
+                        <Aliases>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_IN" public="false" publicAPI="false" userDef="false">FCU8_Room3_IN</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT" public="false" publicAPI="false" userDef="false">FCU8_Room3_OUT</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO1" public="false" publicAPI="false" userDef="true">FCU_fanLow_Room3</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO2" public="false" publicAPI="false" userDef="true">FCU_fanMed_Room3</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO3" public="false" publicAPI="false" userDef="true">FCU_fanHigh_Room3</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_OUT.DOs.DO4" public="false" publicAPI="false" userDef="true">FCU_valve_Room3</ObjectAlias>
+                        </Aliases>
+                        <Data>
+                          <ObjectData name="Devices.AnalogOutputsDevice.Enabled">00</ObjectData>
+                          <ObjectData name="Devices.BinaryInputsDevice">00</ObjectData>
+                          <ObjectData name="r{RACK}_p{POSITION}_C_HM_0308M_init.Dev[2].typdev">00</ObjectData>
+                          <ObjectData name="r{RACK}_p{POSITION}_C_HM_0308M_init.Dev[3].typdev">00</ObjectData>
+                        </Data>
+                        <Notes>
+                          <ObjectNote name="r{RACK}_p{POSITION}_C_HM_0308M_init">Initialization table of C-HM-0308M unit</ObjectNote>
+                        </Notes>
+                      </Objects>
+                      <SerialChannels/>
+                      <Ethernets/>
+                      <Piggybacks/>
+                      <Interfaces/>
+                      <Editor xmlns="http://www.tecomat.com"/>
+                    </Device>
+                    <Device xmlns="http://www.tecomat.com" physAddr="0000" rack="8" position="3" default="false" enabled="true" alias="TS6_Room1" statLoc="r0_p3_CIB_STAT[3]" validStat="87" errLoc="r0_p3_CIB_ERR[3]">
+                      <Info>
+                        <ProductCode>3319</ProductCode>
+                        <ProductName>C-IT-0200R</ProductName>
+                        <VendorID>00000000</VendorID>
+                        <DeviceGroup>CFOX</DeviceGroup>
+                        <Descriptor>3319_C-IT-0200R.tdd</Descriptor>
+                      </Info>
+                      <Objects xmlns="http://www.tecomat.com" inputsAddr="r0_p3_CIB_IN" outputsAddr="r0_p3_CIB_OUT" inputsLen="9" outputsLen="0">
+                        <Aliases>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_IN" public="false" publicAPI="false" userDef="false">TS6_Room1_IN</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_IN.iTHERM" public="false" publicAPI="false" userDef="true">FCU_Temp_Room1</ObjectAlias>
+                        </Aliases>
+                        <Data>
+                          <ObjectData name="Devices.StateDevice">00</ObjectData>
+                          <ObjectData name="r{RACK}_p{POSITION}_C_IT_0200R_init.Dev[0].typdev">00</ObjectData>
+                        </Data>
+                      </Objects>
+                      <SerialChannels/>
+                      <Ethernets/>
+                      <Piggybacks/>
+                      <Interfaces/>
+                      <Editor xmlns="http://www.tecomat.com"/>
+                    </Device>
+                    <Device xmlns="http://www.tecomat.com" physAddr="0000" rack="8" position="4" default="false" enabled="true" alias="TS7_Room2" statLoc="r0_p3_CIB_STAT[4]" validStat="87" errLoc="r0_p3_CIB_ERR[4]">
+                      <Info>
+                        <ProductCode>3319</ProductCode>
+                        <ProductName>C-IT-0200R</ProductName>
+                        <VendorID>00000000</VendorID>
+                        <DeviceGroup>CFOX</DeviceGroup>
+                        <Descriptor>3319_C-IT-0200R.tdd</Descriptor>
+                      </Info>
+                      <Objects xmlns="http://www.tecomat.com" inputsAddr="r0_p3_CIB_IN" outputsAddr="r0_p3_CIB_OUT" inputsLen="9" outputsLen="0">
+                        <Aliases>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_IN" public="false" publicAPI="false" userDef="false">TS7_Room2_IN</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_IN.iTHERM" public="false" publicAPI="false" userDef="true">FCU_Temp_Room2</ObjectAlias>
+                        </Aliases>
+                        <Data>
+                          <ObjectData name="Devices.StateDevice">00</ObjectData>
+                          <ObjectData name="r{RACK}_p{POSITION}_C_IT_0200R_init.Dev[0].typdev">00</ObjectData>
+                        </Data>
+                      </Objects>
+                      <SerialChannels/>
+                      <Ethernets/>
+                      <Piggybacks/>
+                      <Interfaces/>
+                      <Editor xmlns="http://www.tecomat.com"/>
+                    </Device>
+                    <Device xmlns="http://www.tecomat.com" physAddr="0000" rack="8" position="5" default="false" enabled="true" alias="TS8_Room3" statLoc="r0_p3_CIB_STAT[5]" validStat="87" errLoc="r0_p3_CIB_ERR[5]">
+                      <Info>
+                        <ProductCode>3319</ProductCode>
+                        <ProductName>C-IT-0200R</ProductName>
+                        <VendorID>00000000</VendorID>
+                        <DeviceGroup>CFOX</DeviceGroup>
+                        <Descriptor>3319_C-IT-0200R.tdd</Descriptor>
+                      </Info>
+                      <Objects xmlns="http://www.tecomat.com" inputsAddr="r0_p3_CIB_IN" outputsAddr="r0_p3_CIB_OUT" inputsLen="9" outputsLen="0">
+                        <Aliases>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_IN" public="false" publicAPI="false" userDef="false">TS8_Room3_IN</ObjectAlias>
+                          <ObjectAlias name="r{RACK}_p{POSITION}_IN.iTHERM" public="false" publicAPI="false" userDef="true">FCU_Temp_Room3</ObjectAlias>
+                        </Aliases>
+                        <Data>
+                          <ObjectData name="Devices.StateDevice">00</ObjectData>
+                          <ObjectData name="r{RACK}_p{POSITION}_C_IT_0200R_init.Dev[0].typdev">00</ObjectData>
+                        </Data>
+                      </Objects>
+                      <SerialChannels/>
+                      <Ethernets/>
+                      <Piggybacks/>
+                      <Interfaces/>
+                      <Editor xmlns="http://www.tecomat.com"/>
+                    </Device>
+                  </Peripheries>
+                </Interface>
+              </Interfaces>
+              <Editor/>
+            </Device>
+            <Device xmlns="http://www.tecomat.com" rack="0" position="5" default="true" statLoc="%S105" validStat="A2">
+              <Info>
+                <ProductCode>1061</ProductCode>
+                <ProductName>IR-1061</ProductName>
+                <VendorID>00000000</VendorID>
+                <DeviceGroup>IO</DeviceGroup>
+                <Descriptor>1061_IR-1061.tdd</Descriptor>
+              </Info>
+              <Objects>
+                <Data/>
+              </Objects>
+              <SerialChannels/>
+              <Ethernets/>
+              <Piggybacks/>
+              <Interfaces/>
+              <Editor/>
+            </Device>
+          </Peripheries>
+        </Interface>
+        <Interface Class="TCL2" SubClass="EXTERN" rackSize="4" alias="External bus" rackOffset="0" busID="0">
+          <Peripheries/>
+        </Interface>
+        <Interface Class="RF2" SubClass="UNDEF" alias="RFox2 bus" rackOffset="0" busID="40" Icon="rf2_interface" ChannelRefOnly="true">
+          <Peripheries/>
+        </Interface>
+      </Interfaces>
+      <Editor/>
+      <TextInfo>CH1  : UNI A-  0 S-38_4 TR- 4 TT- 4 RTS-auto     8-N-1 
+       interface RS-232
+CH2  : UNI A-  0 S-9_6  TR- 4 TT- 4 RTS-auto     8-N-1 
+       interface MR-0114 01H0200 EO 4775 TECO   
+ETH1 : IP = 192.168.000.016  IM = 255.255.255.000    
+       GW = 192.168.000.001  DNS= 008.008.008.008    
+       PC | MDB                                      
+       DHCP off
+       interface Ethernet 10/100Mb  MAC: 00-0A-14-03-C0-AB
+TecoRoute : is defined
+       Server   : route.tecomat.com:8080
+       Plc name : BMS1
+EEPROM off
+DATABOX 512KB
+memory card 15185MB
+application profiles:
+TXF68990 MOSAIC SINGLE LICENCE
+TXF68926 AP SATEL LICENCE
+Switch 1001 v3.9  CP-1001 v10.8
+Boot CP1001 v3.9  Testy CP-1001 v2.9  system_WWW v3.3</TextInfo>
+    </Device>
+  </Configuration>
+</TecoConfiguration>

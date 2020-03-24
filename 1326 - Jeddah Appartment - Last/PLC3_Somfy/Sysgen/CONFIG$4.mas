@@ -1,0 +1,133 @@
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\IOCONFIGURATOR\CONFIG.ST'
+
+; Global variables
+#def  CPU_TYPE 76
+#def  CPU_CODE 1001
+
+; Global types
+#struct  TCHStatistic
+  usint STAT,
+  usint ERR,
+  udint trueMes,
+  udint falseMes
+#def  TCIB_STAT_ARRAY byte[32]
+#struct  r0_p2_TCIB_IN
+  real intgr
+#struct  TCHControl
+  uint CONTROL
+#struct  r0_p2_TCIB_OUT
+  usint NoData
+#struct  r0_p3_TCIB_IN
+  real intgr
+#struct  r0_p3_TCIB_OUT
+  usint NoData
+#struct  TBIN_6DIM
+  bool DI0,
+  bool DI1,
+  bool DI2,
+  bool DI3,
+  bool IN230,
+  bool HDO,
+  bool dummy6,
+  bool dummy7
+#struct  TSTPW
+  bool WCIB1,
+  bool ECIB1,
+  bool WCIB2,
+  bool ECIB2,
+  bool WSRC,
+  bool ESRC,
+  bool WACU,
+  bool EACU
+#struct  TAIStat
+  bool UNF,
+  bool UNR,
+  bool OVR,
+  bool OVF,
+  bool FLS,
+  bool CJC,
+  bool dummy6,
+  bool dummy7,
+  bool CHC,
+  bool dummy9,
+  bool dummy10,
+  bool dummy11,
+  bool dummy12,
+  bool dummy13,
+  bool dummy14,
+  bool dummy15
+#struct  TAI
+  TAIStat STAT,
+  int FS,
+  real ENG,
+  real PCT
+#struct  TAIPW
+  real UCIB1,
+  real UCIB2,
+  real USRC,
+  real UACU
+#struct  TBIN_2DO
+  bool DO0,
+  bool DO1,
+  bool dummy2,
+  bool dummy3,
+  bool dummy4,
+  bool dummy5,
+  bool dummy6,
+  bool dummy7
+#def  TPLCx_ETH1_PLCx0_ADR3_TX_DATA usint[238]
+#struct  TPLCx_ETH1_PLCx0_ADR3_TX
+  usint CONT,
+  usint SIGN,
+  uint NUMT,
+  TPLCx_ETH1_PLCx0_ADR3_TX_DATA DATA
+
+; Global variables
+#input  TCHStatistic r0_p2_CIB_Statistic
+#input  byte r0_p2_CIB_STAT[32]
+#input  byte r0_p2_CIB_ERR[32]
+#input  r0_p2_TCIB_IN r0_p2_CIB_IN
+#input  TCHStatistic r0_p3_CIB_Statistic
+#input  byte r0_p3_CIB_STAT[32]
+#input  byte r0_p3_CIB_ERR[32]
+#input  r0_p3_TCIB_IN r0_p3_CIB_IN
+#input  TBIN_6DIM r0_p5_DI
+#input  TSTPW r0_p5_STPW
+#input  TAI r0_p5_AI0
+#input  TAI r0_p5_AI1
+#input  TAI r0_p5_AI2
+#input  TAI r0_p5_AI3
+#input  TAIPW r0_p5_AIPW
+#input  TCHStatistic r0_p0_Statistic_ETH1_PLCx0
+
+; Global variables
+#output  TCHControl r0_p2_CIB_Control
+#output  r0_p2_TCIB_OUT r0_p2_CIB_OUT
+#output  TCHControl r0_p3_CIB_Control
+#output  r0_p3_TCIB_OUT r0_p3_CIB_OUT
+#output  TBIN_2DO r0_p5_DO
+#output  TCHControl r0_p0_Control_ETH1_PLCx0
+
+; Global variables
+#reg  TPLCx_ETH1_PLCx0_ADR3_TX PLCx_ETH1_PLCx0_ADR3_TX
+#def  PLC3 PLCx_ETH1_PLCx0_ADR3_TX
+
+; Global variables
+#table byte __Init____r0_p5_AIPW = 
+      0,  0,128, 63,  0,  0,128, 63,  0,  0,128, 63,  0,  0,128, 63;
+ 
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\IOCONFIGURATOR\CONFIG.ST'
+
+P     58
+; Initialize non retain global variables 
+ LD   0
+ SRC  byte __Init____r0_p5_AIPW
+ LD   0
+ LD   16
+ MOV  byte r0_p5_AIPW
+E     58
+
+
+ 
+
+#srcfile ''

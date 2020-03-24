@@ -1,0 +1,151 @@
+<TecoConfiguration xmlns="http://www.tecomat.com">
+  <Configuration version="2019.2b" system="FOXTROT">
+    <Global>
+      <Selector left="462" top="164" width="996" height="713" maximized="false" params="0"/>
+      <Editor left="319" top="130" width="1428" height="780" maximized="false"/>
+    </Global>
+    <Device xmlns="http://www.tecomat.com" alias="Central Unit" rack="0" position="0" idString="CP-1015 A6H0900 JO 1708 TECO" statLoc="%S100" validStat="A2" expanded="true">
+      <Info>
+        <ProductCode>1015</ProductCode>
+        <ProductName>CP-1015</ProductName>
+        <VendorID>00000000</VendorID>
+        <DeviceGroup>CPU</DeviceGroup>
+        <Descriptor>1015_CP-1015.tdd</Descriptor>
+      </Info>
+      <Objects>
+        <Data/>
+      </Objects>
+      <SerialChannels expandable="3">
+        <Channel Options="PC PLC UNI MPC MDB PFB" Name="CH1" SysMap="CH1" SysMapCode="0101" LAddr="0101"/>
+      </SerialChannels>
+      <Ethernets>
+        <Ethernet Name="ETH1" LAddr="E1" expanded="true">
+          <Channel Options="PC" Name="SOCK0"/>
+          <Channel Options="PLC" Name="SOCK1"/>
+          <Channel xmlns="http://www.tecomat.com" Mode="PLCx" Alias="Channel of PLCx" enabled="true" Options="PLCx" Name="PLCx0" LAddr="06E1" expanded="true">
+            <Info>
+              <Descriptor>PLCx_ETH.tdd</Descriptor>
+            </Info>
+            <Objects xmlns="http://www.tecomat.com">
+              <Aliases>
+                <ObjectAlias name="PLCx_{CHANNEL}_ADR3_TX" public="false" publicAPI="false" userDef="false">PLC3</ObjectAlias>
+                <ObjectAlias name="PLCx_{CHANNEL}_ADR1_RX" public="false" publicAPI="false" userDef="false">PLC1_Curtains</ObjectAlias>
+              </Aliases>
+              <Data>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_PLCx_{CHANNEL}.ComAddress">03</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_PLCx_{CHANNEL}.ZoneSize">EE00</ObjectData>
+              </Data>
+              <Notes>
+                <ObjectNote name="r{RACK}_p{POSITION}_Module_PLCx_{CHANNEL}">PLCx_ETH declaration</ObjectNote>
+              </Notes>
+            </Objects>
+            <Interfaces/>
+            <Editor>
+              <ExpansionMaps>
+                <ExpansionMap name="r0_p0_Settings_PLCx_ETH1_PLCx0">11</ExpansionMap>
+              </ExpansionMaps>
+            </Editor>
+            <Network configFile="..\..\Networks.xml" id="0" addr="3" crc="4568"/>
+          </Channel>
+          <Channel Options="BAC" Name="SOCK3"/>
+          <Channel Options="UNI" Name="SOCK4"/>
+          <Channel Options="UNI" Name="SOCK5"/>
+          <Channel Options="UNI" Name="SOCK6"/>
+          <Channel Options="UNI" Name="SOCK7"/>
+          <Channel Options="UNI" Name="SOCK8"/>
+          <Channel Options="UNI" Name="SOCK9"/>
+          <Channel Options="UNI" Name="SOCK10"/>
+          <Channel Options="UNI" Name="SOCK11"/>
+        </Ethernet>
+      </Ethernets>
+      <Piggybacks expanded="true">
+        <Piggyback xmlns="http://www.tecomat.com" slot="0"/>
+      </Piggybacks>
+      <Interfaces>
+        <Interface Class="TCL2" SubClass="INTERN" alias="Internal bus" rackOffset="0" busID="0" expanded="true">
+          <Peripheries>
+            <Device xmlns="http://www.tecomat.com" rack="0" position="1" default="true" statLoc="%S101" validStat="A2">
+              <Info>
+                <ProductCode>1083</ProductCode>
+                <ProductName>OI-1083</ProductName>
+                <VendorID>00000000</VendorID>
+                <DeviceGroup>DISP</DeviceGroup>
+                <Descriptor>1083_OI-1083.tdd</Descriptor>
+              </Info>
+              <Objects>
+                <Data/>
+              </Objects>
+              <SerialChannels/>
+              <Ethernets/>
+              <Piggybacks/>
+              <Interfaces/>
+              <Editor/>
+            </Device>
+            <Device xmlns="http://www.tecomat.com" alias="CIB Master" rack="0" position="2" default="true" statLoc="%S102" validStat="A2" expanded="true">
+              <Info>
+                <ProductCode>1141</ProductCode>
+                <ProductName>CF-1140</ProductName>
+                <VendorID>00000000</VendorID>
+                <DeviceGroup>CFM</DeviceGroup>
+                <Descriptor>1141_CF-1140.tdd</Descriptor>
+              </Info>
+              <Objects>
+                <Data/>
+              </Objects>
+              <SerialChannels/>
+              <Ethernets/>
+              <Piggybacks/>
+              <Interfaces>
+                <Interface Class="CIB" SubClass="UNDEF" rackOffset="0" busID="8">
+                  <Peripheries/>
+                </Interface>
+              </Interfaces>
+              <Editor/>
+            </Device>
+            <Device xmlns="http://www.tecomat.com" rack="0" position="3" default="true" statLoc="%S103" validStat="A2">
+              <Info>
+                <ProductCode>1064</ProductCode>
+                <ProductName>IR-1064</ProductName>
+                <VendorID>00000000</VendorID>
+                <DeviceGroup>IO</DeviceGroup>
+                <Descriptor>1064_IR-1064.tdd</Descriptor>
+              </Info>
+              <Objects>
+                <Data/>
+              </Objects>
+              <SerialChannels/>
+              <Ethernets/>
+              <Piggybacks/>
+              <Interfaces/>
+              <Editor/>
+            </Device>
+          </Peripheries>
+        </Interface>
+        <Interface Class="TCL2" SubClass="EXTERN" rackSize="4" alias="External bus" rackOffset="0" busID="0">
+          <Peripheries/>
+        </Interface>
+        <Interface Class="RF2" SubClass="UNDEF" alias="RFox2 bus" rackOffset="0" busID="40" Icon="rf2_interface" ChannelRefOnly="true">
+          <Peripheries/>
+        </Interface>
+      </Interfaces>
+      <Editor/>
+      <TextInfo>CH1  : UNI A-  0 S-38_4 TR- 4 TT- 4 RTS-auto     8-N-1 
+       interface RS-232
+CH2  : UNI A-  0 S-9_6  TR- 4 TT- 4 RTS-auto     8-N-1 
+       interface MR-0114 01H0400 J6 7174 TECO   
+ETH1 : IP = 192.168.000.017  IM = 255.255.255.000    
+       GW = 192.168.000.001  DNS= 008.008.008.008    
+       PC | MDB                                      
+       DHCP off
+       interface Ethernet 10/100Mb  MAC: 00-0A-14-06-06-AC
+TecoRoute : is defined
+       Server   : route.tecomat.com:8080
+       Plc name : plc_w
+EEPROM on 
+DATABOX 512KB
+memory card 976MB
+Switch 1015 v4.2  CP-1015 v10.6
+Boot CP1015 v4.3  Testy CP-1015 v3.2  system_WWW v3.3</TextInfo>
+    </Device>
+  </Configuration>
+</TecoConfiguration>

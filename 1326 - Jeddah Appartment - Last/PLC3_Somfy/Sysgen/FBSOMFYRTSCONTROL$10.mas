@@ -1,0 +1,773 @@
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\FBSOMFYRTSCONTROL.ST'
+
+; Global variables
+#def  BUFFER_SIZE 5
+
+; Global types
+#struct  TSomfyRTSPacket
+  usint[16] packet,
+  uint length
+#def  TSomfyRTSPacketBuff TSomfyRTSPacket[5]
+#def  TVendorID usint[3]
+#struct  TSomfyCtrl
+  bool UP,
+  bool DW,
+  bool favPos,
+  bool stop,
+  bool setChannel,
+  bool openProg,
+  bool set_IP
+
+#defpou somfyBuffer_Push
+  bool __fc__somfyBuffer_Push,
+  TSomfyRTSPacket newPacket,
+  pointer buffer,
+  pointer index
+#reg somfyBuffer_Push  __Instance__somfyBuffer_Push
+
+
+#defpou somfyBuffer_Pop
+  TSomfyRTSPacket __fc__somfyBuffer_Pop,
+  pointer buffer,
+  pointer index
+#reg somfyBuffer_Pop  __Instance__somfyBuffer_Pop
+
+
+#defpou fbSomfyRTS_Cmnd
+  bool __fc__fbSomfyRTS_Cmnd,
+  usint ChNum,
+  TVendorID HostID,  ; 3 hex bytes address set for PLC as non Somfy host
+  TVendorID TrsnsmitterID,  ; ID of Transmitter written on the product
+  bool UP,
+  bool DW,
+  bool favPos,
+  bool stop,
+  bool setChannel,
+  bool openProg,
+  bool set_IP,
+  pointer packetsBuffer,
+  pointer buffIndex,
+  TSomfyRTSPacket packet
+#reg fbSomfyRTS_Cmnd  __Instance__fbSomfyRTS_Cmnd
+
+
+#defpou fbSomfyRTSCtrl
+  bool En,
+  uint CH_ID,
+  usint Err,
+  string[81] ErrText,
+  pointer packetsBuffer,
+  pointer buffIndex,
+  TSomfyRTSPacket packet,
+  bool RQ,
+  fbTick sendTimer,
+  fbSendTo send
+
+ 
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\FBSOMFYRTSCONTROL.ST'
+#pou somfyBuffer_Push
+#srcline 24 ;FUNCTION somfyBuffer_Push : BOOL
+
+#struct somfyBuffer_Push__temp__
+  TSomfyRTSPacket emptyPacket
+P     61
+somfyBuffer_Push_L0:
+ LINK __SizeOf(somfyBuffer_Push__temp__)
+ NXT
+; Initialize - variables
+ LD   0
+ WRX  __fc__somfyBuffer_Push
+; End initialize - variables
+; Initialize - dynamic variables
+; End initialize - dynamic variables
+#srcline 41 ;  if index < BUFFER_SIZE then
+ LDX  index
+ LDIW 
+#debug uint index
+ LD   uint 5
+ LT
+ JMC  somfyBuffer_Push_L1
+#srcline 42 ;     if newPacket <> emptyPacket then
+ LEAX newPacket
+ LEAY emptyPacket
+ LD   18   ; SizeOf()
+ BCMP 
+ EQ   0
+ NEG
+ JMC  somfyBuffer_Push_L3
+#srcline 43 ;       index := index + 1;
+ LDX  index
+ LDIW 
+#debug uint index
+ LD   uint 1
+ ADD
+ AND  $FFFF
+ LDX  index
+ WRIW 
+#debug_left uint index
+#srcline 44 ;       buffer[index] := newPacket;
+ LEAX newPacket
+#debug pointer newPacket
+ SRC  %IB0
+ LDX  buffer
+ LDX  index
+ LDIW 
+#debug uint index
+ SUB  1   ; Low range[1]
+ RCHK 4   ; Range Check
+ MUL  18   ; SizeOf(...)
+ ADD     ; + offset 
+#debug_left pointer buffer[index]
+ LD   18   ;SizeOf() 
+ MOV  %IB0
+#srcline 45 ;       somfyBuffer_Push := 1;
+ LD   bool -1      ; true
+ WRX  __fc__somfyBuffer_Push
+#debug_left bool somfyBuffer_Push
+#srcline 46 ;     else
+ JMP  somfyBuffer_Push_L4
+somfyBuffer_Push_L3:
+#srcline 47 ;       somfyBuffer_Push := 0;
+ LD   bool 0       ; false
+ WRX  __fc__somfyBuffer_Push
+#debug_left bool somfyBuffer_Push
+#srcline 48 ;     end_if;
+somfyBuffer_Push_L4:
+#srcline 49 ;  else
+ JMP  somfyBuffer_Push_L2
+somfyBuffer_Push_L1:
+#srcline 50 ;     somfyBuffer_Push := 0;
+ LD   bool 0       ; false
+ WRX  __fc__somfyBuffer_Push
+#debug_left bool somfyBuffer_Push
+#srcline 51 ;  end_if;
+somfyBuffer_Push_L2:
+#srcline 53 ;END_FUNCTION
+ PRV  
+ LDX  __fc__somfyBuffer_Push
+ ULNK
+RET
+E     61
+#endpou 
+
+#pou somfyBuffer_Pop
+#srcline 58 ;FUNCTION somfyBuffer_Pop : TSomfyRTSPacket
+
+#struct somfyBuffer_Pop__temp__
+  uint i,
+  TSomfyRTSPacket popedPacket,
+  uint P0__st__
+P     61
+somfyBuffer_Pop_L0:
+ LINK __SizeOf(somfyBuffer_Pop__temp__)
+ NXT
+; Initialize - dynamic variables
+; End initialize - dynamic variables
+#srcline 69 ;  if index > 0 then
+ LDX  index
+ LDIW 
+#debug uint index
+ LD   uint 0
+ GT
+ JMC  somfyBuffer_Pop_L1
+#srcline 70 ;     popedPacket := buffer[1];
+ LDX  buffer
+#debug pointer buffer[1]
+ SRC  %IB0
+ LEAY popedPacket
+#debug_left pointer popedPacket
+ LD   18   ;SizeOf() 
+ MOV  %IB0
+#srcline 71 ;     for i := 1 to BUFFER_SIZE-1 do
+ LD   uint 1
+ WRY  i
+ LD   uint 5
+ LD   uint 1
+ SUB
+ AND  $FFFF
+ WRY  P0__st__
+somfyBuffer_Pop_L3:
+ LDY  i
+ LDY  P0__st__
+ GT   
+ JMD  somfyBuffer_Pop_L4
+ DBG  
+#srcline 72 ;         buffer[i] :=  buffer[i+1];
+ LDX  buffer
+ LDY  i
+#debug uint i
+ LD   uint 1
+ ADD
+ AND  $FFFF
+ SUB  1   ; Low range[1]
+ RCHK 4   ; Range Check
+ MUL  18   ; SizeOf(...)
+ ADD     ; + offset 
+#debug pointer buffer[i+1]
+ SRC  %IB0
+ LDX  buffer
+ LDY  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 4   ; Range Check
+ MUL  18   ; SizeOf(...)
+ ADD     ; + offset 
+#debug_left pointer buffer[i]
+ LD   18   ;SizeOf() 
+ MOV  %IB0
+#srcline 73 ;     end_for;
+ LDY  i
+ LD   1
+ ADD  
+ WRY  i
+ JMP  somfyBuffer_Pop_L3
+somfyBuffer_Pop_L4:
+ NOP  -1
+#srcline 74 ;     index := index - 1;
+ LDX  index
+ LDIW 
+#debug uint index
+ LD   uint 1
+ SUB
+ AND  $FFFF
+ LDX  index
+ WRIW 
+#debug_left uint index
+#srcline 75 ;  end_if;
+somfyBuffer_Pop_L1:
+#srcline 76 ;  somfyBuffer_Pop := popedPacket;
+ LEAY popedPacket
+#debug pointer popedPacket
+ SRC  %IB0
+ LEAX __fc__somfyBuffer_Pop
+#debug_left pointer somfyBuffer_Pop
+ LD   18   ;SizeOf() 
+ MOV  %IB0
+#srcline 78 ;END_FUNCTION
+ PRV  
+ LEAX  __fc__somfyBuffer_Pop
+ SRC   %X0
+ ULNK
+RET
+E     61
+#endpou 
+
+#pou fbSomfyRTS_Cmnd
+#srcline 82 ;FUNCTION fbSomfyRTS_Cmnd : BOOL
+
+#struct fbSomfyRTS_Cmnd__temp__
+  uint length,
+  usint i,
+  usint frameChksum,
+  usint P0__st__,
+  usint P1__st__
+P     61
+fbSomfyRTS_Cmnd_L0:
+ LINK __SizeOf(fbSomfyRTS_Cmnd__temp__)
+ NXT
+; Initialize - variables
+ LD   0
+ WRX  __fc__fbSomfyRTS_Cmnd
+ LEAX packet
+ LD   18
+ LD   0
+ FIL 
+; End initialize - variables
+; Initialize - dynamic variables
+ LD   uint 2
+ WRY  length
+; End initialize - dynamic variables
+#srcline 111 ;  packet.packet[2] := 16#FA;
+ LD   usint $FA
+ WRX  packet~packet[2]
+#debug_left usint packet.packet[2]
+#srcline 112 ;  
+#srcline 113 ;  if UP or DW or favPos or stop then
+ LDX  UP
+#debug bool UP
+ LDX  DW
+#debug bool DW
+ OR  
+ LDX  favPos
+#debug bool favPos
+ OR  
+ LDX  stop
+#debug bool stop
+ OR  
+ JMC  fbSomfyRTS_Cmnd_L1
+#srcline 114 ;     packet.packet[0] := 16#7f;
+ LD   usint $7f
+ WRX  packet~packet[0]
+#debug_left usint packet.packet[0]
+#srcline 115 ;     packet.packet[1] := 16#72;
+ LD   usint $72
+ WRX  packet~packet[1]
+#debug_left usint packet.packet[1]
+#srcline 116 ;     packet.packet[11] := 16#06;
+ LD   usint $06
+ WRX  packet~packet[11]
+#debug_left usint packet.packet[11]
+#srcline 117 ;     length := 13;
+ LD   uint 13
+ WRY  length
+#debug_left uint length
+#srcline 118 ;  elsif setChannel then
+ JMP  fbSomfyRTS_Cmnd_L2
+fbSomfyRTS_Cmnd_L1:
+ LDX  setChannel
+#debug bool setChannel
+ JMC  fbSomfyRTS_Cmnd_L3
+#srcline 119 ;     packet.packet[0] := 16#68;
+ LD   usint $68
+ WRX  packet~packet[0]
+#debug_left usint packet.packet[0]
+#srcline 120 ;     packet.packet[1] := 16#73;
+ LD   usint $73
+ WRX  packet~packet[1]
+#debug_left usint packet.packet[1]
+#srcline 121 ;     packet.packet[10] := 16#05;
+ LD   usint $05
+ WRX  packet~packet[10]
+#debug_left usint packet.packet[10]
+#srcline 122 ;     length := 12;
+ LD   uint 12
+ WRY  length
+#debug_left uint length
+#srcline 123 ;     //setChannel := 0;
+#srcline 124 ;  elsif openProg then
+ JMP  fbSomfyRTS_Cmnd_L2
+fbSomfyRTS_Cmnd_L3:
+ LDX  openProg
+#debug bool openProg
+ JMC  fbSomfyRTS_Cmnd_L4
+#srcline 125 ;     packet.packet[0] := 16#67;
+ LD   usint $67
+ WRX  packet~packet[0]
+#debug_left usint packet.packet[0]
+#srcline 126 ;     packet.packet[1] := 16#73;
+ LD   usint $73
+ WRX  packet~packet[1]
+#debug_left usint packet.packet[1]
+#srcline 127 ;     packet.packet[10] := 16#05;
+ LD   usint $05
+ WRX  packet~packet[10]
+#debug_left usint packet.packet[10]
+#srcline 128 ;     length := 12;
+ LD   uint 12
+ WRY  length
+#debug_left uint length
+#srcline 129 ;     //openProg := 0;
+#srcline 130 ;  elsif set_IP then
+ JMP  fbSomfyRTS_Cmnd_L2
+fbSomfyRTS_Cmnd_L4:
+ LDX  set_IP
+#debug bool set_IP
+ JMC  fbSomfyRTS_Cmnd_L5
+#srcline 131 ;     packet.packet[0] := 16#65;
+ LD   usint $65
+ WRX  packet~packet[0]
+#debug_left usint packet.packet[0]
+#srcline 132 ;     packet.packet[1] := 16#73;
+ LD   usint $73
+ WRX  packet~packet[1]
+#debug_left usint packet.packet[1]
+#srcline 133 ;     packet.packet[10] := 16#05;
+ LD   usint $05
+ WRX  packet~packet[10]
+#debug_left usint packet.packet[10]
+#srcline 134 ;     length := 12;
+ LD   uint 12
+ WRY  length
+#debug_left uint length
+#srcline 135 ;     //set_IP := 0;
+#srcline 136 ;  end_if;
+ JMP  fbSomfyRTS_Cmnd_L2
+fbSomfyRTS_Cmnd_L5:
+fbSomfyRTS_Cmnd_L2:
+#srcline 137 ;  
+#srcline 138 ;  if UP then
+ LDX  UP
+#debug bool UP
+ JMC  fbSomfyRTS_Cmnd_L6
+#srcline 139 ;     packet.packet[10] := 16#FE;
+ LD   usint $FE
+ WRX  packet~packet[10]
+#debug_left usint packet.packet[10]
+#srcline 140 ;     //UP := 0;
+#srcline 141 ;  elsif DW then
+ JMP  fbSomfyRTS_Cmnd_L7
+fbSomfyRTS_Cmnd_L6:
+ LDX  DW
+#debug bool DW
+ JMC  fbSomfyRTS_Cmnd_L8
+#srcline 142 ;     packet.packet[10] := 16#FD;
+ LD   usint $FD
+ WRX  packet~packet[10]
+#debug_left usint packet.packet[10]
+#srcline 143 ;     //DW := 0;
+#srcline 144 ;  elsif stop then
+ JMP  fbSomfyRTS_Cmnd_L7
+fbSomfyRTS_Cmnd_L8:
+ LDX  stop
+#debug bool stop
+ JMC  fbSomfyRTS_Cmnd_L9
+#srcline 145 ;     packet.packet[10] := 16#FC;
+ LD   usint $FC
+ WRX  packet~packet[10]
+#debug_left usint packet.packet[10]
+#srcline 146 ;  elsif favPos then
+ JMP  fbSomfyRTS_Cmnd_L7
+fbSomfyRTS_Cmnd_L9:
+ LDX  favPos
+#debug bool favPos
+ JMC  fbSomfyRTS_Cmnd_L10
+#srcline 147 ;     packet.packet[10] := 16#FB;
+ LD   usint $FB
+ WRX  packet~packet[10]
+#debug_left usint packet.packet[10]
+#srcline 148 ;     //favPos := 0;
+#srcline 149 ;  end_if;
+ JMP  fbSomfyRTS_Cmnd_L7
+fbSomfyRTS_Cmnd_L10:
+fbSomfyRTS_Cmnd_L7:
+#srcline 152 ;  
+#srcline 153 ;  packet.packet[9] :=  255 -  ChNum;
+ LD   usint 255
+ LDX  ChNum
+#debug usint ChNum
+ SUB
+ AND  $FF
+ WRX  packet~packet[9]
+#debug_left usint packet.packet[9]
+#srcline 154 ;  
+#srcline 155 ;  for i := 3 to 5  do
+ LD   usint 3
+ WRY  i
+ LD   usint 5
+ WRY  P0__st__
+fbSomfyRTS_Cmnd_L11:
+ LDY  i
+ LDY  P0__st__
+ GT   
+ JMD  fbSomfyRTS_Cmnd_L12
+ DBG  
+#srcline 156 ;      packet.packet[i] := 255 - HostID[i-2];
+ LD   usint 255
+ LEAX HostID
+ LDY  i
+#debug usint i
+ LD   usint 2
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 2   ; Range Check
+ ADD     ; + offset 
+ LDI  
+#debug usint HostID[i-2]
+ SUB
+ AND  $FF
+ LEAX packet
+ LDY  i
+#debug usint i
+ RCHK 15   ; Range Check
+ ADD     ; + offset 
+ WRI 
+#debug_left usint packet.packet[i]
+#srcline 157 ;  end_for;
+ LDY  i
+ LD   1
+ ADD  
+ WRY  i
+ JMP  fbSomfyRTS_Cmnd_L11
+fbSomfyRTS_Cmnd_L12:
+ NOP  -1
+#srcline 158 ;  for i := 6 to 8  do
+ LD   usint 6
+ WRY  i
+ LD   usint 8
+ WRY  P1__st__
+fbSomfyRTS_Cmnd_L13:
+ LDY  i
+ LDY  P1__st__
+ GT   
+ JMD  fbSomfyRTS_Cmnd_L14
+ DBG  
+#srcline 159 ;      packet.packet[i] := 255 - TrsnsmitterID[i-5];
+ LD   usint 255
+ LEAX TrsnsmitterID
+ LDY  i
+#debug usint i
+ LD   usint 5
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 2   ; Range Check
+ ADD     ; + offset 
+ LDI  
+#debug usint TrsnsmitterID[i-5]
+ SUB
+ AND  $FF
+ LEAX packet
+ LDY  i
+#debug usint i
+ RCHK 15   ; Range Check
+ ADD     ; + offset 
+ WRI 
+#debug_left usint packet.packet[i]
+#srcline 160 ;  end_for;
+ LDY  i
+ LD   1
+ ADD  
+ WRY  i
+ JMP  fbSomfyRTS_Cmnd_L13
+fbSomfyRTS_Cmnd_L14:
+ NOP  -1
+#srcline 162 ;  frameChksum := CheckSum(ptr := adr(packet) , length := length-2);
+ NXT
+ LEAX packet
+#debug pointer packet
+ LEA  __Instance__CheckSum~ptr
+ WRIL 
+#debug_left udint __Instance__CheckSum~ptr
+ LDY  length
+#debug uint length
+ LD   uint 2
+ SUB
+ AND  $FFFF
+ WR   __Instance__CheckSum~length
+#debug_left uint __Instance__CheckSum~length
+ PRV
+ LEA  __Instance__CheckSum
+ CAL  CheckSum_L0
+ WRY  frameChksum
+#debug_left usint frameChksum
+#srcline 163 ;  packet.packet[length-1] := frameChksum;
+ LDY  frameChksum
+#debug usint frameChksum
+ LEAX packet
+ LDY  length
+#debug uint length
+ LD   uint 1
+ SUB
+ AND  $FFFF
+ RCHK 15   ; Range Check
+ ADD     ; + offset 
+ WRI 
+#debug_left usint packet.packet[length-1]
+#srcline 164 ;  packet.length := length;
+ LDY  length
+#debug uint length
+ WRX  packet~length
+#debug_left uint packet.length
+#srcline 165 ;  
+#srcline 166 ;  if somfyBuffer_Push(newPacket := packet, buffer := packetsBuffer, index := buffIndex) then
+ NXT
+ LEAX packet
+#debug pointer packet
+ SRC  %IB0
+ LEA  __Instance__somfyBuffer_Push~newPacket
+#debug_left pointer __Instance__somfyBuffer_Push~newPacket
+ LD   18   ;SizeOf() 
+ MOV  %IB0
+ LDX  packetsBuffer
+ WR   __Instance__somfyBuffer_Push~buffer
+#debug_left pointer __Instance__somfyBuffer_Push.buffer
+ LDX  buffIndex
+ WR   __Instance__somfyBuffer_Push~index
+#debug_left pointer __Instance__somfyBuffer_Push.index
+ PRV
+ LEA  __Instance__somfyBuffer_Push
+ CAL  somfyBuffer_Push_L0
+ JMC  fbSomfyRTS_Cmnd_L15
+#srcline 167 ;     fbSomfyRTS_Cmnd := 0;
+ LD   bool 0       ; false
+ WRX  __fc__fbSomfyRTS_Cmnd
+#debug_left bool fbSomfyRTS_Cmnd
+#srcline 168 ;  else
+ JMP  fbSomfyRTS_Cmnd_L16
+fbSomfyRTS_Cmnd_L15:
+#srcline 169 ;     fbSomfyRTS_Cmnd := 1;
+ LD   bool -1      ; true
+ WRX  __fc__fbSomfyRTS_Cmnd
+#debug_left bool fbSomfyRTS_Cmnd
+#srcline 170 ;  end_if;
+fbSomfyRTS_Cmnd_L16:
+#srcline 172 ;END_FUNCTION
+ PRV  
+ LDX  __fc__fbSomfyRTS_Cmnd
+ ULNK
+RET
+E     61
+#endpou 
+
+#pou fbSomfyRTSCtrl
+#srcline 177 ;FUNCTION_BLOCK fbSomfyRTSCtrl
+
+#struct fbSomfyRTSCtrl__temp__
+  TSomfyRTSPacket emptyPacket,
+  string[82] PS0__st__
+P     61
+fbSomfyRTSCtrl_L0:
+ LINK __SizeOf(fbSomfyRTSCtrl__temp__)
+; Initialize - dynamic variables
+; End initialize - dynamic variables
+#srcline 206 ;  sendTimer(IN := En and (buffIndex > 0) , PT := T#500ms);
+ LDX  En
+#debug bool En
+ LDX  buffIndex
+ LDIW 
+#debug uint buffIndex
+ LD   uint 0
+ GT
+ AND
+ WRX  sendTimer~IN
+#debug_left bool sendTimer~IN
+ LD   time 500
+ WRX  sendTimer~PT
+#debug_left time sendTimer~PT
+ LEAX sendTimer
+ CAL  fbTick_L0
+#srcline 208 ;  if sendTimer.Q then
+ LDX  sendTimer~Q
+#debug bool sendTimer.Q
+ JMC  fbSomfyRTSCtrl_L1
+#srcline 209 ;     packet := somfyBuffer_Pop(buffer := packetsBuffer, index := buffIndex);
+ NXT
+ LDX  packetsBuffer
+ WR   __Instance__somfyBuffer_Pop~buffer
+#debug_left pointer __Instance__somfyBuffer_Pop.buffer
+ LDX  buffIndex
+ WR   __Instance__somfyBuffer_Pop~index
+#debug_left pointer __Instance__somfyBuffer_Pop.index
+ PRV
+ LEA  __Instance__somfyBuffer_Pop
+ CAL  somfyBuffer_Pop_L0
+ LEAX packet
+#debug_left pointer packet
+ LD   18   ;SizeOf() 
+ MOV  %IB0
+#srcline 210 ;     if packet <> emptyPacket then
+ LEAX packet
+ LEAY emptyPacket
+ LD   18   ; SizeOf()
+ BCMP 
+ EQ   0
+ NEG
+ JMC  fbSomfyRTSCtrl_L3
+#srcline 211 ;        RQ := 1;
+ LD   bool -1      ; true
+ WRX  RQ
+#debug_left bool RQ
+#srcline 212 ;     end_if;
+fbSomfyRTSCtrl_L3:
+#srcline 213 ;  end_if;
+fbSomfyRTSCtrl_L1:
+#srcline 215 ;  send(rq := En and RQ, chanCode := CH_ID, lenTx := packet.length, data := void(packet.packet), error => Err);
+ LDX  En
+#debug bool En
+ LDX  RQ
+#debug bool RQ
+ AND
+ WRX  send~rq
+#debug_left bool send~rq
+ LDX  CH_ID
+#debug uint CH_ID
+ WRX  send~chanCode
+#debug_left uint send~chanCode
+ LDX  packet~length
+#debug uint packet.length
+ WRX  send~lenTx
+#debug_left uint send~lenTx
+ LEAX packet
+ WRX  send~data
+#debug_left pointer send.data
+ LEAX send
+ CAL  fbSendTo_L0
+; output assigment 
+ LDX  send~error
+#debug usint send~error
+ WRX  Err
+#debug_left usint Err
+#srcline 216 ;  if send.mesSent or Err > 0 then
+ LDX  send~mesSent
+#debug bool send.mesSent
+ LDX  Err
+#debug usint Err
+ LD   usint 0
+ GT
+ OR  
+ JMC  fbSomfyRTSCtrl_L5
+#srcline 217 ;     RQ := 0;
+ LD   bool 0       ; false
+ WRX  RQ
+#debug_left bool RQ
+#srcline 218 ;  end_if;
+fbSomfyRTSCtrl_L5:
+#srcline 220 ;  if En then
+ LDX  En
+#debug bool En
+ JMC  fbSomfyRTSCtrl_L7
+#srcline 221 ;      Err := send.error;
+ LDX  send~error
+#debug usint send.error
+ WRX  Err
+#debug_left usint Err
+#srcline 222 ;  else
+ JMP  fbSomfyRTSCtrl_L8
+fbSomfyRTSCtrl_L7:
+#srcline 223 ;      Err := 0;
+ LD   usint 0
+ WRX  Err
+#debug_left usint Err
+#srcline 224 ;  end_if;
+fbSomfyRTSCtrl_L8:
+#srcline 225 ;  
+#srcline 226 ;  ErrText := GetLastComErrTxt(errCode := Err);
+ LD   0   ; null string
+ WRY  PS0__st__[0]
+ LEAY PS0__st__[0]
+ LD   80
+ DST    ; Level 1
+ NXT
+ LDX  Err
+#debug usint Err
+ WR   __Instance__GetLastComErrTxt~errCode
+#debug_left usint __Instance__GetLastComErrTxt~errCode
+ PRV
+ LEA  __Instance__GetLastComErrTxt
+ CAL  GetLastComErrTxt_L0
+
+ SCON 
+ PDST   ; Level 1
+ LD   0   ; null string
+ LEAX ErrText
+ WRI  
+ LEAX ErrText
+ LD   80
+ DST    ; Level 1
+ LEAY PS0__st__[0]
+ SCON 
+#debug_left string ErrText
+ PDST   ; Level 1
+#srcline 228 ;END_FUNCTION_BLOCK
+ ULNK
+RET
+E     61
+
+; Initialize - variables
+P     61
+fbSomfyRTSCtrl__InstanceInit__:
+ LINK 0
+ LEAX send
+ CAL  fbSendTo__InstanceInit__
+ ULNK
+RET
+E     61
+; End initialize - variables
+#endpou 
+
+
+
+ 
+
+#srcfile ''

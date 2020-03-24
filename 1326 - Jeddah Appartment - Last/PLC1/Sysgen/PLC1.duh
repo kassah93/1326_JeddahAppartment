@@ -1,0 +1,127 @@
+FUNCTION_BLOCK fbControlFCU
+(**)
+  VAR_INPUT
+    enable : BOOL;
+    mode : TFCU_Mode; (* 0  is cooling, 1 is fan only*)
+    fanSpeed : TFCU_FanSpeed; (* 0 auto, 1 low, 2 med, 3 high*)
+    setTemp : REAL;
+    temp : REAL;
+  END_VAR
+  VAR_OUTPUT
+    FCU_Status : TFCU_Status;
+  END_VAR
+  VAR_IN_OUT
+    valve : BOOL;
+    fanLow : BOOL;
+    fanMed : BOOL;
+    fanHigh : BOOL;
+  END_VAR
+  VAR
+    tempDiff : REAL;
+    fanRotation_tick : fbTick;
+    rotationTime : TIME;
+  END_VAR
+END_FUNCTION_BLOCK 
+
+FUNCTION_BLOCK fbControlHotelSystem_UDP
+(**)
+  VAR_INPUT
+    RQ : BOOL;
+    sendIamServer : BOOL R_EDGE;
+    getAllStatus : BOOL R_EDGE;
+    ChanCode : UINT;
+    serverSettings : TServerPacket;
+  END_VAR
+  VAR_IN_OUT
+    packet : THotelPacket;
+    CH_IN : TBufferIn;
+  END_VAR
+  VAR_OUTPUT
+    DevicesStatus : ARRAY [1..185] OF TDeviceStatus;
+    SysLock : BOOL;
+    cardType : BOOL;
+    Door : BOOL;
+    numOfStatusDevs : UINT;
+    msgSent : BOOL;
+    errCode : USINT;
+    errText : STRING[100];
+  END_VAR
+  VAR
+    IamServerPacket : TIamServerPacket;
+    allStatusPacket : TAllStatusPacket;
+    i : UINT;
+    index : UINT;
+    startIndex : UINT := 23;
+    send_UDP : fbSendTO;
+    CRC {HIDDEN} : PTR_TO UINT;
+  END_VAR
+END_FUNCTION_BLOCK 
+
+FUNCTION_BLOCK fbControlRoom
+(*function block that send the command to RCU to control
+the lights, curtains, and outlets
+*)
+  VAR_INPUT
+    RCU_ChCode : UINT;
+    numOfLights : USINT;
+    numOfOutlets : USINT;
+    numOfCurtains : USINT;
+    numOfMotionSens : USINT;
+    RCU_PingDone : BOOL;
+    lightsOutputDevs : TlightsOutputDevs;
+    outletOutputDevs : ToutletOutputDevs;
+    curtainsUpOutputDevs : TcurtainsUpOutputDevs;
+    curtainsDwOutputDevs : TcurtainsDwOutputDevs;
+    MotionSensOutputDevs : TMotionSensOutputDevs;
+  END_VAR
+  VAR_OUTPUT
+    ExRelay1_LVO : ARRAY [1..24] OF TDeviceStatus;
+    ExRelay2_LVO : ARRAY [1..24] OF TDeviceStatus;
+    SwitchUPStatus : TSwitchStatus;
+    SwitchDWStatus : TSwitchStatus;
+  END_VAR
+  VAR_IN_OUT
+    RCU_CH_IN : TBufferIn;
+    LightsStatus : TLightsStatus;
+    OutletsStatus : TOutletsStatus;
+    MotionSenStatus : TMotionSensStatus;
+    EnLights : TEnLights;
+    EnLightsAN : TEnLightsAN;
+    EnOutlets : TEnOutlets;
+    EnOutletsAN : TEnOutletsAN;
+    SendIamServer : BOOL;
+    GetAllStatus : BOOL;
+  END_VAR
+  VAR
+    RCU : fbControlHotelSystem_UDP;
+    RCU_RQ : BOOL;
+    Server_settings : TServerPacket := (IP := [192,168,0,16]);
+    sentPacket : THotelPacket;
+    K : USINT;
+    i : UINT;
+    cmd_CtrlType : TCtrlType;
+    cmd_CtrlContent : USINT;
+    cmd_CtrlType1 : TCtrlType;
+    cmd_CtrlContent1 : USINT;
+    TonCurtainsWait : ARRAY [1..5] OF TON;
+    EnCurtainsWait : ARRAY [1..5] OF BOOL;
+    EnCurtains : ARRAY [1..5] OF BOOL;
+    RTCurtains : ARRAY [1..5] OF R_TRIG;
+    FTCurtains : ARRAY [1..5] OF F_TRIG;
+    Up : ARRAY [1..5] OF BOOL;
+    Dw : ARRAY [1..5] OF BOOL;
+    NumOfCmd : USINT := 1;
+    RCU_Connected : BOOL;
+    RCU_Connected_RT : R_TRIG;
+    RCU_Connection_TOF : TOF;
+    restorStatusDone : BOOL;
+    test : USINT;
+    PlcEthAdr : TlocalEthAdr;
+    RCU_ChAdr : TRemoteEthAdr;
+  END_VAR
+END_FUNCTION_BLOCK 
+
+
+
+
+

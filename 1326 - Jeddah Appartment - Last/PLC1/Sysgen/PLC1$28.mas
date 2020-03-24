@@ -1,0 +1,87 @@
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\PLC1.MCF'
+ 
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\PLC1.MCF'
+
+; ***** RESOURCE - CPM
+#reg prgMain Main
+#srcline 4 ;    PROGRAM Main WITH FreeWheeling : prgMain ();
+P     0
+ LEA  Main
+ CAL  prgMain_L0
+E     0
+
+
+; ***** RESOURCE - CPM
+#reg PrgMajles Majles
+#srcline 5 ;    PROGRAM Majles WITH FreeWheeling : PrgMajles ();
+P     0
+ LEA  Majles
+ CAL  PrgMajles_L0
+E     0
+
+; Initialize - program
+P     58
+ LEA  Majles
+ CAL  PrgMajles__InstanceInit__
+E     58
+
+; ***** RESOURCE - CPM
+#reg PrgRoom1 Room1
+#srcline 6 ;    PROGRAM Room1 WITH FreeWheeling : PrgRoom1 ();
+P     0
+ LEA  Room1
+ CAL  PrgRoom1_L0
+E     0
+
+; Initialize - program
+P     58
+ LEA  Room1
+ CAL  PrgRoom1__InstanceInit__
+E     58
+
+; ***** RESOURCE - CPM
+#reg PrgRoom2 Room2
+#srcline 7 ;    PROGRAM Room2 WITH FreeWheeling : PrgRoom2 ();
+P     0
+ LEA  Room2
+ CAL  PrgRoom2_L0
+E     0
+
+; Initialize - program
+P     58
+ LEA  Room2
+ CAL  PrgRoom2__InstanceInit__
+E     58
+
+; ***** RESOURCE - CPM
+#reg PrgRoom3 Room3
+#srcline 8 ;    PROGRAM Room3 WITH FreeWheeling : PrgRoom3 ();
+P     0
+ LEA  Room3
+ CAL  PrgRoom3_L0
+E     0
+
+; Initialize - program
+P     58
+ LEA  Room3
+ CAL  PrgRoom3__InstanceInit__
+E     58
+
+; ***** RESOURCE - CPM
+#reg PrgConnectHMIs ConnectHMIs
+#srcline 9 ;    PROGRAM ConnectHMIs WITH FreeWheeling : PrgConnectHMIs ();
+P     0
+ LEA  ConnectHMIs
+ CAL  PrgConnectHMIs_L0
+E     0
+
+; Initialize - program
+P     58
+ LEA  ConnectHMIs
+ CAL  PrgConnectHMIs__InstanceInit__
+E     58
+
+
+ 
+
+#srcfile ''

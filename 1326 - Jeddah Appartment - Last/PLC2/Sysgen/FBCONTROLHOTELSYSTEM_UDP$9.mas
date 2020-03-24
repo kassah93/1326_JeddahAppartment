@@ -1,0 +1,810 @@
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\FBCONTROLHOTELSYSTEM_UDP.ST'
+
+; Global types
+#struct  THotelPacket_Head
+  word frameHeader,
+  uint frameLength,
+  dword SystemID,
+  byte cmdType,
+  word frameNo,
+  byte nBuild,
+  byte nUnit,
+  byte nFloor,
+  byte nRoom
+#def  TDevTypes usint   ; ENUM Type 
+#def  TCtrlType usint   ; ENUM Type 
+#struct  TDevice
+  usint DevType,
+  usint DevAddress,
+  uint loopAddress,
+  usint CtrlType,
+  usint CtrlContent  ;from 0 to 100
+#struct  TDevCtrl
+  usint NumOfDev,
+  TDevice[185] DevArr
+#struct  THotelPacket
+  THotelPacket_Head Header,
+  TDevCtrl Data,
+  uint CRC
+#struct  TServerPacket
+  byte[4] userCode,  ; keep zeros
+  byte heartBeat,  ; keep 1
+  TIPadr IP,  ;IP address
+  uint port
+#struct  TIamServerPacket
+  THotelPacket_Head Header,
+  TServerPacket serverSettings,
+  uint CRC
+#struct  TAllStatusPacket
+  THotelPacket_Head Header,
+  uint CRC
+
+; Global types
+#struct  TDeviceStatus
+  usint DevType,
+  usint DevAddress,
+  uint loopAddress,
+  bool CtrlType,
+  usint CtrlContent  ;from 0 to 100
+
+; Global types
+#def  TBufferIn usint[1350]
+
+#defpou fbControlHotelSystem_UDP
+  bool RQ,
+  bool sendIamServer,
+  bool getAllStatus,
+  uint ChanCode,
+  TServerPacket serverSettings,
+  pointer packet,
+  pointer CH_IN,
+  TDeviceStatus[185] DevicesStatus,
+  bool SysLock,
+  bool cardType,
+  bool Door,
+  uint numOfStatusDevs,
+  bool msgSent,
+  usint errCode,
+  string[101] errText,
+  TIamServerPacket IamServerPacket,
+  TAllStatusPacket allStatusPacket,
+  uint i,
+  uint index,
+  uint startIndex,
+  fbSendTo send_UDP,
+  pointer CRC,
+  bool __EDGE_R__sendIamServer,
+  bool __EDGE_R__getAllStatus
+
+ 
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\FBCONTROLHOTELSYSTEM_UDP.ST'
+#pou fbControlHotelSystem_UDP
+#srcline 75 ;FUNCTION_BLOCK fbControlHotelSystem_UDP
+#table byte __Init___fbControlHotelSystem_UDP_serverSettings = 
+      0,  0,  0,  0,  1,  0,  0,  0,  0, 72,238;
+#table byte __Init___fbControlHotelSystem_UDP_IamServerPacket = 
+    170, 85,  0,  0, 84, 51, 83, 65,  1, 14,  0,255,255,255,255,  0,  0,  0,  0,  1,  0,
+      0,  0,  0, 72,238;
+#table byte __Init___fbControlHotelSystem_UDP_allStatusPacket = 
+    170, 85,  0,  0, 84, 51, 83, 65, 15, 58,  0,255,255,255,255;
+
+#struct fbControlHotelSystem_UDP__temp__
+  uint P0__st__,
+  string[102] PS0__st__
+#data byte _str_fbControlHotelSystem_UDP_0 = 
+  'T','h','e',' ','n','u','m','b','e','r',' ','o','f',' ','d','e','v','i','c','e',
+  's',' ','i','s',' ','z','e','r','o',0
+#data byte _str_fbControlHotelSystem_UDP_1 = 
+  'T','h','e',' ','m','a','x',' ','n','u','m','b','e','r',' ','o','f',' ','d','e',
+  'v','i','c','e','s',' ','i','s',' ','e','x','c','e','e','d','e','d',0
+P     61
+fbControlHotelSystem_UDP_L0:
+ LINK __SizeOf(fbControlHotelSystem_UDP__temp__)
+; Initialize - dynamic variables
+; End initialize - dynamic variables
+; R_EDGE, F_EDGE 
+ LDX  sendIamServer
+ LETX __EDGE_R__sendIamServer
+ WRX  sendIamServer
+ LDX  getAllStatus
+ LETX __EDGE_R__getAllStatus
+ WRX  getAllStatus
+#srcline 112 ;  if not sendIamServer and not getAllStatus then
+ LDX  sendIamServer
+#debug bool sendIamServer
+ NEG
+ LDX  getAllStatus
+#debug bool getAllStatus
+ NEG
+ AND
+ JMC  fbControlHotelSystem_UDP_L1
+#srcline 113 ;    if packet.Data.NumOfDev <= 0 then
+ LDX  packet
+ ADD  15  ; + offset 
+ LDI  
+#debug usint packet.Data.NumOfDev
+ LD   usint 0
+ GT
+ NEG
+ JMC  fbControlHotelSystem_UDP_L3
+#srcline 114 ;       errCode := 65;
+ LD   usint 65
+ WRX  errCode
+#debug_left usint errCode
+#srcline 115 ;       errText := 'The number of devices is zero';
+ LD   0   ; null string
+ LEAX errText
+ WRI  
+ LEAX errText
+ LD   100
+ DST    ; Level 1
+ LEA  _str_fbControlHotelSystem_UDP_0
+ SCON 
+#debug_left string errText
+ PDST   ; Level 1
+#srcline 116 ;    elsif packet.Data.NumOfDev > 185 then
+ JMP  fbControlHotelSystem_UDP_L4
+fbControlHotelSystem_UDP_L3:
+ LDX  packet
+ ADD  15  ; + offset 
+ LDI  
+#debug usint packet.Data.NumOfDev
+ LD   usint 185
+ GT
+ JMC  fbControlHotelSystem_UDP_L5
+#srcline 117 ;       errCode := 66;
+ LD   usint 66
+ WRX  errCode
+#debug_left usint errCode
+#srcline 118 ;       errText := 'The max number of devices is exceeded';
+ LD   0   ; null string
+ LEAX errText
+ WRI  
+ LEAX errText
+ LD   100
+ DST    ; Level 1
+ LEA  _str_fbControlHotelSystem_UDP_1
+ SCON 
+#debug_left string errText
+ PDST   ; Level 1
+#srcline 119 ;    else
+ JMP  fbControlHotelSystem_UDP_L4
+fbControlHotelSystem_UDP_L5:
+#srcline 120 ;      packet.Header.frameLength := SIZEOF(packet.Header) + 3 + (usint_to_uint(packet.Data.NumOfDev) * 6);
+ LD   15  ; SizeOf()
+ LD   uint 3
+ ADD
+ AND  $FFFF
+ LDX  packet
+ ADD  15  ; + offset 
+ LDI  
+#debug usint packet.Data.NumOfDev
+ AND  $FFFF
+ LD   uint 6
+ MUL
+ AND  $FFFF
+ ADD
+ AND  $FFFF
+ LDX  packet
+ ADD  2  ; + offset 
+ WRIW 
+#debug_left uint packet.Header.frameLength
+#srcline 121 ;     // Length := packet.Header.frameLength;
+#srcline 122 ;      if packet.Header.frameLength <> 0 then
+ LDX  packet
+ ADD  2  ; + offset 
+ LDIW 
+#debug uint packet.Header.frameLength
+ LD   uint 0
+ EQ
+ NEG
+ JMC  fbControlHotelSystem_UDP_L6
+#srcline 123 ;         if packet.Data.NumOfDev < 185  then
+ LDX  packet
+ ADD  15  ; + offset 
+ LDI  
+#debug usint packet.Data.NumOfDev
+ LD   usint 185
+ LT
+ JMC  fbControlHotelSystem_UDP_L8
+#srcline 124 ;            CRC := adr(packet.Data.DevArr[packet.data.NumOfDev+1]);
+ LDX  packet
+ ADD  16  ; + offset 
+ LDX  packet
+ ADD  15  ; + offset 
+ LDI  
+#debug usint packet.data.NumOfDev
+ LD   usint 1
+ ADD
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+#debug pointer packet.Data.DevArr[packet.data.NumOfDev+1]
+ LEAX CRC
+ WRIL 
+#debug_left pointer CRC
+#srcline 125 ;            CRC^ := CheckCRC_16(ptr := adr(packet), length := packet.Header.frameLength - 2) ;
+ NXT
+ LDX  packet
+#debug pointer packet
+ LEA  __Instance__CheckCRC_16~ptr
+ WRIL 
+#debug_left udint __Instance__CheckCRC_16~ptr
+ LDX  packet
+ ADD  2  ; + offset 
+ LDIW 
+#debug uint packet.Header.frameLength
+ LD   uint 2
+ SUB
+ AND  $FFFF
+ WR   __Instance__CheckCRC_16~length
+#debug_left uint __Instance__CheckCRC_16~length
+ PRV
+ LEA  __Instance__CheckCRC_16
+ CAL  CheckCRC_16_L0
+ LEAX CRC
+ LDIL    ; dereference 
+ WRIW 
+#debug_left uint CRC^
+#srcline 126 ;            packet.CRC := CRC^;
+ LEAX CRC
+ LDIL    ; dereference 
+ LDIW 
+#debug uint CRC^
+ LDX  packet
+ ADD  1126  ; + offset 
+ WRIW 
+#debug_left uint packet.CRC
+#srcline 127 ;         elsif packet.Data.NumOfDev = 185 then
+ JMP  fbControlHotelSystem_UDP_L9
+fbControlHotelSystem_UDP_L8:
+ LDX  packet
+ ADD  15  ; + offset 
+ LDI  
+#debug usint packet.Data.NumOfDev
+ LD   usint 185
+ EQ
+ JMC  fbControlHotelSystem_UDP_L10
+#srcline 128 ;            packet.CRC := CheckCRC_16(ptr := adr(packet), length := packet.Header.frameLength - 2);
+ NXT
+ LDX  packet
+#debug pointer packet
+ LEA  __Instance__CheckCRC_16~ptr
+ WRIL 
+#debug_left udint __Instance__CheckCRC_16~ptr
+ LDX  packet
+ ADD  2  ; + offset 
+ LDIW 
+#debug uint packet.Header.frameLength
+ LD   uint 2
+ SUB
+ AND  $FFFF
+ WR   __Instance__CheckCRC_16~length
+#debug_left uint __Instance__CheckCRC_16~length
+ PRV
+ LEA  __Instance__CheckCRC_16
+ CAL  CheckCRC_16_L0
+ LDX  packet
+ ADD  1126  ; + offset 
+ WRIW 
+#debug_left uint packet.CRC
+#srcline 129 ;         end_if;
+ JMP  fbControlHotelSystem_UDP_L9
+fbControlHotelSystem_UDP_L10:
+fbControlHotelSystem_UDP_L9:
+#srcline 130 ;      end_if;
+fbControlHotelSystem_UDP_L6:
+#srcline 131 ;      send_UDP(rq := RQ, chanCode := ChanCode, lenTx := packet.Header.frameLength, data := void(packet) , mesSent => msgSent , error => errCode);
+ LDX  RQ
+#debug bool RQ
+ WRX  send_UDP~rq
+#debug_left bool send_UDP~rq
+ LDX  ChanCode
+#debug uint ChanCode
+ WRX  send_UDP~chanCode
+#debug_left uint send_UDP~chanCode
+ LDX  packet
+ ADD  2  ; + offset 
+ LDIW 
+#debug uint packet.Header.frameLength
+ WRX  send_UDP~lenTx
+#debug_left uint send_UDP~lenTx
+ LDX  packet
+ WRX  send_UDP~data
+#debug_left pointer send_UDP.data
+ LEAX send_UDP
+ CAL  fbSendTo_L0
+; output assigment 
+ LDX  send_UDP~mesSent
+#debug bool send_UDP~mesSent
+ WRX  msgSent
+#debug_left bool msgSent
+ LDX  send_UDP~error
+#debug usint send_UDP~error
+ WRX  errCode
+#debug_left usint errCode
+#srcline 132 ;      errText := GetLastComErrTxt(errCode := errCode);
+ LD   0   ; null string
+ WRY  PS0__st__[0]
+ LEAY PS0__st__[0]
+ LD   100
+ DST    ; Level 1
+ NXT
+ LDX  errCode
+#debug usint errCode
+ WR   __Instance__GetLastComErrTxt~errCode
+#debug_left usint __Instance__GetLastComErrTxt~errCode
+ PRV
+ LEA  __Instance__GetLastComErrTxt
+ CAL  GetLastComErrTxt_L0
+
+ SCON 
+ PDST   ; Level 1
+ LD   0   ; null string
+ LEAX errText
+ WRI  
+ LEAX errText
+ LD   100
+ DST    ; Level 1
+ LEAY PS0__st__[0]
+ SCON 
+#debug_left string errText
+ PDST   ; Level 1
+#srcline 133 ;    end_if;
+fbControlHotelSystem_UDP_L4:
+#srcline 134 ;  elsif sendIamServer then
+ JMP  fbControlHotelSystem_UDP_L2
+fbControlHotelSystem_UDP_L1:
+ LDX  sendIamServer
+#debug bool sendIamServer
+ JMC  fbControlHotelSystem_UDP_L11
+#srcline 135 ;    IamServerPacket.Header.frameLength := SIZEOF(IamServerPacket) ;
+ LD   28  ; SizeOf()
+ WRX  IamServerPacket~Header~frameLength
+#debug_left uint IamServerPacket.Header.frameLength
+#srcline 136 ;    IamServerPacket.serverSettings := serverSettings;
+ LEAX serverSettings
+#debug pointer serverSettings
+ SRC  %IB0
+ LEAX IamServerPacket~serverSettings
+#debug_left pointer IamServerPacket.serverSettings
+ LD   11   ;SizeOf() 
+ MOV  %IB0
+#srcline 137 ;    IamServerPacket.CRC := CheckCRC_16(ptr := adr(IamServerPacket), length := IamServerPacket.Header.frameLength - 2);
+ NXT
+ LEAX IamServerPacket
+#debug pointer IamServerPacket
+ LEA  __Instance__CheckCRC_16~ptr
+ WRIL 
+#debug_left udint __Instance__CheckCRC_16~ptr
+ LDX  IamServerPacket~Header~frameLength
+#debug uint IamServerPacket.Header.frameLength
+ LD   uint 2
+ SUB
+ AND  $FFFF
+ WR   __Instance__CheckCRC_16~length
+#debug_left uint __Instance__CheckCRC_16~length
+ PRV
+ LEA  __Instance__CheckCRC_16
+ CAL  CheckCRC_16_L0
+ WRX  IamServerPacket~CRC
+#debug_left uint IamServerPacket.CRC
+#srcline 138 ;    
+#srcline 139 ;    send_UDP(rq := true, chanCode := ChanCode, lenTx := IamServerPacket.Header.frameLength, data := void(IamServerPacket) , mesSent => msgSent , error => errCode);
+ LD   bool -1       ; true
+ WRX  send_UDP~rq
+#debug_left bool send_UDP~rq
+ LDX  ChanCode
+#debug uint ChanCode
+ WRX  send_UDP~chanCode
+#debug_left uint send_UDP~chanCode
+ LDX  IamServerPacket~Header~frameLength
+#debug uint IamServerPacket.Header.frameLength
+ WRX  send_UDP~lenTx
+#debug_left uint send_UDP~lenTx
+ LEAX IamServerPacket
+ WRX  send_UDP~data
+#debug_left pointer send_UDP.data
+ LEAX send_UDP
+ CAL  fbSendTo_L0
+; output assigment 
+ LDX  send_UDP~mesSent
+#debug bool send_UDP~mesSent
+ WRX  msgSent
+#debug_left bool msgSent
+ LDX  send_UDP~error
+#debug usint send_UDP~error
+ WRX  errCode
+#debug_left usint errCode
+#srcline 140 ;    errText := GetLastComErrTxt(errCode := errCode);
+ LD   0   ; null string
+ WRY  PS0__st__[0]
+ LEAY PS0__st__[0]
+ LD   100
+ DST    ; Level 1
+ NXT
+ LDX  errCode
+#debug usint errCode
+ WR   __Instance__GetLastComErrTxt~errCode
+#debug_left usint __Instance__GetLastComErrTxt~errCode
+ PRV
+ LEA  __Instance__GetLastComErrTxt
+ CAL  GetLastComErrTxt_L0
+
+ SCON 
+ PDST   ; Level 1
+ LD   0   ; null string
+ LEAX errText
+ WRI  
+ LEAX errText
+ LD   100
+ DST    ; Level 1
+ LEAY PS0__st__[0]
+ SCON 
+#debug_left string errText
+ PDST   ; Level 1
+#srcline 141 ;  elsif getAllStatus then
+ JMP  fbControlHotelSystem_UDP_L2
+fbControlHotelSystem_UDP_L11:
+ LDX  getAllStatus
+#debug bool getAllStatus
+ JMC  fbControlHotelSystem_UDP_L12
+#srcline 142 ;    allStatusPacket.Header.cmdType := 16#0E;
+ LD   byte $0E
+ WRX  allStatusPacket~Header~cmdType
+#debug_left byte allStatusPacket.Header.cmdType
+#srcline 143 ;    allStatusPacket.Header.frameNo := 16#0001;
+ LD   word $0001
+ WRX  allStatusPacket~Header~frameNo
+#debug_left word allStatusPacket.Header.frameNo
+#srcline 144 ;    allStatusPacket.Header.frameLength := SIZEOF(allStatusPacket);
+ LD   17  ; SizeOf()
+ WRX  allStatusPacket~Header~frameLength
+#debug_left uint allStatusPacket.Header.frameLength
+#srcline 145 ;    allStatusPacket.CRC := CheckCRC_16(ptr := adr(allStatusPacket), length := allStatusPacket.Header.frameLength - 2);
+ NXT
+ LEAX allStatusPacket
+#debug pointer allStatusPacket
+ LEA  __Instance__CheckCRC_16~ptr
+ WRIL 
+#debug_left udint __Instance__CheckCRC_16~ptr
+ LDX  allStatusPacket~Header~frameLength
+#debug uint allStatusPacket.Header.frameLength
+ LD   uint 2
+ SUB
+ AND  $FFFF
+ WR   __Instance__CheckCRC_16~length
+#debug_left uint __Instance__CheckCRC_16~length
+ PRV
+ LEA  __Instance__CheckCRC_16
+ CAL  CheckCRC_16_L0
+ WRX  allStatusPacket~CRC
+#debug_left uint allStatusPacket.CRC
+#srcline 146 ;    
+#srcline 147 ;    send_UDP(rq := true, chanCode := ChanCode, lenTx := allStatusPacket.Header.frameLength, data := void(allStatusPacket) , mesSent => msgSent , error => errCode);
+ LD   bool -1       ; true
+ WRX  send_UDP~rq
+#debug_left bool send_UDP~rq
+ LDX  ChanCode
+#debug uint ChanCode
+ WRX  send_UDP~chanCode
+#debug_left uint send_UDP~chanCode
+ LDX  allStatusPacket~Header~frameLength
+#debug uint allStatusPacket.Header.frameLength
+ WRX  send_UDP~lenTx
+#debug_left uint send_UDP~lenTx
+ LEAX allStatusPacket
+ WRX  send_UDP~data
+#debug_left pointer send_UDP.data
+ LEAX send_UDP
+ CAL  fbSendTo_L0
+; output assigment 
+ LDX  send_UDP~mesSent
+#debug bool send_UDP~mesSent
+ WRX  msgSent
+#debug_left bool msgSent
+ LDX  send_UDP~error
+#debug usint send_UDP~error
+ WRX  errCode
+#debug_left usint errCode
+#srcline 148 ;    errText := GetLastComErrTxt(errCode := errCode);
+ LD   0   ; null string
+ WRY  PS0__st__[0]
+ LEAY PS0__st__[0]
+ LD   100
+ DST    ; Level 1
+ NXT
+ LDX  errCode
+#debug usint errCode
+ WR   __Instance__GetLastComErrTxt~errCode
+#debug_left usint __Instance__GetLastComErrTxt~errCode
+ PRV
+ LEA  __Instance__GetLastComErrTxt
+ CAL  GetLastComErrTxt_L0
+
+ SCON 
+ PDST   ; Level 1
+ LD   0   ; null string
+ LEAX errText
+ WRI  
+ LEAX errText
+ LD   100
+ DST    ; Level 1
+ LEAY PS0__st__[0]
+ SCON 
+#debug_left string errText
+ PDST   ; Level 1
+#srcline 149 ;  end_if;
+ JMP  fbControlHotelSystem_UDP_L2
+fbControlHotelSystem_UDP_L12:
+fbControlHotelSystem_UDP_L2:
+#srcline 150 ;    
+#srcline 151 ;    
+#srcline 152 ;  // Read Status
+#srcline 153 ;  startIndex := 23;
+ LD   uint 23
+ WRX  startIndex
+#debug_left uint startIndex
+#srcline 154 ;  
+#srcline 155 ;  if CH_IN[8] = 14 then
+ LDX  CH_IN
+ ADD  8  ; + offset 
+ LDI  
+#debug usint CH_IN[8]
+ LD   usint 14
+ EQ
+ JMC  fbControlHotelSystem_UDP_L13
+#srcline 156 ;    numOfStatusDevs := usint_to_uint(CH_IN[22]);
+ LDX  CH_IN
+ ADD  22  ; + offset 
+ LDI  
+#debug usint CH_IN[22]
+ AND  $FFFF
+ WRX  numOfStatusDevs
+#debug_left uint numOfStatusDevs
+#srcline 157 ;    for i := 1 to numOfStatusDevs  do
+ LD   uint 1
+ WRX  i
+ LDX  numOfStatusDevs
+#debug uint numOfStatusDevs
+ WRY  P0__st__
+fbControlHotelSystem_UDP_L15:
+ LDX  i
+ LDY  P0__st__
+ GT   
+ JMD  fbControlHotelSystem_UDP_L16
+ DBG  
+#srcline 158 ;       index := startIndex + (i-1) * 6;
+ LDX  startIndex
+#debug uint startIndex
+ LDX  i
+#debug uint i
+ LD   uint 1
+ SUB
+ AND  $FFFF
+ LD   uint 6
+ MUL
+ AND  $FFFF
+ ADD
+ AND  $FFFF
+ WRX  index
+#debug_left uint index
+#srcline 159 ;       DevicesStatus[i].DevType := CH_IN[index];
+ LDX  CH_IN
+ LDX  index
+#debug uint index
+ RCHK 1349   ; Range Check
+ ADD     ; + offset 
+ LDI  
+#debug usint CH_IN[index]
+ LEAX DevicesStatus
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ WRI 
+#debug_left usint DevicesStatus[i].DevType
+#srcline 160 ;       DevicesStatus[i].DevAddress := CH_IN[index+1];
+ LDX  CH_IN
+ LDX  index
+#debug uint index
+ LD   uint 1
+ ADD
+ AND  $FFFF
+ RCHK 1349   ; Range Check
+ ADD     ; + offset 
+ LDI  
+#debug usint CH_IN[index+1]
+ LEAX DevicesStatus
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ WRI 
+#debug_left usint DevicesStatus[i].DevAddress
+#srcline 161 ;       DevicesStatus[i].loopAddress := USINT_TO_UINT(CH_IN[index+2]);
+ LDX  CH_IN
+ LDX  index
+#debug uint index
+ LD   uint 2
+ ADD
+ AND  $FFFF
+ RCHK 1349   ; Range Check
+ ADD     ; + offset 
+ LDI  
+#debug usint CH_IN[index+2]
+ AND  $FFFF
+ LEAX DevicesStatus
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  2  ; + offset 
+ WRIW 
+#debug_left uint DevicesStatus[i].loopAddress
+#srcline 162 ;       if CH_IN[index+4] = 1 then
+ LDX  CH_IN
+ LDX  index
+#debug uint index
+ LD   uint 4
+ ADD
+ AND  $FFFF
+ RCHK 1349   ; Range Check
+ ADD     ; + offset 
+ LDI  
+#debug usint CH_IN[index+4]
+ LD   usint 1
+ EQ
+ JMC  fbControlHotelSystem_UDP_L17
+#srcline 163 ;          DevicesStatus[i].CtrlType := true;
+ LD   bool -1       ; true
+ LEAX DevicesStatus
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  4  ; + offset 
+ MUL  8   ; -> bool pointer 
+ WRIB 
+#debug_left bool DevicesStatus[i].CtrlType
+#srcline 164 ;       elsif CH_IN[index+4] = 2 then
+ JMP  fbControlHotelSystem_UDP_L18
+fbControlHotelSystem_UDP_L17:
+ LDX  CH_IN
+ LDX  index
+#debug uint index
+ LD   uint 4
+ ADD
+ AND  $FFFF
+ RCHK 1349   ; Range Check
+ ADD     ; + offset 
+ LDI  
+#debug usint CH_IN[index+4]
+ LD   usint 2
+ EQ
+ JMC  fbControlHotelSystem_UDP_L19
+#srcline 165 ;          DevicesStatus[i].CtrlType := false;
+ LD   bool 0       ; false
+ LEAX DevicesStatus
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  4  ; + offset 
+ MUL  8   ; -> bool pointer 
+ WRIB 
+#debug_left bool DevicesStatus[i].CtrlType
+#srcline 166 ;       end_if;
+ JMP  fbControlHotelSystem_UDP_L18
+fbControlHotelSystem_UDP_L19:
+fbControlHotelSystem_UDP_L18:
+#srcline 167 ;       DevicesStatus[i].CtrlContent := CH_IN[index+5];
+ LDX  CH_IN
+ LDX  index
+#debug uint index
+ LD   uint 5
+ ADD
+ AND  $FFFF
+ RCHK 1349   ; Range Check
+ ADD     ; + offset 
+ LDI  
+#debug usint CH_IN[index+5]
+ LEAX DevicesStatus
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  5  ; + offset 
+ WRI 
+#debug_left usint DevicesStatus[i].CtrlContent
+#srcline 168 ;    End_For;
+ LDX  i
+ LD   1
+ ADD  
+ WRX  i
+ JMP  fbControlHotelSystem_UDP_L15
+fbControlHotelSystem_UDP_L16:
+ NOP  -1
+#srcline 169 ;    SysLock := usint_to_bool(CH_IN[15]);
+ LDX  CH_IN
+ ADD  15  ; + offset 
+ LDI  
+#debug usint CH_IN[15]
+ GT   0
+ WRX  SysLock
+#debug_left bool SysLock
+#srcline 170 ;    cardType := usint_to_bool(CH_IN[16]);
+ LDX  CH_IN
+ ADD  16  ; + offset 
+ LDI  
+#debug usint CH_IN[16]
+ GT   0
+ WRX  cardType
+#debug_left bool cardType
+#srcline 171 ;    Door  := usint_to_bool(CH_IN[17]);
+ LDX  CH_IN
+ ADD  17  ; + offset 
+ LDI  
+#debug usint CH_IN[17]
+ GT   0
+ WRX  Door
+#debug_left bool Door
+#srcline 173 ;  End_if;
+fbControlHotelSystem_UDP_L13:
+#srcline 174 ;  
+#srcline 175 ;END_FUNCTION_BLOCK
+ ULNK
+RET
+E     61
+
+; Initialize - variables
+P     61
+fbControlHotelSystem_UDP__InstanceInit__:
+ LINK 0
+ LD   0
+ SRC  byte __Init___fbControlHotelSystem_UDP_serverSettings
+ LEAX byte serverSettings
+ LD   11
+ MOV  %X0
+ LD   0
+ SRC  byte __Init___fbControlHotelSystem_UDP_IamServerPacket
+ LEAX byte IamServerPacket
+ LD   28
+ MOV  %X0
+ LD   0
+ SRC  byte __Init___fbControlHotelSystem_UDP_allStatusPacket
+ LEAX byte allStatusPacket
+ LD   17
+ MOV  %X0
+ LD   uint 23
+ WRX  startIndex
+ LEAX send_UDP
+ CAL  fbSendTo__InstanceInit__
+ LD   udint $FFFFFFFF    ; nil
+ WRX  CRC
+ ULNK
+RET
+E     61
+; End initialize - variables
+#endpou 
+
+
+
+ 
+
+#srcfile ''

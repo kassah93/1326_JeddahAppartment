@@ -1,0 +1,66 @@
+VAR_GLOBAL RETAIN
+   curtainsFB : Array[1..numOfCurtains] of fb_iJalousie;
+END_VAR
+
+TYPE
+   TEnCurtainRT : Struct
+     UP   : R_TRIG;
+     DW   : R_TRIG;
+     STOP : R_TRIG;
+   End_Struct;
+END_TYPE
+
+PROGRAM prgMain
+  VAR_INPUT
+  END_VAR
+  VAR_OUTPUT
+  END_VAR
+  VAR
+  PLC1_EnCurtains_RT : Array[1..numOfCurtains_PLC1] of TEnCurtainRT;
+  
+  i : USINT;
+  
+  // for test
+  test, up, dw, stop, block : BOOl;
+  up_RT , dw_RT : R_TRIG;
+  END_VAR
+  VAR_TEMP
+  END_VAR
+
+  for i := 1 to numOfCurtains_PLC1 do
+      PLC1_EnCurtains_RT[i].UP(CLK := PLC1_EnCurtains[i].UP);
+      PLC1_EnCurtains_RT[i].DW(CLK := PLC1_EnCurtains[i].DW);
+      PLC1_EnCurtains_RT[i].STOP(CLK := PLC1_EnCurtains[i].STOP);
+
+      if (PLC1_EnCurtains_RT[i].UP.Q and curtainsFB[i].outDw) or (PLC1_EnCurtains_RT[i].DW.Q and curtainsFB[i].outUp) then
+         curtainsFB[i].up := 0;
+         curtainsFB[i].dw := 0;
+         curtainsFB[i](stop := 1, upDwTime := curtUpDwTime) ;
+      else
+         curtainsFB[i](up := PLC1_EnCurtains[i].UP, dw := PLC1_EnCurtains[i].DW, stop := PLC1_EnCurtains[i].STOP, upDwTime := curtUpDwTime) ;
+      end_if;
+      
+      curtainsStatus[i].outUP   := curtainsFB[i].outUp;
+      curtainsStatus[i].outDW   := curtainsFB[i].outDw;
+      curtainsStatus[i].pos     := 100 - curtainsFB[i].posit;
+      curtainsStatus[i].normPos := curtainsStatus[i].pos / 25;
+      
+  end_for;
+ (*
+  up_RT(CLK := up);
+  dw_RT(CLK := dw);
+
+  if (up_RT.Q and curtainsFB[1].outDw) or (dw_RT.Q and curtainsFB[1].outUp) then
+     curtainsFB[1].up := 0;
+     curtainsFB[1].dw := 0;
+     curtainsFB[1](stop := 1, upDwTime := curtUpDwTime) ;
+     test := 1;
+  else
+     curtainsFB[1](up := up, dw := dw, stop := STOP, upDwTime := curtUpDwTime) ;
+     up   := 0;
+     dw   := 0;
+     stop := 0;
+  end_if;  *)
+
+END_PROGRAM
+

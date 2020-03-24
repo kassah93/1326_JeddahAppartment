@@ -1,0 +1,200 @@
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\PRGMAIN.ST'
+
+; Global variables
+#def  numOfRCUS 5
+
+; Global variables
+#rem  usint RCUs_IPs[20]  ;IP address
+
+; Global variables
+#reg  aligned bool RCUs_PingDone[8]
+
+#defpou prgMain
+  fbPingIP ping,
+  T_PING_INFO pingInfo,
+  fbTick tick,
+  int pingSwitch,
+  TIPadr IP  ;IP address
+
+#table byte __Init____RCUs_IPs = 
+    192,168,  0, 23,192,168,  0, 15,192,168,  0, 17,192,168,  0,109,192,168,  0,110;
+ 
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\PRGMAIN.ST'
+#pou prgMain
+#srcline 20 ;PROGRAM prgMain
+P     61
+prgMain_L0:
+ LINK 0
+#srcline 39 ;  tick(IN := 1, PT :=T#1.2s );
+ LD   1
+ WRX  tick~IN
+#debug_left bool tick~IN
+ LD   time 1200
+ WRX  tick~PT
+#debug_left time tick~PT
+ LEAX tick
+ CAL  fbTick_L0
+#srcline 40 ;  if tick.Q then
+ LDX  tick~Q
+#debug bool tick.Q
+ JMC  prgMain_L1
+#srcline 41 ;     pingSwitch :=  pingSwitch + 1;
+ LDX  pingSwitch
+#debug int pingSwitch
+ EXTW 
+ LD   int 1
+ ADD
+ EXTW
+ WRX  pingSwitch
+#debug_left int pingSwitch
+#srcline 42 ;  end_if;
+prgMain_L1:
+#srcline 44 ;  if pingSwitch = numOfRCUS then
+ LDX  pingSwitch
+#debug int pingSwitch
+ EXTW 
+ LD   int 5
+ EQ
+ JMC  prgMain_L3
+#srcline 45 ;     pingSwitch := 0;
+ LD   int 0
+ WRX  pingSwitch
+#debug_left int pingSwitch
+#srcline 46 ;  end_if;
+prgMain_L3:
+#srcline 48 ;  if pingSwitch >= 0 and pingSwitch < numOfRCUS then
+ LDX  pingSwitch
+#debug int pingSwitch
+ EXTW 
+ LD   int 0
+ LTS
+ NEG
+ LDX  pingSwitch
+#debug int pingSwitch
+ EXTW 
+ LD   int 5
+ LTS
+ AND
+ JMC  prgMain_L5
+#srcline 49 ;     IP := RCUs_IPs[pingSwitch + 1];
+ LEA  RCUs_IPs
+ LDX  pingSwitch
+#debug int pingSwitch
+ EXTW 
+ LD   int 1
+ ADD
+ EXTW
+ SUB  1   ; Low range[1]
+ RCHK 4   ; Range Check
+ MUL  4   ; SizeOf(...)
+ ADD     ; + offset 
+#debug pointer RCUs_IPs[pingSwitch+1]
+ SRC  %IB0
+ LEAX IP
+#debug_left pointer IP
+ LD   4   ;SizeOf() 
+ MOV  %IB0
+#srcline 50 ;  end_if;
+prgMain_L5:
+#srcline 51 ;  
+#srcline 52 ;  ping(rqPing := tick.Q , hostIP := IP , ttl := 255 , timeLimit :=T#1s ,  pingInfo := pingInfo );
+ LDX  tick~Q
+#debug bool tick.Q
+ WRX  ping~rqPing
+#debug_left bool ping~rqPing
+ LEAX IP
+#debug pointer IP
+ SRC  %IB0
+ LEAX ping~hostIP
+ LD   4   ;SizeOf() 
+ MOV  %IB0
+ LD   usint 255
+ WRX  ping~ttl
+#debug_left usint ping~ttl
+ LD   time 1000
+ WRX  ping~timeLimit
+#debug_left time ping~timeLimit
+ LEAX pingInfo
+ WRX  ping~pingInfo
+#debug_left pointer ping.pingInfo
+ LEAX ping
+ CAL  fbPingIP_L0
+#srcline 54 ;  if pingSwitch >= 0 and pingSwitch < numOfRCUS then
+ LDX  pingSwitch
+#debug int pingSwitch
+ EXTW 
+ LD   int 0
+ LTS
+ NEG
+ LDX  pingSwitch
+#debug int pingSwitch
+ EXTW 
+ LD   int 5
+ LTS
+ AND
+ JMC  prgMain_L7
+#srcline 55 ;    IF ping.done THEN
+ LDX  ping~done
+#debug bool ping.done
+ JMC  prgMain_L9
+#srcline 56 ;       RCUs_PingDone[pingSwitch + 1] :=1;
+ LD   bool -1      ; true
+ LEA  RCUs_PingDone
+ LDX  pingSwitch
+#debug int pingSwitch
+ EXTW 
+ LD   int 1
+ ADD
+ EXTW
+ SUB  1   ; Low range[1]
+ RCHK 4   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool RCUs_PingDone[pingSwitch+1]
+#srcline 57 ;    END_IF;
+prgMain_L9:
+#srcline 58 ;    IF ping.busy or ping.err THEN
+ LDX  ping~busy
+#debug bool ping.busy
+ LDX  ping~err
+#debug bool ping.err
+ OR  
+ JMC  prgMain_L11
+#srcline 59 ;       RCUs_PingDone[pingSwitch + 1] :=0;
+ LD   bool 0       ; false
+ LEA  RCUs_PingDone
+ LDX  pingSwitch
+#debug int pingSwitch
+ EXTW 
+ LD   int 1
+ ADD
+ EXTW
+ SUB  1   ; Low range[1]
+ RCHK 4   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool RCUs_PingDone[pingSwitch+1]
+#srcline 60 ;    END_IF;
+prgMain_L11:
+#srcline 61 ;  end_if;
+prgMain_L7:
+#srcline 62 ;  
+#srcline 63 ;END_PROGRAM
+ ULNK
+RET
+E     61
+#endpou 
+
+
+P     59
+; Initialize retain global variables 
+ LD   0
+ SRC  byte __Init____RCUs_IPs
+ LD   0
+ LD   20
+ MOV  byte RCUs_IPs[0]
+E     59
+
+ 
+
+#srcfile ''

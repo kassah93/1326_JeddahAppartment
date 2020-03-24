@@ -1,0 +1,434 @@
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\IOCONFIGURATOR\CONFIG.ST'
+
+; Global variables
+#def  CPU_TYPE 76
+#def  CPU_CODE 1001
+
+; Global types
+#struct  TCHStatistic
+  usint STAT,
+  usint ERR,
+  udint trueMes,
+  udint falseMes
+#def  TCIB_STAT_ARRAY byte[32]
+#struct  TCIB_CHM0308_STAT
+  bool OUF1,
+  bool VLD1,
+  bool OUF2,
+  bool VLD2,
+  bool OUF3,
+  bool VLD3,
+  bool ManMode,
+  bool PowerErr
+#struct  TCIB_AI3
+  real AI1,
+  real AI2,
+  real AI3
+#struct  TCIB_DI3
+  bool DI1,
+  bool DI2,
+  bool DI3,
+  bool dummy3,
+  bool dummy4,
+  bool dummy5,
+  bool dummy6,
+  bool dummy7
+#struct  TCIB_C_HM_0308M_IN
+  TCIB_CHM0308_STAT STAT,
+  TCIB_AI3 AI,
+  TCIB_DI3 DI
+#struct  TCIB_CIT0200_STAT
+  bool iOUF,
+  bool iVLD,
+  bool eOUF,
+  bool eVLD,
+  bool dummy4,
+  bool dummy5,
+  bool dummy6,
+  bool dummy7
+#struct  TCIB_C_IT_0200R_IN
+  TCIB_CIT0200_STAT STAT,
+  real iTHERM,
+  real eTHERM
+#struct  r0_p2_TCIB_IN
+  real intgr,
+  TCIB_C_HM_0308M_IN r8_p0_IN,
+  TCIB_C_HM_0308M_IN r8_p1_IN,
+  TCIB_C_IT_0200R_IN r8_p2_IN,
+  TCIB_C_IT_0200R_IN r8_p3_IN
+#struct  TCHControl
+  uint CONTROL
+#struct  TCIB_AO2
+  real AO1,
+  real AO2
+#struct  TCIB_DO6
+  bool DO1,
+  bool DO2,
+  bool DO3,
+  bool DO4,
+  bool DO5,
+  bool DO6,
+  bool dummy6,
+  bool dummy7
+#struct  TCIB_C_HM_0308M_OUT
+  TCIB_AO2 AO,
+  TCIB_DO6 DOs
+#struct  r0_p2_TCIB_OUT
+  TCIB_C_HM_0308M_OUT r8_p0_OUT,
+  TCIB_C_HM_0308M_OUT r8_p1_OUT
+#struct  r0_p3_TCIB_IN
+  real intgr,
+  TCIB_C_HM_0308M_IN r9_p0_IN,
+  TCIB_C_HM_0308M_IN r9_p1_IN,
+  TCIB_C_HM_0308M_IN r9_p2_IN,
+  TCIB_C_IT_0200R_IN r9_p3_IN,
+  TCIB_C_IT_0200R_IN r9_p4_IN,
+  TCIB_C_IT_0200R_IN r9_p5_IN
+#struct  r0_p3_TCIB_OUT
+  TCIB_C_HM_0308M_OUT r9_p0_OUT,
+  TCIB_C_HM_0308M_OUT r9_p1_OUT,
+  TCIB_C_HM_0308M_OUT r9_p2_OUT
+#struct  TBIN_6DIM
+  bool DI0,
+  bool DI1,
+  bool DI2,
+  bool DI3,
+  bool IN230,
+  bool HDO,
+  bool dummy6,
+  bool dummy7
+#struct  TSTPW
+  bool WCIB1,
+  bool ECIB1,
+  bool WCIB2,
+  bool ECIB2,
+  bool WSRC,
+  bool ESRC,
+  bool WACU,
+  bool EACU
+#struct  TAIStat
+  bool UNF,
+  bool UNR,
+  bool OVR,
+  bool OVF,
+  bool FLS,
+  bool CJC,
+  bool dummy6,
+  bool dummy7,
+  bool CHC,
+  bool dummy9,
+  bool dummy10,
+  bool dummy11,
+  bool dummy12,
+  bool dummy13,
+  bool dummy14,
+  bool dummy15
+#struct  TAI
+  TAIStat STAT,
+  int FS,
+  real ENG,
+  real PCT
+#struct  TAIPW
+  real UCIB1,
+  real UCIB2,
+  real USRC,
+  real UACU
+#struct  TBIN_2DO
+  bool DO0,
+  bool DO1,
+  bool dummy2,
+  bool dummy3,
+  bool dummy4,
+  bool dummy5,
+  bool dummy6,
+  bool dummy7
+#struct  TUniStat
+  bool DSR,
+  bool CTS,
+  bool dummy2,
+  bool TRO,
+  bool RCF,
+  bool ROV,
+  bool TRF,
+  bool ARC
+#def  TZONE_ARRAY_CH2_RX usint[256]
+#struct  TUNI_CH2_IN
+  TUniStat STAT,
+  usint ERR,
+  uint NUMR,
+  TZONE_ARRAY_CH2_RX DATA
+#struct  TUniCont
+  bool dummy0,
+  bool dummy1,
+  bool dummy2,
+  bool dummy3,
+  bool dummy4,
+  bool TRG,
+  bool CLR,
+  bool ACN
+#struct  TUniSign
+  bool DTR,
+  bool RTS,
+  bool dummy2,
+  bool dummy3,
+  bool dummy4,
+  bool dummy5,
+  bool dummy6,
+  bool dummy7
+#def  TZONE_ARRAY_CH2_TX usint[256]
+#struct  TUNI_CH2_OUT
+  TUniCont CONT,
+  TUniSign SIGN,
+  uint NUMT,
+  TZONE_ARRAY_CH2_TX DATA
+#def  TZONE_ARRAY_CH1_RX usint[250]
+#struct  TUNI_CH1_IN
+  TUniStat STAT,
+  usint ERR,
+  uint NUMR,
+  TZONE_ARRAY_CH1_RX DATA
+#def  TZONE_ARRAY_CH1_TX usint[250]
+#struct  TUNI_CH1_OUT
+  TUniCont CONT,
+  TUniSign SIGN,
+  uint NUMT,
+  TZONE_ARRAY_CH1_TX DATA
+#def  TPLCx_ETH1_PLCx0_ADR3_RX_DATA usint[238]
+#struct  TPLCx_ETH1_PLCx0_ADR3_RX
+  usint STAT,
+  usint ERR,
+  uint NUMR,
+  TPLCx_ETH1_PLCx0_ADR3_RX_DATA DATA
+#def  TPLCx_ETH1_PLCx0_ADR1_TX_DATA usint[50]
+#struct  TPLCx_ETH1_PLCx0_ADR1_TX
+  usint CONT,
+  usint SIGN,
+  uint NUMT,
+  TPLCx_ETH1_PLCx0_ADR1_TX_DATA DATA
+#def  TZONE_ARRAY_ETH1_UNI0_RX usint[1350]
+#struct  TUNI_ETH1_UNI0_IN
+  TUniStat STAT,
+  usint ERR,
+  uint NUMR,
+  TZONE_ARRAY_ETH1_UNI0_RX DATA
+#def  TZONE_ARRAY_ETH1_UNI0_TX usint[1350]
+#struct  TUNI_ETH1_UNI0_OUT
+  TUniCont CONT,
+  TUniSign SIGN,
+  uint NUMT,
+  TZONE_ARRAY_ETH1_UNI0_TX DATA
+#def  TZONE_ARRAY_ETH1_UNI1_RX usint[1350]
+#struct  TUNI_ETH1_UNI1_IN
+  TUniStat STAT,
+  usint ERR,
+  uint NUMR,
+  TZONE_ARRAY_ETH1_UNI1_RX DATA
+#def  TZONE_ARRAY_ETH1_UNI1_TX usint[1350]
+#struct  TUNI_ETH1_UNI1_OUT
+  TUniCont CONT,
+  TUniSign SIGN,
+  uint NUMT,
+  TZONE_ARRAY_ETH1_UNI1_TX DATA
+#def  TZONE_ARRAY_ETH1_UNI2_RX usint[1350]
+#struct  TUNI_ETH1_UNI2_IN
+  TUniStat STAT,
+  usint ERR,
+  uint NUMR,
+  TZONE_ARRAY_ETH1_UNI2_RX DATA
+#def  TZONE_ARRAY_ETH1_UNI2_TX usint[1350]
+#struct  TUNI_ETH1_UNI2_OUT
+  TUniCont CONT,
+  TUniSign SIGN,
+  uint NUMT,
+  TZONE_ARRAY_ETH1_UNI2_TX DATA
+#def  TZONE_ARRAY_ETH1_UNI3_RX usint[1350]
+#struct  TUNI_ETH1_UNI3_IN
+  TUniStat STAT,
+  usint ERR,
+  uint NUMR,
+  TZONE_ARRAY_ETH1_UNI3_RX DATA
+#def  TZONE_ARRAY_ETH1_UNI3_TX usint[1350]
+#struct  TUNI_ETH1_UNI3_OUT
+  TUniCont CONT,
+  TUniSign SIGN,
+  uint NUMT,
+  TZONE_ARRAY_ETH1_UNI3_TX DATA
+#def  TZONE_ARRAY_ETH1_UNI4_RX usint[1350]
+#struct  TUNI_ETH1_UNI4_IN
+  TUniStat STAT,
+  usint ERR,
+  uint NUMR,
+  TZONE_ARRAY_ETH1_UNI4_RX DATA
+#def  TZONE_ARRAY_ETH1_UNI4_TX usint[1350]
+#struct  TUNI_ETH1_UNI4_OUT
+  TUniCont CONT,
+  TUniSign SIGN,
+  uint NUMT,
+  TZONE_ARRAY_ETH1_UNI4_TX DATA
+
+; Global variables
+#input  TCHStatistic r0_p2_CIB_Statistic
+#input  byte r0_p2_CIB_STAT[32]
+#input  byte r0_p2_CIB_ERR[32]
+#input  r0_p2_TCIB_IN r0_p2_CIB_IN
+#def  r8_p0_IN TCIB_C_HM_0308M_IN __absolute(r0_p2_CIB_IN~r8_p0_IN)
+#def  r8_p1_IN TCIB_C_HM_0308M_IN __absolute(r0_p2_CIB_IN~r8_p1_IN)
+#def  r8_p2_IN TCIB_C_IT_0200R_IN __absolute(r0_p2_CIB_IN~r8_p2_IN)
+#def  r8_p3_IN TCIB_C_IT_0200R_IN __absolute(r0_p2_CIB_IN~r8_p3_IN)
+#input  TCHStatistic r0_p3_CIB_Statistic
+#input  byte r0_p3_CIB_STAT[32]
+#input  byte r0_p3_CIB_ERR[32]
+#input  r0_p3_TCIB_IN r0_p3_CIB_IN
+#def  r9_p0_IN TCIB_C_HM_0308M_IN __absolute(r0_p3_CIB_IN~r9_p0_IN)
+#def  r9_p1_IN TCIB_C_HM_0308M_IN __absolute(r0_p3_CIB_IN~r9_p1_IN)
+#def  r9_p2_IN TCIB_C_HM_0308M_IN __absolute(r0_p3_CIB_IN~r9_p2_IN)
+#def  r9_p3_IN TCIB_C_IT_0200R_IN __absolute(r0_p3_CIB_IN~r9_p3_IN)
+#def  r9_p4_IN TCIB_C_IT_0200R_IN __absolute(r0_p3_CIB_IN~r9_p4_IN)
+#def  r9_p5_IN TCIB_C_IT_0200R_IN __absolute(r0_p3_CIB_IN~r9_p5_IN)
+#input  TBIN_6DIM r0_p5_DI
+#input  TSTPW r0_p5_STPW
+#input  TAI r0_p5_AI0
+#input  TAI r0_p5_AI1
+#input  TAI r0_p5_AI2
+#input  TAI r0_p5_AI3
+#input  TAIPW r0_p5_AIPW
+#input  TCHStatistic r0_p0_Statistic_CH2
+#input  TUNI_CH2_IN r0_p0_UNI_CH2_IN
+#def  CH2_IN r0_p0_UNI_CH2_IN~DATA
+#input  TCHStatistic r0_p0_Statistic_CH1
+#input  TUNI_CH1_IN r0_p0_UNI_CH1_IN
+#input  TCHStatistic r0_p0_Statistic_ETH1_PLCx0
+#input  TCHStatistic r0_p0_Statistic_ETH1_UNI0
+#input  TUNI_ETH1_UNI0_IN UNI_ETH1_UNI0_IN
+#def  Majles1_Statistic_ETH1_UNI0 r0_p0_Statistic_ETH1_UNI0
+#def  Majles1_UNI_ETH1_UNI0_IN UNI_ETH1_UNI0_IN
+#def  ETH1_uni0_IN UNI_ETH1_UNI0_IN~DATA
+#input  TCHStatistic r0_p0_Statistic_ETH1_UNI1
+#input  TUNI_ETH1_UNI1_IN UNI_ETH1_UNI1_IN
+#def  Majles2_Statistic_ETH1_UNI1 r0_p0_Statistic_ETH1_UNI1
+#def  Majles2_UNI_ETH1_UNI1_IN UNI_ETH1_UNI1_IN
+#def  ETH1_uni1_IN UNI_ETH1_UNI1_IN~DATA
+#input  TCHStatistic r0_p0_Statistic_ETH1_UNI2
+#input  TUNI_ETH1_UNI2_IN UNI_ETH1_UNI2_IN
+#def  Room1_Statistic_ETH1_UNI2 r0_p0_Statistic_ETH1_UNI2
+#def  Room1_UNI_ETH1_UNI2_IN UNI_ETH1_UNI2_IN
+#def  ETH1_uni2_IN UNI_ETH1_UNI2_IN~DATA
+#input  TCHStatistic r0_p0_Statistic_ETH1_UNI3
+#input  TUNI_ETH1_UNI3_IN UNI_ETH1_UNI3_IN
+#def  Room2_Statistic_ETH1_UNI3 r0_p0_Statistic_ETH1_UNI3
+#def  Room2_UNI_ETH1_UNI3_IN UNI_ETH1_UNI3_IN
+#def  ETH1_uni3_IN UNI_ETH1_UNI3_IN~DATA
+#input  TCHStatistic r0_p0_Statistic_ETH1_UNI4
+#input  TUNI_ETH1_UNI4_IN UNI_ETH1_UNI4_IN
+#def  Room3_Statistic_ETH1_UNI4 r0_p0_Statistic_ETH1_UNI4
+#def  Room3_UNI_ETH1_UNI4_IN UNI_ETH1_UNI4_IN
+#def  ETH1_uni4_IN UNI_ETH1_UNI4_IN~DATA
+
+; Global variables
+#output  TCHControl r0_p2_CIB_Control
+#output  r0_p2_TCIB_OUT r0_p2_CIB_OUT
+#def  r8_p0_OUT TCIB_C_HM_0308M_OUT __absolute(r0_p2_CIB_OUT~r8_p0_OUT)
+#def  r8_p1_OUT TCIB_C_HM_0308M_OUT __absolute(r0_p2_CIB_OUT~r8_p1_OUT)
+#output  TCHControl r0_p3_CIB_Control
+#output  r0_p3_TCIB_OUT r0_p3_CIB_OUT
+#def  r9_p0_OUT TCIB_C_HM_0308M_OUT __absolute(r0_p3_CIB_OUT~r9_p0_OUT)
+#def  r9_p1_OUT TCIB_C_HM_0308M_OUT __absolute(r0_p3_CIB_OUT~r9_p1_OUT)
+#def  r9_p2_OUT TCIB_C_HM_0308M_OUT __absolute(r0_p3_CIB_OUT~r9_p2_OUT)
+#output  TBIN_2DO r0_p5_DO
+#output  TCHControl r0_p0_Control_CH2
+#output  TUNI_CH2_OUT r0_p0_UNI_CH2_OUT
+#def  CH2_OUT r0_p0_UNI_CH2_OUT~DATA
+#output  TCHControl r0_p0_Control_CH1
+#output  TUNI_CH1_OUT r0_p0_UNI_CH1_OUT
+#output  TCHControl r0_p0_Control_ETH1_PLCx0
+#output  TCHControl r0_p0_Control_ETH1_UNI0
+#output  TUNI_ETH1_UNI0_OUT UNI_ETH1_UNI0_OUT
+#def  Majles1_Control_ETH1_UNI0 r0_p0_Control_ETH1_UNI0
+#def  Majles1_UNI_ETH1_UNI0_OUT UNI_ETH1_UNI0_OUT
+#def  ETH1_uni0_OUT UNI_ETH1_UNI0_OUT~DATA
+#output  TCHControl r0_p0_Control_ETH1_UNI1
+#output  TUNI_ETH1_UNI1_OUT UNI_ETH1_UNI1_OUT
+#def  Majles2_Control_ETH1_UNI1 r0_p0_Control_ETH1_UNI1
+#def  Majles2_UNI_ETH1_UNI1_OUT UNI_ETH1_UNI1_OUT
+#def  ETH1_uni1_OUT UNI_ETH1_UNI1_OUT~DATA
+#output  TCHControl r0_p0_Control_ETH1_UNI2
+#output  TUNI_ETH1_UNI2_OUT UNI_ETH1_UNI2_OUT
+#def  Room1_Control_ETH1_UNI2 r0_p0_Control_ETH1_UNI2
+#def  Room1_UNI_ETH1_UNI2_OUT UNI_ETH1_UNI2_OUT
+#def  ETH1_uni2_OUT UNI_ETH1_UNI2_OUT~DATA
+#output  TCHControl r0_p0_Control_ETH1_UNI3
+#output  TUNI_ETH1_UNI3_OUT UNI_ETH1_UNI3_OUT
+#def  Room2_Control_ETH1_UNI3 r0_p0_Control_ETH1_UNI3
+#def  Room2_UNI_ETH1_UNI3_OUT UNI_ETH1_UNI3_OUT
+#def  ETH1_uni3_OUT UNI_ETH1_UNI3_OUT~DATA
+#output  TCHControl r0_p0_Control_ETH1_UNI4
+#output  TUNI_ETH1_UNI4_OUT UNI_ETH1_UNI4_OUT
+#def  Room3_Control_ETH1_UNI4 r0_p0_Control_ETH1_UNI4
+#def  Room3_UNI_ETH1_UNI4_OUT UNI_ETH1_UNI4_OUT
+#def  ETH1_uni4_OUT UNI_ETH1_UNI4_OUT~DATA
+
+; Global variables
+#def  FCU1_Majles1_IN r8_p0_IN
+#def  FCU1_Majles1_OUT r8_p0_OUT
+#def  FCU_valve_Majles1 r8_p0_OUT~DOs~DO4
+#def  FCU_fanHigh_Majles1 r8_p0_OUT~DOs~DO3
+#def  FCU_fanMed_Majles1 r8_p0_OUT~DOs~DO2
+#def  FCU_fanLow_Majles1 r8_p0_OUT~DOs~DO1
+#def  FCU2_Majles2_IN r8_p1_IN
+#def  FCU2_Majles2_OUT r8_p1_OUT
+#def  FCU_valve_Majles2 r8_p1_OUT~DOs~DO4
+#def  FCU_fanHigh_Majles2 r8_p1_OUT~DOs~DO3
+#def  FCU_fanMed_Majles2 r8_p1_OUT~DOs~DO2
+#def  FCU_fanLow_Majles2 r8_p1_OUT~DOs~DO1
+#def  TS1_Majles1_IN r8_p2_IN
+#def  FCU_Temp_Majles1 r8_p2_IN~iTHERM
+#def  TS2_Majles2_IN r8_p3_IN
+#def  FCU_Temp_Majles2 r8_p3_IN~iTHERM
+#def  FCU6_Room1_IN r9_p0_IN
+#def  FCU6_Room1_OUT r9_p0_OUT
+#def  FCU_valve_Room1 r9_p0_OUT~DOs~DO4
+#def  FCU_fanHigh_Room1 r9_p0_OUT~DOs~DO3
+#def  FCU_fanMed_Room1 r9_p0_OUT~DOs~DO2
+#def  FCU_fanLow_Room1 r9_p0_OUT~DOs~DO1
+#def  FCU7_Room2_IN r9_p1_IN
+#def  FCU7_Room2_OUT r9_p1_OUT
+#def  FCU_valve_Room2 r9_p1_OUT~DOs~DO4
+#def  FCU_fanHigh_Room2 r9_p1_OUT~DOs~DO3
+#def  FCU_fanMed_Room2 r9_p1_OUT~DOs~DO2
+#def  FCU_fanLow_Room2 r9_p1_OUT~DOs~DO1
+#def  FCU8_Room3_IN r9_p2_IN
+#def  FCU8_Room3_OUT r9_p2_OUT
+#def  FCU_valve_Room3 r9_p2_OUT~DOs~DO4
+#def  FCU_fanHigh_Room3 r9_p2_OUT~DOs~DO3
+#def  FCU_fanMed_Room3 r9_p2_OUT~DOs~DO2
+#def  FCU_fanLow_Room3 r9_p2_OUT~DOs~DO1
+#def  TS6_Room1_IN r9_p3_IN
+#def  FCU_Temp_Room1 r9_p3_IN~iTHERM
+#def  TS7_Room2_IN r9_p4_IN
+#def  FCU_Temp_Room2 r9_p4_IN~iTHERM
+#def  TS8_Room3_IN r9_p5_IN
+#def  FCU_Temp_Room3 r9_p5_IN~iTHERM
+#reg  TPLCx_ETH1_PLCx0_ADR3_RX PLCx_ETH1_PLCx0_ADR3_RX
+#reg  TPLCx_ETH1_PLCx0_ADR1_TX PLCx_ETH1_PLCx0_ADR1_TX
+#def  PLC3 PLCx_ETH1_PLCx0_ADR3_RX
+#def  PLC1_Curtains PLCx_ETH1_PLCx0_ADR1_TX
+
+; Global variables
+#table byte __Init____r0_p5_AIPW = 
+      0,  0,128, 63,  0,  0,128, 63,  0,  0,128, 63,  0,  0,128, 63;
+ 
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\IOCONFIGURATOR\CONFIG.ST'
+
+P     58
+; Initialize non retain global variables 
+ LD   0
+ SRC  byte __Init____r0_p5_AIPW
+ LD   0
+ LD   16
+ MOV  byte r0_p5_AIPW
+E     58
+
+
+ 
+
+#srcfile ''

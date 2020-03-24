@@ -1,0 +1,210 @@
+<?xml version="1.0"?>
+<TecoDescriptor xmlns="http://www.tecomat.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.tecomat.com Teco_Default.xsd">
+  <Header>
+		<File>
+			<FileName>PLCx_ETH.tdd</FileName>
+			<FileCreator>Jan Martinec</FileCreator>
+			<FileCreationDate>2019-02-12</FileCreationDate>
+			<FileModifiedBy>Jan Martinec</FileModifiedBy>
+      <FileModificationDate>2019-02-12</FileModificationDate>
+      <SupportedLanguages>en cz</SupportedLanguages>
+      <FileVersion>1.0</FileVersion>
+		</File>
+	</Header>
+	<EthernetChannel>
+    <Mode>PLCx</Mode>
+    <Alias>
+      <label lang="cz">Kanál sítě PLCx</label>
+      <label lang="en">Channel of PLCx</label>  
+    </Alias>
+    <Description>
+      <label lang="cz">Síť se sdílením dat kompatibilní s režimem PLC s možností konfigurace v nástroji I/O Configurator</label>
+      <label lang="en">Data sharing network compatible with PLC mode with ability of configuration with I/O Configurator tool</label>              
+    </Description> 
+    <Image>
+      <ImageData>424D820200000000000042000000280000000C0000000C000000010020000300000040020000D70D0000D70D00000000000000000000000000FF0000FF0000FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF50FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDCFFFFFFFFDCDCDCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFEFEFEC3FFFFFF88C3C3C3BD888888FABEBDBDFFFAFAFAFFFFFFFFFFFFFFFFFFFFFFFFDFFFFFFF81DFDFDFF4818181BAF4F4F447BABABA9848474792999898E4949292FFE4E4E4FFFFFFFFFFFFFFFFD3FFFFFF73D3D3D3837373735B838383445B5B5B76454444807776768C818080F98D8C8CFFF9F9F9FFFFFFFFD4FFFFFF65D4D4D4B86565659EB8B8B87A9E9E9E457A7A7A464645457A474646FC7B7A7AFFFCFCFCFFFFFFFFD4FFFFFF72D4D4D4C6727272CEC6C6C6F8CECECEC0F8F8F8E9C0C0C07DE9E9E9FF7D7D7DFFFFFFFFFFFFFFFFFFFFFFFF8AEDEDEDBA8A8A8AD8BABABAF4D8D8D8E9F4F4F4F3EAE9E9F1F3F3F367F1F1F1FF676767FFFFFFFFFFFFFFFFFFFFFFFFA9E8E8E8EFADA9A9FAF3F0EFEDF9FAFAECEDEDEDF7ECECEC98F7F7F7A8989898FFA8A8A8FFFFFFFFFFFFFFFFEDFFFFFFB9E2E1E1FF72AAB9FBBBEFFFEFFAFBFBD1F0EFEF74D1D1D1D9747474FFD9D9D9FFFFFFFFFFFFFFFFFFFFFFFFE8FFFFFFC2FDFDFDC0B8BEC2B194B5C0ACA5AEB1C2ACACACFFC2C2C2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE1FFFFFFFEFFFFFFE9FEFEFEE1E5E8E9FAE1E1E1FFFAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFFFFFF</ImageData>
+      <ImageFile URI="IMAGES\ETH.png"/>
+    </Image>            
+    <Dictionary> 
+      <Include>CommonDataTypes.tod</Include>
+      <Include>Modules.tod</Include>  
+      <Include>Channels.tod</Include>      
+      <Include optional="true">{CHANNEL}_NET.tod</Include>
+      <DataTypes>    
+           
+        <!-- PLC configuration datatypes --> 
+        <DataType>
+          <Name>TPLCxSettings</Name>    
+          <SubItems>
+            <SubItem>
+              <Name>ComAddress</Name>
+              <Type>USINT</Type>                                                  
+            </SubItem>
+            <SubItem>
+              <Name>ZoneSize</Name>
+              <Type>UINT</Type>                                                  
+            </SubItem>
+            <SubItem>
+              <Name>FixedLocation</Name>
+              <Type>TFixedLocation</Type>                                                  
+            </SubItem>      
+          </SubItems>              
+        </DataType> 
+        
+        <DataType>
+          <Name>TFixedLocation</Name>    
+          <SubItems>
+            <SubItem>
+              <Name>Enabled</Name>
+              <Type>BOOL</Type>                                                  
+            </SubItem>
+            <SubItem>
+              <Name>Address</Name>
+              <Type>REGADDR</Type>                                                  
+            </SubItem>  
+          </SubItems>              
+        </DataType>
+  
+      </DataTypes>         
+      
+      <Objects>
+        
+        <Object index="#x6000" name="r{RACK}_p{POSITION}_Statistic_{CHANNEL}" type="TCHStatistic" access="rw">   
+          <DisplayName>
+            <label lang="en">Statistic_{CHANNEL}</label>   
+            <label lang="cz">Statistic_{CHANNEL}</label>                     
+          </DisplayName>     
+        </Object>
+        
+        <Object index="#x7000" name="r{RACK}_p{POSITION}_Control_{CHANNEL}" type="TCHControl" access="rw">   
+          <DisplayName>
+            <label lang="en">Control_{CHANNEL}</label>   
+            <label lang="cz">Control_{CHANNEL}</label>                     
+          </DisplayName>
+        </Object>
+        
+        <Object index="#x8000" name="r{RACK}_p{POSITION}_Settings_PLCx_{CHANNEL}" type="TPLCxSettings" access="rw">
+          <DisplayName>
+            <label lang="en">PLD mode settings</label>
+            <label lang="cz">Nastavení PLD režimu</label>
+          </DisplayName>                                            
+          <SubObjects>
+            <SubObject name="ComAddress" access="rw" use="NET_ADDR">
+              <DisplayName>
+                <label lang="en">Communication address</label>
+                <label lang="cz">Adresa komunikace</label>
+              </DisplayName>  
+              <DefaultValue>0</DefaultValue>              
+            </SubObject>
+            <SubObject name="ZoneSize" access="rw" use="NET_ZONE_SIZE">
+              <DisplayName>
+                <label lang="en">Zone size</label>
+                <label lang="cz">Velikost zóny</label>
+              </DisplayName>  
+              <MinValue>1</MinValue>
+              <MaxValue>238</MaxValue> 
+              <DefaultValue>1</DefaultValue>              
+            </SubObject>
+            <SubObject name="FixedLocation" access="rw">
+              <DisplayName>
+                <label lang="en">Fixed zone location</label>
+                <label lang="cz">Fixní umístění zóny</label>
+              </DisplayName> 
+              <SubObjects>
+                <SubObject name="Address" access="rw" use="NET_ZONE_ADDR">
+                  <DisplayName>
+                    <label lang="en">Zone absolute address</label>
+                    <label lang="cz">Absolutní adresa zóny</label>
+                  </DisplayName>                         
+                </SubObject>
+              </SubObjects>
+              <Xml>
+                <Editor>
+                  <Expanded>0</Expanded>              
+                </Editor>            
+              </Xml>
+            </SubObject>  
+          </SubObjects>                  
+        </Object>
+        
+        <Object index="#xA000" name="r{RACK}_p{POSITION}_Module_PLCx_{CHANNEL}" type="TModulE1" access="rw" ifdef="r{RACK}_p{POSITION}_Table_PLCx_{CHANNEL}"> <!-- if="_PLCTYPE_ &lt; 11" -->
+          <Comment>
+            <label lang="en">PLCx_ETH declaration</label>
+            <label lang="cz">Deklarace PLCx_ETH</label>
+          </Comment>
+          <Excluded>&quot;{SYSTEM}&quot; != &quot;FOXTROT&quot;</Excluded>
+          <SubObjects>
+            <SubObject name="version" access="ro">   
+              <DefaultValue>1</DefaultValue>            
+            </SubObject>  
+            <SubObject name="rack" access="ro">   
+              <MacroValue>{RACK}</MacroValue>            
+            </SubObject>
+            <SubObject name="address" access="ro">   
+              <MacroValue>{POSITION}</MacroValue>            
+            </SubObject>
+            <SubObject name="LogAddress" access="ro">   
+              <MacroValue>${LADR}</MacroValue>            
+            </SubObject>
+            <SubObject name="LenInputs" access="ro">   
+              <MacroValue>10</MacroValue>                        
+            </SubObject>    
+            <SubObject name="LenOutputs" access="ro">   
+              <MacroValue>2</MacroValue>                        
+            </SubObject>
+            <SubObject name="OffsetInputs" access="ro">   
+              <MacroValue>__offset(r{RACK}_p{POSITION}_Statistic_{CHANNEL})</MacroValue>                        
+            </SubObject>  
+            <SubObject name="OffsetOutputs" access="ro">   
+              <MacroValue>__offset(r{RACK}_p{POSITION}_Control_{CHANNEL})</MacroValue>            
+            </SubObject>
+            <SubObject name="InitTable" access="ro">   
+              <MacroValue>__indx(r{RACK}_p{POSITION}_Table_PLCx_{CHANNEL})</MacroValue>            
+            </SubObject>  
+          </SubObjects>          
+        </Object>
+        
+        <Object index="#xA001" name="r{RACK}_p{POSITION}_Module_PLCx_{CHANNEL}" type="TModulE2" access="rw" ifdef="r{RACK}_p{POSITION}_Table_PLCx_{CHANNEL}"> <!-- if="_PLCTYPE_ &gt; 10" -->
+          <Comment>
+            <label lang="en">PLCx_ETH declaration</label>
+            <label lang="cz">Deklarace PLCx_ETH</label>
+          </Comment> 
+          <Excluded>&quot;{SYSTEM}&quot; != &quot;FOXTROT2&quot;</Excluded>
+          <SubObjects> 
+            <SubObject name="version" access="ro">   
+              <DefaultValue>2</DefaultValue>            
+            </SubObject>  
+            <SubObject name="hwCode" access="ro">   
+              <MacroValue>{HWCODE}</MacroValue>            
+            </SubObject>
+            <SubObject name="busId" access="ro">   
+              <MacroValue>${$RACK}</MacroValue>
+            </SubObject>
+            <SubObject name="address" access="ro">   
+              <MacroValue>{POSITION}</MacroValue>
+            </SubObject>
+            <SubObject name="port" access="ro">   
+              <MacroValue>${$PORT}</MacroValue>            
+            </SubObject>
+            <SubObject name="lenInputs" access="ro">   
+              <MacroValue>10</MacroValue>                        
+            </SubObject>    
+            <SubObject name="lenOutputs" access="ro">   
+              <MacroValue>2</MacroValue>                        
+            </SubObject>
+            <SubObject name="offsetInputs" access="ro">   
+              <MacroValue>__offset(r{RACK}_p{POSITION}_Statistic_{CHANNEL})</MacroValue>                        
+            </SubObject>  
+            <SubObject name="offsetOutputs" access="ro">   
+              <MacroValue>__offset(r{RACK}_p{POSITION}_Control_{CHANNEL})</MacroValue>            
+            </SubObject>
+            <SubObject name="initTable" access="ro">   
+              <MacroValue>__indx(r{RACK}_p{POSITION}_Table_PLCx_{CHANNEL})</MacroValue>            
+            </SubObject>
+          </SubObjects>
+        </Object>
+      </Objects>  
+    </Dictionary>
+  </EthernetChannel>         
+</TecoDescriptor>  
+    

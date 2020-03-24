@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<web version="8.1" propfont="true" foot="© 2007 - 2019 Teco a.s." MaxUid="12080">
+	<panels></panels>
+	<Grid Enable="1" X="5" Y="5" />
+	<globalset newdim="1" />
+	<group caption="" Uid="12073">
+		<page caption="Index" name="PAGE1.XML" ajax="true" pause="1000" default="true" Uid="12072" ucid="1584950370" width="254" height="371">
+			<object caption="" X="13" Y="21" xoff="4" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="12074">
+				<block width="64" height="64" border="true" variable="main.up" type="BOOL" value="1" />
+			</object>
+			<object caption="UP" X="16" Y="31" xoff="5" yoff="0" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="12075">
+				<label />
+			</object>
+			<object caption="" X="24" Y="21" xoff="6" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="12076">
+				<block width="64" height="64" border="true" variable="main.dw" type="BOOL" value="1" />
+			</object>
+			<object caption="DOWN" X="26" Y="31" xoff="0" yoff="0" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="12077">
+				<label />
+			</object>
+			<object caption="" X="17" Y="36" xoff="7" yoff="0" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="12078">
+				<block width="64" height="64" border="true" variable="main.stop" type="BOOL" value="1" />
+			</object>
+			<object caption="STOP" X="19" Y="45" xoff="6" yoff="3" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="12079">
+				<label />
+			</object>
+		</page>
+	</group>
+	<images></images>
+	<Languages>
+		<Language Code="5" Editor="1" />
+	</Languages>
+	<Layers active="0" pasteMode="0">
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+	</Layers>
+	<security crypt="0" count="10">
+		<user level="0" name="" pass="" />
+		<user level="-1" name="1" pass="CE" />
+		<user level="-1" name="2" pass="CD" />
+		<user level="-1" name="3" pass="CC" />
+		<user level="-1" name="4" pass="CB" />
+		<user level="-1" name="5" pass="CA" />
+		<user level="-1" name="6" pass="C9" />
+		<user level="-1" name="7" pass="C8" />
+		<user level="-1" name="8" pass="C7" />
+		<user level="-1" name="9" pass="C6" />
+	</security>
+	<autologin count="10">
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+	</autologin>
+	<tecoapi count="10">
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+	</tecoapi>
+</web>

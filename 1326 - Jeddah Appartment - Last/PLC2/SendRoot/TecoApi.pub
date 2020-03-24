@@ -1,0 +1,522 @@
+lightsStatusDiningRoom[1] R B 2833 .0 BOOL
+lightsStatusDiningRoom[2] R B 2833 .1 BOOL
+lightsStatusDiningRoom[3] R B 2833 .2 BOOL
+lightsStatusDiningRoom[4] R B 2833 .3 BOOL
+lightsStatusDiningRoom[5] R B 2833 .4 BOOL
+lightsStatusDiningRoom[6] R B 2833 .5 BOOL
+lightsStatusDiningRoom[7] R B 2833 .6 BOOL
+lightsStatusDiningRoom[8] R B 2833 .7 BOOL
+lightsStatusDiningRoom[9] R B 2834 .0 BOOL
+lightsStatusDiningRoom[10] R B 2834 .1 BOOL
+lightsStatusDiningRoom[11] R B 2834 .2 BOOL
+lightsStatusDiningRoom[12] R B 2834 .3 BOOL
+lightsStatusDiningRoom[13] R B 2834 .4 BOOL
+lightsStatusDiningRoom[14] R B 2834 .5 BOOL
+lightsStatusDiningRoom[15] R B 2834 .6 BOOL
+lightsStatusDiningRoom[16] R B 2834 .7 BOOL
+lightsStatusDiningRoom[17] R B 2835 .0 BOOL
+outletsStatusDiningRoom[1] R B 2836 .0 BOOL
+outletsStatusDiningRoom[2] R B 2836 .1 BOOL
+outletsStatusDiningRoom[3] R B 2836 .2 BOOL
+outletsStatusDiningRoom[4] R B 2836 .3 BOOL
+outletsStatusDiningRoom[5] R B 2836 .4 BOOL
+outletsStatusDiningRoom[6] R B 2836 .5 BOOL
+outletsStatusDiningRoom[7] R B 2836 .6 BOOL
+outletsStatusDiningRoom[8] R B 2836 .7 BOOL
+lightsStatusLivingRoom[1] R B 2841 .0 BOOL
+lightsStatusLivingRoom[2] R B 2841 .1 BOOL
+lightsStatusLivingRoom[3] R B 2841 .2 BOOL
+lightsStatusLivingRoom[4] R B 2841 .3 BOOL
+lightsStatusLivingRoom[5] R B 2841 .4 BOOL
+lightsStatusLivingRoom[6] R B 2841 .5 BOOL
+lightsStatusLivingRoom[7] R B 2841 .6 BOOL
+lightsStatusLivingRoom[8] R B 2841 .7 BOOL
+lightsStatusLivingRoom[9] R B 2842 .0 BOOL
+lightsStatusLivingRoom[10] R B 2842 .1 BOOL
+lightsStatusLivingRoom[11] R B 2842 .2 BOOL
+lightsStatusLivingRoom[12] R B 2842 .3 BOOL
+lightsStatusLivingRoom[13] R B 2842 .4 BOOL
+lightsStatusLivingRoom[14] R B 2842 .5 BOOL
+lightsStatusLivingRoom[15] R B 2842 .6 BOOL
+lightsStatusLivingRoom[16] R B 2842 .7 BOOL
+lightsStatusLivingRoom[17] R B 2843 .0 BOOL
+outletsStatusLivingRoom[1] R B 2844 .0 BOOL
+outletsStatusLivingRoom[2] R B 2844 .1 BOOL
+outletsStatusLivingRoom[3] R B 2844 .2 BOOL
+outletsStatusLivingRoom[4] R B 2844 .3 BOOL
+outletsStatusLivingRoom[5] R B 2844 .4 BOOL
+outletsStatusLivingRoom[6] R B 2844 .5 BOOL
+outletsStatusLivingRoom[7] R B 2844 .6 BOOL
+outletsStatusLivingRoom[8] R B 2844 .7 BOOL
+lightsStatusKitchen[1] R B 2845 .0 BOOL
+lightsStatusKitchen[2] R B 2845 .1 BOOL
+lightsStatusKitchen[3] R B 2845 .2 BOOL
+lightsStatusKitchen[4] R B 2845 .3 BOOL
+lightsStatusKitchen[5] R B 2845 .4 BOOL
+lightsStatusKitchen[6] R B 2845 .5 BOOL
+lightsStatusKitchen[7] R B 2845 .6 BOOL
+lightsStatusKitchen[8] R B 2845 .7 BOOL
+lightsStatusKitchen[9] R B 2846 .0 BOOL
+lightsStatusKitchen[10] R B 2846 .1 BOOL
+lightsStatusKitchen[11] R B 2846 .2 BOOL
+lightsStatusKitchen[12] R B 2846 .3 BOOL
+lightsStatusKitchen[13] R B 2846 .4 BOOL
+lightsStatusKitchen[14] R B 2846 .5 BOOL
+lightsStatusKitchen[15] R B 2846 .6 BOOL
+lightsStatusKitchen[16] R B 2846 .7 BOOL
+lightsStatusKitchen[17] R B 2847 .0 BOOL
+outletsStatusKitchen[1] R B 2848 .0 BOOL
+outletsStatusKitchen[2] R B 2848 .1 BOOL
+outletsStatusKitchen[3] R B 2848 .2 BOOL
+outletsStatusKitchen[4] R B 2848 .3 BOOL
+outletsStatusKitchen[5] R B 2848 .4 BOOL
+outletsStatusKitchen[6] R B 2848 .5 BOOL
+outletsStatusKitchen[7] R B 2848 .6 BOOL
+outletsStatusKitchen[8] R B 2848 .7 BOOL
+lightsStatusServiceRoom[1] R B 2853 .0 BOOL
+lightsStatusServiceRoom[2] R B 2853 .1 BOOL
+lightsStatusServiceRoom[3] R B 2853 .2 BOOL
+lightsStatusServiceRoom[4] R B 2853 .3 BOOL
+lightsStatusServiceRoom[5] R B 2853 .4 BOOL
+lightsStatusServiceRoom[6] R B 2853 .5 BOOL
+lightsStatusServiceRoom[7] R B 2853 .6 BOOL
+lightsStatusServiceRoom[8] R B 2853 .7 BOOL
+lightsStatusServiceRoom[9] R B 2854 .0 BOOL
+lightsStatusServiceRoom[10] R B 2854 .1 BOOL
+lightsStatusServiceRoom[11] R B 2854 .2 BOOL
+lightsStatusServiceRoom[12] R B 2854 .3 BOOL
+lightsStatusServiceRoom[13] R B 2854 .4 BOOL
+lightsStatusServiceRoom[14] R B 2854 .5 BOOL
+lightsStatusServiceRoom[15] R B 2854 .6 BOOL
+lightsStatusServiceRoom[16] R B 2854 .7 BOOL
+lightsStatusServiceRoom[17] R B 2855 .0 BOOL
+outletsStatusServiceRoom[1] R B 2856 .0 BOOL
+outletsStatusServiceRoom[2] R B 2856 .1 BOOL
+outletsStatusServiceRoom[3] R B 2856 .2 BOOL
+outletsStatusServiceRoom[4] R B 2856 .3 BOOL
+outletsStatusServiceRoom[5] R B 2856 .4 BOOL
+outletsStatusServiceRoom[6] R B 2856 .5 BOOL
+outletsStatusServiceRoom[7] R B 2856 .6 BOOL
+outletsStatusServiceRoom[8] R B 2856 .7 BOOL
+lightsStatusMasterRoom[1] R B 2857 .0 BOOL
+lightsStatusMasterRoom[2] R B 2857 .1 BOOL
+lightsStatusMasterRoom[3] R B 2857 .2 BOOL
+lightsStatusMasterRoom[4] R B 2857 .3 BOOL
+lightsStatusMasterRoom[5] R B 2857 .4 BOOL
+lightsStatusMasterRoom[6] R B 2857 .5 BOOL
+lightsStatusMasterRoom[7] R B 2857 .6 BOOL
+lightsStatusMasterRoom[8] R B 2857 .7 BOOL
+lightsStatusMasterRoom[9] R B 2858 .0 BOOL
+lightsStatusMasterRoom[10] R B 2858 .1 BOOL
+lightsStatusMasterRoom[11] R B 2858 .2 BOOL
+lightsStatusMasterRoom[12] R B 2858 .3 BOOL
+lightsStatusMasterRoom[13] R B 2858 .4 BOOL
+lightsStatusMasterRoom[14] R B 2858 .5 BOOL
+lightsStatusMasterRoom[15] R B 2858 .6 BOOL
+lightsStatusMasterRoom[16] R B 2858 .7 BOOL
+lightsStatusMasterRoom[17] R B 2859 .0 BOOL
+outletsStatusMasterRoom[1] R B 2860 .0 BOOL
+outletsStatusMasterRoom[2] R B 2860 .1 BOOL
+outletsStatusMasterRoom[3] R B 2860 .2 BOOL
+outletsStatusMasterRoom[4] R B 2860 .3 BOOL
+outletsStatusMasterRoom[5] R B 2860 .4 BOOL
+outletsStatusMasterRoom[6] R B 2860 .5 BOOL
+outletsStatusMasterRoom[7] R B 2860 .6 BOOL
+outletsStatusMasterRoom[8] R B 2860 .7 BOOL
+lightsStatusRoom4[1] R B 2865 .0 BOOL
+lightsStatusRoom4[2] R B 2865 .1 BOOL
+lightsStatusRoom4[3] R B 2865 .2 BOOL
+lightsStatusRoom4[4] R B 2865 .3 BOOL
+lightsStatusRoom4[5] R B 2865 .4 BOOL
+lightsStatusRoom4[6] R B 2865 .5 BOOL
+lightsStatusRoom4[7] R B 2865 .6 BOOL
+lightsStatusRoom4[8] R B 2865 .7 BOOL
+lightsStatusRoom4[9] R B 2866 .0 BOOL
+lightsStatusRoom4[10] R B 2866 .1 BOOL
+lightsStatusRoom4[11] R B 2866 .2 BOOL
+lightsStatusRoom4[12] R B 2866 .3 BOOL
+lightsStatusRoom4[13] R B 2866 .4 BOOL
+lightsStatusRoom4[14] R B 2866 .5 BOOL
+lightsStatusRoom4[15] R B 2866 .6 BOOL
+lightsStatusRoom4[16] R B 2866 .7 BOOL
+lightsStatusRoom4[17] R B 2867 .0 BOOL
+outletsStatusRoom4[1] R B 2868 .0 BOOL
+outletsStatusRoom4[2] R B 2868 .1 BOOL
+outletsStatusRoom4[3] R B 2868 .2 BOOL
+outletsStatusRoom4[4] R B 2868 .3 BOOL
+outletsStatusRoom4[5] R B 2868 .4 BOOL
+outletsStatusRoom4[6] R B 2868 .5 BOOL
+outletsStatusRoom4[7] R B 2868 .6 BOOL
+outletsStatusRoom4[8] R B 2868 .7 BOOL
+lightsStatusInterance[1] R B 2873 .0 BOOL
+lightsStatusInterance[2] R B 2873 .1 BOOL
+lightsStatusInterance[3] R B 2873 .2 BOOL
+lightsStatusInterance[4] R B 2873 .3 BOOL
+lightsStatusInterance[5] R B 2873 .4 BOOL
+lightsStatusInterance[6] R B 2873 .5 BOOL
+lightsStatusInterance[7] R B 2873 .6 BOOL
+lightsStatusInterance[8] R B 2873 .7 BOOL
+lightsStatusInterance[9] R B 2874 .0 BOOL
+lightsStatusInterance[10] R B 2874 .1 BOOL
+lightsStatusInterance[11] R B 2874 .2 BOOL
+lightsStatusInterance[12] R B 2874 .3 BOOL
+lightsStatusInterance[13] R B 2874 .4 BOOL
+lightsStatusInterance[14] R B 2874 .5 BOOL
+lightsStatusInterance[15] R B 2874 .6 BOOL
+lightsStatusInterance[16] R B 2874 .7 BOOL
+lightsStatusInterance[17] R B 2875 .0 BOOL
+outletsStatusInterance[1] R B 2876 .0 BOOL
+outletsStatusInterance[2] R B 2876 .1 BOOL
+outletsStatusInterance[3] R B 2876 .2 BOOL
+outletsStatusInterance[4] R B 2876 .3 BOOL
+outletsStatusInterance[5] R B 2876 .4 BOOL
+outletsStatusInterance[6] R B 2876 .5 BOOL
+outletsStatusInterance[7] R B 2876 .6 BOOL
+outletsStatusInterance[8] R B 2876 .7 BOOL
+DiningRoom.EnLightsAN[1] R B 6439 USINT
+DiningRoom.EnLightsAN[2] R B 6440 USINT
+DiningRoom.EnLightsAN[3] R B 6441 USINT
+DiningRoom.EnLightsAN[4] R B 6442 USINT
+DiningRoom.EnLightsAN[5] R B 6443 USINT
+DiningRoom.EnLightsAN[6] R B 6444 USINT
+DiningRoom.EnLightsAN[7] R B 6445 USINT
+DiningRoom.EnLightsAN[8] R B 6446 USINT
+DiningRoom.EnLightsAN[9] R B 6447 USINT
+DiningRoom.EnLightsAN[10] R B 6448 USINT
+DiningRoom.EnLightsAN[11] R B 6449 USINT
+DiningRoom.EnLightsAN[12] R B 6450 USINT
+DiningRoom.EnLightsAN[13] R B 6451 USINT
+DiningRoom.EnLightsAN[14] R B 6452 USINT
+DiningRoom.EnLightsAN[15] R B 6453 USINT
+DiningRoom.EnLightsAN[16] R B 6454 USINT
+DiningRoom.EnLightsAN[17] R B 6455 USINT
+DiningRoom.EnOutletsAN[1] R B 6457 USINT
+DiningRoom.EnOutletsAN[2] R B 6458 USINT
+DiningRoom.EnOutletsAN[3] R B 6459 USINT
+DiningRoom.EnOutletsAN[4] R B 6460 USINT
+DiningRoom.EnOutletsAN[5] R B 6461 USINT
+DiningRoom.EnOutletsAN[6] R B 6462 USINT
+DiningRoom.EnOutletsAN[7] R B 6463 USINT
+DiningRoom.EnOutletsAN[8] R B 6464 USINT
+DiningRoom.EnCurtainsUp[1] R B 6465 .0 BOOL
+DiningRoom.EnCurtainsUp[2] R B 6465 .1 BOOL
+DiningRoom.EnCurtainsUp[3] R B 6465 .2 BOOL
+DiningRoom.EnCurtainsUp[4] R B 6465 .3 BOOL
+DiningRoom.EnCurtainsUp[5] R B 6465 .4 BOOL
+DiningRoom.EnCurtainsUp[6] R B 6465 .5 BOOL
+DiningRoom.EnCurtainsDw[1] R B 6466 .0 BOOL
+DiningRoom.EnCurtainsDw[2] R B 6466 .1 BOOL
+DiningRoom.EnCurtainsDw[3] R B 6466 .2 BOOL
+DiningRoom.EnCurtainsDw[4] R B 6466 .3 BOOL
+DiningRoom.EnCurtainsDw[5] R B 6466 .4 BOOL
+DiningRoom.EnCurtainsDw[6] R B 6466 .5 BOOL
+DiningRoom.CurtainsUpStatus[1] R B 6514 .0 BOOL
+DiningRoom.CurtainsUpStatus[2] R B 6514 .1 BOOL
+DiningRoom.CurtainsUpStatus[3] R B 6514 .2 BOOL
+DiningRoom.CurtainsUpStatus[4] R B 6514 .3 BOOL
+DiningRoom.CurtainsUpStatus[5] R B 6514 .4 BOOL
+DiningRoom.CurtainsUpStatus[6] R B 6514 .5 BOOL
+DiningRoom.CurtainsDwStatus[1] R B 6515 .0 BOOL
+DiningRoom.CurtainsDwStatus[2] R B 6515 .1 BOOL
+DiningRoom.CurtainsDwStatus[3] R B 6515 .2 BOOL
+DiningRoom.CurtainsDwStatus[4] R B 6515 .3 BOOL
+DiningRoom.CurtainsDwStatus[5] R B 6515 .4 BOOL
+DiningRoom.CurtainsDwStatus[6] R B 6515 .5 BOOL
+LivingRoom.EnLightsAN[1] R B 9811 USINT
+LivingRoom.EnLightsAN[2] R B 9812 USINT
+LivingRoom.EnLightsAN[3] R B 9813 USINT
+LivingRoom.EnLightsAN[4] R B 9814 USINT
+LivingRoom.EnLightsAN[5] R B 9815 USINT
+LivingRoom.EnLightsAN[6] R B 9816 USINT
+LivingRoom.EnLightsAN[7] R B 9817 USINT
+LivingRoom.EnLightsAN[8] R B 9818 USINT
+LivingRoom.EnLightsAN[9] R B 9819 USINT
+LivingRoom.EnLightsAN[10] R B 9820 USINT
+LivingRoom.EnLightsAN[11] R B 9821 USINT
+LivingRoom.EnLightsAN[12] R B 9822 USINT
+LivingRoom.EnLightsAN[13] R B 9823 USINT
+LivingRoom.EnLightsAN[14] R B 9824 USINT
+LivingRoom.EnLightsAN[15] R B 9825 USINT
+LivingRoom.EnLightsAN[16] R B 9826 USINT
+LivingRoom.EnLightsAN[17] R B 9827 USINT
+LivingRoom.EnOutletsAN[1] R B 9829 USINT
+LivingRoom.EnOutletsAN[2] R B 9830 USINT
+LivingRoom.EnOutletsAN[3] R B 9831 USINT
+LivingRoom.EnOutletsAN[4] R B 9832 USINT
+LivingRoom.EnOutletsAN[5] R B 9833 USINT
+LivingRoom.EnOutletsAN[6] R B 9834 USINT
+LivingRoom.EnOutletsAN[7] R B 9835 USINT
+LivingRoom.EnOutletsAN[8] R B 9836 USINT
+LivingRoom.EnCurtainsUp[1] R B 9837 .0 BOOL
+LivingRoom.EnCurtainsUp[2] R B 9837 .1 BOOL
+LivingRoom.EnCurtainsUp[3] R B 9837 .2 BOOL
+LivingRoom.EnCurtainsUp[4] R B 9837 .3 BOOL
+LivingRoom.EnCurtainsUp[5] R B 9837 .4 BOOL
+LivingRoom.EnCurtainsUp[6] R B 9837 .5 BOOL
+LivingRoom.EnCurtainsDw[1] R B 9838 .0 BOOL
+LivingRoom.EnCurtainsDw[2] R B 9838 .1 BOOL
+LivingRoom.EnCurtainsDw[3] R B 9838 .2 BOOL
+LivingRoom.EnCurtainsDw[4] R B 9838 .3 BOOL
+LivingRoom.EnCurtainsDw[5] R B 9838 .4 BOOL
+LivingRoom.EnCurtainsDw[6] R B 9838 .5 BOOL
+LivingRoom.CurtainsUpStatus[1] R B 9902 .0 BOOL
+LivingRoom.CurtainsUpStatus[2] R B 9902 .1 BOOL
+LivingRoom.CurtainsUpStatus[3] R B 9902 .2 BOOL
+LivingRoom.CurtainsUpStatus[4] R B 9902 .3 BOOL
+LivingRoom.CurtainsUpStatus[5] R B 9902 .4 BOOL
+LivingRoom.CurtainsUpStatus[6] R B 9902 .5 BOOL
+LivingRoom.CurtainsDwStatus[1] R B 9903 .0 BOOL
+LivingRoom.CurtainsDwStatus[2] R B 9903 .1 BOOL
+LivingRoom.CurtainsDwStatus[3] R B 9903 .2 BOOL
+LivingRoom.CurtainsDwStatus[4] R B 9903 .3 BOOL
+LivingRoom.CurtainsDwStatus[5] R B 9903 .4 BOOL
+LivingRoom.CurtainsDwStatus[6] R B 9903 .5 BOOL
+Kitchen.EnLightsAN[1] R B 13070 USINT
+Kitchen.EnLightsAN[2] R B 13071 USINT
+Kitchen.EnLightsAN[3] R B 13072 USINT
+Kitchen.EnLightsAN[4] R B 13073 USINT
+Kitchen.EnLightsAN[5] R B 13074 USINT
+Kitchen.EnLightsAN[6] R B 13075 USINT
+Kitchen.EnLightsAN[7] R B 13076 USINT
+Kitchen.EnLightsAN[8] R B 13077 USINT
+Kitchen.EnLightsAN[9] R B 13078 USINT
+Kitchen.EnLightsAN[10] R B 13079 USINT
+Kitchen.EnLightsAN[11] R B 13080 USINT
+Kitchen.EnLightsAN[12] R B 13081 USINT
+Kitchen.EnLightsAN[13] R B 13082 USINT
+Kitchen.EnLightsAN[14] R B 13083 USINT
+Kitchen.EnLightsAN[15] R B 13084 USINT
+Kitchen.EnLightsAN[16] R B 13085 USINT
+Kitchen.EnLightsAN[17] R B 13086 USINT
+Kitchen.EnOutletsAN[1] R B 13088 USINT
+Kitchen.EnOutletsAN[2] R B 13089 USINT
+Kitchen.EnOutletsAN[3] R B 13090 USINT
+Kitchen.EnOutletsAN[4] R B 13091 USINT
+Kitchen.EnOutletsAN[5] R B 13092 USINT
+Kitchen.EnOutletsAN[6] R B 13093 USINT
+Kitchen.EnOutletsAN[7] R B 13094 USINT
+Kitchen.EnOutletsAN[8] R B 13095 USINT
+Kitchen.EnCurtainsUp[1] R B 13096 .0 BOOL
+Kitchen.EnCurtainsUp[2] R B 13096 .1 BOOL
+Kitchen.EnCurtainsUp[3] R B 13096 .2 BOOL
+Kitchen.EnCurtainsUp[4] R B 13096 .3 BOOL
+Kitchen.EnCurtainsUp[5] R B 13096 .4 BOOL
+Kitchen.EnCurtainsUp[6] R B 13096 .5 BOOL
+Kitchen.EnCurtainsDw[1] R B 13097 .0 BOOL
+Kitchen.EnCurtainsDw[2] R B 13097 .1 BOOL
+Kitchen.EnCurtainsDw[3] R B 13097 .2 BOOL
+Kitchen.EnCurtainsDw[4] R B 13097 .3 BOOL
+Kitchen.EnCurtainsDw[5] R B 13097 .4 BOOL
+Kitchen.EnCurtainsDw[6] R B 13097 .5 BOOL
+Kitchen.CurtainsUpStatus[1] R B 13135 .0 BOOL
+Kitchen.CurtainsUpStatus[2] R B 13135 .1 BOOL
+Kitchen.CurtainsUpStatus[3] R B 13135 .2 BOOL
+Kitchen.CurtainsUpStatus[4] R B 13135 .3 BOOL
+Kitchen.CurtainsUpStatus[5] R B 13135 .4 BOOL
+Kitchen.CurtainsUpStatus[6] R B 13135 .5 BOOL
+Kitchen.CurtainsDwStatus[1] R B 13136 .0 BOOL
+Kitchen.CurtainsDwStatus[2] R B 13136 .1 BOOL
+Kitchen.CurtainsDwStatus[3] R B 13136 .2 BOOL
+Kitchen.CurtainsDwStatus[4] R B 13136 .3 BOOL
+Kitchen.CurtainsDwStatus[5] R B 13136 .4 BOOL
+Kitchen.CurtainsDwStatus[6] R B 13136 .5 BOOL
+ServiceRoom.EnLightsAN[1] R B 16383 USINT
+ServiceRoom.EnLightsAN[2] R B 16384 USINT
+ServiceRoom.EnLightsAN[3] R B 16385 USINT
+ServiceRoom.EnLightsAN[4] R B 16386 USINT
+ServiceRoom.EnLightsAN[5] R B 16387 USINT
+ServiceRoom.EnLightsAN[6] R B 16388 USINT
+ServiceRoom.EnLightsAN[7] R B 16389 USINT
+ServiceRoom.EnLightsAN[8] R B 16390 USINT
+ServiceRoom.EnLightsAN[9] R B 16391 USINT
+ServiceRoom.EnLightsAN[10] R B 16392 USINT
+ServiceRoom.EnLightsAN[11] R B 16393 USINT
+ServiceRoom.EnLightsAN[12] R B 16394 USINT
+ServiceRoom.EnLightsAN[13] R B 16395 USINT
+ServiceRoom.EnLightsAN[14] R B 16396 USINT
+ServiceRoom.EnLightsAN[15] R B 16397 USINT
+ServiceRoom.EnLightsAN[16] R B 16398 USINT
+ServiceRoom.EnLightsAN[17] R B 16399 USINT
+ServiceRoom.EnOutletsAN[1] R B 16401 USINT
+ServiceRoom.EnOutletsAN[2] R B 16402 USINT
+ServiceRoom.EnOutletsAN[3] R B 16403 USINT
+ServiceRoom.EnOutletsAN[4] R B 16404 USINT
+ServiceRoom.EnOutletsAN[5] R B 16405 USINT
+ServiceRoom.EnOutletsAN[6] R B 16406 USINT
+ServiceRoom.EnOutletsAN[7] R B 16407 USINT
+ServiceRoom.EnOutletsAN[8] R B 16408 USINT
+ServiceRoom.EnCurtainsUp[1] R B 16409 .0 BOOL
+ServiceRoom.EnCurtainsUp[2] R B 16409 .1 BOOL
+ServiceRoom.EnCurtainsUp[3] R B 16409 .2 BOOL
+ServiceRoom.EnCurtainsUp[4] R B 16409 .3 BOOL
+ServiceRoom.EnCurtainsUp[5] R B 16409 .4 BOOL
+ServiceRoom.EnCurtainsUp[6] R B 16409 .5 BOOL
+ServiceRoom.EnCurtainsDw[1] R B 16410 .0 BOOL
+ServiceRoom.EnCurtainsDw[2] R B 16410 .1 BOOL
+ServiceRoom.EnCurtainsDw[3] R B 16410 .2 BOOL
+ServiceRoom.EnCurtainsDw[4] R B 16410 .3 BOOL
+ServiceRoom.EnCurtainsDw[5] R B 16410 .4 BOOL
+ServiceRoom.EnCurtainsDw[6] R B 16410 .5 BOOL
+ServiceRoom.CurtainsUpStatus[1] R B 16446 .0 BOOL
+ServiceRoom.CurtainsUpStatus[2] R B 16446 .1 BOOL
+ServiceRoom.CurtainsUpStatus[3] R B 16446 .2 BOOL
+ServiceRoom.CurtainsUpStatus[4] R B 16446 .3 BOOL
+ServiceRoom.CurtainsUpStatus[5] R B 16446 .4 BOOL
+ServiceRoom.CurtainsUpStatus[6] R B 16446 .5 BOOL
+ServiceRoom.CurtainsDwStatus[1] R B 16447 .0 BOOL
+ServiceRoom.CurtainsDwStatus[2] R B 16447 .1 BOOL
+ServiceRoom.CurtainsDwStatus[3] R B 16447 .2 BOOL
+ServiceRoom.CurtainsDwStatus[4] R B 16447 .3 BOOL
+ServiceRoom.CurtainsDwStatus[5] R B 16447 .4 BOOL
+ServiceRoom.CurtainsDwStatus[6] R B 16447 .5 BOOL
+MasterRoom.EnLightsAN[1] R B 19649 USINT
+MasterRoom.EnLightsAN[2] R B 19650 USINT
+MasterRoom.EnLightsAN[3] R B 19651 USINT
+MasterRoom.EnLightsAN[4] R B 19652 USINT
+MasterRoom.EnLightsAN[5] R B 19653 USINT
+MasterRoom.EnLightsAN[6] R B 19654 USINT
+MasterRoom.EnLightsAN[7] R B 19655 USINT
+MasterRoom.EnLightsAN[8] R B 19656 USINT
+MasterRoom.EnLightsAN[9] R B 19657 USINT
+MasterRoom.EnLightsAN[10] R B 19658 USINT
+MasterRoom.EnLightsAN[11] R B 19659 USINT
+MasterRoom.EnLightsAN[12] R B 19660 USINT
+MasterRoom.EnLightsAN[13] R B 19661 USINT
+MasterRoom.EnLightsAN[14] R B 19662 USINT
+MasterRoom.EnLightsAN[15] R B 19663 USINT
+MasterRoom.EnLightsAN[16] R B 19664 USINT
+MasterRoom.EnLightsAN[17] R B 19665 USINT
+MasterRoom.EnOutletsAN[1] R B 19667 USINT
+MasterRoom.EnOutletsAN[2] R B 19668 USINT
+MasterRoom.EnOutletsAN[3] R B 19669 USINT
+MasterRoom.EnOutletsAN[4] R B 19670 USINT
+MasterRoom.EnOutletsAN[5] R B 19671 USINT
+MasterRoom.EnOutletsAN[6] R B 19672 USINT
+MasterRoom.EnOutletsAN[7] R B 19673 USINT
+MasterRoom.EnOutletsAN[8] R B 19674 USINT
+MasterRoom.EnCurtainsUp[1] R B 19675 .0 BOOL
+MasterRoom.EnCurtainsUp[2] R B 19675 .1 BOOL
+MasterRoom.EnCurtainsUp[3] R B 19675 .2 BOOL
+MasterRoom.EnCurtainsUp[4] R B 19675 .3 BOOL
+MasterRoom.EnCurtainsUp[5] R B 19675 .4 BOOL
+MasterRoom.EnCurtainsUp[6] R B 19675 .5 BOOL
+MasterRoom.EnCurtainsDw[1] R B 19676 .0 BOOL
+MasterRoom.EnCurtainsDw[2] R B 19676 .1 BOOL
+MasterRoom.EnCurtainsDw[3] R B 19676 .2 BOOL
+MasterRoom.EnCurtainsDw[4] R B 19676 .3 BOOL
+MasterRoom.EnCurtainsDw[5] R B 19676 .4 BOOL
+MasterRoom.EnCurtainsDw[6] R B 19676 .5 BOOL
+MasterRoom.CurtainsUpStatus[1] R B 19760 .0 BOOL
+MasterRoom.CurtainsUpStatus[2] R B 19760 .1 BOOL
+MasterRoom.CurtainsUpStatus[3] R B 19760 .2 BOOL
+MasterRoom.CurtainsUpStatus[4] R B 19760 .3 BOOL
+MasterRoom.CurtainsUpStatus[5] R B 19760 .4 BOOL
+MasterRoom.CurtainsUpStatus[6] R B 19760 .5 BOOL
+MasterRoom.CurtainsDwStatus[1] R B 19761 .0 BOOL
+MasterRoom.CurtainsDwStatus[2] R B 19761 .1 BOOL
+MasterRoom.CurtainsDwStatus[3] R B 19761 .2 BOOL
+MasterRoom.CurtainsDwStatus[4] R B 19761 .3 BOOL
+MasterRoom.CurtainsDwStatus[5] R B 19761 .4 BOOL
+MasterRoom.CurtainsDwStatus[6] R B 19761 .5 BOOL
+Room4.EnLightsAN[1] R B 23057 USINT
+Room4.EnLightsAN[2] R B 23058 USINT
+Room4.EnLightsAN[3] R B 23059 USINT
+Room4.EnLightsAN[4] R B 23060 USINT
+Room4.EnLightsAN[5] R B 23061 USINT
+Room4.EnLightsAN[6] R B 23062 USINT
+Room4.EnLightsAN[7] R B 23063 USINT
+Room4.EnLightsAN[8] R B 23064 USINT
+Room4.EnLightsAN[9] R B 23065 USINT
+Room4.EnLightsAN[10] R B 23066 USINT
+Room4.EnLightsAN[11] R B 23067 USINT
+Room4.EnLightsAN[12] R B 23068 USINT
+Room4.EnLightsAN[13] R B 23069 USINT
+Room4.EnLightsAN[14] R B 23070 USINT
+Room4.EnLightsAN[15] R B 23071 USINT
+Room4.EnLightsAN[16] R B 23072 USINT
+Room4.EnLightsAN[17] R B 23073 USINT
+Room4.EnOutletsAN[1] R B 23075 USINT
+Room4.EnOutletsAN[2] R B 23076 USINT
+Room4.EnOutletsAN[3] R B 23077 USINT
+Room4.EnOutletsAN[4] R B 23078 USINT
+Room4.EnOutletsAN[5] R B 23079 USINT
+Room4.EnOutletsAN[6] R B 23080 USINT
+Room4.EnOutletsAN[7] R B 23081 USINT
+Room4.EnOutletsAN[8] R B 23082 USINT
+Room4.EnCurtainsUp[1] R B 23083 .0 BOOL
+Room4.EnCurtainsUp[2] R B 23083 .1 BOOL
+Room4.EnCurtainsUp[3] R B 23083 .2 BOOL
+Room4.EnCurtainsUp[4] R B 23083 .3 BOOL
+Room4.EnCurtainsUp[5] R B 23083 .4 BOOL
+Room4.EnCurtainsUp[6] R B 23083 .5 BOOL
+Room4.EnCurtainsDw[1] R B 23084 .0 BOOL
+Room4.EnCurtainsDw[2] R B 23084 .1 BOOL
+Room4.EnCurtainsDw[3] R B 23084 .2 BOOL
+Room4.EnCurtainsDw[4] R B 23084 .3 BOOL
+Room4.EnCurtainsDw[5] R B 23084 .4 BOOL
+Room4.EnCurtainsDw[6] R B 23084 .5 BOOL
+Room4.CurtainsUpStatus[1] R B 23144 .0 BOOL
+Room4.CurtainsUpStatus[2] R B 23144 .1 BOOL
+Room4.CurtainsUpStatus[3] R B 23144 .2 BOOL
+Room4.CurtainsUpStatus[4] R B 23144 .3 BOOL
+Room4.CurtainsUpStatus[5] R B 23144 .4 BOOL
+Room4.CurtainsUpStatus[6] R B 23144 .5 BOOL
+Room4.CurtainsDwStatus[1] R B 23145 .0 BOOL
+Room4.CurtainsDwStatus[2] R B 23145 .1 BOOL
+Room4.CurtainsDwStatus[3] R B 23145 .2 BOOL
+Room4.CurtainsDwStatus[4] R B 23145 .3 BOOL
+Room4.CurtainsDwStatus[5] R B 23145 .4 BOOL
+Room4.CurtainsDwStatus[6] R B 23145 .5 BOOL
+Interance.EnLightsAN[1] R B 26405 USINT
+Interance.EnLightsAN[2] R B 26406 USINT
+Interance.EnLightsAN[3] R B 26407 USINT
+Interance.EnLightsAN[4] R B 26408 USINT
+Interance.EnLightsAN[5] R B 26409 USINT
+Interance.EnLightsAN[6] R B 26410 USINT
+Interance.EnLightsAN[7] R B 26411 USINT
+Interance.EnLightsAN[8] R B 26412 USINT
+Interance.EnLightsAN[9] R B 26413 USINT
+Interance.EnLightsAN[10] R B 26414 USINT
+Interance.EnLightsAN[11] R B 26415 USINT
+Interance.EnLightsAN[12] R B 26416 USINT
+Interance.EnLightsAN[13] R B 26417 USINT
+Interance.EnLightsAN[14] R B 26418 USINT
+Interance.EnLightsAN[15] R B 26419 USINT
+Interance.EnLightsAN[16] R B 26420 USINT
+Interance.EnLightsAN[17] R B 26421 USINT
+Interance.EnOutletsAN[1] R B 26423 USINT
+Interance.EnOutletsAN[2] R B 26424 USINT
+Interance.EnOutletsAN[3] R B 26425 USINT
+Interance.EnOutletsAN[4] R B 26426 USINT
+Interance.EnOutletsAN[5] R B 26427 USINT
+Interance.EnOutletsAN[6] R B 26428 USINT
+Interance.EnOutletsAN[7] R B 26429 USINT
+Interance.EnOutletsAN[8] R B 26430 USINT
+Interance.EnCurtainsUp[1] R B 26431 .0 BOOL
+Interance.EnCurtainsUp[2] R B 26431 .1 BOOL
+Interance.EnCurtainsUp[3] R B 26431 .2 BOOL
+Interance.EnCurtainsUp[4] R B 26431 .3 BOOL
+Interance.EnCurtainsUp[5] R B 26431 .4 BOOL
+Interance.EnCurtainsUp[6] R B 26431 .5 BOOL
+Interance.EnCurtainsDw[1] R B 26432 .0 BOOL
+Interance.EnCurtainsDw[2] R B 26432 .1 BOOL
+Interance.EnCurtainsDw[3] R B 26432 .2 BOOL
+Interance.EnCurtainsDw[4] R B 26432 .3 BOOL
+Interance.EnCurtainsDw[5] R B 26432 .4 BOOL
+Interance.EnCurtainsDw[6] R B 26432 .5 BOOL
+Interance.CurtainsUpStatus[1] R B 26468 .0 BOOL
+Interance.CurtainsUpStatus[2] R B 26468 .1 BOOL
+Interance.CurtainsUpStatus[3] R B 26468 .2 BOOL
+Interance.CurtainsUpStatus[4] R B 26468 .3 BOOL
+Interance.CurtainsUpStatus[5] R B 26468 .4 BOOL
+Interance.CurtainsUpStatus[6] R B 26468 .5 BOOL
+Interance.CurtainsDwStatus[1] R B 26469 .0 BOOL
+Interance.CurtainsDwStatus[2] R B 26469 .1 BOOL
+Interance.CurtainsDwStatus[3] R B 26469 .2 BOOL
+Interance.CurtainsDwStatus[4] R B 26469 .3 BOOL
+Interance.CurtainsDwStatus[5] R B 26469 .4 BOOL
+Interance.CurtainsDwStatus[6] R B 26469 .5 BOOL
+
+
+;* Map completed.
+;* Crc="19D2"

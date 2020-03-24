@@ -1,0 +1,1416 @@
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC2\PRGLIVINGROOM.ST'
+
+; Global variables
+#def  NumOfLightLivingRoom 5
+#def  NumOfOutletLivingRoom 2
+#def  NumOfCurtainLivingRoom 2
+#def  NumOfMotionSensLivingRoom 1
+#def  NumOfFCUsLivingRoom 0
+#def  NumOfHMIsLivingRoom 2
+
+; Global variables
+#rem  aligned bool lightsStatusLivingRoom[24]
+#rem  aligned bool outletsStatusLivingRoom[8]
+
+#defpou PrgLivingRoom
+  bool lightsSelect,
+  bool socketsSelect,
+  bool shuttersSelect,
+  bool AC_Select,
+  usint navSelect,
+  TRemoteEthAdr RCU_ethAdr,
+  TIPadr RCU_IP,  ;IP address
+  uint RCU_Ch_localPort,
+  bool Set_IP,
+  bool GetAllStatus,
+  bool SendIamServer,
+  fbControlRoom controlRoom,
+  TlightsOutputDevs lightsOutputDevs,
+  ToutletOutputDevs outletOutputDevs,
+  TcurtainsUpOutputDevs curtainsUpOutputDevs,
+  TcurtainsDwOutputDevs curtainsDwOutputDevs,
+  TMotionSensOutputDevs motionSensOutputDevs,
+  aligned bool[24] EnLights,
+  TEnLightsAN EnLightsAN,  ; 1:open  2:close 0:None
+  aligned bool[8] EnOutlets,
+  TEnOutletsAN EnOutletsAN,  ; 1:open  2:close 0:None
+  aligned bool[8] EnCurtainsUp,
+  aligned bool[8] EnCurtainsDw,
+  R_TRIG[10] enLights_RT,
+  F_TRIG[10] enLights_FT,
+  R_TRIG[4] enOutlets_RT,
+  F_TRIG[4] enOutlets_FT,
+  R_TRIG[4] enCurtainsUP_RT,
+  F_TRIG[4] enCurtainsUP_FT,
+  R_TRIG[4] enCurtainsDW_RT,
+  F_TRIG[4] enCurtainsDW_FT,
+  usint i,
+  usint j,
+  TP afterRestart_TP,
+  F_TRIG afterRestart_TP_FT,
+  aligned bool[8] motionSensStatus,
+  aligned bool[8] CurtainsUpStatus,
+  aligned bool[8] CurtainsDwStatus,
+  usint HMI_Index,
+  usint RCU_Index,
+  usint[2] HMI_Addresses
+
+ 
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC2\PRGLIVINGROOM.ST'
+#pou PrgLivingRoom
+#srcline 18 ;PROGRAM PrgLivingRoom
+#table byte __Init___PrgLivingRoom_RCU_IP = 
+    192,168,  0, 23;
+#table byte __Init___PrgLivingRoom_lightsOutputDevs = 
+      1,  1,  0,  1,  2,  0,  1,  3,  0,  1,  4,  0,  1,  5;
+#table byte __Init___PrgLivingRoom_outletOutputDevs = 
+      1,  6,  0,  1,  7;
+#table byte __Init___PrgLivingRoom_curtainsUpOutputDevs = 
+      2,  1,  0,  2,  3;
+#table byte __Init___PrgLivingRoom_curtainsDwOutputDevs = 
+      2,  2,  0,  2,  4;
+#table byte __Init___PrgLivingRoom_motionSensOutputDevs = 
+      1,  1;
+#table byte __Init___PrgLivingRoom_enLights_FT = 
+      4,  4,  4,  4,  4,  4,  4,  4,  4,  4;
+#table byte __Init___PrgLivingRoom_enOutlets_FT = 
+      4,  4,  4,  4;
+#table byte __Init___PrgLivingRoom_enCurtainsUP_FT = 
+      4,  4,  4,  4;
+#table byte __Init___PrgLivingRoom_enCurtainsDW_FT = 
+      4,  4,  4,  4;
+#table byte __Init___PrgLivingRoom_HMI_Addresses = 
+      3,  5;
+
+#struct PrgLivingRoom__temp__
+  usint P0__st__,
+  usint P1__st__,
+  usint P2__st__,
+  usint P3__st__,
+  usint P4__st__,
+  usint P5__st__,
+  usint P6__st__,
+  udint P7__st__,
+  udint P8__st__,
+  usint P9__st__,
+  usint P10__st__,
+  udint P11__st__,
+  udint P12__st__,
+  usint P13__st__,
+  usint P14__st__,
+  udint P15__st__,
+  udint P16__st__,
+  udint P17__st__,
+  udint P18__st__
+P     61
+PrgLivingRoom_L0:
+ LINK __SizeOf(PrgLivingRoom__temp__)
+; Initialize - dynamic variables
+; End initialize - dynamic variables
+#srcline 119 ;   if navSelect = 0 then
+ LDX  navSelect
+#debug usint navSelect
+ LD   usint 0
+ EQ
+ JMC  PrgLivingRoom_L1
+#srcline 120 ;     lightsSelect   := 1;
+ LD   bool -1      ; true
+ WRX  lightsSelect
+#debug_left bool lightsSelect
+#srcline 121 ;     socketsSelect  := 0;
+ LD   bool 0       ; false
+ WRX  socketsSelect
+#debug_left bool socketsSelect
+#srcline 122 ;     shuttersSelect := 0;
+ LD   bool 0       ; false
+ WRX  shuttersSelect
+#debug_left bool shuttersSelect
+#srcline 123 ;  elsif navSelect = 1 then
+ JMP  PrgLivingRoom_L2
+PrgLivingRoom_L1:
+ LDX  navSelect
+#debug usint navSelect
+ LD   usint 1
+ EQ
+ JMC  PrgLivingRoom_L3
+#srcline 124 ;     lightsSelect   := 0;
+ LD   bool 0       ; false
+ WRX  lightsSelect
+#debug_left bool lightsSelect
+#srcline 125 ;     socketsSelect  := 1;
+ LD   bool -1      ; true
+ WRX  socketsSelect
+#debug_left bool socketsSelect
+#srcline 126 ;     shuttersSelect := 0;
+ LD   bool 0       ; false
+ WRX  shuttersSelect
+#debug_left bool shuttersSelect
+#srcline 127 ;  elsif navSelect = 2 then
+ JMP  PrgLivingRoom_L2
+PrgLivingRoom_L3:
+ LDX  navSelect
+#debug usint navSelect
+ LD   usint 2
+ EQ
+ JMC  PrgLivingRoom_L4
+#srcline 128 ;     lightsSelect   := 0;
+ LD   bool 0       ; false
+ WRX  lightsSelect
+#debug_left bool lightsSelect
+#srcline 129 ;     socketsSelect  := 0;
+ LD   bool 0       ; false
+ WRX  socketsSelect
+#debug_left bool socketsSelect
+#srcline 130 ;     shuttersSelect := 1;
+ LD   bool -1      ; true
+ WRX  shuttersSelect
+#debug_left bool shuttersSelect
+#srcline 131 ;  end_if;
+ JMP  PrgLivingRoom_L2
+PrgLivingRoom_L4:
+PrgLivingRoom_L2:
+#srcline 133 ;  HMI_Index := 4;
+ LD   usint 4
+ WRX  HMI_Index
+#debug_left usint HMI_Index
+#srcline 134 ;  RCU_Index := 3;
+ LD   usint 3
+ WRX  RCU_Index
+#debug_left usint RCU_Index
+#srcline 136 ;  if GetRemoteIPaddress(chanCode := Eth1_uni2, ethAdr := RCU_ethAdr) then
+ NXT
+ LD   uint 10209
+ WR   __Instance__GetRemoteIPaddress~chanCode
+#debug_left uint __Instance__GetRemoteIPaddress~chanCode
+ LEAX RCU_ethAdr
+ WR   __Instance__GetRemoteIPaddress~ethAdr
+#debug_left pointer __Instance__GetRemoteIPaddress.ethAdr
+ PRV
+ LEA  __Instance__GetRemoteIPaddress
+ CAL  GetRemoteIPaddress_L0
+ JMC  PrgLivingRoom_L5
+#srcline 137 ;     RCUs_IPs[RCU_Index] := RCU_ethAdr.remoteIP;
+ LEAX RCU_ethAdr~remoteIP
+#debug pointer RCU_ethAdr.remoteIP
+ SRC  %IB0
+ LEA  RCUs_IPs
+ LDX  RCU_Index
+#debug usint RCU_Index
+ SUB  1   ; Low range[1]
+ RCHK 6   ; Range Check
+ MUL  4   ; SizeOf(...)
+ ADD     ; + offset 
+#debug_left pointer RCUs_IPs[RCU_Index]
+ LD   4   ;SizeOf() 
+ MOV  %IB0
+#srcline 138 ;  end_if;
+PrgLivingRoom_L5:
+#srcline 142 ;  HMIs_Info[HMI_Index].SNo := HMI_Addresses[1];
+ LDX  HMI_Addresses[0]
+#debug usint HMI_Addresses[1]
+ LEA  HMIs_Info
+ LDX  HMI_Index
+#debug usint HMI_Index
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  9   ; SizeOf(...)
+ ADD     ; + offset 
+ WRI 
+#debug_left usint HMIs_Info[HMI_Index].SNo
+#srcline 143 ;  HMIs_Info[HMI_Index].readStAdd  := 391;
+ LD   uint 391
+ LEA  HMIs_Info
+ LDX  HMI_Index
+#debug usint HMI_Index
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  9   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ WRIW 
+#debug_left uint HMIs_Info[HMI_Index].readStAdd
+#srcline 144 ;  HMIs_Info[HMI_Index].writeStAdd := 451;
+ LD   uint 451
+ LEA  HMIs_Info
+ LDX  HMI_Index
+#debug usint HMI_Index
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  9   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  3  ; + offset 
+ WRIW 
+#debug_left uint HMIs_Info[HMI_Index].writeStAdd
+#srcline 145 ;  HMIs_Info[HMI_Index].readNoPoint  := SIZEOF(HMIs_DataRead[HMI_Index]) / 2;
+ LD   104  ; SizeOf()
+ LD   uint 2
+ DIVL
+ AND  $FFFF
+ LEA  HMIs_Info
+ LDX  HMI_Index
+#debug usint HMI_Index
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  9   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  5  ; + offset 
+ WRIW 
+#debug_left uint HMIs_Info[HMI_Index].readNoPoint
+#srcline 146 ;  HMIs_Info[HMI_Index].writeNoPoint := SIZEOF(HMIs_DataWrite[HMI_Index]) / 2;
+ LD   142  ; SizeOf()
+ LD   uint 2
+ DIVL
+ AND  $FFFF
+ LEA  HMIs_Info
+ LDX  HMI_Index
+#debug usint HMI_Index
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  9   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  7  ; + offset 
+ WRIW 
+#debug_left uint HMIs_Info[HMI_Index].writeNoPoint
+#srcline 148 ;  for i := 1 to NumOfHMIsLivingRoom-1 do
+ LD   usint 1
+ WRX  i
+ LD   usint 2
+ LD   usint 1
+ SUB
+ AND  $FF
+ WRY  P0__st__
+PrgLivingRoom_L7:
+ LDX  i
+ LDY  P0__st__
+ GT   
+ JMD  PrgLivingRoom_L8
+ DBG  
+#srcline 149 ;    HMIs_Info[HMI_Index+i] := HMIs_Info[HMI_Index];
+ LEA  HMIs_Info
+ LDX  HMI_Index
+#debug usint HMI_Index
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  9   ; SizeOf(...)
+ ADD     ; + offset 
+#debug pointer HMIs_Info[HMI_Index]
+ SRC  %IB0
+ LEA  HMIs_Info
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  i
+#debug usint i
+ ADD
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  9   ; SizeOf(...)
+ ADD     ; + offset 
+#debug_left pointer HMIs_Info[HMI_Index+i]
+ LD   9   ;SizeOf() 
+ MOV  %IB0
+#srcline 150 ;    HMIs_Info[HMI_Index+i].SNo := HMI_Addresses[i+1];
+ LEAX HMI_Addresses
+ LDX  i
+#debug usint i
+ LD   usint 1
+ ADD
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ ADD     ; + offset 
+ LDI  
+#debug usint HMI_Addresses[i+1]
+ LEA  HMIs_Info
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  i
+#debug usint i
+ ADD
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  9   ; SizeOf(...)
+ ADD     ; + offset 
+ WRI 
+#debug_left usint HMIs_Info[HMI_Index+i].SNo
+#srcline 151 ;  end_for;
+ LDX  i
+ LD   1
+ ADD  
+ WRX  i
+ JMP  PrgLivingRoom_L7
+PrgLivingRoom_L8:
+ NOP  -1
+#srcline 154 ;  afterRestart_TP(IN := IS_COLD_RESTART_PLC or IS_HOT_RESTART_PLC, PT := T#2s );
+ LD   bool IS_COLD_RESTART_PLC
+#debug bool IS_COLD_RESTART_PLC
+ LD   bool IS_HOT_RESTART_PLC
+#debug bool IS_HOT_RESTART_PLC
+ OR  
+ WRX  afterRestart_TP~IN
+#debug_left bool afterRestart_TP~IN
+ LD   time 2000
+ WRX  afterRestart_TP~PT
+#debug_left time afterRestart_TP~PT
+ LEAX afterRestart_TP
+ CAL  TP_L0
+#srcline 155 ;  afterRestart_TP_FT(CLK := afterRestart_TP.Q);
+ LDX  afterRestart_TP~Q
+#debug bool afterRestart_TP.Q
+ WRX  afterRestart_TP_FT~CLK
+#debug_left bool afterRestart_TP_FT~CLK
+ LEAX afterRestart_TP_FT
+ CAL  F_TRIG_L0
+#srcline 157 ;  if afterRestart_TP_FT.Q then
+ LDX  afterRestart_TP_FT~Q
+#debug bool afterRestart_TP_FT.Q
+ JMC  PrgLivingRoom_L9
+#srcline 158 ;     SendIamServer := 1;
+ LD   bool -1      ; true
+ WRX  SendIamServer
+#debug_left bool SendIamServer
+#srcline 159 ;  end_if;
+PrgLivingRoom_L9:
+#srcline 161 ;  controlRoom(RCU_ChCode := ETH1_uni2 , RCU_PingDone := RCUs_PingDone[RCU_Index],
+ LD   uint 10209
+ WRX  controlRoom~RCU_ChCode
+#debug_left uint controlRoom~RCU_ChCode
+ LEA  RCUs_PingDone
+ LDX  RCU_Index
+#debug usint RCU_Index
+ SUB  1   ; Low range[1]
+ RCHK 6   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool RCUs_PingDone[RCU_Index]
+ WRX  controlRoom~RCU_PingDone
+#debug_left bool controlRoom~RCU_PingDone
+#srcline 162 ;              numOfLights := NumOfLightLivingRoom , numOfOutlets := NumOfOutletLivingRoom , numOfCurtains := NumOfCurtainLivingRoom, numOfMotionSens := NumOfMotionSensLivingRoom,
+ LD   usint 5
+ WRX  controlRoom~numOfLights
+#debug_left usint controlRoom~numOfLights
+ LD   usint 2
+ WRX  controlRoom~numOfOutlets
+#debug_left usint controlRoom~numOfOutlets
+ LD   usint 2
+ WRX  controlRoom~numOfCurtains
+#debug_left usint controlRoom~numOfCurtains
+ LD   usint 1
+ WRX  controlRoom~numOfMotionSens
+#debug_left usint controlRoom~numOfMotionSens
+#srcline 163 ;              lightsOutputDevs := lightsOutputDevs , outletOutputDevs := outletOutputDevs ,
+ LEAX lightsOutputDevs
+#debug pointer lightsOutputDevs
+ SRC  %IB0
+ LEAX controlRoom~lightsOutputDevs
+ LD   51   ;SizeOf() 
+ MOV  %IB0
+ LEAX outletOutputDevs
+#debug pointer outletOutputDevs
+ SRC  %IB0
+ LEAX controlRoom~outletOutputDevs
+ LD   24   ;SizeOf() 
+ MOV  %IB0
+#srcline 164 ;              curtainsUpOutputDevs := curtainsUpOutputDevs , curtainsDwOutputDevs := curtainsDwOutputDevs,
+ LEAX curtainsUpOutputDevs
+#debug pointer curtainsUpOutputDevs
+ SRC  %IB0
+ LEAX controlRoom~curtainsUpOutputDevs
+ LD   18   ;SizeOf() 
+ MOV  %IB0
+ LEAX curtainsDwOutputDevs
+#debug pointer curtainsDwOutputDevs
+ SRC  %IB0
+ LEAX controlRoom~curtainsDwOutputDevs
+ LD   18   ;SizeOf() 
+ MOV  %IB0
+#srcline 165 ;              RCU_CH_IN := void(ETH1_uni2_IN) , LightsStatus := lightsStatusLivingRoom ,OutletsStatus := outletsStatusLivingRoom, MotionSenStatus := motionSensStatus,
+ LEA  ETH1_uni2_IN
+ WRX  controlRoom~RCU_CH_IN
+#debug_left pointer controlRoom.RCU_CH_IN
+ LEA  lightsStatusLivingRoom
+ WRX  controlRoom~LightsStatus
+#debug_left pointer controlRoom.LightsStatus
+ LEA  outletsStatusLivingRoom
+ WRX  controlRoom~OutletsStatus
+#debug_left pointer controlRoom.OutletsStatus
+ LEAX motionSensStatus
+ WRX  controlRoom~MotionSenStatus
+#debug_left pointer controlRoom.MotionSenStatus
+#srcline 166 ;              EnLights := EnLights , EnLightsAN := EnLightsAN , EnOutlets := EnOutlets ,EnOutletsAN :=EnOutletsAN ,
+ LEAX EnLights
+ WRX  controlRoom~EnLights
+#debug_left pointer controlRoom.EnLights
+ LEAX EnLightsAN
+ WRX  controlRoom~EnLightsAN
+#debug_left pointer controlRoom.EnLightsAN
+ LEAX EnOutlets
+ WRX  controlRoom~EnOutlets
+#debug_left pointer controlRoom.EnOutlets
+ LEAX EnOutletsAN
+ WRX  controlRoom~EnOutletsAN
+#debug_left pointer controlRoom.EnOutletsAN
+#srcline 167 ;              SendIamServer := SendIamServer , GetAllStatus := GetAllStatus);
+ LEAX SendIamServer
+ WRX  controlRoom~SendIamServer
+#debug_left pointer controlRoom.SendIamServer
+ LEAX GetAllStatus
+ WRX  controlRoom~GetAllStatus
+#debug_left pointer controlRoom.GetAllStatus
+ LEAX controlRoom
+ CAL  fbControlRoom_L0
+#srcline 169 ;              //stLightsLivingRoomAN := lightsStatusLivingRoom[1];
+#srcline 172 ;  (* FCU[1](enable := enableFCU[1], mode := settingsFCU[1].FCU_Mode, fanSpeed := settingsFCU[1].FCU_FanSpeed, setTemp := setTempFCU_LivingRoom[1], temp := FCU_Temp_LivingRoom, valve := FCU_valve_LivingRoom, fanLow := FCU_fanLow_LivingRoom,
+#srcline 173 ;                 fanMed := FCU_fanMed_LivingRoom, fanHigh := FCU_fanHigh_LivingRoom);  *)
+#srcline 178 ;   for i := 1 to NumOfLightLivingRoom do
+ LD   usint 1
+ WRX  i
+ LD   usint 5
+ WRY  P1__st__
+PrgLivingRoom_L11:
+ LDX  i
+ LDY  P1__st__
+ GT   
+ JMD  PrgLivingRoom_L12
+ DBG  
+#srcline 179 ;       HMIs_DataWrite[HMI_Index].lightsStatus[i] := BOOL_TO_WORD(lightsStatusLivingRoom[i]);
+ LEA  lightsStatusLivingRoom
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool lightsStatusLivingRoom[i]
+ AND  1
+ LEA  HMIs_DataWrite
+ LDX  HMI_Index
+#debug usint HMI_Index
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  142   ; SizeOf(...)
+ ADD     ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ MUL  2   ; SizeOf(...)
+ ADD     ; + offset 
+ WRIW 
+#debug_left word HMIs_DataWrite[HMI_Index].lightsStatus[i]
+#srcline 180 ;   end_for;
+ LDX  i
+ LD   1
+ ADD  
+ WRX  i
+ JMP  PrgLivingRoom_L11
+PrgLivingRoom_L12:
+ NOP  -1
+#srcline 182 ;   for i := 1 to NumOfOutletLivingRoom do
+ LD   usint 1
+ WRX  i
+ LD   usint 2
+ WRY  P2__st__
+PrgLivingRoom_L13:
+ LDX  i
+ LDY  P2__st__
+ GT   
+ JMD  PrgLivingRoom_L14
+ DBG  
+#srcline 183 ;       HMIs_DataWrite[HMI_Index].outletsStatus[i] := BOOL_TO_WORD(outletsStatusLivingRoom[i]);
+ LEA  outletsStatusLivingRoom
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool outletsStatusLivingRoom[i]
+ AND  1
+ LEA  HMIs_DataWrite
+ LDX  HMI_Index
+#debug usint HMI_Index
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  142   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  34  ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ MUL  2   ; SizeOf(...)
+ ADD     ; + offset 
+ WRIW 
+#debug_left word HMIs_DataWrite[HMI_Index].outletsStatus[i]
+#srcline 184 ;   end_for;
+ LDX  i
+ LD   1
+ ADD  
+ WRX  i
+ JMP  PrgLivingRoom_L13
+PrgLivingRoom_L14:
+ NOP  -1
+#srcline 186 ;   for i := 1 to NumOfMotionSensLivingRoom do
+ LD   usint 1
+ WRX  i
+ LD   usint 1
+ WRY  P3__st__
+PrgLivingRoom_L15:
+ LDX  i
+ LDY  P3__st__
+ GT   
+ JMD  PrgLivingRoom_L16
+ DBG  
+#srcline 187 ;       HMIs_DataWrite[HMI_Index].motionSensStatus[i] := BOOL_TO_WORD(motionSensStatus[i]);
+ LEAX motionSensStatus
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 3   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool motionSensStatus[i]
+ AND  1
+ LEA  HMIs_DataWrite
+ LDX  HMI_Index
+#debug usint HMI_Index
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  142   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  50  ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 3   ; Range Check
+ MUL  2   ; SizeOf(...)
+ ADD     ; + offset 
+ WRIW 
+#debug_left word HMIs_DataWrite[HMI_Index].motionSensStatus[i]
+#srcline 188 ;   end_for;
+ LDX  i
+ LD   1
+ ADD  
+ WRX  i
+ JMP  PrgLivingRoom_L15
+PrgLivingRoom_L16:
+ NOP  -1
+#srcline 190 ;  (* for i := 1 to NumOfFCUsLivingRoom do
+#srcline 191 ;      HMIs_DataWrite[HMI_Index].FCUs_Status[i] := FCU[i].FCU_Status;
+#srcline 192 ;   end_for; *)
+#srcline 194 ;   for i := 1 to NumOfHMIsLivingRoom-1 do
+ LD   usint 1
+ WRX  i
+ LD   usint 2
+ LD   usint 1
+ SUB
+ AND  $FF
+ WRY  P4__st__
+PrgLivingRoom_L17:
+ LDX  i
+ LDY  P4__st__
+ GT   
+ JMD  PrgLivingRoom_L18
+ DBG  
+#srcline 195 ;     HMIs_DataWrite[HMI_Index+i] := HMIs_DataWrite[HMI_Index];
+ LEA  HMIs_DataWrite
+ LDX  HMI_Index
+#debug usint HMI_Index
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  142   ; SizeOf(...)
+ ADD     ; + offset 
+#debug pointer HMIs_DataWrite[HMI_Index]
+ SRC  %IB0
+ LEA  HMIs_DataWrite
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  i
+#debug usint i
+ ADD
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  142   ; SizeOf(...)
+ ADD     ; + offset 
+#debug_left pointer HMIs_DataWrite[HMI_Index+i]
+ LD   142   ;SizeOf() 
+ MOV  %IB0
+#srcline 196 ;   end_for;
+ LDX  i
+ LD   1
+ ADD  
+ WRX  i
+ JMP  PrgLivingRoom_L17
+PrgLivingRoom_L18:
+ NOP  -1
+#srcline 199 ;   for j := 1 to NumOfHMIsLivingRoom do
+ LD   usint 1
+ WRX  j
+ LD   usint 2
+ WRY  P5__st__
+PrgLivingRoom_L19:
+ LDX  j
+ LDY  P5__st__
+ GT   
+ JMD  PrgLivingRoom_L20
+ DBG  
+#srcline 200 ;     for i := 1 to NumOfLightLivingRoom do
+ LD   usint 1
+ WRX  i
+ LD   usint 5
+ WRY  P6__st__
+PrgLivingRoom_L21:
+ LDX  i
+ LDY  P6__st__
+ GT   
+ JMD  PrgLivingRoom_L22
+ DBG  
+#srcline 202 ;         enLights_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enLights[i]);
+ LEAX enLights_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  5   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 4   ; Range Check
+ ADD
+ ADD     ; + offset 
+ WRY  P7__st__  ; offset instance
+ LEA  HMIs_DataRead
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  j
+#debug usint j
+ ADD
+ AND  $FF
+ LD   usint 1
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  104   ; SizeOf(...)
+ ADD     ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ MUL  2   ; SizeOf(...)
+ ADD     ; + offset 
+ LDIW 
+#debug word HMIs_DataRead[HMI_Index+j-1].enLights[i]
+ LDY  P7__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P7__st__  ; offset instance
+ CAL  R_TRIG_L0
+#srcline 204 ;         enLights_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enLights[i]);
+ LEAX enLights_FT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  5   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 4   ; Range Check
+ ADD
+ ADD     ; + offset 
+ WRY  P8__st__  ; offset instance
+ LEA  HMIs_DataRead
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  j
+#debug usint j
+ ADD
+ AND  $FF
+ LD   usint 1
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  104   ; SizeOf(...)
+ ADD     ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ MUL  2   ; SizeOf(...)
+ ADD     ; + offset 
+ LDIW 
+#debug word HMIs_DataRead[HMI_Index+j-1].enLights[i]
+ LDY  P8__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P8__st__  ; offset instance
+ CAL  F_TRIG_L0
+#srcline 206 ;         if enLights_RT[j,i].Q or enLights_FT[j,i].Q then
+ LEAX enLights_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  5   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 4   ; Range Check
+ ADD
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enLights_RT[j,i].Q
+ LEAX enLights_FT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  5   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 4   ; Range Check
+ ADD
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enLights_FT[j,i].Q
+ OR  
+ JMC  PrgLivingRoom_L23
+#srcline 207 ;            EnLights[i] := 1;
+ LD   bool -1      ; true
+ LEAX EnLights
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool EnLights[i]
+#srcline 208 ;         end_if;
+PrgLivingRoom_L23:
+#srcline 209 ;     end_for;
+ LDX  i
+ LD   1
+ ADD  
+ WRX  i
+ JMP  PrgLivingRoom_L21
+PrgLivingRoom_L22:
+ NOP  -1
+#srcline 210 ;   end_for;
+ LDX  j
+ LD   1
+ ADD  
+ WRX  j
+ JMP  PrgLivingRoom_L19
+PrgLivingRoom_L20:
+ NOP  -1
+#srcline 212 ;   for j := 1 to NumOfHMIsLivingRoom do
+ LD   usint 1
+ WRX  j
+ LD   usint 2
+ WRY  P9__st__
+PrgLivingRoom_L25:
+ LDX  j
+ LDY  P9__st__
+ GT   
+ JMD  PrgLivingRoom_L26
+ DBG  
+#srcline 213 ;     for i := 1 to NumOfOutletLivingRoom do
+ LD   usint 1
+ WRX  i
+ LD   usint 2
+ WRY  P10__st__
+PrgLivingRoom_L27:
+ LDX  i
+ LDY  P10__st__
+ GT   
+ JMD  PrgLivingRoom_L28
+ DBG  
+#srcline 215 ;         enOutlets_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enOutlets[i]);
+ LEAX enOutlets_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  2   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 1   ; Range Check
+ ADD
+ ADD     ; + offset 
+ WRY  P11__st__  ; offset instance
+ LEA  HMIs_DataRead
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  j
+#debug usint j
+ ADD
+ AND  $FF
+ LD   usint 1
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  104   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  34  ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ MUL  2   ; SizeOf(...)
+ ADD     ; + offset 
+ LDIW 
+#debug word HMIs_DataRead[HMI_Index+j-1].enOutlets[i]
+ LDY  P11__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P11__st__  ; offset instance
+ CAL  R_TRIG_L0
+#srcline 217 ;         enOutlets_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enOutlets[i]);
+ LEAX enOutlets_FT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  2   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 1   ; Range Check
+ ADD
+ ADD     ; + offset 
+ WRY  P12__st__  ; offset instance
+ LEA  HMIs_DataRead
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  j
+#debug usint j
+ ADD
+ AND  $FF
+ LD   usint 1
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  104   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  34  ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ MUL  2   ; SizeOf(...)
+ ADD     ; + offset 
+ LDIW 
+#debug word HMIs_DataRead[HMI_Index+j-1].enOutlets[i]
+ LDY  P12__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P12__st__  ; offset instance
+ CAL  F_TRIG_L0
+#srcline 219 ;         if enOutlets_RT[j,i].Q or enOutlets_FT[j,i].Q then
+ LEAX enOutlets_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  2   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 1   ; Range Check
+ ADD
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enOutlets_RT[j,i].Q
+ LEAX enOutlets_FT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  2   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 1   ; Range Check
+ ADD
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enOutlets_FT[j,i].Q
+ OR  
+ JMC  PrgLivingRoom_L29
+#srcline 220 ;            EnOutlets[i] := 1;
+ LD   bool -1      ; true
+ LEAX EnOutlets
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool EnOutlets[i]
+#srcline 221 ;         end_if;
+PrgLivingRoom_L29:
+#srcline 222 ;     end_for;
+ LDX  i
+ LD   1
+ ADD  
+ WRX  i
+ JMP  PrgLivingRoom_L27
+PrgLivingRoom_L28:
+ NOP  -1
+#srcline 223 ;   end_for;
+ LDX  j
+ LD   1
+ ADD  
+ WRX  j
+ JMP  PrgLivingRoom_L25
+PrgLivingRoom_L26:
+ NOP  -1
+#srcline 226 ;   for j := 1 to NumOfHMIsLivingRoom do
+ LD   usint 1
+ WRX  j
+ LD   usint 2
+ WRY  P13__st__
+PrgLivingRoom_L31:
+ LDX  j
+ LDY  P13__st__
+ GT   
+ JMD  PrgLivingRoom_L32
+ DBG  
+#srcline 227 ;     for i := 1 to NumOfCurtainLivingRoom do
+ LD   usint 1
+ WRX  i
+ LD   usint 2
+ WRY  P14__st__
+PrgLivingRoom_L33:
+ LDX  i
+ LDY  P14__st__
+ GT   
+ JMD  PrgLivingRoom_L34
+ DBG  
+#srcline 229 ;         enCurtainsUP_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].UP.0);
+ LEAX enCurtainsUP_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  2   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 1   ; Range Check
+ ADD
+ ADD     ; + offset 
+ WRY  P15__st__  ; offset instance
+ LEA  HMIs_DataRead
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  j
+#debug usint j
+ ADD
+ AND  $FF
+ LD   usint 1
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  104   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  50  ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 5   ; Range Check
+ MUL  4   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  2  ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDIB 
+#debug bool HMIs_DataRead[HMI_Index+j-1].enShutters[i].UP.0
+ LDY  P15__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P15__st__  ; offset instance
+ CAL  R_TRIG_L0
+#srcline 231 ;         enCurtainsUP_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].UP.0);
+ LEAX enCurtainsUP_FT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  2   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 1   ; Range Check
+ ADD
+ ADD     ; + offset 
+ WRY  P16__st__  ; offset instance
+ LEA  HMIs_DataRead
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  j
+#debug usint j
+ ADD
+ AND  $FF
+ LD   usint 1
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  104   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  50  ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 5   ; Range Check
+ MUL  4   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  2  ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDIB 
+#debug bool HMIs_DataRead[HMI_Index+j-1].enShutters[i].UP.0
+ LDY  P16__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P16__st__  ; offset instance
+ CAL  F_TRIG_L0
+#srcline 233 ;         if enCurtainsUP_RT[j,i].Q or enCurtainsUP_FT[j,i].Q then
+ LEAX enCurtainsUP_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  2   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 1   ; Range Check
+ ADD
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enCurtainsUP_RT[j,i].Q
+ LEAX enCurtainsUP_FT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  2   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 1   ; Range Check
+ ADD
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enCurtainsUP_FT[j,i].Q
+ OR  
+ JMC  PrgLivingRoom_L35
+#srcline 234 ;            EnCurtainsUp[i] := 1;
+ LD   bool -1      ; true
+ LEAX EnCurtainsUp
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 5   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool EnCurtainsUp[i]
+#srcline 235 ;         end_if;
+PrgLivingRoom_L35:
+#srcline 238 ;         enCurtainsDW_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].Dw.0);
+ LEAX enCurtainsDW_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  2   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 1   ; Range Check
+ ADD
+ ADD     ; + offset 
+ WRY  P17__st__  ; offset instance
+ LEA  HMIs_DataRead
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  j
+#debug usint j
+ ADD
+ AND  $FF
+ LD   usint 1
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  104   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  50  ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 5   ; Range Check
+ MUL  4   ; SizeOf(...)
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDIB 
+#debug bool HMIs_DataRead[HMI_Index+j-1].enShutters[i].Dw.0
+ LDY  P17__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P17__st__  ; offset instance
+ CAL  R_TRIG_L0
+#srcline 240 ;         enCurtainsDW_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].Dw.0);
+ LEAX enCurtainsDW_FT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  2   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 1   ; Range Check
+ ADD
+ ADD     ; + offset 
+ WRY  P18__st__  ; offset instance
+ LEA  HMIs_DataRead
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  j
+#debug usint j
+ ADD
+ AND  $FF
+ LD   usint 1
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 10   ; Range Check
+ MUL  104   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  50  ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 5   ; Range Check
+ MUL  4   ; SizeOf(...)
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDIB 
+#debug bool HMIs_DataRead[HMI_Index+j-1].enShutters[i].Dw.0
+ LDY  P18__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P18__st__  ; offset instance
+ CAL  F_TRIG_L0
+#srcline 242 ;         if enCurtainsDW_RT[j,i].Q or enCurtainsDW_FT[j,i].Q then
+ LEAX enCurtainsDW_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  2   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 1   ; Range Check
+ ADD
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enCurtainsDW_RT[j,i].Q
+ LEAX enCurtainsDW_FT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  2   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 1   ; Range Check
+ ADD
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enCurtainsDW_FT[j,i].Q
+ OR  
+ JMC  PrgLivingRoom_L37
+#srcline 243 ;            EnCurtainsDw[i] := 1;
+ LD   bool -1      ; true
+ LEAX EnCurtainsDw
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 5   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool EnCurtainsDw[i]
+#srcline 244 ;         end_if;
+PrgLivingRoom_L37:
+#srcline 246 ;     end_for;
+ LDX  i
+ LD   1
+ ADD  
+ WRX  i
+ JMP  PrgLivingRoom_L33
+PrgLivingRoom_L34:
+ NOP  -1
+#srcline 247 ;   end_for;
+ LDX  j
+ LD   1
+ ADD  
+ WRX  j
+ JMP  PrgLivingRoom_L31
+PrgLivingRoom_L32:
+ NOP  -1
+#srcline 249 ;   (*
+#srcline 250 ;   for j := 1 to NumOfHMIsLivingRoom do
+#srcline 251 ;      for i := 1 to NumOfFCUsLivingRoom do
+#srcline 252 ;          enFCUs_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].onOff);
+#srcline 253 ;          enFCUs_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].onOff);
+#srcline 255 ;          if enFCUs_FT[j,i].Q then
+#srcline 256 ;             enableFCU[i] := 0;
+#srcline 257 ;          end_if;
+#srcline 258 ;          if enFCUs_RT[j,i].Q then
+#srcline 259 ;             enableFCU[i] := 1;
+#srcline 260 ;          end_if;
+#srcline 262 ;          enFanAuto_RT[j,i](CLK := (HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed = 8));
+#srcline 263 ;          enFanLow_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed.0);
+#srcline 264 ;          enFanMed_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed.1);
+#srcline 265 ;          enFanHigh_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed.2);
+#srcline 267 ;          if enFanAuto_RT[j,i].Q then
+#srcline 268 ;             settingsFCU[i].FCU_FanSpeed := auto;
+#srcline 269 ;          end_if;
+#srcline 270 ;          if enFanLow_RT[j,i].Q then
+#srcline 271 ;             settingsFCU[i].FCU_FanSpeed := low;
+#srcline 272 ;          end_if;
+#srcline 273 ;          if enFanMed_RT[j,i].Q then
+#srcline 274 ;             settingsFCU[i].FCU_FanSpeed := med;
+#srcline 275 ;          end_if;
+#srcline 276 ;          if enFanHigh_RT[j,i].Q then
+#srcline 277 ;             settingsFCU[i].FCU_FanSpeed := high;
+#srcline 278 ;          end_if;
+#srcline 280 ;          enFCUCool_RT[j,i](CLK := (HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].mode = 0));
+#srcline 281 ;          enFCUFanOnly_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].mode.0);
+#srcline 283 ;          if enFCUCool_RT[j,i].Q then
+#srcline 284 ;             settingsFCU[i].FCU_Mode := cooling;
+#srcline 285 ;          end_if;
+#srcline 286 ;          if enFCUFanOnly_RT[j,i].Q then
+#srcline 287 ;             settingsFCU[i].FCU_Mode := fanOnly;
+#srcline 288 ;          end_if;
+#srcline 290 ;          enSetTempIncr_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].SetTempCtrl.0);
+#srcline 291 ;          enSetTempIncr_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].SetTempCtrl.0);
+#srcline 293 ;          if enSetTempIncr_RT[j,i].Q or enSetTempIncr_FT[j,i].Q then
+#srcline 294 ;             setTempFCU_LivingRoom[j] := setTempFCU_LivingRoom[j] + 0.5;
+#srcline 295 ;          end_if;
+#srcline 297 ;          enSetTempDecr_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].SetTempCtrl.1);
+#srcline 298 ;          enSetTempDecr_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].SetTempCtrl.1);
+#srcline 300 ;          if enSetTempDecr_RT[j,i].Q or enSetTempDecr_FT[j,i].Q then
+#srcline 301 ;             setTempFCU_LivingRoom[j] := setTempFCU_LivingRoom[j] - 0.5;
+#srcline 302 ;          end_if;
+#srcline 304 ;      end_for;
+#srcline 305 ;   end_for; *)
+#srcline 307 ;END_PROGRAM
+ ULNK
+RET
+E     61
+
+; Initialize - variables
+P     61
+PrgLivingRoom__InstanceInit__:
+ LINK 0
+ LD   0
+ SRC  byte __Init___PrgLivingRoom_RCU_IP
+ LEAX byte RCU_IP
+ LD   4
+ MOV  %X0
+ LEAX controlRoom
+ CAL  fbControlRoom__InstanceInit__
+ LD   0
+ SRC  byte __Init___PrgLivingRoom_lightsOutputDevs
+ LEAX byte lightsOutputDevs
+ LD   51
+ MOV  %X0
+ LD   0
+ SRC  byte __Init___PrgLivingRoom_outletOutputDevs
+ LEAX byte outletOutputDevs
+ LD   24
+ MOV  %X0
+ LD   0
+ SRC  byte __Init___PrgLivingRoom_curtainsUpOutputDevs
+ LEAX byte curtainsUpOutputDevs
+ LD   18
+ MOV  %X0
+ LD   0
+ SRC  byte __Init___PrgLivingRoom_curtainsDwOutputDevs
+ LEAX byte curtainsDwOutputDevs
+ LD   18
+ MOV  %X0
+ LD   0
+ SRC  byte __Init___PrgLivingRoom_motionSensOutputDevs
+ LEAX byte motionSensOutputDevs
+ LD   12
+ MOV  %X0
+ LD   0
+ SRC  byte __Init___PrgLivingRoom_enLights_FT
+ LEAX byte enLights_FT[0]
+ LD   10
+ MOV  %X0
+ LD   0
+ SRC  byte __Init___PrgLivingRoom_enOutlets_FT
+ LEAX byte enOutlets_FT[0]
+ LD   4
+ MOV  %X0
+ LD   0
+ SRC  byte __Init___PrgLivingRoom_enCurtainsUP_FT
+ LEAX byte enCurtainsUP_FT[0]
+ LD   4
+ MOV  %X0
+ LD   0
+ SRC  byte __Init___PrgLivingRoom_enCurtainsDW_FT
+ LEAX byte enCurtainsDW_FT[0]
+ LD   4
+ MOV  %X0
+ LEAX afterRestart_TP_FT
+ CAL  F_TRIG__InstanceInit__
+ LD   0
+ SRC  byte __Init___PrgLivingRoom_HMI_Addresses
+ LEAX byte HMI_Addresses[0]
+ LD   2
+ MOV  %X0
+ ULNK
+RET
+E     61
+; End initialize - variables
+#endpou 
+
+
+
+ 
+
+#srcfile ''

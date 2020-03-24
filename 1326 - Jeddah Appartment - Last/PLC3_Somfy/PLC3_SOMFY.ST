@@ -1,0 +1,28 @@
+TYPE
+  TCurtainStatus : Struct
+    outUP   : BOOl;
+    outDW   : BOOl;
+    pos     : USINT;
+    normPos : USINT;
+  End_Struct;
+END_TYPE
+
+TYPE
+   TEnCurtain : Struct
+      UP   : BOOL;
+      DW   : BOOl;
+      STOP : BOOL;
+   End_Struct;
+END_TYPE
+
+VAR_GLOBAL CONSTANT
+   numOfCurtains      : USINT := 14;
+   numOfCurtains_PLC1 : USINT := 9;
+   curtUpDwTime      : TIME := T#18s;
+END_VAR
+
+VAR_GLOBAL
+  curtainsStatus AT PLC3.DATA : Array[1..numOfCurtains] of TCurtainStatus;
+  PLC1_EnCurtains AT PLC1_Curtains.DATA : Array[1..numOfCurtains] of TEnCurtain;
+END_VAR
+

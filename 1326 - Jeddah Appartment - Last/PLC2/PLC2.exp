@@ -1,0 +1,44 @@
+TYPE
+
+TCIB_CHM0308_STAT : STRUCT
+  OUF1     : BOOL;
+  VLD1     : BOOL;
+  OUF2     : BOOL;
+  VLD2     : BOOL;
+  OUF3     : BOOL;
+  VLD3     : BOOL;
+  ManMode  : BOOL;
+  PowerErr : BOOL;
+END_STRUCT;
+
+TCIB_AI3 : STRUCT
+  AI1 : REAL;
+  AI2 : REAL;
+  AI3 : REAL;
+END_STRUCT;
+
+TCIB_DI3 : STRUCT
+  DI1    : BOOL;
+  DI2    : BOOL;
+  DI3    : BOOL;
+  dummy3 : BOOL;
+  dummy4 : BOOL;
+  dummy5 : BOOL;
+  dummy6 : BOOL;
+  dummy7 : BOOL;
+END_STRUCT;
+
+TCIB_C_HM_0308M_IN : STRUCT
+  STAT : TCIB_CHM0308_STAT;
+  AI   : TCIB_AI3;
+  DI   : TCIB_DI3;
+END_STRUCT;
+
+END_TYPE
+
+
+VAR_GLOBAL
+
+FCU5_MasterRoom_IN AT %IB202 : TCIB_C_HM_0308M_IN;
+
+END_VAR

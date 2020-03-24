@@ -1,0 +1,328 @@
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\PRGCONNECTHMIS.ST'
+
+; Global types
+#struct  T_HMI_Info
+  usint SNo,
+  uint readStAdd,
+  uint writeStAdd,
+  uint readNoPoint,
+  uint writeNoPoint
+#struct  TShutterControl
+  word Dw,
+  word UP
+#struct  TFCU_Control
+  word onOff,
+  word SetTempCtrl,  ;  bit 0 for increment, bit 1 for decrement
+  int setTemp,
+  word fanSpeed,
+  word mode
+#struct  T_HMI_DataRead
+  word[17] enLights,
+  word[8] enOutlets,
+  TShutterControl[6] enShutters,
+  TFCU_Control[3] enFCUs
+#struct  TShutterStatus
+  word Dw,
+  word UP,
+  word pos
+#struct  TFCU_Status
+  word onOffStatus,
+  int setTemp,
+  int roomTemp,
+  word fanSpeed,
+  word mode,
+  word valve,
+  word fanSpeedCtrl,
+  word fanRotationVar  ; var for rotating the fan GIF in the HMI according to the current fan speed
+#struct  T_HMI_DataWrite
+  word[17] lightsStatus,
+  word[8] outletsStatus,
+  word[4] motionSensStatus,
+  TShutterStatus[6] shuttersStatus,
+  TFCU_Status[3] FCUs_Status
+
+; Global variables
+#def  numOfHMIs 10
+
+; Global variables
+#rem  T_HMI_DataRead HMIs_DataRead[10]  ; Data is read from HMI
+#rem  T_HMI_DataWrite HMIs_DataWrite[10]  ; Data is written to HMI
+#rem  T_HMI_Info HMIs_Info[10]
+
+; Global variables
+#reg  TCmdStruct cmdArr[20]
+#reg  usint GrSel
+
+#defpou PrgConnectHMIs
+  fbModbusRTUmas2 master,
+  int i,
+  usint maxCmd
+
+#table byte __Init____HMIs_Info = 
+      0,  0;
+ 
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\PRGCONNECTHMIS.ST'
+#pou PrgConnectHMIs
+#srcline 82 ;PROGRAM PrgConnectHMIs
+
+#struct PrgConnectHMIs__temp__
+  int P0__st__
+P     61
+PrgConnectHMIs_L0:
+ LINK __SizeOf(PrgConnectHMIs__temp__)
+; Initialize - dynamic variables
+; End initialize - dynamic variables
+#srcline 98 ;  if IS_COLD_RESTART_PLC or IS_HOT_RESTART_PLC then
+ LD   bool IS_COLD_RESTART_PLC
+#debug bool IS_COLD_RESTART_PLC
+ LD   bool IS_HOT_RESTART_PLC
+#debug bool IS_HOT_RESTART_PLC
+ OR  
+ JMC  PrgConnectHMIs_L1
+#srcline 99 ;     GrSel := 2;
+ LD   usint 2
+ WR   GrSel
+#debug_left usint GrSel
+#srcline 100 ;  end_if;
+PrgConnectHMIs_L1:
+#srcline 101 ;  
+#srcline 102 ;  for i := 1 to numOfHMIs do
+ LD   int 1
+ WRX  i
+ LD   int 10
+ WRY  P0__st__
+PrgConnectHMIs_L3:
+ LDX  i
+ EXTW 
+ LDY  P0__st__
+ EXTW 
+ GTS  
+ JMD  PrgConnectHMIs_L4
+ DBG  
+#srcline 103 ;      ModbusCmd(Gr := 2, SNo := HMIs_Info[i].SNo, FNC := 3,  StAdr := HMIs_Info[i].readStAdd,   NoPoint := HMIs_Info[i].readNoPoint, PtrData := adr(HMIs_DataRead[i]), Cmd := cmdArr[i*2-1]) ;
+ NXT
+ LD   usint 2
+ WR   __Instance__ModbusCmd~Gr
+#debug_left usint __Instance__ModbusCmd~Gr
+ LEA  HMIs_Info
+ LDX  i
+#debug int i
+ EXTW 
+ SUB  1   ; Low range[1]
+ RCHK 9   ; Range Check
+ MUL  9   ; SizeOf(...)
+ ADD     ; + offset 
+ LDI  
+#debug usint HMIs_Info[i].SNo
+ WR   __Instance__ModbusCmd~SNo
+#debug_left usint __Instance__ModbusCmd~SNo
+ LD   usint 3
+ WR   __Instance__ModbusCmd~FNC
+#debug_left usint __Instance__ModbusCmd~FNC
+ LEA  HMIs_Info
+ LDX  i
+#debug int i
+ EXTW 
+ SUB  1   ; Low range[1]
+ RCHK 9   ; Range Check
+ MUL  9   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDIW 
+#debug uint HMIs_Info[i].readStAdd
+ WR   __Instance__ModbusCmd~StAdr
+#debug_left uint __Instance__ModbusCmd~StAdr
+ LEA  HMIs_Info
+ LDX  i
+#debug int i
+ EXTW 
+ SUB  1   ; Low range[1]
+ RCHK 9   ; Range Check
+ MUL  9   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  5  ; + offset 
+ LDIW 
+#debug uint HMIs_Info[i].readNoPoint
+ WR   __Instance__ModbusCmd~NoPoint
+#debug_left uint __Instance__ModbusCmd~NoPoint
+ LEA  HMIs_DataRead
+ LDX  i
+#debug int i
+ EXTW 
+ SUB  1   ; Low range[1]
+ RCHK 9   ; Range Check
+ MUL  104   ; SizeOf(...)
+ ADD     ; + offset 
+#debug pointer HMIs_DataRead[i]
+ LEA  __Instance__ModbusCmd~PtrData
+ WRIL 
+#debug_left udint __Instance__ModbusCmd~PtrData
+ LEA  cmdArr
+ LDX  i
+#debug int i
+ EXTW 
+ LD   int 2
+ EXTW
+ MULS
+ EXTW
+ LD   int 1
+ SUB
+ EXTW
+ SUB  1   ; Low range[1]
+ RCHK 19   ; Range Check
+ MUL  11   ; SizeOf(...)
+ ADD     ; + offset 
+ WR   __Instance__ModbusCmd~Cmd
+#debug_left pointer __Instance__ModbusCmd.Cmd
+ PRV
+ LEA  __Instance__ModbusCmd
+ CAL  ModbusCmd_L0
+#srcline 105 ;      ModbusCmd(Gr := 2, SNo := HMIs_Info[i].SNo, FNC := 16, StAdr := HMIs_Info[i].writeStAdd , NoPoint := HMIs_Info[i].writeNoPoint, PtrData := adr(HMIs_DataWrite[i]), Cmd := cmdArr[i*2]) ;
+ NXT
+ LD   usint 2
+ WR   __Instance__ModbusCmd~Gr
+#debug_left usint __Instance__ModbusCmd~Gr
+ LEA  HMIs_Info
+ LDX  i
+#debug int i
+ EXTW 
+ SUB  1   ; Low range[1]
+ RCHK 9   ; Range Check
+ MUL  9   ; SizeOf(...)
+ ADD     ; + offset 
+ LDI  
+#debug usint HMIs_Info[i].SNo
+ WR   __Instance__ModbusCmd~SNo
+#debug_left usint __Instance__ModbusCmd~SNo
+ LD   usint 16
+ WR   __Instance__ModbusCmd~FNC
+#debug_left usint __Instance__ModbusCmd~FNC
+ LEA  HMIs_Info
+ LDX  i
+#debug int i
+ EXTW 
+ SUB  1   ; Low range[1]
+ RCHK 9   ; Range Check
+ MUL  9   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  3  ; + offset 
+ LDIW 
+#debug uint HMIs_Info[i].writeStAdd
+ WR   __Instance__ModbusCmd~StAdr
+#debug_left uint __Instance__ModbusCmd~StAdr
+ LEA  HMIs_Info
+ LDX  i
+#debug int i
+ EXTW 
+ SUB  1   ; Low range[1]
+ RCHK 9   ; Range Check
+ MUL  9   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  7  ; + offset 
+ LDIW 
+#debug uint HMIs_Info[i].writeNoPoint
+ WR   __Instance__ModbusCmd~NoPoint
+#debug_left uint __Instance__ModbusCmd~NoPoint
+ LEA  HMIs_DataWrite
+ LDX  i
+#debug int i
+ EXTW 
+ SUB  1   ; Low range[1]
+ RCHK 9   ; Range Check
+ MUL  142   ; SizeOf(...)
+ ADD     ; + offset 
+#debug pointer HMIs_DataWrite[i]
+ LEA  __Instance__ModbusCmd~PtrData
+ WRIL 
+#debug_left udint __Instance__ModbusCmd~PtrData
+ LEA  cmdArr
+ LDX  i
+#debug int i
+ EXTW 
+ LD   int 2
+ EXTW
+ MULS
+ EXTW
+ SUB  1   ; Low range[1]
+ RCHK 19   ; Range Check
+ MUL  11   ; SizeOf(...)
+ ADD     ; + offset 
+ WR   __Instance__ModbusCmd~Cmd
+#debug_left pointer __Instance__ModbusCmd.Cmd
+ PRV
+ LEA  __Instance__ModbusCmd
+ CAL  ModbusCmd_L0
+#srcline 106 ;  end_for;
+ LDX  i
+ LD   1
+ ADD  
+ EXTW 
+ WRX  i
+ JMP  PrgConnectHMIs_L3
+PrgConnectHMIs_L4:
+ NOP  -1
+#srcline 107 ;  
+#srcline 108 ;  //maxCmd := INT_TO_USINT(numOfHMIs * 2);
+#srcline 109 ;  
+#srcline 110 ;  maxCmd := 2;
+ LD   usint 2
+ WRX  maxCmd
+#debug_left usint maxCmd
+#srcline 111 ;  master(EN := true, GrSel := GrSel,  MaxCmd := maxCmd , chanCode := CH2_uni , Delay := T#0.2s, Commands := cmdArr[9], MBtimeOut := T#0.5s);
+ LD   bool -1       ; true
+ WRX  master~EN
+#debug_left bool master~EN
+ LD   GrSel
+#debug usint GrSel
+ WRX  master~GrSel
+#debug_left usint master~GrSel
+ LDX  maxCmd
+#debug usint maxCmd
+ WRX  master~MaxCmd
+#debug_left usint master~MaxCmd
+ LD   uint 514
+ WRX  master~chanCode
+#debug_left uint master~chanCode
+ LD   time 200
+ WRX  master~Delay
+#debug_left time master~Delay
+ LEA  cmdArr
+ ADD  88  ; + offset 
+ WRX  master~Commands
+#debug_left pointer master.Commands
+ LD   time 500
+ WRX  master~MBtimeOut
+#debug_left time master~MBtimeOut
+ LEAX master
+ CAL  fbModbusRTUmas2_L0
+#srcline 115 ;  
+#srcline 117 ;END_PROGRAM
+ ULNK
+RET
+E     61
+
+; Initialize - variables
+P     61
+PrgConnectHMIs__InstanceInit__:
+ LINK 0
+ LEAX master
+ CAL  fbModbusRTUmas2__InstanceInit__
+ ULNK
+RET
+E     61
+; End initialize - variables
+#endpou 
+
+
+P     59
+; Initialize retain global variables 
+ LD   0
+ SRC  byte __Init____HMIs_Info
+ LD   0
+ LD   90
+ MOV  byte HMIs_Info[0]
+E     59
+
+ 
+
+#srcfile ''

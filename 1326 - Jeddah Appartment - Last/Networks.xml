@@ -1,0 +1,12 @@
+﻿<?xml version="1.0"?>
+<TecoNetworks xmlns="http://www.tecomat.com">
+  <Ethernet>
+    <PLDNetworks/>
+    <PLCxNetworks>
+      <PLCxNetwork id="0" name="PLCx3" raster="200" crc="4568">
+        <Node name="PLC3" addr="3" zoneSize="238"/>
+        <Node name="PLC1_Curtains" addr="1" zoneSize="50"/>
+      </PLCxNetwork>
+    </PLCxNetworks>
+  </Ethernet>
+</TecoNetworks>

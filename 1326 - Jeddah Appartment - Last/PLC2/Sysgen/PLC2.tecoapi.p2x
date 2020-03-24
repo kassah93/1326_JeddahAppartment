@@ -1,0 +1,1136 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<MAP version="3" name="PLC2" project="PLC2" content="tecoapi" >
+ <TYPES>
+  <RECORD name="R_TRIG" size="1" pou="fb" descr="Rising Edge Detector" >
+    <ITEM name="CLK" type="BOOL" addr="0" bit="0" size="1" var="in" />
+    <ITEM name="Q" type="BOOL" addr="0" bit="1" size="1" var="out" />
+    <ITEM name="M" type="BOOL" addr="0" bit="2" size="1" var="var" />
+  </RECORD>
+  <RECORD name="F_TRIG" size="1" pou="fb" descr="Falling Edge Detector" >
+    <ITEM name="CLK" type="BOOL" addr="0" bit="0" size="1" var="in" />
+    <ITEM name="Q" type="BOOL" addr="0" bit="1" size="1" var="out" />
+    <ITEM name="M" type="BOOL" addr="0" bit="2" size="1" var="var" value="TRUE" />
+  </RECORD>
+  <RECORD name="TON" size="15" pou="fb" descr="On-delay Timer" >
+    <ITEM name="IN" type="BOOL" addr="0" bit="0" size="1" var="in" descr="input" />
+    <ITEM name="PT" type="TIME" addr="1" size="4" var="in" descr="preset" />
+    <ITEM name="Q" type="BOOL" addr="5" bit="0" size="1" var="out" descr="output" />
+    <ITEM name="ET" type="TIME" addr="6" size="4" var="out" descr="value" />
+    <ITEM name="IN_r_edge" type="R_TRIG" addr="10" size="1" var="var" />
+    <ITEM name="LT" type="TIME" addr="11" size="4" var="var" descr="last tick value ( 1ms resolution)" />
+  </RECORD>
+  <RECORD name="TOF" size="15" pou="fb" descr="Off-delay Timer" >
+    <ITEM name="IN" type="BOOL" addr="0" bit="0" size="1" var="in" descr="input" />
+    <ITEM name="PT" type="TIME" addr="1" size="4" var="in" descr="preset" />
+    <ITEM name="Q" type="BOOL" addr="5" bit="0" size="1" var="out" descr="output" />
+    <ITEM name="ET" type="TIME" addr="6" size="4" var="out" descr="value" />
+    <ITEM name="IN_f_edge" type="F_TRIG" addr="10" size="1" var="var" />
+    <ITEM name="LT" type="TIME" addr="11" size="4" var="var" descr="last tick value ( 1ms resolution)" />
+  </RECORD>
+  <RECORD name="TP" size="15" pou="fb" descr="Pulse Timer" >
+    <ITEM name="IN" type="BOOL" addr="0" bit="0" size="1" var="in" descr="input" />
+    <ITEM name="PT" type="TIME" addr="1" size="4" var="in" descr="preset" />
+    <ITEM name="Q" type="BOOL" addr="5" bit="0" size="1" var="out" descr="output" />
+    <ITEM name="ET" type="TIME" addr="6" size="4" var="out" descr="value" />
+    <ITEM name="IN_r_edge" type="R_TRIG" addr="10" size="1" var="var" />
+    <ITEM name="LT" type="TIME" addr="11" size="4" var="var" descr="last tick value ( 1ms resolution)" />
+  </RECORD>
+  <RECORD name="fbTick" size="15" pou="fb" descr="Periodic Timer" >
+    <ITEM name="IN" type="BOOL" addr="0" bit="0" size="1" var="in" descr="ticks enabled" />
+    <ITEM name="PT" type="TIME" addr="1" size="4" var="in" descr="period of ticks" />
+    <ITEM name="Q" type="BOOL" addr="5" bit="0" size="1" var="out" descr="tick impulse" />
+    <ITEM name="ET" type="TIME" addr="6" size="4" var="out" descr="elapsed time" />
+    <ITEM name="WasRun" type="BOOL" addr="10" bit="0" size="1" var="var" />
+    <ITEM name="RunTime" type="TIME" addr="11" size="4" var="var" />
+  </RECORD>
+  <RECORD name="TLocalEthAdr" size="12" pou="struct" >
+    <ARRAY size="4" lo="0" hi="3" > 
+      <ITEM name="IP" type="USINT" addr="0" size="1" descr="IP address" />
+      </ARRAY> 
+    <ARRAY size="4" lo="0" hi="3" > 
+      <ITEM name="IM" type="USINT" addr="4" size="1" descr="subnet mask" />
+      </ARRAY> 
+    <ARRAY size="4" lo="0" hi="3" > 
+      <ITEM name="GW" type="USINT" addr="8" size="1" descr="gateway address" />
+      </ARRAY> 
+  </RECORD>
+  <RECORD name="TRemoteEthAdr" size="8" pou="struct" >
+    <ARRAY size="4" lo="0" hi="3" > 
+      <ITEM name="remoteIP" type="USINT" addr="0" size="1" descr="remote IP address" />
+      </ARRAY> 
+    <ITEM name="remotePort" type="UINT" addr="4" size="2" descr="remote port" />
+    <ITEM name="localPort" type="UINT" addr="6" size="2" descr="local port" />
+  </RECORD>
+  <RECORD name="TUni_STAT" size="1" pou="struct" >
+    <ITEM name="DSR" type="BOOL" addr="0" bit="0" size="1" />
+    <ITEM name="CTS" type="BOOL" addr="0" bit="1" size="1" />
+    <ITEM name="dummy1" type="BOOL" addr="0" bit="2" size="1" />
+    <ITEM name="TRO" type="BOOL" addr="0" bit="3" size="1" />
+    <ITEM name="RCF" type="BOOL" addr="0" bit="4" size="1" />
+    <ITEM name="ROV" type="BOOL" addr="0" bit="5" size="1" />
+    <ITEM name="TRF" type="BOOL" addr="0" bit="6" size="1" />
+    <ITEM name="ARC" type="BOOL" addr="0" bit="7" size="1" />
+  </RECORD>
+  <RECORD name="TUni_CONT" size="1" pou="struct" >
+    <ITEM name="dummy0" type="BOOL" addr="0" bit="0" size="1" />
+    <ITEM name="dummy1" type="BOOL" addr="0" bit="1" size="1" />
+    <ITEM name="dummy2" type="BOOL" addr="0" bit="2" size="1" />
+    <ITEM name="dummy3" type="BOOL" addr="0" bit="3" size="1" />
+    <ITEM name="dummy4" type="BOOL" addr="0" bit="4" size="1" />
+    <ITEM name="TRG" type="BOOL" addr="0" bit="5" size="1" />
+    <ITEM name="CLR" type="BOOL" addr="0" bit="6" size="1" />
+    <ITEM name="ACN" type="BOOL" addr="0" bit="7" size="1" />
+  </RECORD>
+  <RECORD name="TUni_SIGN" size="1" pou="struct" >
+    <ITEM name="DTR" type="BOOL" addr="0" bit="0" size="1" />
+    <ITEM name="RTS" type="BOOL" addr="0" bit="1" size="1" />
+  </RECORD>
+  <RECORD name="TUni_IN" size="1405" pou="struct" >
+    <ITEM name="STAT" type="TUni_STAT" addr="0" size="1" descr="status of receving" />
+    <ITEM name="ERR" type="USINT" addr="1" size="1" descr="error code" />
+    <ITEM name="NUMR" type="UINT" addr="2" size="2" descr="number of received bytes" />
+    <ARRAY size="1401" lo="0" hi="1400" > 
+      <ITEM name="DATA" type="USINT" addr="4" size="1" descr="received data" />
+      </ARRAY> 
+  </RECORD>
+  <RECORD name="TUni_OUT" size="1405" pou="struct" >
+    <ITEM name="CONT" type="TUni_CONT" addr="0" size="1" descr="control of transmitting" />
+    <ITEM name="SIGN" type="TUni_SIGN" addr="1" size="1" descr="control of modem signals" />
+    <ITEM name="NUMT" type="UINT" addr="2" size="2" descr="mumber of transmitted bytes" />
+    <ARRAY size="1401" lo="0" hi="1400" > 
+      <ITEM name="DATA" type="USINT" addr="4" size="1" descr="transmitted data" />
+      </ARRAY> 
+  </RECORD>
+  <RECORD name="fbSendTo" size="25" pou="fb" descr="Transmit data over the communication channel
+   Function block sends array data[] to communication
+   channel specified by chanCode. Data length is specified
+   by variable lenTx.
+   Function block returns information about
+   sending message. If there is no error,
+   variable error is 0." >
+    <ITEM name="rq" type="BOOL" addr="0" bit="0" size="1" var="in" descr="request to send" />
+    <ITEM name="chanCode" type="UINT" addr="1" size="2" var="in" descr="channel code (CH1_uni, ..., CH10_uni, ETH1_uni0, ..., ETH1_uni7, ETH2_uni0, ..., ETH4_uni7)" />
+    <ITEM name="lenTx" type="UINT" addr="3" size="2" var="in" descr="message size (number of bytes)" />
+    <ITEM name="data" type="PTR_TO USINT" addr="5" size="4" var="inout" descr="buffer for send message" />
+    <ITEM name="mesSent" type="BOOL" addr="9" bit="0" size="1" var="out" descr="sending of message was started" />
+    <ITEM name="error" type="USINT" addr="10" size="1" var="out" descr="error code" />
+    <ITEM name="lenData" type="UINT" addr="11" size="2" var="out" descr="size of sending message" />
+    <ITEM name="pUniOut" type="PTR_TO TUni_OUT" addr="13" size="4" var="var" />
+    <ITEM name="pUniIn" type="PTR_TO TUni_IN" addr="17" size="4" var="var" />
+    <ITEM name="pUniOutData" type="PTR_TO USINT" addr="21" size="4" var="var" />
+  </RECORD>
+  <RECORD name="THotelPacket_Head" size="15" pou="struct" >
+    <ITEM name="frameHeader" type="WORD" addr="0" size="2" value="16#55AA" />
+    <ITEM name="frameLength" type="UINT" addr="2" size="2" />
+    <ITEM name="SystemID" type="DWORD" addr="4" size="4" value="16#41533354" />
+    <ITEM name="cmdType" type="BYTE" addr="8" size="1" value="16#0F" />
+    <ITEM name="frameNo" type="WORD" addr="9" size="2" value="16#003A" />
+    <ITEM name="nBuild" type="BYTE" addr="11" size="1" value="16#FF" />
+    <ITEM name="nUnit" type="BYTE" addr="12" size="1" value="16#FF" />
+    <ITEM name="nFloor" type="BYTE" addr="13" size="1" value="16#FF" />
+    <ITEM name="nRoom" type="BYTE" addr="14" size="1" value="16#FF" />
+  </RECORD>
+  <RECORD name="TDevice" size="6" pou="struct" >
+    <ITEM name="DevType" type="USINT" addr="0" size="1" />
+    <ITEM name="DevAddress" type="USINT" addr="1" size="1" />
+    <ITEM name="loopAddress" type="UINT" addr="2" size="2" />
+    <ITEM name="CtrlType" type="USINT" addr="4" size="1" value="open" />
+    <ITEM name="CtrlContent" type="USINT" addr="5" size="1" descr="from 0 to 100" />
+  </RECORD>
+  <RECORD name="TDevCtrl" size="1111" pou="struct" >
+    <ITEM name="NumOfDev" type="USINT" addr="0" size="1" value="1" />
+    <ARRAY size="1110" lo="1" hi="185" > 
+      <ITEM name="DevArr" type="TDevice" addr="1" size="6" />
+      </ARRAY> 
+  </RECORD>
+  <RECORD name="THotelPacket" size="1128" pou="struct" >
+    <ITEM name="Header" type="THotelPacket_Head" addr="0" size="15" />
+    <ITEM name="Data" type="TDevCtrl" addr="15" size="1111" />
+    <ITEM name="CRC" type="UINT" addr="1126" size="2" />
+  </RECORD>
+  <RECORD name="TServerPacket" size="11" pou="struct" >
+    <ARRAY size="4" lo="1" hi="4" > 
+      <ITEM name="userCode" type="BYTE" addr="0" size="1" value="[0,0,0,0]" descr="keep zeros" />
+      </ARRAY> 
+    <ITEM name="heartBeat" type="BYTE" addr="4" size="1" value="1" descr="keep 1" />
+    <ARRAY size="4" lo="0" hi="3" > 
+      <ITEM name="IP" type="USINT" addr="5" size="1" />
+      </ARRAY> 
+    <ITEM name="port" type="UINT" addr="9" size="2" value="61000" />
+  </RECORD>
+  <RECORD name="TIamServerPacket" size="28" pou="struct" >
+    <ITEM name="Header" type="THotelPacket_Head" addr="0" size="15" value="(cmdType := 1 , frameNo := 16#000E)" />
+    <ITEM name="serverSettings" type="TServerPacket" addr="15" size="11" />
+    <ITEM name="CRC" type="UINT" addr="26" size="2" />
+  </RECORD>
+  <RECORD name="TAllStatusPacket" size="17" pou="struct" >
+    <ITEM name="Header" type="THotelPacket_Head" addr="0" size="15" />
+    <ITEM name="CRC" type="UINT" addr="15" size="2" />
+  </RECORD>
+  <RECORD name="TDeviceStatus" size="6" pou="struct" >
+    <ITEM name="DevType" type="USINT" addr="0" size="1" />
+    <ITEM name="DevAddress" type="USINT" addr="1" size="1" />
+    <ITEM name="loopAddress" type="UINT" addr="2" size="2" />
+    <ITEM name="CtrlType" type="BOOL" addr="4" bit="0" size="1" />
+    <ITEM name="CtrlContent" type="USINT" addr="5" size="1" descr="from 0 to 100" />
+  </RECORD>
+  <RECORD name="fbControlHotelSystem_UDP" size="1319" pou="fb" >
+    <ITEM name="RQ" type="BOOL" addr="0" bit="0" size="1" var="in" />
+    <ITEM name="sendIamServer" type="BOOL" addr="0" bit="1" size="1" var="in" />
+    <ITEM name="getAllStatus" type="BOOL" addr="0" bit="2" size="1" var="in" />
+    <ITEM name="ChanCode" type="UINT" addr="1" size="2" var="in" />
+    <ITEM name="serverSettings" type="TServerPacket" addr="3" size="11" var="in" />
+    <ITEM name="packet" type="PTR_TO THotelPacket" addr="14" size="4" var="inout" />
+    <ITEM name="CH_IN" type="PTR_TO USINT" addr="18" size="4" var="inout" />
+    <ARRAY size="1110" lo="1" hi="185" > 
+      <ITEM name="DevicesStatus" type="TDeviceStatus" addr="22" size="6" var="out" />
+      </ARRAY> 
+    <ITEM name="SysLock" type="BOOL" addr="1132" bit="0" size="1" var="out" />
+    <ITEM name="cardType" type="BOOL" addr="1132" bit="1" size="1" var="out" />
+    <ITEM name="Door" type="BOOL" addr="1132" bit="2" size="1" var="out" />
+    <ITEM name="numOfStatusDevs" type="UINT" addr="1133" size="2" var="out" />
+    <ITEM name="msgSent" type="BOOL" addr="1135" bit="0" size="1" var="out" />
+    <ITEM name="errCode" type="USINT" addr="1136" size="1" var="out" />
+    <ITEM name="errText" type="STRING" addr="1137" size="101" var="out" />
+    <ITEM name="IamServerPacket" type="TIamServerPacket" addr="1238" size="28" var="var" />
+    <ITEM name="allStatusPacket" type="TAllStatusPacket" addr="1266" size="17" var="var" />
+    <ITEM name="i" type="UINT" addr="1283" size="2" var="var" />
+    <ITEM name="index" type="UINT" addr="1285" size="2" var="var" />
+    <ITEM name="startIndex" type="UINT" addr="1287" size="2" var="var" value="23" />
+    <ITEM name="send_UDP" type="fbSendTo" addr="1289" size="25" var="var" />
+    <ITEM name="CRC" type="PTR_TO UINT" addr="1314" size="4" var="var" />
+    <ITEM name="__EDGE_R__sendIamServer" type="BOOL" addr="1318" bit="0" size="1" var="var" />
+    <ITEM name="__EDGE_R__getAllStatus" type="BOOL" addr="1318" bit="1" size="1" var="var" />
+  </RECORD>
+  <RECORD name="TFCU_Status" size="16" pou="struct" >
+    <ITEM name="onOffStatus" type="WORD" addr="0" size="2" />
+    <ITEM name="setTemp" type="INT" addr="2" size="2" />
+    <ITEM name="roomTemp" type="INT" addr="4" size="2" />
+    <ITEM name="fanSpeed" type="WORD" addr="6" size="2" />
+    <ITEM name="mode" type="WORD" addr="8" size="2" />
+    <ITEM name="valve" type="WORD" addr="10" size="2" />
+    <ITEM name="fanSpeedCtrl" type="WORD" addr="12" size="2" />
+    <ITEM name="fanRotationVar" type="WORD" addr="14" size="2" descr="var for rotating the fan GIF in the HMI according to the current fan speed" />
+  </RECORD>
+  <RECORD name="TOutDev" size="3" pou="struct" >
+    <ITEM name="DevAddress" type="USINT" addr="0" size="1" />
+    <ITEM name="loopAddress" type="UINT" addr="1" size="2" />
+  </RECORD>
+  <RECORD name="fbControlRoom" size="3055" pou="fb" descr="function block that send the command to RCU to control
+the lights, curtains, and outlets" >
+    <ITEM name="RCU_ChCode" type="UINT" addr="0" size="2" var="in" />
+    <ITEM name="numOfLights" type="USINT" addr="2" size="1" var="in" />
+    <ITEM name="numOfOutlets" type="USINT" addr="3" size="1" var="in" />
+    <ITEM name="numOfCurtains" type="USINT" addr="4" size="1" var="in" />
+    <ITEM name="numOfMotionSens" type="USINT" addr="5" size="1" var="in" />
+    <ITEM name="RCU_PingDone" type="BOOL" addr="6" bit="0" size="1" var="in" />
+    <ARRAY size="51" lo="1" hi="17" > 
+      <ITEM name="lightsOutputDevs" type="TOutDev" addr="7" size="3" var="in" />
+      </ARRAY> 
+    <ARRAY size="24" lo="1" hi="8" > 
+      <ITEM name="outletOutputDevs" type="TOutDev" addr="58" size="3" var="in" />
+      </ARRAY> 
+    <ARRAY size="18" lo="1" hi="6" > 
+      <ITEM name="curtainsUpOutputDevs" type="TOutDev" addr="82" size="3" var="in" />
+      </ARRAY> 
+    <ARRAY size="18" lo="1" hi="6" > 
+      <ITEM name="curtainsDwOutputDevs" type="TOutDev" addr="100" size="3" var="in" />
+      </ARRAY> 
+    <ARRAY size="12" lo="1" hi="4" > 
+      <ITEM name="MotionSensOutputDevs" type="TOutDev" addr="118" size="3" var="in" />
+      </ARRAY> 
+    <ARRAY size="144" lo="1" hi="24" > 
+      <ITEM name="ExRelay1_LVO" type="TDeviceStatus" addr="130" size="6" var="out" />
+      </ARRAY> 
+    <ARRAY size="144" lo="1" hi="24" > 
+      <ITEM name="ExRelay2_LVO" type="TDeviceStatus" addr="274" size="6" var="out" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="SwitchUPStatus" type="BOOL" addr="418" bit="0" size="1" var="out" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="SwitchDWStatus" type="BOOL" addr="419" bit="0" size="1" var="out" />
+      </ARRAY> 
+    <ITEM name="RCU_CH_IN" type="PTR_TO USINT" addr="420" size="4" var="inout" />
+    <ITEM name="LightsStatus" type="PTR_TO BOOL" addr="424" size="4" var="inout" />
+    <ITEM name="OutletsStatus" type="PTR_TO BOOL" addr="428" size="4" var="inout" />
+    <ITEM name="MotionSenStatus" type="PTR_TO BOOL" addr="432" size="4" var="inout" />
+    <ITEM name="EnLights" type="PTR_TO BOOL" addr="436" size="4" var="inout" />
+    <ITEM name="EnLightsAN" type="PTR_TO USINT" addr="440" size="4" var="inout" />
+    <ITEM name="EnOutlets" type="PTR_TO BOOL" addr="444" size="4" var="inout" />
+    <ITEM name="EnOutletsAN" type="PTR_TO USINT" addr="448" size="4" var="inout" />
+    <ITEM name="SendIamServer" type="PTR_TO BOOL" addr="452" size="4" var="inout" />
+    <ITEM name="GetAllStatus" type="PTR_TO BOOL" addr="456" size="4" var="inout" />
+    <ITEM name="RCU" type="fbControlHotelSystem_UDP" addr="460" size="1319" var="var" />
+    <ITEM name="RCU_RQ" type="BOOL" addr="1779" bit="0" size="1" var="var" />
+    <ITEM name="Server_settings" type="TServerPacket" addr="1780" size="11" var="var" value="(IP := [192,168,0,16])" />
+    <ITEM name="sentPacket" type="THotelPacket" addr="1791" size="1128" var="var" />
+    <ITEM name="K" type="USINT" addr="2919" size="1" var="var" />
+    <ITEM name="i" type="UINT" addr="2920" size="2" var="var" />
+    <ITEM name="cmd_CtrlType" type="USINT" addr="2922" size="1" var="var" />
+    <ITEM name="cmd_CtrlContent" type="USINT" addr="2923" size="1" var="var" />
+    <ITEM name="cmd_CtrlType1" type="USINT" addr="2924" size="1" var="var" />
+    <ITEM name="cmd_CtrlContent1" type="USINT" addr="2925" size="1" var="var" />
+    <ARRAY size="75" lo="1" hi="5" > 
+      <ITEM name="TonCurtainsWait" type="TON" addr="2926" size="15" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="5" > 
+      <ITEM name="EnCurtainsWait" type="BOOL" addr="3001" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="5" > 
+      <ITEM name="EnCurtains" type="BOOL" addr="3002" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="5" lo="1" hi="5" > 
+      <ITEM name="RTCurtains" type="R_TRIG" addr="3003" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="5" lo="1" hi="5" > 
+      <ITEM name="FTCurtains" type="F_TRIG" addr="3008" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="5" > 
+      <ITEM name="Up" type="BOOL" addr="3013" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="5" > 
+      <ITEM name="Dw" type="BOOL" addr="3014" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ITEM name="NumOfCmd" type="USINT" addr="3015" size="1" var="var" value="1" />
+    <ITEM name="RCU_Connected" type="BOOL" addr="3016" bit="0" size="1" var="var" />
+    <ITEM name="RCU_Connected_RT" type="R_TRIG" addr="3017" size="1" var="var" />
+    <ITEM name="RCU_Connection_TOF" type="TOF" addr="3018" size="15" var="var" />
+    <ITEM name="restorStatusDone" type="BOOL" addr="3033" bit="0" size="1" var="var" />
+    <ITEM name="test" type="USINT" addr="3034" size="1" var="var" />
+    <ITEM name="PlcEthAdr" type="TLocalEthAdr" addr="3035" size="12" var="var" />
+    <ITEM name="RCU_ChAdr" type="TRemoteEthAdr" addr="3047" size="8" var="var" />
+  </RECORD>
+  <RECORD name="TFCU_Settings" size="2" pou="struct" >
+    <ITEM name="FCU_Mode" type="USINT" addr="0" size="1" />
+    <ITEM name="FCU_FanSpeed" type="USINT" addr="1" size="1" />
+  </RECORD>
+  <RECORD name="fbControlFCU" size="66" pou="fb" >
+    <ITEM name="enable" type="BOOL" addr="0" bit="0" size="1" var="in" />
+    <ITEM name="mode" type="USINT" addr="1" size="1" var="in" descr="0  is cooling, 1 is fan only" />
+    <ITEM name="fanSpeed" type="USINT" addr="2" size="1" var="in" descr="0 auto, 1 low, 2 med, 3 high" />
+    <ITEM name="setTemp" type="REAL" addr="3" size="4" var="in" />
+    <ITEM name="temp" type="REAL" addr="7" size="4" var="in" />
+    <ITEM name="FCU_Status" type="TFCU_Status" addr="11" size="16" var="out" />
+    <ITEM name="valve" type="PTR_TO BOOL" addr="27" size="4" var="inout" />
+    <ITEM name="fanLow" type="PTR_TO BOOL" addr="31" size="4" var="inout" />
+    <ITEM name="fanMed" type="PTR_TO BOOL" addr="35" size="4" var="inout" />
+    <ITEM name="fanHigh" type="PTR_TO BOOL" addr="39" size="4" var="inout" />
+    <ITEM name="tempDiff" type="REAL" addr="43" size="4" var="var" />
+    <ITEM name="fanRotation_tick" type="fbTick" addr="47" size="15" var="var" />
+    <ITEM name="rotationTime" type="TIME" addr="62" size="4" var="var" />
+  </RECORD>
+  <RECORD name="PrgDiningRoom" size="3336" pou="prog" descr="" >
+    <ITEM name="lightsSelect" type="BOOL" addr="0" bit="0" size="1" var="var" />
+    <ITEM name="socketsSelect" type="BOOL" addr="0" bit="1" size="1" var="var" />
+    <ITEM name="shuttersSelect" type="BOOL" addr="0" bit="2" size="1" var="var" />
+    <ITEM name="AC_Select" type="BOOL" addr="0" bit="3" size="1" var="var" />
+    <ITEM name="navSelect" type="USINT" addr="1" size="1" var="var" />
+    <ITEM name="RCU_ethAdr" type="TRemoteEthAdr" addr="2" size="8" var="var" />
+    <ARRAY size="4" lo="0" hi="3" > 
+      <ITEM name="RCU_IP" type="USINT" addr="10" size="1" var="var" value="[192, 168, 0, 23]" />
+      </ARRAY> 
+    <ITEM name="RCU_Ch_localPort" type="UINT" addr="14" size="2" var="var" />
+    <ITEM name="Set_IP" type="BOOL" addr="16" bit="0" size="1" var="var" />
+    <ITEM name="GetAllStatus" type="BOOL" addr="16" bit="1" size="1" var="var" />
+    <ITEM name="SendIamServer" type="BOOL" addr="16" bit="2" size="1" var="var" />
+    <ITEM name="controlRoom" type="fbControlRoom" addr="17" size="3055" var="var" />
+    <ARRAY size="51" lo="1" hi="17" > 
+      <ITEM name="lightsOutputDevs" type="TOutDev" addr="3072" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 1),(DevAddress := 1 , loopAddress := 2),
+                                                   (DevAddress := 1 , loopAddress := 3),(DevAddress := 1 , loopAddress := 4),
+                                                   (DevAddress := 1 , loopAddress := 5)]" />
+      </ARRAY> 
+    <ARRAY size="24" lo="1" hi="8" > 
+      <ITEM name="outletOutputDevs" type="TOutDev" addr="3123" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 6),(DevAddress := 1 , loopAddress := 7)]" />
+      </ARRAY> 
+    <ARRAY size="12" lo="1" hi="4" > 
+      <ITEM name="motionSensOutputDevs" type="TOutDev" addr="3147" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 1)]" />
+      </ARRAY> 
+    <ARRAY size="3" lo="1" hi="17" > 
+      <ITEM name="EnLights" type="BOOL" addr="3159" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="17" lo="1" hi="17" > 
+      <ITEM name="EnLightsAN" type="USINT" addr="3162" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="8" > 
+      <ITEM name="EnOutlets" type="BOOL" addr="3179" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="8" lo="1" hi="8" > 
+      <ITEM name="EnOutletsAN" type="USINT" addr="3180" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="EnCurtainsUp" type="BOOL" addr="3188" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="EnCurtainsDw" type="BOOL" addr="3189" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="10" lo="1" hi="2" > <ARRAY size="5" lo="1" hi="5" > 
+      <ITEM name="enLights_RT" type="R_TRIG" addr="3190" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="10" lo="1" hi="2" > <ARRAY size="5" lo="1" hi="5" > 
+      <ITEM name="enLights_FT" type="F_TRIG" addr="3200" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="4" lo="1" hi="2" > <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enOutlets_RT" type="R_TRIG" addr="3210" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="4" lo="1" hi="2" > <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enOutlets_FT" type="F_TRIG" addr="3214" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ITEM name="i" type="USINT" addr="3218" size="1" var="var" />
+    <ITEM name="j" type="USINT" addr="3219" size="1" var="var" />
+    <ITEM name="afterRestart_TP" type="TP" addr="3220" size="15" var="var" />
+    <ITEM name="afterRestart_TP_FT" type="F_TRIG" addr="3235" size="1" var="var" />
+    <ARRAY size="1" lo="1" hi="4" > 
+      <ITEM name="motionSensStatus" type="BOOL" addr="3236" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsUpStatus" type="BOOL" addr="3237" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsDwStatus" type="BOOL" addr="3238" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="66" lo="1" hi="1" > 
+      <ITEM name="FCU" type="fbControlFCU" addr="3239" size="66" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enableFCU" type="BOOL" addr="3305" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="2" lo="1" hi="1" > 
+      <ITEM name="settingsFCU" type="TFCU_Settings" addr="3306" size="2" var="var" />
+      </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFCUs_FT" type="F_TRIG" addr="3308" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFCUs_RT" type="R_TRIG" addr="3310" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFanHigh_RT" type="R_TRIG" addr="3312" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFanMed_RT" type="R_TRIG" addr="3314" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFanLow_RT" type="R_TRIG" addr="3316" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFanAuto_RT" type="R_TRIG" addr="3318" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFCUCool_RT" type="R_TRIG" addr="3320" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFCUFanOnly_RT" type="R_TRIG" addr="3322" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enSetTempIncr_RT" type="R_TRIG" addr="3324" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enSetTempIncr_FT" type="F_TRIG" addr="3326" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enSetTempDecr_RT" type="R_TRIG" addr="3328" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enSetTempDecr_FT" type="F_TRIG" addr="3330" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ITEM name="HMI_Index" type="USINT" addr="3332" size="1" var="var" />
+    <ITEM name="RCU_Index" type="USINT" addr="3333" size="1" var="var" />
+    <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="HMI_Addresses" type="USINT" addr="3334" size="1" var="var" value="[2, 10]" />
+      </ARRAY> 
+  </RECORD>
+  <RECORD name="PrgLivingRoom" size="3295" pou="prog" descr="" >
+    <ITEM name="lightsSelect" type="BOOL" addr="0" bit="0" size="1" var="var" />
+    <ITEM name="socketsSelect" type="BOOL" addr="0" bit="1" size="1" var="var" />
+    <ITEM name="shuttersSelect" type="BOOL" addr="0" bit="2" size="1" var="var" />
+    <ITEM name="AC_Select" type="BOOL" addr="0" bit="3" size="1" var="var" />
+    <ITEM name="navSelect" type="USINT" addr="1" size="1" var="var" />
+    <ITEM name="RCU_ethAdr" type="TRemoteEthAdr" addr="2" size="8" var="var" />
+    <ARRAY size="4" lo="0" hi="3" > 
+      <ITEM name="RCU_IP" type="USINT" addr="10" size="1" var="var" value="[192, 168, 0, 23]" />
+      </ARRAY> 
+    <ITEM name="RCU_Ch_localPort" type="UINT" addr="14" size="2" var="var" />
+    <ITEM name="Set_IP" type="BOOL" addr="16" bit="0" size="1" var="var" />
+    <ITEM name="GetAllStatus" type="BOOL" addr="16" bit="1" size="1" var="var" />
+    <ITEM name="SendIamServer" type="BOOL" addr="16" bit="2" size="1" var="var" />
+    <ITEM name="controlRoom" type="fbControlRoom" addr="17" size="3055" var="var" />
+    <ARRAY size="51" lo="1" hi="17" > 
+      <ITEM name="lightsOutputDevs" type="TOutDev" addr="3072" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 1),(DevAddress := 1 , loopAddress := 2),
+                                                   (DevAddress := 1 , loopAddress := 3),(DevAddress := 1 , loopAddress := 4),
+                                                   (DevAddress := 1 , loopAddress := 5)]" />
+      </ARRAY> 
+    <ARRAY size="24" lo="1" hi="8" > 
+      <ITEM name="outletOutputDevs" type="TOutDev" addr="3123" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 6),(DevAddress := 1 , loopAddress := 7)]" />
+      </ARRAY> 
+    <ARRAY size="18" lo="1" hi="6" > 
+      <ITEM name="curtainsUpOutputDevs" type="TOutDev" addr="3147" size="3" var="var" value="[(DevAddress := 2 , loopAddress := 1), (DevAddress := 2 , loopAddress := 3)]" />
+      </ARRAY> 
+    <ARRAY size="18" lo="1" hi="6" > 
+      <ITEM name="curtainsDwOutputDevs" type="TOutDev" addr="3165" size="3" var="var" value="[(DevAddress := 2 , loopAddress := 2), (DevAddress := 2 , loopAddress := 4)]" />
+      </ARRAY> 
+    <ARRAY size="12" lo="1" hi="4" > 
+      <ITEM name="motionSensOutputDevs" type="TOutDev" addr="3183" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 1)]" />
+      </ARRAY> 
+    <ARRAY size="3" lo="1" hi="17" > 
+      <ITEM name="EnLights" type="BOOL" addr="3195" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="17" lo="1" hi="17" > 
+      <ITEM name="EnLightsAN" type="USINT" addr="3198" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="8" > 
+      <ITEM name="EnOutlets" type="BOOL" addr="3215" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="8" lo="1" hi="8" > 
+      <ITEM name="EnOutletsAN" type="USINT" addr="3216" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="EnCurtainsUp" type="BOOL" addr="3224" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="EnCurtainsDw" type="BOOL" addr="3225" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="10" lo="1" hi="2" > <ARRAY size="5" lo="1" hi="5" > 
+      <ITEM name="enLights_RT" type="R_TRIG" addr="3226" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="10" lo="1" hi="2" > <ARRAY size="5" lo="1" hi="5" > 
+      <ITEM name="enLights_FT" type="F_TRIG" addr="3236" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="4" lo="1" hi="2" > <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enOutlets_RT" type="R_TRIG" addr="3246" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="4" lo="1" hi="2" > <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enOutlets_FT" type="F_TRIG" addr="3250" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="4" lo="1" hi="2" > <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enCurtainsUP_RT" type="R_TRIG" addr="3254" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="4" lo="1" hi="2" > <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enCurtainsUP_FT" type="F_TRIG" addr="3258" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="4" lo="1" hi="2" > <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enCurtainsDW_RT" type="R_TRIG" addr="3262" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="4" lo="1" hi="2" > <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enCurtainsDW_FT" type="F_TRIG" addr="3266" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ITEM name="i" type="USINT" addr="3270" size="1" var="var" />
+    <ITEM name="j" type="USINT" addr="3271" size="1" var="var" />
+    <ITEM name="afterRestart_TP" type="TP" addr="3272" size="15" var="var" />
+    <ITEM name="afterRestart_TP_FT" type="F_TRIG" addr="3287" size="1" var="var" />
+    <ARRAY size="1" lo="1" hi="4" > 
+      <ITEM name="motionSensStatus" type="BOOL" addr="3288" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsUpStatus" type="BOOL" addr="3289" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsDwStatus" type="BOOL" addr="3290" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ITEM name="HMI_Index" type="USINT" addr="3291" size="1" var="var" />
+    <ITEM name="RCU_Index" type="USINT" addr="3292" size="1" var="var" />
+    <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="HMI_Addresses" type="USINT" addr="3293" size="1" var="var" value="[3, 5]" />
+      </ARRAY> 
+  </RECORD>
+  <RECORD name="PrgKitchen" size="3313" pou="prog" descr="" >
+    <ITEM name="lightsSelect" type="BOOL" addr="0" bit="0" size="1" var="var" />
+    <ITEM name="socketsSelect" type="BOOL" addr="0" bit="1" size="1" var="var" />
+    <ITEM name="shuttersSelect" type="BOOL" addr="0" bit="2" size="1" var="var" />
+    <ITEM name="AC_Select" type="BOOL" addr="0" bit="3" size="1" var="var" />
+    <ITEM name="navSelect" type="USINT" addr="1" size="1" var="var" />
+    <ITEM name="RCU_ethAdr" type="TRemoteEthAdr" addr="2" size="8" var="var" />
+    <ARRAY size="4" lo="0" hi="3" > 
+      <ITEM name="RCU_IP" type="USINT" addr="10" size="1" var="var" value="[192, 168, 0, 23]" />
+      </ARRAY> 
+    <ITEM name="RCU_Ch_localPort" type="UINT" addr="14" size="2" var="var" />
+    <ITEM name="Set_IP" type="BOOL" addr="16" bit="0" size="1" var="var" />
+    <ITEM name="GetAllStatus" type="BOOL" addr="16" bit="1" size="1" var="var" />
+    <ITEM name="SendIamServer" type="BOOL" addr="16" bit="2" size="1" var="var" />
+    <ITEM name="controlRoom" type="fbControlRoom" addr="17" size="3055" var="var" />
+    <ARRAY size="51" lo="1" hi="17" > 
+      <ITEM name="lightsOutputDevs" type="TOutDev" addr="3072" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 1),(DevAddress := 1 , loopAddress := 2),
+                                                   (DevAddress := 1 , loopAddress := 3),(DevAddress := 1 , loopAddress := 4)]" />
+      </ARRAY> 
+    <ARRAY size="24" lo="1" hi="8" > 
+      <ITEM name="outletOutputDevs" type="TOutDev" addr="3123" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 5),(DevAddress := 1 , loopAddress := 6),
+                                                   (DevAddress := 1 , loopAddress := 7),(DevAddress := 1 , loopAddress := 8),(DevAddress := 1 , loopAddress := 9)]" />
+      </ARRAY> 
+    <ARRAY size="12" lo="1" hi="4" > 
+      <ITEM name="motionSensOutputDevs" type="TOutDev" addr="3147" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 1)]" />
+      </ARRAY> 
+    <ARRAY size="3" lo="1" hi="17" > 
+      <ITEM name="EnLights" type="BOOL" addr="3159" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="17" lo="1" hi="17" > 
+      <ITEM name="EnLightsAN" type="USINT" addr="3162" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="8" > 
+      <ITEM name="EnOutlets" type="BOOL" addr="3179" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="8" lo="1" hi="8" > 
+      <ITEM name="EnOutletsAN" type="USINT" addr="3180" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="EnCurtainsUp" type="BOOL" addr="3188" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="EnCurtainsDw" type="BOOL" addr="3189" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="4" lo="1" hi="1" > <ARRAY size="4" lo="1" hi="4" > 
+      <ITEM name="enLights_RT" type="R_TRIG" addr="3190" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="4" lo="1" hi="1" > <ARRAY size="4" lo="1" hi="4" > 
+      <ITEM name="enLights_FT" type="F_TRIG" addr="3194" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="5" lo="1" hi="1" > <ARRAY size="5" lo="1" hi="5" > 
+      <ITEM name="enOutlets_RT" type="R_TRIG" addr="3198" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="5" lo="1" hi="1" > <ARRAY size="5" lo="1" hi="5" > 
+      <ITEM name="enOutlets_FT" type="F_TRIG" addr="3203" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ITEM name="i" type="USINT" addr="3208" size="1" var="var" />
+    <ITEM name="j" type="USINT" addr="3209" size="1" var="var" />
+    <ITEM name="afterRestart_TP" type="TP" addr="3210" size="15" var="var" />
+    <ITEM name="afterRestart_TP_FT" type="F_TRIG" addr="3225" size="1" var="var" />
+    <ARRAY size="1" lo="1" hi="4" > 
+      <ITEM name="motionSensStatus" type="BOOL" addr="3226" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsUpStatus" type="BOOL" addr="3227" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsDwStatus" type="BOOL" addr="3228" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="66" lo="1" hi="1" > 
+      <ITEM name="FCU" type="fbControlFCU" addr="3229" size="66" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enableFCU" type="BOOL" addr="3295" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="2" lo="1" hi="1" > 
+      <ITEM name="settingsFCU" type="TFCU_Settings" addr="3296" size="2" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFCUs_FT" type="F_TRIG" addr="3298" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFCUs_RT" type="R_TRIG" addr="3299" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFanHigh_RT" type="R_TRIG" addr="3300" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFanMed_RT" type="R_TRIG" addr="3301" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFanLow_RT" type="R_TRIG" addr="3302" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFanAuto_RT" type="R_TRIG" addr="3303" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFCUCool_RT" type="R_TRIG" addr="3304" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFCUFanOnly_RT" type="R_TRIG" addr="3305" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enSetTempIncr_RT" type="R_TRIG" addr="3306" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enSetTempIncr_FT" type="F_TRIG" addr="3307" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enSetTempDecr_RT" type="R_TRIG" addr="3308" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enSetTempDecr_FT" type="F_TRIG" addr="3309" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ITEM name="HMI_Index" type="USINT" addr="3310" size="1" var="var" />
+    <ITEM name="RCU_Index" type="USINT" addr="3311" size="1" var="var" />
+    <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="HMI_Addresses" type="USINT" addr="3312" size="1" var="var" value="[7]" />
+      </ARRAY> 
+  </RECORD>
+  <RECORD name="PrgServiceRoom" size="3230" pou="prog" descr="" >
+    <ITEM name="lightsSelect" type="BOOL" addr="0" bit="0" size="1" var="var" />
+    <ITEM name="socketsSelect" type="BOOL" addr="0" bit="1" size="1" var="var" />
+    <ITEM name="shuttersSelect" type="BOOL" addr="0" bit="2" size="1" var="var" />
+    <ITEM name="AC_Select" type="BOOL" addr="0" bit="3" size="1" var="var" />
+    <ITEM name="navSelect" type="USINT" addr="1" size="1" var="var" />
+    <ITEM name="RCU_ethAdr" type="TRemoteEthAdr" addr="2" size="8" var="var" />
+    <ARRAY size="4" lo="0" hi="3" > 
+      <ITEM name="RCU_IP" type="USINT" addr="10" size="1" var="var" value="[192, 168, 0, 23]" />
+      </ARRAY> 
+    <ITEM name="RCU_Ch_localPort" type="UINT" addr="14" size="2" var="var" />
+    <ITEM name="Set_IP" type="BOOL" addr="16" bit="0" size="1" var="var" />
+    <ITEM name="GetAllStatus" type="BOOL" addr="16" bit="1" size="1" var="var" />
+    <ITEM name="SendIamServer" type="BOOL" addr="16" bit="2" size="1" var="var" />
+    <ITEM name="controlRoom" type="fbControlRoom" addr="17" size="3055" var="var" />
+    <ARRAY size="51" lo="1" hi="17" > 
+      <ITEM name="lightsOutputDevs" type="TOutDev" addr="3072" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 1),(DevAddress := 1 , loopAddress := 2),
+                                                   (DevAddress := 1 , loopAddress := 3)]" />
+      </ARRAY> 
+    <ARRAY size="24" lo="1" hi="8" > 
+      <ITEM name="outletOutputDevs" type="TOutDev" addr="3123" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 4),(DevAddress := 1 , loopAddress := 5),
+                                                   (DevAddress := 1 , loopAddress := 6),(DevAddress := 1 , loopAddress := 7), (DevAddress := 1 , loopAddress := 8)]" />
+      </ARRAY> 
+    <ARRAY size="12" lo="1" hi="4" > 
+      <ITEM name="motionSensOutputDevs" type="TOutDev" addr="3147" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 1)]" />
+      </ARRAY> 
+    <ARRAY size="3" lo="1" hi="17" > 
+      <ITEM name="EnLights" type="BOOL" addr="3159" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="17" lo="1" hi="17" > 
+      <ITEM name="EnLightsAN" type="USINT" addr="3162" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="8" > 
+      <ITEM name="EnOutlets" type="BOOL" addr="3179" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="8" lo="1" hi="8" > 
+      <ITEM name="EnOutletsAN" type="USINT" addr="3180" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="EnCurtainsUp" type="BOOL" addr="3188" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="EnCurtainsDw" type="BOOL" addr="3189" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="3" lo="1" hi="1" > <ARRAY size="3" lo="1" hi="3" > 
+      <ITEM name="enLights_RT" type="R_TRIG" addr="3190" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="3" lo="1" hi="1" > <ARRAY size="3" lo="1" hi="3" > 
+      <ITEM name="enLights_FT" type="F_TRIG" addr="3193" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="5" lo="1" hi="1" > <ARRAY size="5" lo="1" hi="5" > 
+      <ITEM name="enOutlets_RT" type="R_TRIG" addr="3196" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="5" lo="1" hi="1" > <ARRAY size="5" lo="1" hi="5" > 
+      <ITEM name="enOutlets_FT" type="F_TRIG" addr="3201" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ITEM name="i" type="USINT" addr="3206" size="1" var="var" />
+    <ITEM name="j" type="USINT" addr="3207" size="1" var="var" />
+    <ITEM name="afterRestart_TP" type="TP" addr="3208" size="15" var="var" />
+    <ITEM name="afterRestart_TP_FT" type="F_TRIG" addr="3223" size="1" var="var" />
+    <ARRAY size="1" lo="1" hi="4" > 
+      <ITEM name="motionSensStatus" type="BOOL" addr="3224" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsUpStatus" type="BOOL" addr="3225" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsDwStatus" type="BOOL" addr="3226" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ITEM name="HMI_Index" type="USINT" addr="3227" size="1" var="var" />
+    <ITEM name="RCU_Index" type="USINT" addr="3228" size="1" var="var" />
+    <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="HMI_Addresses" type="USINT" addr="3229" size="1" var="var" value="[8]" />
+      </ARRAY> 
+  </RECORD>
+  <RECORD name="PrgMasterRoom" size="3408" pou="prog" descr="" >
+    <ITEM name="lightsSelect" type="BOOL" addr="0" bit="0" size="1" var="var" />
+    <ITEM name="socketsSelect" type="BOOL" addr="0" bit="1" size="1" var="var" />
+    <ITEM name="shuttersSelect" type="BOOL" addr="0" bit="2" size="1" var="var" />
+    <ITEM name="AC_Select" type="BOOL" addr="0" bit="3" size="1" var="var" />
+    <ITEM name="navSelect" type="USINT" addr="1" size="1" var="var" />
+    <ITEM name="RCU_ethAdr" type="TRemoteEthAdr" addr="2" size="8" var="var" />
+    <ARRAY size="4" lo="0" hi="3" > 
+      <ITEM name="RCU_IP" type="USINT" addr="10" size="1" var="var" value="[192, 168, 0, 23]" />
+      </ARRAY> 
+    <ITEM name="RCU_Ch_localPort" type="UINT" addr="14" size="2" var="var" />
+    <ITEM name="Set_IP" type="BOOL" addr="16" bit="0" size="1" var="var" />
+    <ITEM name="GetAllStatus" type="BOOL" addr="16" bit="1" size="1" var="var" />
+    <ITEM name="SendIamServer" type="BOOL" addr="16" bit="2" size="1" var="var" />
+    <ITEM name="controlRoom" type="fbControlRoom" addr="17" size="3055" var="var" />
+    <ARRAY size="51" lo="1" hi="17" > 
+      <ITEM name="lightsOutputDevs" type="TOutDev" addr="3072" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 1),(DevAddress := 1 , loopAddress := 2),
+                                                   (DevAddress := 1 , loopAddress := 3),(DevAddress := 1 , loopAddress := 4),
+                                                   (DevAddress := 1 , loopAddress := 5),(DevAddress := 1 , loopAddress := 6),
+                                                   (DevAddress := 1 , loopAddress := 7),(DevAddress := 1 , loopAddress := 8)]" />
+      </ARRAY> 
+    <ARRAY size="24" lo="1" hi="8" > 
+      <ITEM name="outletOutputDevs" type="TOutDev" addr="3123" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 9),(DevAddress := 1 , loopAddress := 10),
+                                                   (DevAddress := 2 , loopAddress := 1),(DevAddress := 2 , loopAddress := 2)]" />
+      </ARRAY> 
+    <ARRAY size="18" lo="1" hi="6" > 
+      <ITEM name="curtainsUpOutputDevs" type="TOutDev" addr="3147" size="3" var="var" value="[(DevAddress := 2 , loopAddress := 3),(DevAddress := 2 , loopAddress := 5)]" />
+      </ARRAY> 
+    <ARRAY size="18" lo="1" hi="6" > 
+      <ITEM name="curtainsDwOutputDevs" type="TOutDev" addr="3165" size="3" var="var" value="[(DevAddress := 2 , loopAddress := 4),(DevAddress := 2 , loopAddress := 6)]" />
+      </ARRAY> 
+    <ARRAY size="12" lo="1" hi="4" > 
+      <ITEM name="motionSensOutputDevs" type="TOutDev" addr="3183" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 1)]" />
+      </ARRAY> 
+    <ARRAY size="3" lo="1" hi="17" > 
+      <ITEM name="EnLights" type="BOOL" addr="3195" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="17" lo="1" hi="17" > 
+      <ITEM name="EnLightsAN" type="USINT" addr="3198" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="8" > 
+      <ITEM name="EnOutlets" type="BOOL" addr="3215" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="8" lo="1" hi="8" > 
+      <ITEM name="EnOutletsAN" type="USINT" addr="3216" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="EnCurtainsUp" type="BOOL" addr="3224" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="EnCurtainsDw" type="BOOL" addr="3225" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="16" lo="1" hi="2" > <ARRAY size="8" lo="1" hi="8" > 
+      <ITEM name="enLights_RT" type="R_TRIG" addr="3226" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="16" lo="1" hi="2" > <ARRAY size="8" lo="1" hi="8" > 
+      <ITEM name="enLights_FT" type="F_TRIG" addr="3242" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="8" lo="1" hi="2" > <ARRAY size="4" lo="1" hi="4" > 
+      <ITEM name="enOutlets_RT" type="R_TRIG" addr="3258" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="8" lo="1" hi="2" > <ARRAY size="4" lo="1" hi="4" > 
+      <ITEM name="enOutlets_FT" type="F_TRIG" addr="3266" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="4" lo="1" hi="2" > <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enCurtainsUP_RT" type="R_TRIG" addr="3274" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="4" lo="1" hi="2" > <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enCurtainsUP_FT" type="F_TRIG" addr="3278" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="4" lo="1" hi="2" > <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enCurtainsDW_RT" type="R_TRIG" addr="3282" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="4" lo="1" hi="2" > <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enCurtainsDW_FT" type="F_TRIG" addr="3286" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ITEM name="i" type="USINT" addr="3290" size="1" var="var" />
+    <ITEM name="j" type="USINT" addr="3291" size="1" var="var" />
+    <ITEM name="afterRestart_TP" type="TP" addr="3292" size="15" var="var" />
+    <ITEM name="afterRestart_TP_FT" type="F_TRIG" addr="3307" size="1" var="var" />
+    <ARRAY size="1" lo="1" hi="4" > 
+      <ITEM name="motionSensStatus" type="BOOL" addr="3308" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsUpStatus" type="BOOL" addr="3309" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsDwStatus" type="BOOL" addr="3310" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="66" lo="1" hi="1" > 
+      <ITEM name="FCU" type="fbControlFCU" addr="3311" size="66" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enableFCU" type="BOOL" addr="3377" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="2" lo="1" hi="1" > 
+      <ITEM name="settingsFCU" type="TFCU_Settings" addr="3378" size="2" var="var" />
+      </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFCUs_FT" type="F_TRIG" addr="3380" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFCUs_RT" type="R_TRIG" addr="3382" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFanHigh_RT" type="R_TRIG" addr="3384" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFanMed_RT" type="R_TRIG" addr="3386" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFanLow_RT" type="R_TRIG" addr="3388" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFanAuto_RT" type="R_TRIG" addr="3390" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFCUCool_RT" type="R_TRIG" addr="3392" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFCUFanOnly_RT" type="R_TRIG" addr="3394" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enSetTempIncr_RT" type="R_TRIG" addr="3396" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enSetTempIncr_FT" type="F_TRIG" addr="3398" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enSetTempDecr_RT" type="R_TRIG" addr="3400" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enSetTempDecr_FT" type="F_TRIG" addr="3402" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ITEM name="HMI_Index" type="USINT" addr="3404" size="1" var="var" />
+    <ITEM name="RCU_Index" type="USINT" addr="3405" size="1" var="var" />
+    <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="HMI_Addresses" type="USINT" addr="3406" size="1" var="var" value="[4, 6]" />
+      </ARRAY> 
+  </RECORD>
+  <RECORD name="PrgRoom4" size="3384" pou="prog" descr="" >
+    <ITEM name="lightsSelect" type="BOOL" addr="0" bit="0" size="1" var="var" />
+    <ITEM name="socketsSelect" type="BOOL" addr="0" bit="1" size="1" var="var" />
+    <ITEM name="shuttersSelect" type="BOOL" addr="0" bit="2" size="1" var="var" />
+    <ITEM name="AC_Select" type="BOOL" addr="0" bit="3" size="1" var="var" />
+    <ITEM name="navSelect" type="USINT" addr="1" size="1" var="var" />
+    <ITEM name="RCU_ethAdr" type="TRemoteEthAdr" addr="2" size="8" var="var" />
+    <ARRAY size="4" lo="0" hi="3" > 
+      <ITEM name="RCU_IP" type="USINT" addr="10" size="1" var="var" value="[192, 168, 0, 23]" />
+      </ARRAY> 
+    <ITEM name="RCU_Ch_localPort" type="UINT" addr="14" size="2" var="var" />
+    <ITEM name="Set_IP" type="BOOL" addr="16" bit="0" size="1" var="var" />
+    <ITEM name="GetAllStatus" type="BOOL" addr="16" bit="1" size="1" var="var" />
+    <ITEM name="SendIamServer" type="BOOL" addr="16" bit="2" size="1" var="var" />
+    <ITEM name="controlRoom" type="fbControlRoom" addr="17" size="3055" var="var" />
+    <ARRAY size="51" lo="1" hi="17" > 
+      <ITEM name="lightsOutputDevs" type="TOutDev" addr="3072" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 1),(DevAddress := 1 , loopAddress := 2),
+                                                   (DevAddress := 1 , loopAddress := 3),(DevAddress := 1 , loopAddress := 4),
+                                                   (DevAddress := 1 , loopAddress := 5),(DevAddress := 1 , loopAddress := 6)]" />
+      </ARRAY> 
+    <ARRAY size="24" lo="1" hi="8" > 
+      <ITEM name="outletOutputDevs" type="TOutDev" addr="3123" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 7),(DevAddress := 1 , loopAddress := 8)]" />
+      </ARRAY> 
+    <ARRAY size="18" lo="1" hi="6" > 
+      <ITEM name="curtainsUpOutputDevs" type="TOutDev" addr="3147" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 9)]" />
+      </ARRAY> 
+    <ARRAY size="18" lo="1" hi="6" > 
+      <ITEM name="curtainsDwOutputDevs" type="TOutDev" addr="3165" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 10)]" />
+      </ARRAY> 
+    <ARRAY size="12" lo="1" hi="4" > 
+      <ITEM name="motionSensOutputDevs" type="TOutDev" addr="3183" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 1),(DevAddress := 1 , loopAddress := 2)]" />
+      </ARRAY> 
+    <ARRAY size="3" lo="1" hi="17" > 
+      <ITEM name="EnLights" type="BOOL" addr="3195" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="17" lo="1" hi="17" > 
+      <ITEM name="EnLightsAN" type="USINT" addr="3198" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="8" > 
+      <ITEM name="EnOutlets" type="BOOL" addr="3215" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="8" lo="1" hi="8" > 
+      <ITEM name="EnOutletsAN" type="USINT" addr="3216" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="EnCurtainsUp" type="BOOL" addr="3224" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="EnCurtainsDw" type="BOOL" addr="3225" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="12" lo="1" hi="2" > <ARRAY size="6" lo="1" hi="6" > 
+      <ITEM name="enLights_RT" type="R_TRIG" addr="3226" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="12" lo="1" hi="2" > <ARRAY size="6" lo="1" hi="6" > 
+      <ITEM name="enLights_FT" type="F_TRIG" addr="3238" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="4" lo="1" hi="2" > <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enOutlets_RT" type="R_TRIG" addr="3250" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="4" lo="1" hi="2" > <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enOutlets_FT" type="F_TRIG" addr="3254" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enCurtainsUP_RT" type="R_TRIG" addr="3258" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enCurtainsUP_FT" type="F_TRIG" addr="3260" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enCurtainsDW_RT" type="R_TRIG" addr="3262" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enCurtainsDW_FT" type="F_TRIG" addr="3264" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ITEM name="i" type="USINT" addr="3266" size="1" var="var" />
+    <ITEM name="j" type="USINT" addr="3267" size="1" var="var" />
+    <ITEM name="afterRestart_TP" type="TP" addr="3268" size="15" var="var" />
+    <ITEM name="afterRestart_TP_FT" type="F_TRIG" addr="3283" size="1" var="var" />
+    <ARRAY size="1" lo="1" hi="4" > 
+      <ITEM name="motionSensStatus" type="BOOL" addr="3284" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsUpStatus" type="BOOL" addr="3285" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsDwStatus" type="BOOL" addr="3286" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="66" lo="1" hi="1" > 
+      <ITEM name="FCU" type="fbControlFCU" addr="3287" size="66" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enableFCU" type="BOOL" addr="3353" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="2" lo="1" hi="1" > 
+      <ITEM name="settingsFCU" type="TFCU_Settings" addr="3354" size="2" var="var" />
+      </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFCUs_FT" type="F_TRIG" addr="3356" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFCUs_RT" type="R_TRIG" addr="3358" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFanHigh_RT" type="R_TRIG" addr="3360" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFanMed_RT" type="R_TRIG" addr="3362" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFanLow_RT" type="R_TRIG" addr="3364" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFanAuto_RT" type="R_TRIG" addr="3366" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFCUCool_RT" type="R_TRIG" addr="3368" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enFCUFanOnly_RT" type="R_TRIG" addr="3370" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enSetTempIncr_RT" type="R_TRIG" addr="3372" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enSetTempIncr_FT" type="F_TRIG" addr="3374" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enSetTempDecr_RT" type="R_TRIG" addr="3376" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enSetTempDecr_FT" type="F_TRIG" addr="3378" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ITEM name="HMI_Index" type="USINT" addr="3380" size="1" var="var" />
+    <ITEM name="RCU_Index" type="USINT" addr="3381" size="1" var="var" />
+    <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="HMI_Addresses" type="USINT" addr="3382" size="1" var="var" value="[9, 11]" />
+      </ARRAY> 
+  </RECORD>
+  <RECORD name="PrgInterance" size="3230" pou="prog" descr="" >
+    <ITEM name="lightsSelect" type="BOOL" addr="0" bit="0" size="1" var="var" />
+    <ITEM name="socketsSelect" type="BOOL" addr="0" bit="1" size="1" var="var" />
+    <ITEM name="shuttersSelect" type="BOOL" addr="0" bit="2" size="1" var="var" />
+    <ITEM name="AC_Select" type="BOOL" addr="0" bit="3" size="1" var="var" />
+    <ITEM name="navSelect" type="USINT" addr="1" size="1" var="var" />
+    <ITEM name="RCU_ethAdr" type="TRemoteEthAdr" addr="2" size="8" var="var" />
+    <ARRAY size="4" lo="0" hi="3" > 
+      <ITEM name="RCU_IP" type="USINT" addr="10" size="1" var="var" value="[192, 168, 0, 23]" />
+      </ARRAY> 
+    <ITEM name="RCU_Ch_localPort" type="UINT" addr="14" size="2" var="var" />
+    <ITEM name="Set_IP" type="BOOL" addr="16" bit="0" size="1" var="var" />
+    <ITEM name="GetAllStatus" type="BOOL" addr="16" bit="1" size="1" var="var" />
+    <ITEM name="SendIamServer" type="BOOL" addr="16" bit="2" size="1" var="var" />
+    <ITEM name="controlRoom" type="fbControlRoom" addr="17" size="3055" var="var" />
+    <ARRAY size="51" lo="1" hi="17" > 
+      <ITEM name="lightsOutputDevs" type="TOutDev" addr="3072" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 1),(DevAddress := 1 , loopAddress := 2),
+                                                   (DevAddress := 1 , loopAddress := 3),(DevAddress := 1 , loopAddress := 4),
+                                                   (DevAddress := 1 , loopAddress := 5),(DevAddress := 1 , loopAddress := 6)]" />
+      </ARRAY> 
+    <ARRAY size="24" lo="1" hi="8" > 
+      <ITEM name="outletOutputDevs" type="TOutDev" addr="3123" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 7)]" />
+      </ARRAY> 
+    <ARRAY size="12" lo="1" hi="4" > 
+      <ITEM name="motionSensOutputDevs" type="TOutDev" addr="3147" size="3" var="var" value="[(DevAddress := 1 , loopAddress := 1)]" />
+      </ARRAY> 
+    <ARRAY size="3" lo="1" hi="17" > 
+      <ITEM name="EnLights" type="BOOL" addr="3159" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="17" lo="1" hi="17" > 
+      <ITEM name="EnLightsAN" type="USINT" addr="3162" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="8" > 
+      <ITEM name="EnOutlets" type="BOOL" addr="3179" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="8" lo="1" hi="8" > 
+      <ITEM name="EnOutletsAN" type="USINT" addr="3180" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="EnCurtainsUp" type="BOOL" addr="3188" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="EnCurtainsDw" type="BOOL" addr="3189" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="6" lo="1" hi="1" > <ARRAY size="6" lo="1" hi="6" > 
+      <ITEM name="enLights_RT" type="R_TRIG" addr="3190" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="6" lo="1" hi="1" > <ARRAY size="6" lo="1" hi="6" > 
+      <ITEM name="enLights_FT" type="F_TRIG" addr="3196" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="1" > <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enOutlets_RT" type="R_TRIG" addr="3202" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ARRAY size="2" lo="1" hi="1" > <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enOutlets_FT" type="F_TRIG" addr="3204" size="1" var="var" />
+      </ARRAY> </ARRAY> 
+    <ITEM name="i" type="USINT" addr="3206" size="1" var="var" />
+    <ITEM name="j" type="USINT" addr="3207" size="1" var="var" />
+    <ITEM name="afterRestart_TP" type="TP" addr="3208" size="15" var="var" />
+    <ITEM name="afterRestart_TP_FT" type="F_TRIG" addr="3223" size="1" var="var" />
+    <ARRAY size="1" lo="1" hi="4" > 
+      <ITEM name="motionSensStatus" type="BOOL" addr="3224" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsUpStatus" type="BOOL" addr="3225" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsDwStatus" type="BOOL" addr="3226" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ITEM name="HMI_Index" type="USINT" addr="3227" size="1" var="var" />
+    <ITEM name="RCU_Index" type="USINT" addr="3228" size="1" var="var" />
+    <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="HMI_Addresses" type="USINT" addr="3229" size="1" var="var" value="[1]" />
+      </ARRAY> 
+  </RECORD>
+ </TYPES>
+ <DATA>
+  <ARRAY size="3" lo="1" hi="17" > 
+    <ITEM name="lightsStatusDiningRoom" type="BOOL" location="%M" addr="2833" bit="0" size="1" puball="1" />
+    </ARRAY> 
+  <ARRAY size="1" lo="1" hi="8" > 
+    <ITEM name="outletsStatusDiningRoom" type="BOOL" location="%M" addr="2836" bit="0" size="1" puball="1" />
+    </ARRAY> 
+  <ARRAY size="3" lo="1" hi="17" > 
+    <ITEM name="lightsStatusLivingRoom" type="BOOL" location="%M" addr="2841" bit="0" size="1" puball="1" />
+    </ARRAY> 
+  <ARRAY size="1" lo="1" hi="8" > 
+    <ITEM name="outletsStatusLivingRoom" type="BOOL" location="%M" addr="2844" bit="0" size="1" puball="1" />
+    </ARRAY> 
+  <ARRAY size="3" lo="1" hi="17" > 
+    <ITEM name="lightsStatusKitchen" type="BOOL" location="%M" addr="2845" bit="0" size="1" puball="1" />
+    </ARRAY> 
+  <ARRAY size="1" lo="1" hi="8" > 
+    <ITEM name="outletsStatusKitchen" type="BOOL" location="%M" addr="2848" bit="0" size="1" puball="1" />
+    </ARRAY> 
+  <ARRAY size="3" lo="1" hi="17" > 
+    <ITEM name="lightsStatusServiceRoom" type="BOOL" location="%M" addr="2853" bit="0" size="1" puball="1" />
+    </ARRAY> 
+  <ARRAY size="1" lo="1" hi="8" > 
+    <ITEM name="outletsStatusServiceRoom" type="BOOL" location="%M" addr="2856" bit="0" size="1" puball="1" />
+    </ARRAY> 
+  <ARRAY size="3" lo="1" hi="17" > 
+    <ITEM name="lightsStatusMasterRoom" type="BOOL" location="%M" addr="2857" bit="0" size="1" puball="1" />
+    </ARRAY> 
+  <ARRAY size="1" lo="1" hi="8" > 
+    <ITEM name="outletsStatusMasterRoom" type="BOOL" location="%M" addr="2860" bit="0" size="1" puball="1" />
+    </ARRAY> 
+  <ARRAY size="3" lo="1" hi="17" > 
+    <ITEM name="lightsStatusRoom4" type="BOOL" location="%M" addr="2865" bit="0" size="1" puball="1" />
+    </ARRAY> 
+  <ARRAY size="1" lo="1" hi="8" > 
+    <ITEM name="outletsStatusRoom4" type="BOOL" location="%M" addr="2868" bit="0" size="1" puball="1" />
+    </ARRAY> 
+  <ARRAY size="3" lo="1" hi="17" > 
+    <ITEM name="lightsStatusInterance" type="BOOL" location="%M" addr="2873" bit="0" size="1" puball="1" />
+    </ARRAY> 
+  <ARRAY size="1" lo="1" hi="8" > 
+    <ITEM name="outletsStatusInterance" type="BOOL" location="%M" addr="2876" bit="0" size="1" puball="1" />
+    </ARRAY> 
+  <ITEM name="DiningRoom" type="PrgDiningRoom" location="%M" addr="3277" size="3336" />
+  <ITEM name="LivingRoom" type="PrgLivingRoom" location="%M" addr="6613" size="3295" />
+  <ITEM name="Kitchen" type="PrgKitchen" location="%M" addr="9908" size="3313" />
+  <ITEM name="ServiceRoom" type="PrgServiceRoom" location="%M" addr="13221" size="3230" />
+  <ITEM name="MasterRoom" type="PrgMasterRoom" location="%M" addr="16451" size="3408" />
+  <ITEM name="Room4" type="PrgRoom4" location="%M" addr="19859" size="3384" />
+  <ITEM name="Interance" type="PrgInterance" location="%M" addr="23243" size="3230" />
+ </DATA>
+</MAP>

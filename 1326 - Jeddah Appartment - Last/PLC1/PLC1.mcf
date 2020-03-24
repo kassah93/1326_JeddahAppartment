@@ -1,0 +1,11 @@
+CONFIGURATION PLC1
+  RESOURCE CPM
+    TASK FreeWheeling(Number := 0);
+    PROGRAM Main WITH FreeWheeling : prgMain ();
+    PROGRAM Majles WITH FreeWheeling : PrgMajles ();
+    PROGRAM Room1 WITH FreeWheeling : PrgRoom1 ();
+    PROGRAM Room2 WITH FreeWheeling : PrgRoom2 ();
+    PROGRAM Room3 WITH FreeWheeling : PrgRoom3 ();
+    PROGRAM ConnectHMIs WITH FreeWheeling : PrgConnectHMIs ();
+  END_RESOURCE
+END_CONFIGURATION

@@ -1,0 +1,1908 @@
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\FBCONTROLROOM.ST'
+
+; Global types
+#struct  TOutDev
+  usint DevAddress,
+  uint loopAddress
+
+; Global types
+#def  TLightsStatus bool[24]
+#def  TOutletsStatus bool[8]
+#def  TCurtainsUpStatus bool[8]
+#def  TCurtainsDwStatus bool[8]
+#def  TCurtainsFB fb_iJalousie[6]
+#def  TCurtainPositWm usint[6]
+#def  TMotionSensStatus bool[8]
+#def  TSwitchStatus bool[8]
+#def  TEnLights bool[24]
+#def  TEnLightsAN usint[17]  ; 1:open  2:close 0:None
+#def  TEnOutlets bool[8]
+#def  TEnOutletsAN usint[8]  ; 1:open  2:close 0:None
+#def  TEnCurtainsUp bool[8]
+#def  TEnCurtainsDW bool[8]
+#def  TlightsOutputDevs TOutDev[17]
+#def  ToutletOutputDevs TOutDev[8]
+#def  TcurtainsUpOutputDevs TOutDev[6]
+#def  TcurtainsDwOutputDevs TOutDev[6]
+#def  TMotionSensOutputDevs TOutDev[4]
+#def  TExRelayAdd usint[2]
+
+#defpou fbControlRoom
+  uint RCU_ChCode,
+  usint numOfLights,
+  usint numOfOutlets,
+  usint numOfCurtains,
+  usint numOfMotionSens,
+  bool RCU_PingDone,
+  TlightsOutputDevs lightsOutputDevs,
+  ToutletOutputDevs outletOutputDevs,
+  TcurtainsUpOutputDevs curtainsUpOutputDevs,
+  TcurtainsDwOutputDevs curtainsDwOutputDevs,
+  TMotionSensOutputDevs MotionSensOutputDevs,
+  TDeviceStatus[24] ExRelay1_LVO,
+  TDeviceStatus[24] ExRelay2_LVO,
+  aligned bool[8] SwitchUPStatus,
+  aligned bool[8] SwitchDWStatus,
+  pointer RCU_CH_IN,
+  pointer LightsStatus,
+  pointer OutletsStatus,
+  pointer MotionSenStatus,
+  pointer EnLights,
+  pointer EnLightsAN,  ; 1:open  2:close 0:None
+  pointer EnOutlets,
+  pointer EnOutletsAN,  ; 1:open  2:close 0:None
+  pointer SendIamServer,
+  pointer GetAllStatus,
+  fbControlHotelSystem_UDP RCU,
+  bool RCU_RQ,
+  TServerPacket Server_settings,
+  THotelPacket sentPacket,
+  usint K,
+  uint i,
+  usint cmd_CtrlType,
+  usint cmd_CtrlContent,
+  usint cmd_CtrlType1,
+  usint cmd_CtrlContent1,
+  TON[5] TonCurtainsWait,
+  aligned bool[8] EnCurtainsWait,
+  aligned bool[8] EnCurtains,
+  R_TRIG[5] RTCurtains,
+  F_TRIG[5] FTCurtains,
+  aligned bool[8] Up,
+  aligned bool[8] Dw,
+  usint NumOfCmd,
+  bool RCU_Connected,
+  R_TRIG RCU_Connected_RT,
+  TOF RCU_Connection_TOF,
+  bool restorStatusDone,
+  usint test,
+  TLocalEthAdr PlcEthAdr,
+  TRemoteEthAdr RCU_ChAdr
+
+ 
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\FBCONTROLROOM.ST'
+#pou fbControlRoom
+#srcline 43 ;FUNCTION_BLOCK fbControlRoom
+#table byte __Init___fbControlRoom_Server_settings = 
+      0,  0,  0,  0,  1,192,168,  0, 16, 72,238;
+#table byte __Init___fbControlRoom_sentPacket = 
+    170, 85,  0,  0, 84, 51, 83, 65, 15, 58,  0,255,255,255,255,  1,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,
+      0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,
+      0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  1,  0,  0,
+      0,  0,  0,  1;
+#table byte __Init___fbControlRoom_FTCurtains = 
+      4,  4,  4,  4,  4;
+
+#struct fbControlRoom__temp__
+  uint P0__st__,
+  usint P1__st__,
+  usint P2__st__,
+  uint P3__st__,
+  usint P4__st__,
+  usint P5__st__,
+  usint P6__st__,
+  usint P7__st__,
+  usint P8__st__,
+  usint P9__st__
+P     61
+fbControlRoom_L0:
+ LINK __SizeOf(fbControlRoom__temp__)
+; Initialize - dynamic variables
+; End initialize - dynamic variables
+#srcline 143 ;   for i := 1 to RCU.numOfStatusDevs do
+ LD   uint 1
+ WRX  i
+ LDX  RCU~numOfStatusDevs
+#debug uint RCU.numOfStatusDevs
+ WRY  P0__st__
+fbControlRoom_L1:
+ LDX  i
+ LDY  P0__st__
+ GT   
+ JMD  fbControlRoom_L2
+ DBG  
+#srcline 145 ;      if RCU.DevicesStatus[i].DevType = 6 and RCU.DevicesStatus[i].DevAddress = 1 then
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ LDI  
+#debug usint RCU.DevicesStatus[i].DevType
+ LD   usint 6
+ EQ
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDI  
+#debug usint RCU.DevicesStatus[i].DevAddress
+ LD   usint 1
+ EQ
+ AND
+ JMC  fbControlRoom_L3
+#srcline 146 ;        ExRelay1_LVO[RCU.DevicesStatus[i].loopAddress] := RCU.DevicesStatus[i];
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+#debug pointer RCU.DevicesStatus[i]
+ SRC  %IB0
+ LEAX ExRelay1_LVO
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  2  ; + offset 
+ LDIW 
+#debug uint RCU.DevicesStatus[i].loopAddress
+ SUB  1   ; Low range[1]
+ RCHK 23   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+#debug_left pointer ExRelay1_LVO[RCU.DevicesStatus[i].loopAddress]
+ LD   6   ;SizeOf() 
+ MOV  %IB0
+#srcline 148 ;      elsif RCU.DevicesStatus[i].DevType = 6 and RCU.DevicesStatus[i].DevAddress = 2 then
+ JMP  fbControlRoom_L4
+fbControlRoom_L3:
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ LDI  
+#debug usint RCU.DevicesStatus[i].DevType
+ LD   usint 6
+ EQ
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDI  
+#debug usint RCU.DevicesStatus[i].DevAddress
+ LD   usint 2
+ EQ
+ AND
+ JMC  fbControlRoom_L5
+#srcline 149 ;        ExRelay2_LVO[RCU.DevicesStatus[i].loopAddress] := RCU.DevicesStatus[i];
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+#debug pointer RCU.DevicesStatus[i]
+ SRC  %IB0
+ LEAX ExRelay2_LVO
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  2  ; + offset 
+ LDIW 
+#debug uint RCU.DevicesStatus[i].loopAddress
+ SUB  1   ; Low range[1]
+ RCHK 23   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+#debug_left pointer ExRelay2_LVO[RCU.DevicesStatus[i].loopAddress]
+ LD   6   ;SizeOf() 
+ MOV  %IB0
+#srcline 150 ;      end_if;
+ JMP  fbControlRoom_L4
+fbControlRoom_L5:
+fbControlRoom_L4:
+#srcline 151 ;      
+#srcline 152 ;   End_for;
+ LDX  i
+ LD   1
+ ADD  
+ WRX  i
+ JMP  fbControlRoom_L1
+fbControlRoom_L2:
+ NOP  -1
+#srcline 153 ;   
+#srcline 154 ;   
+#srcline 155 ;   
+#srcline 156 ;  if GetIPaddress(ethChan := ETH1 , ethAdr := PlcEthAdr) then
+ NXT
+ LD   usint 225
+ WR   __Instance__GetIPaddress~ethChan
+#debug_left usint __Instance__GetIPaddress~ethChan
+ LEAX PlcEthAdr
+ WR   __Instance__GetIPaddress~ethAdr
+#debug_left pointer __Instance__GetIPaddress.ethAdr
+ PRV
+ LEA  __Instance__GetIPaddress
+ CAL  GetIPaddress_L0
+ JMC  fbControlRoom_L6
+#srcline 157 ;     Server_settings.IP := PlcEthAdr.IP ;
+ LEAX PlcEthAdr~IP
+#debug pointer PlcEthAdr.IP
+ SRC  %IB0
+ LEAX Server_settings~IP
+#debug_left pointer Server_settings.IP
+ LD   4   ;SizeOf() 
+ MOV  %IB0
+#srcline 158 ;  end_if;
+fbControlRoom_L6:
+#srcline 159 ;  
+#srcline 160 ;  if GetRemoteIPaddress(chanCode := RCU_ChCode, ethAdr := RCU_ChAdr) then
+ NXT
+ LDX  RCU_ChCode
+#debug uint RCU_ChCode
+ WR   __Instance__GetRemoteIPaddress~chanCode
+#debug_left uint __Instance__GetRemoteIPaddress~chanCode
+ LEAX RCU_ChAdr
+ WR   __Instance__GetRemoteIPaddress~ethAdr
+#debug_left pointer __Instance__GetRemoteIPaddress.ethAdr
+ PRV
+ LEA  __Instance__GetRemoteIPaddress
+ CAL  GetRemoteIPaddress_L0
+ JMC  fbControlRoom_L8
+#srcline 161 ;     Server_settings.port := RCU_ChAdr.localPort ;
+ LDX  RCU_ChAdr~localPort
+#debug uint RCU_ChAdr.localPort
+ WRX  Server_settings~port
+#debug_left uint Server_settings.port
+#srcline 162 ;  end_if;
+fbControlRoom_L8:
+#srcline 163 ;  
+#srcline 164 ;  RCU(RQ := RCU_RQ , sendIamServer :=SendIamServer , getAllStatus := GetAllStatus , ChanCode := RCU_ChCode , serverSettings := Server_settings , packet := sentPacket, CH_IN := RCU_CH_IN);
+ LDX  RCU_RQ
+#debug bool RCU_RQ
+ WRX  RCU~RQ
+#debug_left bool RCU~RQ
+ LDX  SendIamServer
+ LDIB 
+#debug bool SendIamServer
+ WRX  RCU~sendIamServer
+#debug_left bool RCU~sendIamServer
+ LDX  GetAllStatus
+ LDIB 
+#debug bool GetAllStatus
+ WRX  RCU~getAllStatus
+#debug_left bool RCU~getAllStatus
+ LDX  RCU_ChCode
+#debug uint RCU_ChCode
+ WRX  RCU~ChanCode
+#debug_left uint RCU~ChanCode
+ LEAX Server_settings
+#debug pointer Server_settings
+ SRC  %IB0
+ LEAX RCU~serverSettings
+ LD   11   ;SizeOf() 
+ MOV  %IB0
+ LEAX sentPacket
+ WRX  RCU~packet
+#debug_left pointer RCU.packet
+ LDX  RCU_CH_IN
+ WRX  RCU~CH_IN
+#debug_left pointer RCU.CH_IN
+ LEAX RCU
+ CAL  fbControlHotelSystem_UDP_L0
+#srcline 165 ;  
+#srcline 166 ;  IF RCU.msgSent THEN
+ LDX  RCU~msgSent
+#debug bool RCU.msgSent
+ JMC  fbControlRoom_L10
+#srcline 167 ;    RCU_RQ := 0 ;
+ LD   bool 0       ; false
+ WRX  RCU_RQ
+#debug_left bool RCU_RQ
+#srcline 168 ;    SendIamServer := 0 ;
+ LD   bool 0       ; false
+ LDX  SendIamServer
+ WRIB 
+#debug_left bool SendIamServer
+#srcline 169 ;    GetAllStatus  := 0 ;
+ LD   bool 0       ; false
+ LDX  GetAllStatus
+ WRIB 
+#debug_left bool GetAllStatus
+#srcline 170 ;    NumOfCmd := 1 ;
+ LD   usint 1
+ WRX  NumOfCmd
+#debug_left usint NumOfCmd
+#srcline 171 ;    restorStatusDone :=0;
+ LD   bool 0       ; false
+ WRX  restorStatusDone
+#debug_left bool restorStatusDone
+#srcline 172 ;  END_IF;
+fbControlRoom_L10:
+#srcline 173 ;  
+#srcline 175 ;  RCU_Connection_TOF(IN := RCU_PingDone , PT :=T#1s , Q => RCU_Connected );
+ LDX  RCU_PingDone
+#debug bool RCU_PingDone
+ WRX  RCU_Connection_TOF~IN
+#debug_left bool RCU_Connection_TOF~IN
+ LD   time 1000
+ WRX  RCU_Connection_TOF~PT
+#debug_left time RCU_Connection_TOF~PT
+ LEAX RCU_Connection_TOF
+ CAL  TOF_L0
+; output assigment 
+ LDX  RCU_Connection_TOF~Q
+#debug bool RCU_Connection_TOF~Q
+ WRX  RCU_Connected
+#debug_left bool RCU_Connected
+#srcline 176 ;  RCU_Connected_RT(CLK := RCU_Connected );
+ LDX  RCU_Connected
+#debug bool RCU_Connected
+ WRX  RCU_Connected_RT~CLK
+#debug_left bool RCU_Connected_RT~CLK
+ LEAX RCU_Connected_RT
+ CAL  R_TRIG_L0
+#srcline 177 ;  
+#srcline 178 ;  IF RCU_Connected_RT.Q THEN
+ LDX  RCU_Connected_RT~Q
+#debug bool RCU_Connected_RT.Q
+ JMC  fbControlRoom_L12
+#srcline 179 ;    restorStatusDone :=1;
+ LD   bool -1      ; true
+ WRX  restorStatusDone
+#debug_left bool restorStatusDone
+#srcline 180 ;  END_IF;
+fbControlRoom_L12:
+#srcline 181 ;  IF IS_COLD_RESTART_PLC OR IS_HOT_RESTART_PLC THEN
+ LD   bool IS_COLD_RESTART_PLC
+#debug bool IS_COLD_RESTART_PLC
+ LD   bool IS_HOT_RESTART_PLC
+#debug bool IS_HOT_RESTART_PLC
+ OR  
+ JMC  fbControlRoom_L14
+#srcline 182 ;     GetAllStatus :=1;
+ LD   bool -1      ; true
+ LDX  GetAllStatus
+ WRIB 
+#debug_left bool GetAllStatus
+#srcline 183 ;  END_IF;
+fbControlRoom_L14:
+#srcline 184 ;  IF restorStatusDone THEN
+ LDX  restorStatusDone
+#debug bool restorStatusDone
+ JMC  fbControlRoom_L16
+#srcline 185 ;     if numOfLights > 0 then
+ LDX  numOfLights
+#debug usint numOfLights
+ LD   usint 0
+ GT
+ JMC  fbControlRoom_L18
+#srcline 186 ;       FOR K := 1 TO numOfLights DO
+ LD   usint 1
+ WRX  K
+ LDX  numOfLights
+#debug usint numOfLights
+ WRY  P1__st__
+fbControlRoom_L20:
+ LDX  K
+ LDY  P1__st__
+ GT   
+ JMD  fbControlRoom_L21
+ DBG  
+#srcline 187 ;          IF LightsStatus[K] THEN
+ LDX  LightsStatus
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool LightsStatus[K]
+ JMC  fbControlRoom_L22
+#srcline 188 ;            cmd_CtrlType := open ;
+ LD   udint 1  ; TCtrlType#open
+ WRX  cmd_CtrlType
+#debug_left usint cmd_CtrlType
+#srcline 189 ;            cmd_CtrlContent := 100 ;
+ LD   usint 100
+ WRX  cmd_CtrlContent
+#debug_left usint cmd_CtrlContent
+#srcline 190 ;          ELSE
+ JMP  fbControlRoom_L23
+fbControlRoom_L22:
+#srcline 191 ;            cmd_CtrlType := close ;
+ LD   udint 2  ; TCtrlType#close
+ WRX  cmd_CtrlType
+#debug_left usint cmd_CtrlType
+#srcline 192 ;            cmd_CtrlContent := 0 ;
+ LD   usint 0
+ WRX  cmd_CtrlContent
+#debug_left usint cmd_CtrlContent
+#srcline 193 ;          END_IF;
+fbControlRoom_L23:
+#srcline 194 ;          sentPacket.Data.DevArr[NumOfCmd].DevType     := EX_Relay ;
+ LD   udint 14  ; TDevTypes#EX_Relay
+ LEAX sentPacket~Data
+ ADD  1  ; + offset 
+ LDX  NumOfCmd
+#debug usint NumOfCmd
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ WRI 
+#debug_left usint sentPacket.Data.DevArr[NumOfCmd].DevType
+#srcline 195 ;          sentPacket.Data.DevArr[NumOfCmd].DevAddress  := lightsOutputDevs[K].DevAddress;
+ LEAX lightsOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ LDI  
+#debug usint lightsOutputDevs[K].DevAddress
+ LEAX sentPacket~Data
+ ADD  1  ; + offset 
+ LDX  NumOfCmd
+#debug usint NumOfCmd
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ WRI 
+#debug_left usint sentPacket.Data.DevArr[NumOfCmd].DevAddress
+#srcline 196 ;          sentPacket.Data.DevArr[NumOfCmd].loopAddress := lightsOutputDevs[K].loopAddress ;
+ LEAX lightsOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDIW 
+#debug uint lightsOutputDevs[K].loopAddress
+ LEAX sentPacket~Data
+ ADD  1  ; + offset 
+ LDX  NumOfCmd
+#debug usint NumOfCmd
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  2  ; + offset 
+ WRIW 
+#debug_left uint sentPacket.Data.DevArr[NumOfCmd].loopAddress
+#srcline 197 ;          sentPacket.Data.DevArr[NumOfCmd].CtrlType    := cmd_CtrlType ;
+ LDX  cmd_CtrlType
+#debug usint cmd_CtrlType
+ LEAX sentPacket~Data
+ ADD  1  ; + offset 
+ LDX  NumOfCmd
+#debug usint NumOfCmd
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  4  ; + offset 
+ WRI 
+#debug_left usint sentPacket.Data.DevArr[NumOfCmd].CtrlType
+#srcline 198 ;          sentPacket.Data.DevArr[NumOfCmd].CtrlContent := cmd_CtrlContent ;
+ LDX  cmd_CtrlContent
+#debug usint cmd_CtrlContent
+ LEAX sentPacket~Data
+ ADD  1  ; + offset 
+ LDX  NumOfCmd
+#debug usint NumOfCmd
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  5  ; + offset 
+ WRI 
+#debug_left usint sentPacket.Data.DevArr[NumOfCmd].CtrlContent
+#srcline 199 ;          NumOfCmd := NumOfCmd + 1 ;
+ LDX  NumOfCmd
+#debug usint NumOfCmd
+ LD   usint 1
+ ADD
+ AND  $FF
+ WRX  NumOfCmd
+#debug_left usint NumOfCmd
+#srcline 200 ;          test := test + 1 ;
+ LDX  test
+#debug usint test
+ LD   usint 1
+ ADD
+ AND  $FF
+ WRX  test
+#debug_left usint test
+#srcline 201 ;       END_FOR;
+ LDX  K
+ LD   1
+ ADD  
+ WRX  K
+ JMP  fbControlRoom_L20
+fbControlRoom_L21:
+ NOP  -1
+#srcline 202 ;     end_if;
+fbControlRoom_L18:
+#srcline 203 ;     
+#srcline 204 ;     if numOfOutlets > 0 then
+ LDX  numOfOutlets
+#debug usint numOfOutlets
+ LD   usint 0
+ GT
+ JMC  fbControlRoom_L24
+#srcline 205 ;       FOR K := 1 TO numOfOutlets DO
+ LD   usint 1
+ WRX  K
+ LDX  numOfOutlets
+#debug usint numOfOutlets
+ WRY  P2__st__
+fbControlRoom_L26:
+ LDX  K
+ LDY  P2__st__
+ GT   
+ JMD  fbControlRoom_L27
+ DBG  
+#srcline 206 ;          IF OutletsStatus[K] THEN
+ LDX  OutletsStatus
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool OutletsStatus[K]
+ JMC  fbControlRoom_L28
+#srcline 207 ;            cmd_CtrlType := open ;
+ LD   udint 1  ; TCtrlType#open
+ WRX  cmd_CtrlType
+#debug_left usint cmd_CtrlType
+#srcline 208 ;            cmd_CtrlContent := 100 ;
+ LD   usint 100
+ WRX  cmd_CtrlContent
+#debug_left usint cmd_CtrlContent
+#srcline 209 ;          ELSE
+ JMP  fbControlRoom_L29
+fbControlRoom_L28:
+#srcline 210 ;            cmd_CtrlType := close ;
+ LD   udint 2  ; TCtrlType#close
+ WRX  cmd_CtrlType
+#debug_left usint cmd_CtrlType
+#srcline 211 ;            cmd_CtrlContent := 0 ;
+ LD   usint 0
+ WRX  cmd_CtrlContent
+#debug_left usint cmd_CtrlContent
+#srcline 212 ;          END_IF;
+fbControlRoom_L29:
+#srcline 213 ;          sentPacket.Data.DevArr[NumOfCmd].DevType     := EX_Relay ;
+ LD   udint 14  ; TDevTypes#EX_Relay
+ LEAX sentPacket~Data
+ ADD  1  ; + offset 
+ LDX  NumOfCmd
+#debug usint NumOfCmd
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ WRI 
+#debug_left usint sentPacket.Data.DevArr[NumOfCmd].DevType
+#srcline 214 ;          sentPacket.Data.DevArr[NumOfCmd].DevAddress  := outletOutputDevs[K].DevAddress;
+ LEAX outletOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ LDI  
+#debug usint outletOutputDevs[K].DevAddress
+ LEAX sentPacket~Data
+ ADD  1  ; + offset 
+ LDX  NumOfCmd
+#debug usint NumOfCmd
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ WRI 
+#debug_left usint sentPacket.Data.DevArr[NumOfCmd].DevAddress
+#srcline 215 ;          sentPacket.Data.DevArr[NumOfCmd].loopAddress := outletOutputDevs[K].loopAddress ;
+ LEAX outletOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDIW 
+#debug uint outletOutputDevs[K].loopAddress
+ LEAX sentPacket~Data
+ ADD  1  ; + offset 
+ LDX  NumOfCmd
+#debug usint NumOfCmd
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  2  ; + offset 
+ WRIW 
+#debug_left uint sentPacket.Data.DevArr[NumOfCmd].loopAddress
+#srcline 216 ;          sentPacket.Data.DevArr[NumOfCmd].CtrlType    := cmd_CtrlType ;
+ LDX  cmd_CtrlType
+#debug usint cmd_CtrlType
+ LEAX sentPacket~Data
+ ADD  1  ; + offset 
+ LDX  NumOfCmd
+#debug usint NumOfCmd
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  4  ; + offset 
+ WRI 
+#debug_left usint sentPacket.Data.DevArr[NumOfCmd].CtrlType
+#srcline 217 ;          sentPacket.Data.DevArr[NumOfCmd].CtrlContent := cmd_CtrlContent ;
+ LDX  cmd_CtrlContent
+#debug usint cmd_CtrlContent
+ LEAX sentPacket~Data
+ ADD  1  ; + offset 
+ LDX  NumOfCmd
+#debug usint NumOfCmd
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  5  ; + offset 
+ WRI 
+#debug_left usint sentPacket.Data.DevArr[NumOfCmd].CtrlContent
+#srcline 218 ;          NumOfCmd := NumOfCmd + 1 ;
+ LDX  NumOfCmd
+#debug usint NumOfCmd
+ LD   usint 1
+ ADD
+ AND  $FF
+ WRX  NumOfCmd
+#debug_left usint NumOfCmd
+#srcline 219 ;       END_FOR;
+ LDX  K
+ LD   1
+ ADD  
+ WRX  K
+ JMP  fbControlRoom_L26
+fbControlRoom_L27:
+ NOP  -1
+#srcline 220 ;     end_if;
+fbControlRoom_L24:
+#srcline 221 ;     sentPacket.Data.NumOfDev := NumOfCmd ;
+ LDX  NumOfCmd
+#debug usint NumOfCmd
+ WRX  sentPacket~Data~NumOfDev
+#debug_left usint sentPacket.Data.NumOfDev
+#srcline 222 ;     RCU_RQ := 1 ;
+ LD   bool -1      ; true
+ WRX  RCU_RQ
+#debug_left bool RCU_RQ
+#srcline 223 ;     restorStatusDone := 0;
+ LD   bool 0       ; false
+ WRX  restorStatusDone
+#debug_left bool restorStatusDone
+#srcline 224 ;    // GetAllStatus := 1;
+#srcline 225 ;  ELSE
+ JMP  fbControlRoom_L17
+fbControlRoom_L16:
+#srcline 226 ;    FOR i := 1 to RCU.numOfStatusDevs DO
+ LD   uint 1
+ WRX  i
+ LDX  RCU~numOfStatusDevs
+#debug uint RCU.numOfStatusDevs
+ WRY  P3__st__
+fbControlRoom_L30:
+ LDX  i
+ LDY  P3__st__
+ GT   
+ JMD  fbControlRoom_L31
+ DBG  
+#srcline 227 ;       IF RCU.DevicesStatus[i].DevType = 14 THEN
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ LDI  
+#debug usint RCU.DevicesStatus[i].DevType
+ LD   usint 14
+ EQ
+ JMC  fbControlRoom_L32
+#srcline 228 ;         if numOfLights > 0 then
+ LDX  numOfLights
+#debug usint numOfLights
+ LD   usint 0
+ GT
+ JMC  fbControlRoom_L34
+#srcline 229 ;           FOR K := 1 TO numOfLights DO
+ LD   usint 1
+ WRX  K
+ LDX  numOfLights
+#debug usint numOfLights
+ WRY  P4__st__
+fbControlRoom_L36:
+ LDX  K
+ LDY  P4__st__
+ GT   
+ JMD  fbControlRoom_L37
+ DBG  
+#srcline 230 ;             IF RCU.DevicesStatus[i].loopAddress = lightsOutputDevs[K].loopAddress AND RCU.DevicesStatus[i].DevAddress = lightsOutputDevs[K].DevAddress THEN
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  2  ; + offset 
+ LDIW 
+#debug uint RCU.DevicesStatus[i].loopAddress
+ LEAX lightsOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDIW 
+#debug uint lightsOutputDevs[K].loopAddress
+ EQ
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDI  
+#debug usint RCU.DevicesStatus[i].DevAddress
+ LEAX lightsOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ LDI  
+#debug usint lightsOutputDevs[K].DevAddress
+ EQ
+ AND
+ JMC  fbControlRoom_L38
+#srcline 231 ;                lightsStatus[K] := RCU.DevicesStatus[i].CtrlType;
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  4  ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDIB 
+#debug bool RCU.DevicesStatus[i].CtrlType
+ LDX  lightsStatus
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool lightsStatus[K]
+#srcline 232 ;             END_IF;
+fbControlRoom_L38:
+#srcline 233 ;           END_FOR;
+ LDX  K
+ LD   1
+ ADD  
+ WRX  K
+ JMP  fbControlRoom_L36
+fbControlRoom_L37:
+ NOP  -1
+#srcline 234 ;         end_if;
+fbControlRoom_L34:
+#srcline 236 ;         if numOfOutlets > 0 then
+ LDX  numOfOutlets
+#debug usint numOfOutlets
+ LD   usint 0
+ GT
+ JMC  fbControlRoom_L40
+#srcline 237 ;           FOR K := 1 TO numOfOutlets DO
+ LD   usint 1
+ WRX  K
+ LDX  numOfOutlets
+#debug usint numOfOutlets
+ WRY  P5__st__
+fbControlRoom_L42:
+ LDX  K
+ LDY  P5__st__
+ GT   
+ JMD  fbControlRoom_L43
+ DBG  
+#srcline 238 ;             IF RCU.DevicesStatus[i].loopAddress = outletOutputDevs[K].loopAddress AND RCU.DevicesStatus[i].DevAddress = outletOutputDevs[k].DevAddress THEN
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  2  ; + offset 
+ LDIW 
+#debug uint RCU.DevicesStatus[i].loopAddress
+ LEAX outletOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDIW 
+#debug uint outletOutputDevs[K].loopAddress
+ EQ
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDI  
+#debug usint RCU.DevicesStatus[i].DevAddress
+ LEAX outletOutputDevs
+ LDX  k
+#debug usint k
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ LDI  
+#debug usint outletOutputDevs[k].DevAddress
+ EQ
+ AND
+ JMC  fbControlRoom_L44
+#srcline 239 ;                outletsStatus[K] := RCU.DevicesStatus[i].CtrlType;
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  4  ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDIB 
+#debug bool RCU.DevicesStatus[i].CtrlType
+ LDX  outletsStatus
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool outletsStatus[K]
+#srcline 240 ;             END_IF;
+fbControlRoom_L44:
+#srcline 241 ;           END_FOR;
+ LDX  K
+ LD   1
+ ADD  
+ WRX  K
+ JMP  fbControlRoom_L42
+fbControlRoom_L43:
+ NOP  -1
+#srcline 242 ;         end_if;
+fbControlRoom_L40:
+#srcline 243 ;        (* FOR K := 1 TO numOfCurtains DO
+#srcline 244 ;           IF RCU.DevicesStatus[i].loopAddress = curtainsUpOutputDevs[K].loopAddress AND RCU.DevicesStatus[i].DevAddress = curtainsUpOutputDevs[K].DevAddress  THEN
+#srcline 245 ;              CurtainsUpStatus[K] := RCU.DevicesStatus[i].CtrlType;
+#srcline 246 ;           END_IF;
+#srcline 247 ;         END_FOR;
+#srcline 248 ;         FOR K := 1 TO numOfCurtains DO
+#srcline 249 ;           IF RCU.DevicesStatus[i].loopAddress = curtainsDwOutputDevs[K].loopAddress AND RCU.DevicesStatus[i].DevAddress = curtainsDwOutputDevs[K].DevAddress THEN
+#srcline 250 ;              CurtainsDwStatus[K] := RCU.DevicesStatus[i].CtrlType;
+#srcline 251 ;           END_IF;
+#srcline 252 ;         END_FOR; *)
+#srcline 254 ;       ELSIF RCU.DevicesStatus[i].DevType = 6 THEN
+ JMP  fbControlRoom_L33
+fbControlRoom_L32:
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ LDI  
+#debug usint RCU.DevicesStatus[i].DevType
+ LD   usint 6
+ EQ
+ JMC  fbControlRoom_L46
+#srcline 256 ;         // get the status of motion sensors
+#srcline 257 ;         if numOfMotionSens > 0 then
+ LDX  numOfMotionSens
+#debug usint numOfMotionSens
+ LD   usint 0
+ GT
+ JMC  fbControlRoom_L47
+#srcline 258 ;           FOR K := 1 TO numOfMotionSens  DO
+ LD   usint 1
+ WRX  K
+ LDX  numOfMotionSens
+#debug usint numOfMotionSens
+ WRY  P6__st__
+fbControlRoom_L49:
+ LDX  K
+ LDY  P6__st__
+ GT   
+ JMD  fbControlRoom_L50
+ DBG  
+#srcline 259 ;             IF RCU.DevicesStatus[i].loopAddress = MotionSensOutputDevs[K].loopAddress AND RCU.DevicesStatus[i].DevAddress = MotionSensOutputDevs[K].DevAddress THEN
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  2  ; + offset 
+ LDIW 
+#debug uint RCU.DevicesStatus[i].loopAddress
+ LEAX MotionSensOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 3   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDIW 
+#debug uint MotionSensOutputDevs[K].loopAddress
+ EQ
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDI  
+#debug usint RCU.DevicesStatus[i].DevAddress
+ LEAX MotionSensOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 3   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ LDI  
+#debug usint MotionSensOutputDevs[K].DevAddress
+ EQ
+ AND
+ JMC  fbControlRoom_L51
+#srcline 260 ;                MotionSenStatus[K] := RCU.DevicesStatus[i].CtrlType;
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  4  ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDIB 
+#debug bool RCU.DevicesStatus[i].CtrlType
+ LDX  MotionSenStatus
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 3   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool MotionSenStatus[K]
+#srcline 261 ;             END_IF;
+fbControlRoom_L51:
+#srcline 262 ;           END_FOR;
+ LDX  K
+ LD   1
+ ADD  
+ WRX  K
+ JMP  fbControlRoom_L49
+fbControlRoom_L50:
+ NOP  -1
+#srcline 263 ;         end_if;
+fbControlRoom_L47:
+#srcline 264 ;         
+#srcline 265 ;         // Get the status of switch keys from the RCU
+#srcline 266 ;         if numOfCurtains > 0 then
+ LDX  numOfCurtains
+#debug usint numOfCurtains
+ LD   usint 0
+ GT
+ JMC  fbControlRoom_L53
+#srcline 267 ;           FOR K := 1 TO numOfCurtains  DO
+ LD   usint 1
+ WRX  K
+ LDX  numOfCurtains
+#debug usint numOfCurtains
+ WRY  P7__st__
+fbControlRoom_L55:
+ LDX  K
+ LDY  P7__st__
+ GT   
+ JMD  fbControlRoom_L56
+ DBG  
+#srcline 268 ;             IF RCU.DevicesStatus[i].loopAddress = curtainsUpOutputDevs[K].loopAddress AND RCU.DevicesStatus[i].DevAddress = curtainsUpOutputDevs[K].DevAddress THEN
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  2  ; + offset 
+ LDIW 
+#debug uint RCU.DevicesStatus[i].loopAddress
+ LEAX curtainsUpOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 5   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDIW 
+#debug uint curtainsUpOutputDevs[K].loopAddress
+ EQ
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDI  
+#debug usint RCU.DevicesStatus[i].DevAddress
+ LEAX curtainsUpOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 5   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ LDI  
+#debug usint curtainsUpOutputDevs[K].DevAddress
+ EQ
+ AND
+ JMC  fbControlRoom_L57
+#srcline 269 ;                SwitchUPStatus[K] := RCU.DevicesStatus[i].CtrlType;
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  4  ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDIB 
+#debug bool RCU.DevicesStatus[i].CtrlType
+ LEAX SwitchUPStatus
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 5   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool SwitchUPStatus[K]
+#srcline 270 ;             END_IF;
+fbControlRoom_L57:
+#srcline 272 ;             IF RCU.DevicesStatus[i].loopAddress = curtainsDwOutputDevs[K].loopAddress AND RCU.DevicesStatus[i].DevAddress = curtainsDwOutputDevs[K].DevAddress THEN
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  2  ; + offset 
+ LDIW 
+#debug uint RCU.DevicesStatus[i].loopAddress
+ LEAX curtainsDwOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 5   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDIW 
+#debug uint curtainsDwOutputDevs[K].loopAddress
+ EQ
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDI  
+#debug usint RCU.DevicesStatus[i].DevAddress
+ LEAX curtainsDwOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 5   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ LDI  
+#debug usint curtainsDwOutputDevs[K].DevAddress
+ EQ
+ AND
+ JMC  fbControlRoom_L59
+#srcline 273 ;                SwitchDWStatus[K] := RCU.DevicesStatus[i].CtrlType;
+ LEAX RCU
+ ADD  22  ; + offset 
+ LDX  i
+#debug uint i
+ SUB  1   ; Low range[1]
+ RCHK 184   ; Range Check
+ MUL  6   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  4  ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDIB 
+#debug bool RCU.DevicesStatus[i].CtrlType
+ LEAX SwitchDWStatus
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 5   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool SwitchDWStatus[K]
+#srcline 274 ;             END_IF;
+fbControlRoom_L59:
+#srcline 275 ;           END_FOR;
+ LDX  K
+ LD   1
+ ADD  
+ WRX  K
+ JMP  fbControlRoom_L55
+fbControlRoom_L56:
+ NOP  -1
+#srcline 276 ;         end_if;
+fbControlRoom_L53:
+#srcline 277 ;         
+#srcline 278 ;       END_IF;
+ JMP  fbControlRoom_L33
+fbControlRoom_L46:
+fbControlRoom_L33:
+#srcline 279 ;    END_FOR;
+ LDX  i
+ LD   1
+ ADD  
+ WRX  i
+ JMP  fbControlRoom_L30
+fbControlRoom_L31:
+ NOP  -1
+#srcline 280 ;  END_IF;
+fbControlRoom_L17:
+#srcline 281 ;  
+#srcline 282 ;  //FOR test
+#srcline 283 ;  (*IF (EnLightsAN1 = 1 AND LightsStatus[1] = false) OR (EnLightsAN1 = 2 AND LightsStatus[1] = true) THEN
+#srcline 284 ;      EnLights[1]   := 1;
+#srcline 285 ;      EnLightsAN1 := 0;
+#srcline 286 ;  ELSE
+#srcline 287 ;      EnLightsAN1 :=0;
+#srcline 288 ;  END_IF;*)
+#srcline 289 ;  
+#srcline 290 ;  if numOfLights > 0 then
+ LDX  numOfLights
+#debug usint numOfLights
+ LD   usint 0
+ GT
+ JMC  fbControlRoom_L61
+#srcline 291 ;    FOR K := 1 TO numOfLights DO
+ LD   usint 1
+ WRX  K
+ LDX  numOfLights
+#debug usint numOfLights
+ WRY  P8__st__
+fbControlRoom_L63:
+ LDX  K
+ LDY  P8__st__
+ GT   
+ JMD  fbControlRoom_L64
+ DBG  
+#srcline 292 ;       IF (EnLightsAN[K] = 1 AND LightsStatus[K] = false) OR (EnLightsAN[K] = 2 AND LightsStatus[K] = true) THEN
+ LDX  EnLightsAN
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ ADD     ; + offset 
+ LDI  
+#debug usint EnLightsAN[K]
+ LD   usint 1
+ EQ
+ LDX  LightsStatus
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool LightsStatus[K]
+ LD   bool 0       ; false
+ XOR
+ NEG
+ AND
+ LDX  EnLightsAN
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ ADD     ; + offset 
+ LDI  
+#debug usint EnLightsAN[K]
+ LD   usint 2
+ EQ
+ LDX  LightsStatus
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool LightsStatus[K]
+ LD   bool -1       ; true
+ XOR
+ NEG
+ AND
+ OR  
+ JMC  fbControlRoom_L65
+#srcline 293 ;          EnLights[K]   := 1;
+ LD   bool -1      ; true
+ LDX  EnLights
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool EnLights[K]
+#srcline 294 ;          EnLightsAN[K] := 0;
+ LD   usint 0
+ LDX  EnLightsAN
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ ADD     ; + offset 
+ WRI 
+#debug_left usint EnLightsAN[K]
+#srcline 295 ;       ELSE
+ JMP  fbControlRoom_L66
+fbControlRoom_L65:
+#srcline 296 ;          EnLightsAN[K] :=0;
+ LD   usint 0
+ LDX  EnLightsAN
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ ADD     ; + offset 
+ WRI 
+#debug_left usint EnLightsAN[K]
+#srcline 297 ;       END_IF;
+fbControlRoom_L66:
+#srcline 299 ;       IF EnLights[K] THEN
+ LDX  EnLights
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool EnLights[K]
+ JMC  fbControlRoom_L67
+#srcline 300 ;         EnLights[K] := 0 ;
+ LD   bool 0       ; false
+ LDX  EnLights
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool EnLights[K]
+#srcline 301 ;         IF lightsStatus[K] THEN
+ LDX  lightsStatus
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool lightsStatus[K]
+ JMC  fbControlRoom_L69
+#srcline 302 ;            cmd_CtrlType     := close ;
+ LD   udint 2  ; TCtrlType#close
+ WRX  cmd_CtrlType
+#debug_left usint cmd_CtrlType
+#srcline 303 ;            cmd_CtrlContent  := 0 ;
+ LD   usint 0
+ WRX  cmd_CtrlContent
+#debug_left usint cmd_CtrlContent
+#srcline 304 ;         ELSE
+ JMP  fbControlRoom_L70
+fbControlRoom_L69:
+#srcline 305 ;            cmd_CtrlType     := open ;
+ LD   udint 1  ; TCtrlType#open
+ WRX  cmd_CtrlType
+#debug_left usint cmd_CtrlType
+#srcline 306 ;            cmd_CtrlContent  := 100 ;
+ LD   usint 100
+ WRX  cmd_CtrlContent
+#debug_left usint cmd_CtrlContent
+#srcline 307 ;         END_IF;
+fbControlRoom_L70:
+#srcline 308 ;         sentPacket.Data.NumOfDev := 1 ;
+ LD   usint 1
+ WRX  sentPacket~Data~NumOfDev
+#debug_left usint sentPacket.Data.NumOfDev
+#srcline 309 ;         sentPacket.Data.DevArr[1].DevType := EX_Relay ;
+ LD   udint 14  ; TDevTypes#EX_Relay
+ LEAX sentPacket~Data
+ ADD  1  ; + offset 
+ WRI 
+#debug_left usint sentPacket.Data.DevArr[1].DevType
+#srcline 310 ;         sentPacket.Data.DevArr[1].DevAddress := lightsOutputDevs[K].DevAddress;
+ LEAX lightsOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ LDI  
+#debug usint lightsOutputDevs[K].DevAddress
+ LEAX sentPacket~Data
+ ADD  2  ; + offset 
+ WRI 
+#debug_left usint sentPacket.Data.DevArr[1].DevAddress
+#srcline 311 ;         sentPacket.Data.DevArr[1].loopAddress := lightsOutputDevs[K].loopAddress ;
+ LEAX lightsOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 16   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDIW 
+#debug uint lightsOutputDevs[K].loopAddress
+ LEAX sentPacket~Data
+ ADD  3  ; + offset 
+ WRIW 
+#debug_left uint sentPacket.Data.DevArr[1].loopAddress
+#srcline 312 ;         sentPacket.Data.DevArr[1].CtrlType := cmd_CtrlType ;
+ LDX  cmd_CtrlType
+#debug usint cmd_CtrlType
+ LEAX sentPacket~Data
+ ADD  5  ; + offset 
+ WRI 
+#debug_left usint sentPacket.Data.DevArr[1].CtrlType
+#srcline 313 ;         sentPacket.Data.DevArr[1].CtrlContent := cmd_CtrlContent ;
+ LDX  cmd_CtrlContent
+#debug usint cmd_CtrlContent
+ LEAX sentPacket~Data
+ ADD  6  ; + offset 
+ WRI 
+#debug_left usint sentPacket.Data.DevArr[1].CtrlContent
+#srcline 314 ;         RCU_RQ :=1;
+ LD   bool -1      ; true
+ WRX  RCU_RQ
+#debug_left bool RCU_RQ
+#srcline 315 ;       END_IF;
+fbControlRoom_L67:
+#srcline 316 ;    END_FOR;
+ LDX  K
+ LD   1
+ ADD  
+ WRX  K
+ JMP  fbControlRoom_L63
+fbControlRoom_L64:
+ NOP  -1
+#srcline 317 ;  end_if;
+fbControlRoom_L61:
+#srcline 318 ;  
+#srcline 319 ;  if numOfOutlets > 0 then
+ LDX  numOfOutlets
+#debug usint numOfOutlets
+ LD   usint 0
+ GT
+ JMC  fbControlRoom_L71
+#srcline 320 ;    FOR K := 1 TO numOfOutlets DO
+ LD   usint 1
+ WRX  K
+ LDX  numOfOutlets
+#debug usint numOfOutlets
+ WRY  P9__st__
+fbControlRoom_L73:
+ LDX  K
+ LDY  P9__st__
+ GT   
+ JMD  fbControlRoom_L74
+ DBG  
+#srcline 321 ;       IF (EnOutletsAN[K] = 1 AND OutletsStatus[K] = false) OR (EnOutletsAN[K] = 2 AND OutletsStatus[K] = true) THEN
+ LDX  EnOutletsAN
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ ADD     ; + offset 
+ LDI  
+#debug usint EnOutletsAN[K]
+ LD   usint 1
+ EQ
+ LDX  OutletsStatus
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool OutletsStatus[K]
+ LD   bool 0       ; false
+ XOR
+ NEG
+ AND
+ LDX  EnOutletsAN
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ ADD     ; + offset 
+ LDI  
+#debug usint EnOutletsAN[K]
+ LD   usint 2
+ EQ
+ LDX  OutletsStatus
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool OutletsStatus[K]
+ LD   bool -1       ; true
+ XOR
+ NEG
+ AND
+ OR  
+ JMC  fbControlRoom_L75
+#srcline 322 ;          EnOutlets[K]   := 1;
+ LD   bool -1      ; true
+ LDX  EnOutlets
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool EnOutlets[K]
+#srcline 323 ;          EnOutletsAN[K] := 0;
+ LD   usint 0
+ LDX  EnOutletsAN
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ ADD     ; + offset 
+ WRI 
+#debug_left usint EnOutletsAN[K]
+#srcline 324 ;       ELSE
+ JMP  fbControlRoom_L76
+fbControlRoom_L75:
+#srcline 325 ;          EnOutletsAN[K] := 0;
+ LD   usint 0
+ LDX  EnOutletsAN
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ ADD     ; + offset 
+ WRI 
+#debug_left usint EnOutletsAN[K]
+#srcline 326 ;       END_IF;
+fbControlRoom_L76:
+#srcline 328 ;       IF EnOutlets[K] THEN
+ LDX  EnOutlets
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool EnOutlets[K]
+ JMC  fbControlRoom_L77
+#srcline 329 ;         EnOutlets[K] := 0 ;
+ LD   bool 0       ; false
+ LDX  EnOutlets
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool EnOutlets[K]
+#srcline 330 ;         IF outletsStatus[K] THEN
+ LDX  outletsStatus
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool outletsStatus[K]
+ JMC  fbControlRoom_L79
+#srcline 331 ;            cmd_CtrlType     := close ;
+ LD   udint 2  ; TCtrlType#close
+ WRX  cmd_CtrlType
+#debug_left usint cmd_CtrlType
+#srcline 332 ;            cmd_CtrlContent  := 0 ;
+ LD   usint 0
+ WRX  cmd_CtrlContent
+#debug_left usint cmd_CtrlContent
+#srcline 333 ;         ELSE
+ JMP  fbControlRoom_L80
+fbControlRoom_L79:
+#srcline 334 ;            cmd_CtrlType     := open ;
+ LD   udint 1  ; TCtrlType#open
+ WRX  cmd_CtrlType
+#debug_left usint cmd_CtrlType
+#srcline 335 ;            cmd_CtrlContent  := 100 ;
+ LD   usint 100
+ WRX  cmd_CtrlContent
+#debug_left usint cmd_CtrlContent
+#srcline 336 ;         END_IF;
+fbControlRoom_L80:
+#srcline 337 ;         sentPacket.Data.NumOfDev := 1 ;
+ LD   usint 1
+ WRX  sentPacket~Data~NumOfDev
+#debug_left usint sentPacket.Data.NumOfDev
+#srcline 338 ;         sentPacket.Data.DevArr[1].DevType := EX_Relay ;
+ LD   udint 14  ; TDevTypes#EX_Relay
+ LEAX sentPacket~Data
+ ADD  1  ; + offset 
+ WRI 
+#debug_left usint sentPacket.Data.DevArr[1].DevType
+#srcline 339 ;         sentPacket.Data.DevArr[1].DevAddress := outletOutputDevs[K].DevAddress;
+ LEAX outletOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ LDI  
+#debug usint outletOutputDevs[K].DevAddress
+ LEAX sentPacket~Data
+ ADD  2  ; + offset 
+ WRI 
+#debug_left usint sentPacket.Data.DevArr[1].DevAddress
+#srcline 340 ;         sentPacket.Data.DevArr[1].loopAddress := outletOutputDevs[K].loopAddress ;
+ LEAX outletOutputDevs
+ LDX  K
+#debug usint K
+ SUB  1   ; Low range[1]
+ RCHK 7   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDIW 
+#debug uint outletOutputDevs[K].loopAddress
+ LEAX sentPacket~Data
+ ADD  3  ; + offset 
+ WRIW 
+#debug_left uint sentPacket.Data.DevArr[1].loopAddress
+#srcline 341 ;         sentPacket.Data.DevArr[1].CtrlType := cmd_CtrlType ;
+ LDX  cmd_CtrlType
+#debug usint cmd_CtrlType
+ LEAX sentPacket~Data
+ ADD  5  ; + offset 
+ WRI 
+#debug_left usint sentPacket.Data.DevArr[1].CtrlType
+#srcline 342 ;         sentPacket.Data.DevArr[1].CtrlContent := cmd_CtrlContent ;
+ LDX  cmd_CtrlContent
+#debug usint cmd_CtrlContent
+ LEAX sentPacket~Data
+ ADD  6  ; + offset 
+ WRI 
+#debug_left usint sentPacket.Data.DevArr[1].CtrlContent
+#srcline 343 ;         RCU_RQ :=1;
+ LD   bool -1      ; true
+ WRX  RCU_RQ
+#debug_left bool RCU_RQ
+#srcline 344 ;       END_IF;
+fbControlRoom_L77:
+#srcline 345 ;    END_FOR;
+ LDX  K
+ LD   1
+ ADD  
+ WRX  K
+ JMP  fbControlRoom_L73
+fbControlRoom_L74:
+ NOP  -1
+#srcline 346 ;  end_if;
+fbControlRoom_L71:
+#srcline 347 ;  
+#srcline 349 ;   (*
+#srcline 350 ;   FOR K := 1 TO numOfCurtains DO
+#srcline 351 ;      IF ((EnCurtainsUp[K] AND Dw[K]) OR (EnCurtainsDw[K] AND Up[K])) THEN
+#srcline 352 ;       EnCurtains[K] := 0;
+#srcline 353 ;       curtainsFB[k](stop := 1  , upDwTime :=T#20s );
+#srcline 355 ;       sentPacket.Data.NumOfDev := 2 ;
+#srcline 356 ;       sentPacket.Data.DevArr[1].DevType := EX_Relay ;
+#srcline 357 ;       sentPacket.Data.DevArr[1].DevAddress := curtainsUpOutputDevs[K].DevAddress;
+#srcline 358 ;       sentPacket.Data.DevArr[1].loopAddress := curtainsUpOutputDevs[K].loopAddress ;
+#srcline 359 ;       sentPacket.Data.DevArr[1].CtrlType := close ;
+#srcline 360 ;       sentPacket.Data.DevArr[1].CtrlContent := 0 ;
+#srcline 362 ;       sentPacket.Data.DevArr[2].DevType := EX_Relay ;
+#srcline 363 ;       sentPacket.Data.DevArr[2].DevAddress := curtainsDwOutputDevs[K].DevAddress;
+#srcline 364 ;       sentPacket.Data.DevArr[2].loopAddress := curtainsDwOutputDevs[K].loopAddress ;
+#srcline 365 ;       sentPacket.Data.DevArr[2].CtrlType := close ;
+#srcline 366 ;       sentPacket.Data.DevArr[2].CtrlContent := 0 ;
+#srcline 367 ;       RCU_RQ :=1;
+#srcline 368 ;       
+#srcline 369 ;       Up[K] := EnCurtainsUp[K] ;
+#srcline 370 ;       Dw[K] := EnCurtainsDw[K] ;
+#srcline 371 ;       EnCurtainsUp[K] := 0;
+#srcline 372 ;       EnCurtainsDw[K] := 0;
+#srcline 373 ;       EnCurtainsWait[K] := 1;
+#srcline 374 ;    ELSIF (EnCurtainsUp[K] AND Dw[K] = false ) OR (EnCurtainsDw[K] AND Up[K] = false ) THEN
+#srcline 375 ;     //  IF curtainsFB[K].posit > 0 THEN
+#srcline 376 ;          Up[K] := EnCurtainsUp[K] ;
+#srcline 377 ;          EnCurtains[K]   := 1;
+#srcline 378 ;     //  ELSIF curtainsFB[K].posit < 100 THEN
+#srcline 379 ;          Dw[K] := EnCurtainsDw[K] ;
+#srcline 380 ;       //   EnCurtains[K]   := 1;
+#srcline 381 ;    //   END_IF;
+#srcline 382 ;       EnCurtainsUp[K] := 0;
+#srcline 383 ;       EnCurtainsDw[K] := 0;
+#srcline 385 ;    END_IF;
+#srcline 386 ;    
+#srcline 387 ;    TonCurtainsWait[K](IN := EnCurtainsWait[K] , PT := T#1s );
+#srcline 388 ;     IF TonCurtainsWait[K].Q THEN
+#srcline 389 ;       EnCurtainsWait[K] := 0;
+#srcline 390 ;       EnCurtains[K] := 1;
+#srcline 391 ;     END_IF;
+#srcline 392 ;     
+#srcline 393 ;     IF EnCurtains[K] THEN
+#srcline 394 ;        curtainsFB[K](up := CurtainsUpStatus[K] , dw := CurtainsDwStatus[K]  , upDwTime :=T#20s );
+#srcline 395 ;     END_IF;
+#srcline 396 ;     
+#srcline 397 ;     IF (curtainsFB[K].posit = 0 and curtainsFB[K].outUp) OR (curtainsFB[K].posit = 100 and curtainsFB[K].outDw) THEN
+#srcline 398 ;        EnCurtains[K] := 0;
+#srcline 399 ;        Up[K] := 0;
+#srcline 400 ;        Dw[K] := 0;
+#srcline 401 ;        curtainsFB[K](stop := 1  , upDwTime :=T#20s );
+#srcline 402 ;     END_IF;
+#srcline 403 ;     
+#srcline 404 ;     IF CurtainsFB[K].posit = 0 THEN
+#srcline 405 ;        CurtainPositWm[k] := 0;
+#srcline 406 ;     ELSIF CurtainsFB[K].posit > 0 AND CurtainsFB[K].posit < 30 THEN
+#srcline 407 ;        CurtainPositWm[K] := 1;
+#srcline 408 ;     ELSIF CurtainsFB[K].posit >= 30 AND CurtainsFB[K].posit < 60 THEN
+#srcline 409 ;        CurtainPositWm[K] := 2;
+#srcline 410 ;     ELSIF CurtainsFB[K].posit >= 60 AND CurtainsFB[K].posit < 90  THEN
+#srcline 411 ;        CurtainPositWm[K] := 3;
+#srcline 412 ;     ELSIF CurtainsFB[K].posit >= 100 THEN
+#srcline 413 ;        CurtainPositWm[K] := 4;
+#srcline 414 ;     END_IF;
+#srcline 415 ;     IF Up[K] THEN
+#srcline 416 ;        cmd_CtrlType    := open;
+#srcline 417 ;        cmd_CtrlContent := 100;
+#srcline 418 ;     ELSE
+#srcline 419 ;        cmd_CtrlType    := close;
+#srcline 420 ;        cmd_CtrlContent := 0;
+#srcline 421 ;     END_IF;
+#srcline 422 ;     IF Dw[K] THEN
+#srcline 423 ;        cmd_CtrlType1    := open;
+#srcline 424 ;        cmd_CtrlContent1 := 100;
+#srcline 425 ;     ELSE
+#srcline 426 ;        cmd_CtrlType1    := close;
+#srcline 427 ;        cmd_CtrlContent1 := 0;
+#srcline 428 ;     END_IF;
+#srcline 429 ;     RTCurtains[K](CLK := EnCurtains[K] ) ;
+#srcline 430 ;     FTCurtains[K](CLK := EnCurtains[K] ) ;
+#srcline 431 ;     IF RTCurtains[K].Q OR FTCurtains[K].Q THEN
+#srcline 432 ;       sentPacket.Data.NumOfDev := 2 ;
+#srcline 433 ;       sentPacket.Data.DevArr[1].DevType     := EX_Relay ;
+#srcline 434 ;       sentPacket.Data.DevArr[1].DevAddress  := curtainsUpOutputDevs[K].DevAddress;
+#srcline 435 ;       sentPacket.Data.DevArr[1].loopAddress := curtainsUpOutputDevs[K].loopAddress ;
+#srcline 436 ;       sentPacket.Data.DevArr[1].CtrlType    := cmd_CtrlType ;
+#srcline 437 ;       sentPacket.Data.DevArr[1].CtrlContent := cmd_CtrlContent ;
+#srcline 439 ;       sentPacket.Data.DevArr[2].DevType     := EX_Relay ;
+#srcline 440 ;       sentPacket.Data.DevArr[2].DevAddress  := curtainsDwOutputDevs[K].DevAddress;
+#srcline 441 ;       sentPacket.Data.DevArr[2].loopAddress := curtainsDwOutputDevs[K].loopAddress ;
+#srcline 442 ;       sentPacket.Data.DevArr[2].CtrlType    := cmd_CtrlType1 ;
+#srcline 443 ;       sentPacket.Data.DevArr[2].CtrlContent := cmd_CtrlContent1 ;
+#srcline 444 ;       RCU_RQ :=1;
+#srcline 445 ;     END_IF;
+#srcline 446 ;   END_FOR;  *)
+#srcline 447 ;   
+#srcline 449 ;END_FUNCTION_BLOCK
+ ULNK
+RET
+E     61
+
+; Initialize - variables
+P     61
+fbControlRoom__InstanceInit__:
+ LINK 0
+ LEAX RCU
+ CAL  fbControlHotelSystem_UDP__InstanceInit__
+ LD   0
+ SRC  byte __Init___fbControlRoom_Server_settings
+ LEAX byte Server_settings
+ LD   11
+ MOV  %X0
+ LD   0
+ SRC  byte __Init___fbControlRoom_sentPacket
+ LEAX byte sentPacket
+ LD   1128
+ MOV  %X0
+ LD   0
+ SRC  byte __Init___fbControlRoom_FTCurtains
+ LEAX byte FTCurtains[0]
+ LD   5
+ MOV  %X0
+ LD   usint 1
+ WRX  NumOfCmd
+ LEAX RCU_Connection_TOF
+ CAL  TOF__InstanceInit__
+ ULNK
+RET
+E     61
+; End initialize - variables
+#endpou 
+
+
+
+ 
+
+#srcfile ''

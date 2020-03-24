@@ -1,0 +1,28 @@
+CURTAINSFB*65536 ; LA(curtainsFB) = $010000 = %R0
+[124 1 14
+].0 ; fb_iJalousie - public_items
+:1
+GTSAP1_SHUTTER_#1(3)
+>D 3
+>R 4
+>U 2
+:2
+UP_CONTROL& BIT6 1 75  ; GTSAP1_SHUTTER_up_control
+:3
+DOWN_CONTROL& BIT7 1 75  ; GTSAP1_SHUTTER_down_control
+:4
+ROT#2(2)
+>D 6
+>U 5
+:5
+UP_CONTROL& BIT0 1 76  ; GTSAP1_SHUTTER_rotup_control
+:6
+DOWN_CONTROL& BIT1 1 76  ; GTSAP1_SHUTTER_rotdown_control
+
+--------------------
+Celkovy pocet globalnich polozek (*): 1
+Celkovy pocet terminalnich uzlu (&): 4
+Pocet optimalizaci struktur (@): 0
+
+Celkovy pocet rozskokovych tabulek: 3
+Celkovy pocet polozek v rozskokovych tabulkach: 6

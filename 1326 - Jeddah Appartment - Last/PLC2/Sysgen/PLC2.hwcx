@@ -1,0 +1,19 @@
+[Project ID]
+ACTIVE=22
+ACTIVE_type=FOXTROT
+Signature=HWCX project
+VER=2
+[ChanelSet]
+CH1=8
+CH2=5
+CH3=8
+CH4=8
+CH5=9
+CH6=9
+CH7=9
+CH8=9
+CH9=9
+CH10=9
+ETH0=28
+[PanelSIM]
+ActiveSetupPanelSim1=;;3;3;3;-1;;;;;;;32;1;0;2;0;0;100;260;0;0;1

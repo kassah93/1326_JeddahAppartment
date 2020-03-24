@@ -1,0 +1,131 @@
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\IOCONFIGURATOR\CONFIG.ST'
+
+; Global variables
+#def  CPU_TYPE 75
+#def  CPU_CODE 1015
+
+; Global types
+#def  TVideoRamArray usint[80]
+#struct  TCHStatistic
+  usint STAT,
+  usint ERR,
+  udint trueMes,
+  udint falseMes
+#def  TCIB_STAT_ARRAY byte[32]
+#struct  r0_p2_TCIB_IN
+  real intgr
+#struct  TCHControl
+  uint CONTROL
+#struct  r0_p2_TCIB_OUT
+  usint NoData
+#struct  TBIN_6DIW
+  bool DI0,
+  bool DI1,
+  bool DI2,
+  bool DI3,
+  bool DI4,
+  bool DI5,
+  bool dummy6,
+  bool dummy7,
+  bool dummy8,
+  bool dummy9,
+  bool dummy10,
+  bool dummy11,
+  bool dummy12,
+  bool dummy13,
+  bool dummy14,
+  bool dummy15
+#struct  TAIStat
+  bool UNF,
+  bool UNR,
+  bool OVR,
+  bool OVF,
+  bool FLS,
+  bool CJC,
+  bool dummy6,
+  bool dummy7,
+  bool CHC,
+  bool dummy9,
+  bool dummy10,
+  bool dummy11,
+  bool dummy12,
+  bool dummy13,
+  bool dummy14,
+  bool dummy15
+#struct  TAI
+  TAIStat STAT,
+  int FS,
+  real ENG,
+  real PCT
+#struct  TBIN_6DOW
+  bool DO0,
+  bool DO1,
+  bool DO2,
+  bool DO3,
+  bool DO4,
+  bool DO5,
+  bool dummy6,
+  bool dummy7,
+  bool dummy8,
+  bool dummy9,
+  bool dummy10,
+  bool dummy11,
+  bool dummy12,
+  bool dummy13,
+  bool dummy14,
+  bool dummy15
+#struct  TAO
+  int FS,
+  real ENG,
+  real PCT
+#def  TPLCx_ETH1_PLCx0_ADR3_TX_DATA usint[238]
+#struct  TPLCx_ETH1_PLCx0_ADR3_TX
+  usint CONT,
+  usint SIGN,
+  uint NUMT,
+  TPLCx_ETH1_PLCx0_ADR3_TX_DATA DATA
+#def  TPLCx_ETH1_PLCx0_ADR1_RX_DATA usint[50]
+#struct  TPLCx_ETH1_PLCx0_ADR1_RX
+  usint STAT,
+  usint ERR,
+  uint NUMR,
+  TPLCx_ETH1_PLCx0_ADR1_RX_DATA DATA
+
+; Global variables
+#input  usint r0_p1_Keyb
+#input  TCHStatistic r0_p2_CIB_Statistic
+#input  byte r0_p2_CIB_STAT[32]
+#input  byte r0_p2_CIB_ERR[32]
+#input  r0_p2_TCIB_IN r0_p2_CIB_IN
+#input  TBIN_6DIW r0_p3_DI
+#input  TAI r0_p3_AI0
+#input  TAI r0_p3_AI1
+#input  TAI r0_p3_AI2
+#input  TAI r0_p3_AI3
+#input  TAI r0_p3_AI4
+#input  TAI r0_p3_AI5
+#input  TCHStatistic r0_p0_Statistic_ETH1_PLCx0
+
+; Global variables
+#output  usint r0_p1_VideoRam[80]
+#output  TCHControl r0_p2_CIB_Control
+#output  r0_p2_TCIB_OUT r0_p2_CIB_OUT
+#output  TBIN_6DOW r0_p3_DO
+#output  TAO r0_p3_AO0
+#output  TAO r0_p3_AO1
+#output  TCHControl r0_p0_Control_ETH1_PLCx0
+
+; Global variables
+#reg  TPLCx_ETH1_PLCx0_ADR3_TX PLCx_ETH1_PLCx0_ADR3_TX
+#reg  TPLCx_ETH1_PLCx0_ADR1_RX PLCx_ETH1_PLCx0_ADR1_RX
+#def  PLC3 PLCx_ETH1_PLCx0_ADR3_TX
+#def  PLC1_Curtains PLCx_ETH1_PLCx0_ADR1_RX
+
+; Global variables
+ 
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\IOCONFIGURATOR\CONFIG.ST'
+
+
+ 
+
+#srcfile ''

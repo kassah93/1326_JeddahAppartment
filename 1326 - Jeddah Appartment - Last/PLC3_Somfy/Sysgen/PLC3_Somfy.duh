@@ -1,0 +1,73 @@
+FUNCTION_BLOCK fbSomfyRTSCtrl
+(**)
+  VAR_INPUT
+    En : BOOL;
+    CH_ID : UINT;
+  END_VAR
+  VAR_OUTPUT
+    Err : USINT;
+    ErrText : STRING;
+  END_VAR
+  VAR_IN_OUT
+    packetsBuffer : TSomfyRTSPacketBuff;
+    buffIndex : UINT;
+  END_VAR
+  VAR
+    packet : TSomfyRTSPacket;
+    RQ : BOOL;
+    sendTimer : fbTick;
+    send : fbSendTo;
+  END_VAR
+
+END_FUNCTION_BLOCK 
+
+
+
+FUNCTION fbSomfyRTS_Cmnd : BOOL
+(* Push new RTS control packet to the buffer according to the action input;  the buffer should be passed to fbSomfyRTSCtrl function block to execute its commands*)
+  VAR_INPUT
+    ChNum : USINT;
+    HostID : TVendorID; (* 3 hex bytes address set for PLC as non Somfy host*)
+    TrsnsmitterID : TVendorID; (* ID of Transmitter written on the product*)
+    UP : BOOL;
+    DW : BOOL;
+    favPos : BOOL;
+    stop : BOOL;
+    setChannel : BOOL;
+    openProg : BOOL;
+    set_IP : BOOL;
+  END_VAR
+  VAR_IN_OUT
+    packetsBuffer : TSomfyRTSPacketBuff;
+    buffIndex : UINT;
+  END_VAR
+  VAR
+    packet : TSomfyRTSPacket;
+  END_VAR
+
+END_FUNCTION 
+
+FUNCTION somfyBuffer_Pop : TSomfyRTSPacket
+(**)
+  VAR_IN_OUT
+    buffer : TSomfyRTSPacketBuff;
+    index : UINT;
+  END_VAR
+
+END_FUNCTION 
+
+FUNCTION somfyBuffer_Push : BOOL
+(**)
+  VAR_INPUT
+    newPacket : TSomfyRTSPacket;
+  END_VAR
+  VAR_IN_OUT
+    buffer : TSomfyRTSPacketBuff;
+    index : UINT;
+  END_VAR
+
+
+END_FUNCTION 
+
+
+

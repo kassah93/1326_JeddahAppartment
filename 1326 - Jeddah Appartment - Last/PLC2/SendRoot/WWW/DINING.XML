@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<?xml-stylesheet type="text/xsl" href="DINING.XSL?U=1584613147" version="1.0" ?>
+<PAGE TITLE="                                  ">
+<ACCESS PAGE_LEVEL="0" USER_LEVEL="0" UCID="1584613147" />
+<INPUT NAME="__R3277.1_BOOL_i" VALUE="0" />
+<INPUT NAME="__R2836.0_BOOL_i" VALUE="0" />
+<INPUT NAME="__R3277.0_BOOL_i" VALUE="0" />
+<INPUT NAME="__R3277.3_BOOL_i" VALUE="0" />
+<INPUT NAME="__R6513.0_BOOL_i" VALUE="0" />
+<INPUT NAME="__R2833.0_BOOL_i" VALUE="0" />
+<INPUT NAME="__R2833.1_BOOL_i" VALUE="0" />
+<INPUT NAME="__R2833.2_BOOL_i" VALUE="0" />
+<INPUT NAME="__R2833.3_BOOL_i" VALUE="0" />
+<INPUT NAME="__R2833.4_BOOL_i" VALUE="0" />
+<INPUT NAME="__R6582.0_BOOL_i" VALUE="0" />
+<INPUT NAME="__R6584_USINT_u" VALUE="0" />
+<INPUT NAME="__R6533_WORD_X" VALUE="0" />
+<INPUT NAME="__R6583_USINT_u" VALUE="0" />
+<INPUT NAME="__R2837_REAL_.1f" VALUE="0" />
+<INPUT NAME="__R6537_WORD_X" VALUE="0" />
+<INPUT NAME="__X107_REAL_.1f" VALUE="0" />
+</PAGE>

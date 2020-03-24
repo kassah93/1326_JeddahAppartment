@@ -1,0 +1,426 @@
+<?xml version="1.0"?>
+<TecoDescriptor xmlns="http://www.tecomat.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.tecomat.com Teco_Default.xsd">
+  <Header>
+		<File>
+			<FileName>UNI_ETH.tdd</FileName>
+			<FileCreator>Jan Martinec</FileCreator>
+			<FileCreationDate>2018-05-02</FileCreationDate>
+			<FileModifiedBy>Jan Martinec</FileModifiedBy>
+      <FileModificationDate>2019-07-01</FileModificationDate>
+      <SupportedLanguages>en cz</SupportedLanguages>
+      <FileVersion>2.3</FileVersion>
+		</File>
+	</Header>
+	<EthernetChannel>
+    <Mode>UNI</Mode>
+    <Alias>
+      <label lang="cz">Obecný kanál</label>
+      <label lang="en">General channel</label>  
+    </Alias>    
+    <Description>
+      <label lang="cz">Obecný uživatelský kanál</label>
+      <label lang="en">General user channel</label>              
+    </Description> 
+    <Image>
+      <ImageData>424D820200000000000042000000280000000C0000000C000000010020000300000040020000D70D0000D70D00000000000000000000000000FF0000FF0000FF0000FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF50FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDCFFFFFFFFDCDCDCFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEFFFFFFFFFEFEFEC3FFFFFF88C3C3C3BD888888FABEBDBDFFFAFAFAFFFFFFFFFFFFFFFFFFFFFFFFDFFFFFFF81DFDFDFF4818181BAF4F4F447BABABA9848474792999898E4949292FFE4E4E4FFFFFFFFFFFFFFFFD3FFFFFF73D3D3D3837373735B838383445B5B5B76454444807776768C818080F98D8C8CFFF9F9F9FFFFFFFFD4FFFFFF65D4D4D4B86565659EB8B8B87A9E9E9E457A7A7A464645457A474646FC7B7A7AFFFCFCFCFFFFFFFFD4FFFFFF72D4D4D4C6727272CEC6C6C6F8CECECEC0F8F8F8E9C0C0C07DE9E9E9FF7D7D7DFFFFFFFFFFFFFFFFFFFFFFFF8AEDEDEDBA8A8A8AD8BABABAF4D8D8D8E9F4F4F4F3EAE9E9F1F3F3F367F1F1F1FF676767FFFFFFFFFFFFFFFFFFFFFFFFA9E8E8E8EFADA9A9FAF3F0EFEDF9FAFAECEDEDEDF7ECECEC98F7F7F7A8989898FFA8A8A8FFFFFFFFFFFFFFFFEDFFFFFFB9E2E1E1FF72AAB9FBBBEFFFEFFAFBFBD1F0EFEF74D1D1D1D9747474FFD9D9D9FFFFFFFFFFFFFFFFFFFFFFFFE8FFFFFFC2FDFDFDC0B8BEC2B194B5C0ACA5AEB1C2ACACACFFC2C2C2FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFE1FFFFFFFEFFFFFFE9FEFEFEE1E5E8E9FAE1E1E1FFFAFAFAFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFDFFFFFF</ImageData>
+      <ImageFile URI="IMAGES\ETH.png"/>
+    </Image>            
+    <Dictionary> 
+      <Include>CommonDataTypes.tod</Include> 
+      <Include>Modules.tod</Include> 
+      <Include>Channels.tod</Include>
+      <DataTypes>   
+        
+        <DataType>
+          <Name>TUNISettings_ETH</Name>
+          <SubItems>
+            <SubItem>
+              <Name>ReceiveZoneSize</Name>
+              <Type>UINT</Type>                                                  
+            </SubItem>   
+            <SubItem>
+              <Name>TransmitZoneSize</Name>
+              <Type>UINT</Type>                                                  
+            </SubItem>
+            <SubItem>
+              <Name>Protocol</Name>
+              <Type>TProtocolEnum</Type>                                                  
+            </SubItem>
+            <SubItem>
+              <Name>RemoteIp</Name>
+              <Type>IPADDR</Type>                                                  
+            </SubItem>
+            <SubItem>
+              <Name>RemotePort</Name>
+              <Type>UINT</Type>                                                  
+            </SubItem>
+            <SubItem>
+              <Name>LocalPort</Name>
+              <Type>UINT</Type>                                                  
+            </SubItem>
+          </SubItems>
+        </DataType>
+        
+        <DataType>
+          <Name>TProtocolEnum</Name>   
+          <BaseType>USINT</BaseType>   
+          <EnumInfo> 
+            <Text>
+              <label lang="en">TCP Client</label>
+              <label lang="cz">TCP Client</label>                    
+            </Text>        
+            <Enum>33</Enum>  
+          </EnumInfo>    
+          <EnumInfo>
+            <Text>
+              <label lang="en">TCP Server</label>
+              <label lang="cz">TCP Server</label>                    
+            </Text>        
+            <Enum>34</Enum>       
+          </EnumInfo>
+          <EnumInfo> 
+            <Text>
+              <label lang="en">TLS/SSL Client (Foxtrot 2 only)</label>
+              <label lang="cz">TLS/SSL Client (pouze Foxtrot 2)</label>                    
+            </Text>        
+            <Enum>35</Enum>  
+          </EnumInfo>    
+          <!--
+           <EnumInfo>
+            <Text>
+              <label lang="en">TLS/SSL Server</label>
+              <label lang="cz">TLS/SSL Server</label>                    
+            </Text>        
+            <Enum>36</Enum>       
+          </EnumInfo>
+          -->
+          <EnumInfo>
+            <Text>
+              <label lang="en">UDP</label>
+              <label lang="cz">UDP</label>                    
+            </Text>        
+            <Enum>16</Enum>       
+          </EnumInfo>
+        </DataType>   
+
+        <DataType>
+          <Name>_TTS_UNIINIT_ETH</Name> 
+          <SubItems>
+            <SubItem>
+              <Name>uniInit</Name>
+              <Type>_TTS_UNIINIT</Type>                                                        
+            </SubItem>
+            <SubItem>
+              <Name>his_ip</Name>
+              <Type>DWORD</Type>                                                      
+            </SubItem>
+            <SubItem>
+              <Name>his_port</Name>
+              <Type>UINT</Type>                                                    
+            </SubItem>
+            <SubItem>
+              <Name>my_port</Name>
+              <Type>UINT</Type>                                                       
+            </SubItem>
+          </SubItems>
+        </DataType>
+        
+      </DataTypes>       
+      
+      <Objects> 
+        
+        <Object index="#x6000" name="r{RACK}_p{POSITION}_Statistic_{CHANNEL}" type="TCHStatistic" access="rw">   
+          <DisplayName>
+            <label lang="en">Statistic_{CHANNEL}</label>   
+            <label lang="cz">Statistic_{CHANNEL}</label>                     
+          </DisplayName>    
+        </Object>
+        
+        <Object index="#x6001" name="UNI_{CHANNEL}_IN" type="TUNI_{CHANNEL}_IN" access="rw">   
+          <DisplayName>
+            <label lang="en">UNI_{CHANNEL}_IN</label>   
+            <label lang="cz">UNI_{CHANNEL}_IN</label>                     
+          </DisplayName>     
+          <SubObjects>
+            <SubObject name="DATA" access="rw"> 
+              <ArrayDependency>
+                <Elements>
+                  <ValueOf>r{RACK}_p{POSITION}_Settings_{CHANNEL}.ReceiveZoneSize</ValueOf>                  
+                </Elements>                
+              </ArrayDependency> 
+              <Xml>
+                <Editor>
+                  <Expanded>0</Expanded>              
+                </Editor>            
+              </Xml>
+            </SubObject>       
+          </SubObjects>          
+        </Object>
+        
+        <Object index="#x7000" name="r{RACK}_p{POSITION}_Control_{CHANNEL}" type="TCHControl" access="rw">   
+          <DisplayName>
+            <label lang="en">Control_{CHANNEL}</label>   
+            <label lang="cz">Control_{CHANNEL}</label>                     
+          </DisplayName>
+        </Object>
+      
+        <Object index="#x7001" name="UNI_{CHANNEL}_OUT" type="TUNI_{CHANNEL}_OUT" access="rw">   
+          <DisplayName>
+            <label lang="en">UNI_{CHANNEL}_OUT</label>   
+            <label lang="cz">UNI_{CHANNEL}_OUT</label>                     
+          </DisplayName>
+          <SubObjects>
+            <SubObject name="DATA" access="rw"> 
+              <ArrayDependency>
+                <Elements>
+                  <ValueOf>r{RACK}_p{POSITION}_Settings_{CHANNEL}.TransmitZoneSize</ValueOf>                  
+                </Elements>              
+              </ArrayDependency>
+              <Xml>
+                <Editor>
+                  <Expanded>0</Expanded>              
+                </Editor>            
+              </Xml>
+            </SubObject>       
+          </SubObjects>          
+        </Object>
+        
+        <Object index="#x8000" name="r{RACK}_p{POSITION}_Settings_{CHANNEL}" type="TUNISettings_ETH" access="rw">
+          <DisplayName>
+            <label lang="en">Ethernet UNI mode settings</label>
+            <label lang="cz">Nastavení Ethernet UNI režimu</label>
+          </DisplayName>   
+          <SubObjects>
+            <SubObject name="ReceiveZoneSize" access="rw">
+              <DisplayName>
+                <label lang="en">Receive zone size</label>
+                <label lang="cz">Velikost přijímací zóny</label>
+              </DisplayName> 
+              <MinValue>1</MinValue>
+              <MaxValue>1350</MaxValue>
+              <DefaultValue>250</DefaultValue>                               
+            </SubObject>
+            <SubObject name="TransmitZoneSize" access="rw">
+              <DisplayName>
+                <label lang="en">Transmit zone size</label>
+                <label lang="cz">Velikost vysílací zóny</label>
+              </DisplayName> 
+              <MinValue>1</MinValue>
+              <MaxValue>1350</MaxValue> 
+              <DefaultValue>250</DefaultValue>                 
+            </SubObject>
+            <SubObject name="Protocol" access="rw">
+              <DisplayName>
+                <label lang="en">Protocol</label>
+                <label lang="cz">Protokol</label>
+              </DisplayName>  
+              <DefaultData>21</DefaultData>
+            </SubObject>
+            <SubObject name="RemoteIp" access="rw">
+              <DisplayName>
+                <label lang="en">Remote IP address</label>
+                <label lang="cz">Vzdálená IP adresa</label>
+              </DisplayName>  
+              <DefaultData>00000000</DefaultData>
+              <Enabled>@r{RACK}_p{POSITION}_Settings_{CHANNEL}.Protocol != 34</Enabled>
+            </SubObject>
+            <SubObject name="RemotePort" access="rw">
+              <DisplayName>
+                <label lang="en">Remote port</label>
+                <label lang="cz">Vzdálený port</label>
+              </DisplayName>  
+              <DefaultValue>61000</DefaultValue>
+              <Enabled>@r{RACK}_p{POSITION}_Settings_{CHANNEL}.Protocol != 34</Enabled>
+            </SubObject>
+            <SubObject name="LocalPort" access="rw">
+              <DisplayName>
+                <label lang="en">Local port</label>
+                <label lang="cz">Místní port</label>
+              </DisplayName>  
+              <DefaultValue>61000</DefaultValue>
+            </SubObject>
+          </SubObjects>
+        </Object>       
+        
+        <Object index="#x9000" name="r{RACK}_p{POSITION}_Table_UNI_{CHANNEL}" type="_TTS_UNIINIT_ETH" access="rw">
+          <Comment>
+            <label lang="en">Initialization table of UNI Ethernet channel mode</label>
+            <label lang="cz">Inicializacni tabulka UNI režimu kanálu Ethernet</label>
+          </Comment>                             
+          <SubObjects>
+            <SubObject name="uniInit" access="ro">
+              <SubObjects>
+                <SubObject name="code" access="const">
+                  <DefaultData>C5</DefaultData>
+                </SubObject>
+                <SubObject name="mode" access="const">
+                  <DefaultData>02</DefaultData>
+                </SubObject>
+                <SubObject name="chMod" access="ro">
+                  <DefaultData>05</DefaultData>
+                </SubObject>
+                <SubObject name="speed" access="ro">
+                  <DefaultData>0E</DefaultData>
+                </SubObject>
+                <SubObject name="sysMap" access="ro">
+                  <MacroValue>${CHANNEL_CODE}</MacroValue>             
+                </SubObject>
+                <SubObject name="lendi" access="ro">
+                  <DefaultValue>5</DefaultValue>
+                  <ValueDependency> 
+                    <Formula>@r{RACK}_p{POSITION}_Settings_{CHANNEL}.ReceiveZoneSize + 4</Formula>                                                            
+                  </ValueDependency>
+                </SubObject>
+                <SubObject name="lendo" access="ro">
+                  <DefaultValue>5</DefaultValue>
+                  <ValueDependency> 
+                    <Formula>@r{RACK}_p{POSITION}_Settings_{CHANNEL}.TransmitZoneSize + 4</Formula>                                                            
+                  </ValueDependency>
+                </SubObject>
+                <SubObject name="idati" access="ro">
+                  <MacroValue>__offset32(UNI_{CHANNEL}_IN)</MacroValue>            
+                </SubObject>
+                <SubObject name="idato" access="ro">
+                  <MacroValue>__offset32(UNI_{CHANNEL}_OUT)</MacroValue>
+                </SubObject>
+                <SubObject name="prot" access="ro">
+                  <DefaultData>21</DefaultData>
+                  <ValueDependency>
+                    <DataOf>r{RACK}_p{POSITION}_Settings_{CHANNEL}.Protocol</DataOf>            
+                  </ValueDependency>
+                </SubObject>
+              </SubObjects>              
+            </SubObject>
+            <SubObject name="his_ip" access="ro">
+              <DefaultValue>0</DefaultValue>
+              <ValueDependency> 
+                <When condition="@r{RACK}_p{POSITION}_Settings_{CHANNEL}.Protocol == 34">
+                  <Data>00000000</Data>              
+                </When> 
+                <When condition="@r{RACK}_p{POSITION}_Settings_{CHANNEL}.Protocol != 34">
+                  <DataOf>r{RACK}_p{POSITION}_Settings_{CHANNEL}.RemoteIp</DataOf>            
+                </When>                        
+              </ValueDependency>
+            </SubObject> 
+            <SubObject name="his_port" access="ro">                          
+              <DefaultValue>61000</DefaultValue>
+              <ValueDependency> 
+                <When condition="@r{RACK}_p{POSITION}_Settings_{CHANNEL}.Protocol == 34">
+                  <Value>0</Value>              
+                </When> 
+                <When condition="@r{RACK}_p{POSITION}_Settings_{CHANNEL}.Protocol != 34">
+                  <ValueOf>r{RACK}_p{POSITION}_Settings_{CHANNEL}.RemotePort</ValueOf>              
+                </When>                     
+              </ValueDependency>
+            </SubObject>
+            <SubObject name="my_port" access="ro">
+              <DefaultValue>61000</DefaultValue>
+              <ValueDependency>
+                <DataOf>r{RACK}_p{POSITION}_Settings_{CHANNEL}.LocalPort</DataOf>            
+              </ValueDependency>
+            </SubObject>       
+          </SubObjects>
+        </Object>         
+        
+        <Object index="#xA000" name="r{RACK}_p{POSITION}_Module_UNI_{CHANNEL}" type="TModulE1" access="rw"> <!-- if="_PLCTYPE_ &lt; 11" -->
+          <Comment>
+            <label lang="en">UNI_ETH declaration</label>
+            <label lang="cz">Deklarace UNI_ETH</label>
+          </Comment>
+          <Excluded>&quot;{SYSTEM}&quot; != &quot;FOXTROT&quot;</Excluded>
+          <SubObjects>
+            <SubObject name="version" access="ro">   
+              <DefaultValue>1</DefaultValue>            
+            </SubObject>  
+            <SubObject name="rack" access="ro">   
+              <MacroValue>{RACK}</MacroValue>            
+            </SubObject>
+            <SubObject name="address" access="ro">   
+              <MacroValue>{POSITION}</MacroValue>            
+            </SubObject>
+            <SubObject name="LogAddress" access="ro">   
+              <MacroValue>${LADR}</MacroValue>            
+            </SubObject>
+            <SubObject name="LenInputs" access="ro">   
+              <MacroValue>10</MacroValue>                        
+            </SubObject>    
+            <SubObject name="LenOutputs" access="ro">   
+              <MacroValue>2</MacroValue>                        
+            </SubObject>
+            <SubObject name="OffsetInputs" access="ro">   
+              <MacroValue>__offset(r{RACK}_p{POSITION}_Statistic_{CHANNEL})</MacroValue>                        
+            </SubObject>  
+            <SubObject name="OffsetOutputs" access="ro">   
+              <MacroValue>__offset(r{RACK}_p{POSITION}_Control_{CHANNEL})</MacroValue>            
+            </SubObject>
+            <SubObject name="InitTable" access="ro">   
+              <MacroValue>__indx(r{RACK}_p{POSITION}_Table_UNI_{CHANNEL})</MacroValue>            
+            </SubObject>  
+          </SubObjects>           
+        </Object>
+        
+<!-- =============================================================== -->
+<!-- Module declaration for CP-2xxx --> 
+<!-- =============================================================== -->
+
+        <!-- inicializacni tabulka driveru                           -->
+        <!-- Indexy inicializacnich objektu:                         -->
+        <!-- $01 - Nazev kanalu {CHANNEL_LEN}{CHANNEL}   -->
+        <!-- $02 - Alias kanalu {CHANNEL_ALIAS_LEN}{CHANNEL_ALIAS}   --> 
+        
+        <Object index="#x9001" name="r{RACK}_p{POSITION}_DriverInit_{CHANNEL}" type="BYTE" access="rw">
+          <Comment>
+            <label lang="cz">Inicializacni tabulka driveru</label>
+            <label lang="en">Initialization table of driver</label>
+          </Comment>
+          <Excluded>&quot;{SYSTEM}&quot; != &quot;FOXTROT2&quot;</Excluded>
+          <MacroValue>$01,{CHANNEL_LEN},'{CHANNEL}',\n$02,{CHANNEL_ALIAS_LEN},'{CHANNEL_ALIAS}',\n$00</MacroValue>
+        </Object>
+        
+        <Object index="#xA001" name="r{RACK}_p{POSITION}_Module_UNI_{CHANNEL}" type="TModulE2" access="rw"> <!-- if="_PLCTYPE_ &gt; 10" -->
+          <Comment>
+            <label lang="en">UNI_ETH declaration</label>
+            <label lang="cz">Deklarace UNI_ETH</label>
+          </Comment> 
+          <Excluded>&quot;{SYSTEM}&quot; != &quot;FOXTROT2&quot;</Excluded>
+          <SubObjects> 
+            <SubObject name="version" access="ro">   
+              <DefaultValue>2</DefaultValue>            
+            </SubObject>  
+            <SubObject name="hwCode" access="ro">   
+              <MacroValue>{HWCODE}</MacroValue>           
+            </SubObject>
+            <SubObject name="busId" access="ro">   
+              <MacroValue>${$RACK}</MacroValue>
+            </SubObject>
+            <SubObject name="address" access="ro">   
+              <MacroValue>{POSITION}</MacroValue>
+            </SubObject>
+            <SubObject name="port" access="ro">   
+              <MacroValue>${$PORT}</MacroValue>            
+            </SubObject>
+            <SubObject name="lenInputs" access="ro">   
+              <MacroValue>__sizeof(r{RACK}_p{POSITION}_Statistic_{CHANNEL})</MacroValue>                        
+            </SubObject>    
+            <SubObject name="lenOutputs" access="ro">   
+              <MacroValue>__sizeof(r{RACK}_p{POSITION}_Control_{CHANNEL})</MacroValue>                      
+            </SubObject>
+            <SubObject name="offsetInputs" access="ro">   
+              <MacroValue>__offset(r{RACK}_p{POSITION}_Statistic_{CHANNEL})</MacroValue>                        
+            </SubObject>  
+            <SubObject name="offsetOutputs" access="ro">   
+              <MacroValue>__offset(r{RACK}_p{POSITION}_Control_{CHANNEL})</MacroValue>            
+            </SubObject>
+            <SubObject name="initTable" access="ro">   
+              <MacroValue>__indx(r{RACK}_p{POSITION}_Table_UNI_{CHANNEL})</MacroValue>            
+            </SubObject>
+            <SubObject name="driverInitTable" access="ro">
+              <MacroValue>__indx(r{RACK}_p{POSITION}_DriverInit_{CHANNEL})</MacroValue>
+            </SubObject>
+          </SubObjects>
+        </Object>
+      </Objects>  
+    </Dictionary>
+  </EthernetChannel>         
+</TecoDescriptor>  
+    

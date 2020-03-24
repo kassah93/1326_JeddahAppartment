@@ -1,0 +1,504 @@
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\FBCONTROLFCU.ST'
+
+; Global types
+#def  TFCU_Mode usint   ; ENUM Type 
+#def  TFCU_FanSpeed usint   ; ENUM Type 
+#struct  TFCU_Settings
+  usint FCU_Mode,
+  usint FCU_FanSpeed
+
+#defpou fbControlFCU
+  bool enable,
+  usint mode,  ; 0  is cooling, 1 is fan only
+  usint fanSpeed,  ; 0 auto, 1 low, 2 med, 3 high
+  real setTemp,
+  real temp,
+  TFCU_Status FCU_Status,
+  pointer valve,
+  pointer fanLow,
+  pointer fanMed,
+  pointer fanHigh,
+  real tempDiff,
+  fbTick fanRotation_tick,
+  time rotationTime
+
+ 
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\FBCONTROLFCU.ST'
+#pou fbControlFCU
+#srcline 11 ;FUNCTION_BLOCK fbControlFCU
+P     61
+fbControlFCU_L0:
+ LINK 0
+#srcline 37 ;  tempDiff := ABS(temp - setTemp);
+ LDX  temp
+#debug real temp
+ LDX  setTemp
+#debug real setTemp
+ SUF
+ ABS
+ WRX  tempDiff
+#debug_left real tempDiff
+#srcline 38 ;  
+#srcline 39 ;  if not enable then
+ LDX  enable
+#debug bool enable
+ NEG
+ JMC  fbControlFCU_L1
+#srcline 40 ;     valve := 0;
+ LD   bool 0       ; false
+ LDX  valve
+ WRIB 
+#debug_left bool valve
+#srcline 41 ;     FCU_Status.fanSpeed := 0;
+ LD   word 0
+ WRX  FCU_Status~fanSpeed
+#debug_left word FCU_Status.fanSpeed
+#srcline 42 ;  else
+ JMP  fbControlFCU_L2
+fbControlFCU_L1:
+#srcline 43 ;     if temp >= setTemp then
+ LDX  temp
+#debug real temp
+ LDX  setTemp
+#debug real setTemp
+ LTF
+ NEG
+ JMC  fbControlFCU_L3
+#srcline 44 ;        if mode = cooling then
+ LDX  mode
+#debug usint mode
+ LD   udint 0  ; TFCU_Mode#cooling
+ EQ
+ JMC  fbControlFCU_L5
+#srcline 45 ;           valve := 1;
+ LD   bool -1      ; true
+ LDX  valve
+ WRIB 
+#debug_left bool valve
+#srcline 46 ;        else
+ JMP  fbControlFCU_L6
+fbControlFCU_L5:
+#srcline 47 ;           valve := 0;
+ LD   bool 0       ; false
+ LDX  valve
+ WRIB 
+#debug_left bool valve
+#srcline 48 ;        end_if;
+fbControlFCU_L6:
+#srcline 49 ;        
+#srcline 50 ;        if fanSpeed <> auto then
+ LDX  fanSpeed
+#debug usint fanSpeed
+ LD   udint 0  ; TFCU_FanSpeed#auto
+ EQ
+ NEG
+ JMC  fbControlFCU_L7
+#srcline 51 ;           if fanSpeed = low then
+ LDX  fanSpeed
+#debug usint fanSpeed
+ LD   udint 1  ; TFCU_FanSpeed#low
+ EQ
+ JMC  fbControlFCU_L9
+#srcline 52 ;              FCU_Status.fanSpeed := 1;
+ LD   word 1
+ WRX  FCU_Status~fanSpeed
+#debug_left word FCU_Status.fanSpeed
+#srcline 53 ;           elsif fanSpeed = med then
+ JMP  fbControlFCU_L10
+fbControlFCU_L9:
+ LDX  fanSpeed
+#debug usint fanSpeed
+ LD   udint 2  ; TFCU_FanSpeed#med
+ EQ
+ JMC  fbControlFCU_L11
+#srcline 54 ;              FCU_Status.fanSpeed := 2;
+ LD   word 2
+ WRX  FCU_Status~fanSpeed
+#debug_left word FCU_Status.fanSpeed
+#srcline 55 ;           elsif fanSpeed = high then
+ JMP  fbControlFCU_L10
+fbControlFCU_L11:
+ LDX  fanSpeed
+#debug usint fanSpeed
+ LD   udint 3  ; TFCU_FanSpeed#high
+ EQ
+ JMC  fbControlFCU_L12
+#srcline 56 ;              FCU_Status.fanSpeed := 4;
+ LD   word 4
+ WRX  FCU_Status~fanSpeed
+#debug_left word FCU_Status.fanSpeed
+#srcline 57 ;           end_if;
+ JMP  fbControlFCU_L10
+fbControlFCU_L12:
+fbControlFCU_L10:
+#srcline 58 ;        else
+ JMP  fbControlFCU_L8
+fbControlFCU_L7:
+#srcline 59 ;           if tempDiff <= 2 then
+ LDX  tempDiff
+#debug real tempDiff
+ LD   real 2
+ GTF
+ NEG
+ JMC  fbControlFCU_L13
+#srcline 60 ;              FCU_Status.fanSpeed := 1;
+ LD   word 1
+ WRX  FCU_Status~fanSpeed
+#debug_left word FCU_Status.fanSpeed
+#srcline 61 ;           elsif tempDiff >= 2.5 and tempDiff <= 4 then
+ JMP  fbControlFCU_L14
+fbControlFCU_L13:
+ LDX  tempDiff
+#debug real tempDiff
+ LD   real 2.5
+ LTF
+ NEG
+ LDX  tempDiff
+#debug real tempDiff
+ LD   real 4
+ GTF
+ NEG
+ AND
+ JMC  fbControlFCU_L15
+#srcline 62 ;              FCU_Status.fanSpeed := 2;
+ LD   word 2
+ WRX  FCU_Status~fanSpeed
+#debug_left word FCU_Status.fanSpeed
+#srcline 63 ;           elsif tempDiff >= 4.5 then
+ JMP  fbControlFCU_L14
+fbControlFCU_L15:
+ LDX  tempDiff
+#debug real tempDiff
+ LD   real 4.5
+ LTF
+ NEG
+ JMC  fbControlFCU_L16
+#srcline 64 ;              FCU_Status.fanSpeed := 4;
+ LD   word 4
+ WRX  FCU_Status~fanSpeed
+#debug_left word FCU_Status.fanSpeed
+#srcline 65 ;           end_if;
+ JMP  fbControlFCU_L14
+fbControlFCU_L16:
+fbControlFCU_L14:
+#srcline 66 ;        end_if;
+fbControlFCU_L8:
+#srcline 67 ;        
+#srcline 68 ;        
+#srcline 69 ;     elsif temp < setTemp - 1 then
+ JMP  fbControlFCU_L4
+fbControlFCU_L3:
+ LDX  temp
+#debug real temp
+ LDX  setTemp
+#debug real setTemp
+ LD   real 1
+ SUF
+ LTF
+ JMC  fbControlFCU_L17
+#srcline 70 ;        valve := 0;
+ LD   bool 0       ; false
+ LDX  valve
+ WRIB 
+#debug_left bool valve
+#srcline 71 ;        if mode = fanOnly and fanSpeed <> auto then
+ LDX  mode
+#debug usint mode
+ LD   udint 1  ; TFCU_Mode#fanOnly
+ EQ
+ LDX  fanSpeed
+#debug usint fanSpeed
+ LD   udint 0  ; TFCU_FanSpeed#auto
+ EQ
+ NEG
+ AND
+ JMC  fbControlFCU_L18
+#srcline 72 ;           if fanSpeed = low then
+ LDX  fanSpeed
+#debug usint fanSpeed
+ LD   udint 1  ; TFCU_FanSpeed#low
+ EQ
+ JMC  fbControlFCU_L20
+#srcline 73 ;              FCU_Status.fanSpeed := 1;
+ LD   word 1
+ WRX  FCU_Status~fanSpeed
+#debug_left word FCU_Status.fanSpeed
+#srcline 74 ;           elsif fanSpeed = med then
+ JMP  fbControlFCU_L21
+fbControlFCU_L20:
+ LDX  fanSpeed
+#debug usint fanSpeed
+ LD   udint 2  ; TFCU_FanSpeed#med
+ EQ
+ JMC  fbControlFCU_L22
+#srcline 75 ;              FCU_Status.fanSpeed := 2;
+ LD   word 2
+ WRX  FCU_Status~fanSpeed
+#debug_left word FCU_Status.fanSpeed
+#srcline 76 ;           elsif fanSpeed = high then
+ JMP  fbControlFCU_L21
+fbControlFCU_L22:
+ LDX  fanSpeed
+#debug usint fanSpeed
+ LD   udint 3  ; TFCU_FanSpeed#high
+ EQ
+ JMC  fbControlFCU_L23
+#srcline 77 ;              FCU_Status.fanSpeed := 4;
+ LD   word 4
+ WRX  FCU_Status~fanSpeed
+#debug_left word FCU_Status.fanSpeed
+#srcline 78 ;           end_if;
+ JMP  fbControlFCU_L21
+fbControlFCU_L23:
+fbControlFCU_L21:
+#srcline 79 ;        else
+ JMP  fbControlFCU_L19
+fbControlFCU_L18:
+#srcline 80 ;           FCU_Status.fanSpeed := 0;
+ LD   word 0
+ WRX  FCU_Status~fanSpeed
+#debug_left word FCU_Status.fanSpeed
+#srcline 81 ;        end_if;
+fbControlFCU_L19:
+#srcline 82 ;     end_if;
+ JMP  fbControlFCU_L4
+fbControlFCU_L17:
+fbControlFCU_L4:
+#srcline 83 ;  end_if;
+fbControlFCU_L2:
+#srcline 84 ;  
+#srcline 85 ;  fanLow  := FCU_Status.fanSpeed.0;
+ LDX  FCU_Status~fanSpeed.0
+#debug bool FCU_Status.fanSpeed.0
+ LDX  fanLow
+ WRIB 
+#debug_left bool fanLow
+#srcline 86 ;  fanMed  := FCU_Status.fanSpeed.1;
+ LDX  FCU_Status~fanSpeed.1
+#debug bool FCU_Status.fanSpeed.1
+ LDX  fanMed
+ WRIB 
+#debug_left bool fanMed
+#srcline 87 ;  fanHigh := FCU_Status.fanSpeed.2;
+ LDX  FCU_Status~fanSpeed.2
+#debug bool FCU_Status.fanSpeed.2
+ LDX  fanHigh
+ WRIB 
+#debug_left bool fanHigh
+#srcline 88 ;  
+#srcline 89 ;  FCU_Status.onOffStatus.0 := enable;
+ LDX  enable
+#debug bool enable
+ WRX  FCU_Status~onOffStatus.0
+#debug_left bool FCU_Status.onOffStatus.0
+#srcline 90 ;  FCU_Status.setTemp       := REAL_TO_INT(setTemp * 100);
+ LDX  setTemp
+#debug real setTemp
+ LD   real 100
+ MUF
+ RND
+ IFW
+ EXTW
+ WRX  FCU_Status~setTemp
+#debug_left int FCU_Status.setTemp
+#srcline 91 ;  FCU_Status.roomTemp      := REAL_TO_INT(temp * 100);
+ LDX  temp
+#debug real temp
+ LD   real 100
+ MUF
+ RND
+ IFW
+ EXTW
+ WRX  FCU_Status~roomTemp
+#debug_left int FCU_Status.roomTemp
+#srcline 92 ;  FCU_Status.valve.0       := valve;
+ LDX  valve
+ LDIB 
+#debug bool valve
+ WRX  FCU_Status~valve.0
+#debug_left bool FCU_Status.valve.0
+#srcline 93 ;  
+#srcline 94 ;  if mode = cooling then
+ LDX  mode
+#debug usint mode
+ LD   udint 0  ; TFCU_Mode#cooling
+ EQ
+ JMC  fbControlFCU_L24
+#srcline 95 ;     FCU_Status.mode := 0;
+ LD   word 0
+ WRX  FCU_Status~mode
+#debug_left word FCU_Status.mode
+#srcline 96 ;  elsif mode = fanOnly then
+ JMP  fbControlFCU_L25
+fbControlFCU_L24:
+ LDX  mode
+#debug usint mode
+ LD   udint 1  ; TFCU_Mode#fanOnly
+ EQ
+ JMC  fbControlFCU_L26
+#srcline 97 ;     FCU_Status.mode := 1;
+ LD   word 1
+ WRX  FCU_Status~mode
+#debug_left word FCU_Status.mode
+#srcline 98 ;  end_if;
+ JMP  fbControlFCU_L25
+fbControlFCU_L26:
+fbControlFCU_L25:
+#srcline 99 ;  
+#srcline 100 ;  if fanSpeed = auto then
+ LDX  fanSpeed
+#debug usint fanSpeed
+ LD   udint 0  ; TFCU_FanSpeed#auto
+ EQ
+ JMC  fbControlFCU_L27
+#srcline 101 ;     FCU_Status.fanSpeedCtrl := 8;
+ LD   word 8
+ WRX  FCU_Status~fanSpeedCtrl
+#debug_left word FCU_Status.fanSpeedCtrl
+#srcline 102 ;  elsif fanSpeed = low then
+ JMP  fbControlFCU_L28
+fbControlFCU_L27:
+ LDX  fanSpeed
+#debug usint fanSpeed
+ LD   udint 1  ; TFCU_FanSpeed#low
+ EQ
+ JMC  fbControlFCU_L29
+#srcline 103 ;     FCU_Status.fanSpeedCtrl := 1;
+ LD   word 1
+ WRX  FCU_Status~fanSpeedCtrl
+#debug_left word FCU_Status.fanSpeedCtrl
+#srcline 104 ;  elsif fanSpeed = med then
+ JMP  fbControlFCU_L28
+fbControlFCU_L29:
+ LDX  fanSpeed
+#debug usint fanSpeed
+ LD   udint 2  ; TFCU_FanSpeed#med
+ EQ
+ JMC  fbControlFCU_L30
+#srcline 105 ;     FCU_Status.fanSpeedCtrl := 2;
+ LD   word 2
+ WRX  FCU_Status~fanSpeedCtrl
+#debug_left word FCU_Status.fanSpeedCtrl
+#srcline 106 ;  elsif fanSpeed = high then
+ JMP  fbControlFCU_L28
+fbControlFCU_L30:
+ LDX  fanSpeed
+#debug usint fanSpeed
+ LD   udint 3  ; TFCU_FanSpeed#high
+ EQ
+ JMC  fbControlFCU_L31
+#srcline 107 ;     FCU_Status.fanSpeedCtrl := 4;
+ LD   word 4
+ WRX  FCU_Status~fanSpeedCtrl
+#debug_left word FCU_Status.fanSpeedCtrl
+#srcline 108 ;  end_if;
+ JMP  fbControlFCU_L28
+fbControlFCU_L31:
+fbControlFCU_L28:
+#srcline 109 ;  
+#srcline 110 ;  
+#srcline 111 ;  if FCU_Status.fanSpeed = 0 then
+ LDX  FCU_Status~fanSpeed
+#debug word FCU_Status.fanSpeed
+ LD   word 0
+ EQ
+ JMC  fbControlFCU_L32
+#srcline 112 ;     FCU_Status.fanRotationVar := 0;
+ LD   word 0
+ WRX  FCU_Status~fanRotationVar
+#debug_left word FCU_Status.fanRotationVar
+#srcline 113 ;  elsif FCU_Status.fanSpeed = 1 then
+ JMP  fbControlFCU_L33
+fbControlFCU_L32:
+ LDX  FCU_Status~fanSpeed
+#debug word FCU_Status.fanSpeed
+ LD   word 1
+ EQ
+ JMC  fbControlFCU_L34
+#srcline 114 ;     rotationTime := T#0.5s;
+ LD   time 500
+ WRX  rotationTime
+#debug_left time rotationTime
+#srcline 115 ;  elsif FCU_Status.fanSpeed = 2 then
+ JMP  fbControlFCU_L33
+fbControlFCU_L34:
+ LDX  FCU_Status~fanSpeed
+#debug word FCU_Status.fanSpeed
+ LD   word 2
+ EQ
+ JMC  fbControlFCU_L35
+#srcline 116 ;     rotationTime := T#0.25s;
+ LD   time 250
+ WRX  rotationTime
+#debug_left time rotationTime
+#srcline 117 ;  elsif FCU_Status.fanSpeed = 4 then
+ JMP  fbControlFCU_L33
+fbControlFCU_L35:
+ LDX  FCU_Status~fanSpeed
+#debug word FCU_Status.fanSpeed
+ LD   word 4
+ EQ
+ JMC  fbControlFCU_L36
+#srcline 118 ;     rotationTime := T#0.1s;
+ LD   time 100
+ WRX  rotationTime
+#debug_left time rotationTime
+#srcline 119 ;  end_if;
+ JMP  fbControlFCU_L33
+fbControlFCU_L36:
+fbControlFCU_L33:
+#srcline 120 ;  
+#srcline 121 ;  fanRotation_tick(IN := FCU_Status.fanSpeed <> 0, PT := rotationTime);
+ LDX  FCU_Status~fanSpeed
+#debug word FCU_Status.fanSpeed
+ LD   word 0
+ EQ
+ NEG
+ WRX  fanRotation_tick~IN
+#debug_left bool fanRotation_tick~IN
+ LDX  rotationTime
+#debug time rotationTime
+ WRX  fanRotation_tick~PT
+#debug_left time fanRotation_tick~PT
+ LEAX fanRotation_tick
+ CAL  fbTick_L0
+#srcline 122 ;  
+#srcline 123 ;  if fanRotation_tick.Q then
+ LDX  fanRotation_tick~Q
+#debug bool fanRotation_tick.Q
+ JMC  fbControlFCU_L37
+#srcline 124 ;     FCU_Status.fanRotationVar := UINT_TO_WORD(WORD_TO_UINT(FCU_Status.fanRotationVar) + 1);
+ LDX  FCU_Status~fanRotationVar
+#debug word FCU_Status.fanRotationVar
+ LD   uint 1
+ ADD
+ AND  $FFFF
+ WRX  FCU_Status~fanRotationVar
+#debug_left word FCU_Status.fanRotationVar
+#srcline 125 ;  end_if;
+fbControlFCU_L37:
+#srcline 126 ;  
+#srcline 127 ;  if FCU_Status.fanRotationVar = 6 then
+ LDX  FCU_Status~fanRotationVar
+#debug word FCU_Status.fanRotationVar
+ LD   word 6
+ EQ
+ JMC  fbControlFCU_L39
+#srcline 128 ;     FCU_Status.fanRotationVar := 0;
+ LD   word 0
+ WRX  FCU_Status~fanRotationVar
+#debug_left word FCU_Status.fanRotationVar
+#srcline 129 ;  end_if;
+fbControlFCU_L39:
+#srcline 130 ;  
+#srcline 132 ;END_FUNCTION_BLOCK
+ ULNK
+RET
+E     61
+#endpou 
+
+
+
+ 
+
+#srcfile ''

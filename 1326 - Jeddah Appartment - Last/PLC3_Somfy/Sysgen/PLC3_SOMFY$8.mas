@@ -1,0 +1,30 @@
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\PLC3_SOMFY.ST'
+
+; Global types
+#struct  TCurtainStatus
+  bool outUP,
+  bool outDW,
+  usint pos,
+  usint normPos
+
+; Global types
+#struct  TEnCurtain
+  bool UP,
+  bool DW,
+  bool STOP
+
+; Global variables
+#def  numOfCurtains 14
+#def  numOfCurtains_PLC1 9
+#def  curtUpDwTime 18000
+
+; Global variables
+#def  curtainsStatus TCurtainStatus __absolute(PLC3~DATA)
+#def  PLC1_EnCurtains TEnCurtain __absolute(PLC1_Curtains~DATA)
+ 
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\PLC3_SOMFY.ST'
+
+
+ 
+
+#srcfile ''

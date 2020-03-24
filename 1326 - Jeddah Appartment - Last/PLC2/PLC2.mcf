@@ -1,0 +1,13 @@
+CONFIGURATION PLC2
+  RESOURCE CPM
+    TASK FreeWheeling(Number := 0);
+    PROGRAM DiningRoom WITH FreeWheeling : PrgDiningRoom ();
+    PROGRAM LivingRoom WITH FreeWheeling : PrgLivingRoom ();
+    PROGRAM Kitchen WITH FreeWheeling : PrgKitchen ();
+    PROGRAM ServiceRoom WITH FreeWheeling : PrgServiceRoom ();
+    PROGRAM MasterRoom WITH FreeWheeling : PrgMasterRoom ();
+    PROGRAM Room4 WITH FreeWheeling : PrgRoom4 ();
+    PROGRAM Interance WITH FreeWheeling : PrgInterance ();
+    PROGRAM Main WITH FreeWheeling : PrgMain ();
+  END_RESOURCE
+END_CONFIGURATION

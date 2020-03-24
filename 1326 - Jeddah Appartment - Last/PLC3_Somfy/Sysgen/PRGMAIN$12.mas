@@ -1,0 +1,505 @@
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\PRGMAIN.ST'
+
+; Global variables
+#rem  fb_iJalousie curtainsFB[14]
+
+; Global types
+#struct  TEnCurtainRT
+  R_TRIG UP,
+  R_TRIG DW,
+  R_TRIG STOP
+
+#defpou prgMain
+  TEnCurtainRT[9] PLC1_EnCurtains_RT,
+  usint i,
+  bool test,
+  bool up,
+  bool dw,
+  bool stop,
+  bool block,
+  R_TRIG up_RT,
+  R_TRIG dw_RT
+
+#table byte __Init____curtainsFB = 
+      0,  0, 32, 78,  0,  0,244,  1,  0,  0,232,  3,  0,  0, 16, 39,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0, 32, 78,  0,  0,244,  1,  0,  0,232,  3,  0,  0, 16, 39,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0, 32, 78,  0,  0,244,  1,  0,  0,232,  3,  0,
+      0, 16, 39,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 32, 78,  0,  0,244,  1,  0,
+      0,232,  3,  0,  0, 16, 39,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 32, 78,  0,
+      0,244,  1,  0,  0,232,  3,  0,  0, 16, 39,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0, 32, 78,  0,  0,244,  1,  0,  0,232,  3,  0,  0, 16, 39,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0, 32, 78,  0,  0,244,  1,  0,  0,232,  3,  0,  0, 16, 39,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0, 32, 78,  0,  0,244,  1,  0,  0,232,  3,  0,
+      0, 16, 39,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 32, 78,  0,  0,244,  1,  0,
+      0,232,  3,  0,  0, 16, 39,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 32, 78,  0,
+      0,244,  1,  0,  0,232,  3,  0,  0, 16, 39,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0, 32, 78,  0,  0,244,  1,  0,  0,232,  3,  0,  0, 16, 39,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0, 32, 78,  0,  0,244,  1,  0,  0,232,  3,  0,  0, 16, 39,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  1,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0, 32, 78,  0,  0,244,  1,  0,  0,232,  3,  0,
+      0, 16, 39,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, 32, 78,  0,  0,244,  1,  0,
+      0,232,  3,  0,  0, 16, 39,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  0,  0,  0,  1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,
+      0,  0,  0,  4,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  4;
+ 
+#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\PRGMAIN.ST'
+#pou prgMain
+#srcline 13 ;PROGRAM prgMain
+
+#struct prgMain__temp__
+  usint P0__st__,
+  udint P1__st__,
+  udint P2__st__,
+  udint P3__st__,
+  udint P4__st__,
+  udint P5__st__
+P     61
+prgMain_L0:
+ LINK __SizeOf(prgMain__temp__)
+; Initialize - dynamic variables
+; End initialize - dynamic variables
+#srcline 30 ;  for i := 1 to numOfCurtains_PLC1 do
+ LD   usint 1
+ WRX  i
+ LD   usint 9
+ WRY  P0__st__
+prgMain_L1:
+ LDX  i
+ LDY  P0__st__
+ GT   
+ JMD  prgMain_L2
+ DBG  
+#srcline 31 ;      PLC1_EnCurtains_RT[i].UP(CLK := PLC1_EnCurtains[i].UP);
+ LEAX PLC1_EnCurtains_RT
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 8   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ WRY  P1__st__  ; offset instance
+ LEA  PLC1_EnCurtains
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDIB 
+#debug bool PLC1_EnCurtains[i].UP
+ LDY  P1__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P1__st__  ; offset instance
+ CAL  R_TRIG_L0
+#srcline 32 ;      PLC1_EnCurtains_RT[i].DW(CLK := PLC1_EnCurtains[i].DW);
+ LEAX PLC1_EnCurtains_RT
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 8   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ WRY  P2__st__  ; offset instance
+ LEA  PLC1_EnCurtains
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool PLC1_EnCurtains[i].DW
+ LDY  P2__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P2__st__  ; offset instance
+ CAL  R_TRIG_L0
+#srcline 33 ;      PLC1_EnCurtains_RT[i].STOP(CLK := PLC1_EnCurtains[i].STOP);
+ LEAX PLC1_EnCurtains_RT
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 8   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  2  ; + offset 
+ WRY  P3__st__  ; offset instance
+ LEA  PLC1_EnCurtains
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  2   ; Bool offset 
+ LDIB 
+#debug bool PLC1_EnCurtains[i].STOP
+ LDY  P3__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P3__st__  ; offset instance
+ CAL  R_TRIG_L0
+#srcline 35 ;      if (PLC1_EnCurtains_RT[i].UP.Q and curtainsFB[i].outDw) or (PLC1_EnCurtains_RT[i].DW.Q and curtainsFB[i].outUp) then
+ LEAX PLC1_EnCurtains_RT
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 8   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool PLC1_EnCurtains_RT[i].UP.Q
+ LEA  curtainsFB
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ MUL  124   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  43  ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool curtainsFB[i].outDw
+ AND
+ LEAX PLC1_EnCurtains_RT
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 8   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool PLC1_EnCurtains_RT[i].DW.Q
+ LEA  curtainsFB
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ MUL  124   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  43  ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDIB 
+#debug bool curtainsFB[i].outUp
+ AND
+ OR  
+ JMC  prgMain_L3
+#srcline 36 ;         curtainsFB[i].up := 0;
+ LD   bool 0       ; false
+ LEA  curtainsFB
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ MUL  124   ; SizeOf(...)
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ WRIB 
+#debug_left bool curtainsFB[i].up
+#srcline 37 ;         curtainsFB[i].dw := 0;
+ LD   bool 0       ; false
+ LEA  curtainsFB
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ MUL  124   ; SizeOf(...)
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  3   ; Bool offset 
+ WRIB 
+#debug_left bool curtainsFB[i].dw
+#srcline 38 ;         curtainsFB[i](stop := 1, upDwTime := curtUpDwTime) ;
+ LEA  curtainsFB
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ MUL  124   ; SizeOf(...)
+ ADD     ; + offset 
+ WRY  P4__st__  ; offset instance
+ LD   1
+ LDY  P4__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ ADD  5   ; Bool offset 
+ WRIB 
+ LD   time 18000
+ LDY  P4__st__  ; offset instance
+ ADD  2  ; + offset
+ WRIL 
+ LDY  P4__st__  ; offset instance
+ CAL  fb_iJalousie_L0
+#srcline 39 ;      else
+ JMP  prgMain_L4
+prgMain_L3:
+#srcline 40 ;         curtainsFB[i](up := PLC1_EnCurtains[i].UP, dw := PLC1_EnCurtains[i].DW, stop := PLC1_EnCurtains[i].STOP, upDwTime := curtUpDwTime) ;
+ LEA  curtainsFB
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ MUL  124   ; SizeOf(...)
+ ADD     ; + offset 
+ WRY  P5__st__  ; offset instance
+ LEA  PLC1_EnCurtains
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDIB 
+#debug bool PLC1_EnCurtains[i].UP
+ LDY  P5__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ WRIB 
+ LEA  PLC1_EnCurtains
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool PLC1_EnCurtains[i].DW
+ LDY  P5__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ ADD  3   ; Bool offset 
+ WRIB 
+ LEA  PLC1_EnCurtains
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  2   ; Bool offset 
+ LDIB 
+#debug bool PLC1_EnCurtains[i].STOP
+ LDY  P5__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ ADD  5   ; Bool offset 
+ WRIB 
+ LD   time 18000
+ LDY  P5__st__  ; offset instance
+ ADD  2  ; + offset
+ WRIL 
+ LDY  P5__st__  ; offset instance
+ CAL  fb_iJalousie_L0
+#srcline 41 ;      end_if;
+prgMain_L4:
+#srcline 42 ;      
+#srcline 43 ;      curtainsStatus[i].outUP   := curtainsFB[i].outUp;
+ LEA  curtainsFB
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ MUL  124   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  43  ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDIB 
+#debug bool curtainsFB[i].outUp
+ LEA  curtainsStatus
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ WRIB 
+#debug_left bool curtainsStatus[i].outUP
+#srcline 44 ;      curtainsStatus[i].outDW   := curtainsFB[i].outDw;
+ LEA  curtainsFB
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ MUL  124   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  43  ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool curtainsFB[i].outDw
+ LEA  curtainsStatus
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ WRIB 
+#debug_left bool curtainsStatus[i].outDW
+#srcline 45 ;      curtainsStatus[i].pos     := 100 - curtainsFB[i].posit;
+ LD   usint 100
+ LEA  curtainsFB
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ MUL  124   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  45  ; + offset 
+ LDI  
+#debug usint curtainsFB[i].posit
+ SUB
+ AND  $FF
+ LEA  curtainsStatus
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ WRI 
+#debug_left usint curtainsStatus[i].pos
+#srcline 46 ;      curtainsStatus[i].normPos := curtainsStatus[i].pos / 25;
+ LEA  curtainsStatus
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ LDI  
+#debug usint curtainsStatus[i].pos
+ LD   usint 25
+ DIVL
+ AND  $FF
+ LEA  curtainsStatus
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ MUL  3   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  2  ; + offset 
+ WRI 
+#debug_left usint curtainsStatus[i].normPos
+#srcline 47 ;      
+#srcline 48 ;  end_for;
+ LDX  i
+ LD   1
+ ADD  
+ WRX  i
+ JMP  prgMain_L1
+prgMain_L2:
+ NOP  -1
+#srcline 49 ; (*
+#srcline 50 ;  up_RT(CLK := up);
+#srcline 51 ;  dw_RT(CLK := dw);
+#srcline 53 ;  if (up_RT.Q and curtainsFB[1].outDw) or (dw_RT.Q and curtainsFB[1].outUp) then
+#srcline 54 ;     curtainsFB[1].up := 0;
+#srcline 55 ;     curtainsFB[1].dw := 0;
+#srcline 56 ;     curtainsFB[1](stop := 1, upDwTime := curtUpDwTime) ;
+#srcline 57 ;     test := 1;
+#srcline 58 ;  else
+#srcline 59 ;     curtainsFB[1](up := up, dw := dw, stop := STOP, upDwTime := curtUpDwTime) ;
+#srcline 60 ;     up   := 0;
+#srcline 61 ;     dw   := 0;
+#srcline 62 ;     stop := 0;
+#srcline 63 ;  end_if;  *)
+#srcline 65 ;END_PROGRAM
+ ULNK
+RET
+E     61
+#endpou 
+
+
+P     59
+; Initialize retain global variables 
+ LD   0
+ SRC  byte __Init____curtainsFB
+ LD   0
+ LD   1736
+ MOV  byte curtainsFB[0]
+E     59
+
+ 
+
+#srcfile ''

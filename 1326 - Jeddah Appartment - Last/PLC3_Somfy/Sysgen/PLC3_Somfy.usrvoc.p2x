@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<MAP version="3" name="PLC3_Somfy" project="PLC3_Somfy" content="openup" >
+ <TYPES>
+  <RECORD name="F_TRIG" size="1" pou="fb" descr="Falling Edge Detector" >
+    <ITEM name="CLK" type="BOOL" addr="0" bit="0" size="1" var="in" />
+    <ITEM name="Q" type="BOOL" addr="0" bit="1" size="1" var="out" />
+    <ITEM name="M" type="BOOL" addr="0" bit="2" size="1" var="var" value="TRUE" />
+  </RECORD>
+  <RECORD name="TOF" size="15" pou="fb" descr="Off-delay Timer" >
+    <ITEM name="IN" type="BOOL" addr="0" bit="0" size="1" var="in" descr="input" />
+    <ITEM name="PT" type="TIME" addr="1" size="4" var="in" descr="preset" />
+    <ITEM name="Q" type="BOOL" addr="5" bit="0" size="1" var="out" descr="output" />
+    <ITEM name="ET" type="TIME" addr="6" size="4" var="out" descr="value" />
+    <ITEM name="IN_f_edge" type="F_TRIG" addr="10" size="1" var="var" />
+    <ITEM name="LT" type="TIME" addr="11" size="4" var="var" descr="last tick value ( 1ms resolution)" />
+  </RECORD>
+  <RECORD name="fb_iJalousie" size="124" pou="fb" descr="Jalousie control" >
+    <ITEM name="rotUp" type="BOOL" addr="0" bit="0" size="1" var="in" descr="step up" />
+    <ITEM name="up" type="BOOL" addr="0" bit="1" size="1" var="in" descr="move up" />
+    <ITEM name="rotDw" type="BOOL" addr="0" bit="2" size="1" var="in" descr="step down" />
+    <ITEM name="dw" type="BOOL" addr="0" bit="3" size="1" var="in" descr="move down" />
+    <ITEM name="block" type="BOOL" addr="0" bit="4" size="1" var="in" descr="blocking" />
+    <ITEM name="stop" type="BOOL" addr="0" bit="5" size="1" var="in" descr="stop the movement" />
+    <ITEM name="ctrUp" type="BOOL" addr="0" bit="6" size="1" var="in" descr="central up" />
+    <ITEM name="ctrDw" type="BOOL" addr="0" bit="7" size="1" var="in" descr="central down" />
+    <ITEM name="webUp" type="BOOL" addr="1" bit="0" size="1" var="in" descr="activation of &quot;move up&quot; from web interface" />
+    <ITEM name="webDw" type="BOOL" addr="1" bit="1" size="1" var="in" descr="activation of &quot;move down&quot;  from web interface" />
+    <ITEM name="upDwTime" type="TIME" addr="2" size="4" var="in" value="T#20s" descr="maximum time of movement" />
+    <ITEM name="rotTime" type="TIME" addr="6" size="4" var="in" value="T#0.5s" descr="lenght of step [sec]" />
+    <ITEM name="pauseTime" type="TIME" addr="10" size="4" var="in" value="T#1.0s" descr="delay between reversation of movement [sec]" />
+    <ITEM name="ctrTime" type="TIME" addr="14" size="4" var="in" value="T#10.0s" descr="central movement delay [sec]" />
+    <ITEM name="name" type="STRING" addr="18" size="25" var="in" descr="name of the jalousie" />
+    <ITEM name="outUp" type="BOOL" addr="43" bit="0" size="1" var="out" descr="jalousie is moving up" />
+    <ITEM name="outDw" type="BOOL" addr="43" bit="1" size="1" var="out" descr="jalousie is moving down" />
+    <ITEM name="sig" type="BOOL" addr="43" bit="2" size="1" var="out" descr="jalousie is moving" />
+    <ITEM name="sigUp" type="BOOL" addr="43" bit="3" size="1" var="out" descr="jalousie is up" />
+    <ITEM name="sigDw" type="BOOL" addr="43" bit="4" size="1" var="out" descr="jalousie is down" />
+    <ITEM name="pd" type="USINT" addr="44" size="1" var="out" descr="impulse length for rotating jalousie" />
+    <ITEM name="posit" type="USINT" addr="45" size="1" var="out" descr="jalousie position [%]" />
+    <ITEM name="fbPtr" type="UDINT" addr="46" size="4" var="out" descr="function block pointer" />
+    <ITEM name="GTSAP1_SHUTTER_name" type="STRING" addr="50" size="25" var="var" />
+    <ITEM name="GTSAP1_SHUTTER_enable" type="BOOL" addr="75" bit="0" size="1" var="var" value="1" />
+    <ITEM name="GTSAP1_SHUTTER_up" type="BOOL" addr="75" bit="1" size="1" var="var" />
+    <ITEM name="GTSAP1_SHUTTER_down" type="BOOL" addr="75" bit="2" size="1" var="var" />
+    <ITEM name="GTSAP1_SHUTTER_run" type="BOOL" addr="75" bit="3" size="1" var="var" />
+    <ITEM name="GTSAP1_SHUTTER_uppos" type="BOOL" addr="75" bit="4" size="1" var="var" />
+    <ITEM name="GTSAP1_SHUTTER_downpos" type="BOOL" addr="75" bit="5" size="1" var="var" />
+    <ITEM name="GTSAP1_SHUTTER_up_control" type="BOOL" addr="75" bit="6" size="1" var="var" puball="1" />
+    <ITEM name="GTSAP1_SHUTTER_down_control" type="BOOL" addr="75" bit="7" size="1" var="var" puball="1" />
+    <ITEM name="GTSAP1_SHUTTER_rotup_control" type="BOOL" addr="76" bit="0" size="1" var="var" puball="1" />
+    <ITEM name="GTSAP1_SHUTTER_rotdown_control" type="BOOL" addr="76" bit="1" size="1" var="var" puball="1" />
+    <ITEM name="cas_stop" type="TIME" addr="77" size="4" var="var" value="T#0s" />
+    <ITEM name="pauseUp" type="BOOL" addr="81" bit="0" size="1" var="var" />
+    <ITEM name="pauseDw" type="BOOL" addr="81" bit="1" size="1" var="var" />
+    <ITEM name="longUpDw" type="BOOL" addr="81" bit="2" size="1" var="var" />
+    <ITEM name="timUp" type="TOF" addr="82" size="15" var="var" />
+    <ITEM name="timDw" type="TOF" addr="97" size="15" var="var" />
+    <ITEM name="centrUp" type="BOOL" addr="112" bit="0" size="1" var="var" />
+    <ITEM name="centrUpH" type="BOOL" addr="112" bit="1" size="1" var="var" />
+    <ITEM name="centrDw" type="BOOL" addr="112" bit="2" size="1" var="var" />
+    <ITEM name="centrDwH" type="BOOL" addr="112" bit="3" size="1" var="var" />
+    <ITEM name="centrDelay" type="TIME" addr="113" size="4" var="var" />
+    <ITEM name="lpd" type="USINT" addr="117" size="1" var="var" />
+    <ITEM name="positTim" type="TIME" addr="118" size="4" var="var" />
+    <ITEM name="__EDGE_R__rotUp" type="BOOL" addr="122" bit="0" size="1" var="var" />
+    <ITEM name="__EDGE_R__up" type="BOOL" addr="122" bit="1" size="1" var="var" />
+    <ITEM name="__EDGE_R__rotDw" type="BOOL" addr="122" bit="2" size="1" var="var" />
+    <ITEM name="__EDGE_R__dw" type="BOOL" addr="122" bit="3" size="1" var="var" />
+    <ITEM name="__EDGE_R__stop" type="BOOL" addr="122" bit="4" size="1" var="var" />
+    <ITEM name="__EDGE_R__ctrUp" type="BOOL" addr="122" bit="5" size="1" var="var" />
+    <ITEM name="__EDGE_R__ctrDw" type="BOOL" addr="122" bit="6" size="1" var="var" />
+    <ITEM name="__EDGE_R__webUp" type="BOOL" addr="122" bit="7" size="1" var="var" />
+    <ITEM name="__EDGE_R__webDw" type="BOOL" addr="123" bit="0" size="1" var="var" />
+  </RECORD>
+ </TYPES>
+ <DATA>
+  <ARRAY size="1736" lo="1" hi="14" > 
+    <ITEM name="curtainsFB" type="fb_iJalousie" location="%M" addr="0" size="124" />
+    </ARRAY> 
+ </DATA>
+</MAP>
