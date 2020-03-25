@@ -3,12 +3,10 @@
 
 VAR_GLOBAL CONSTANT
    CPU_TYPE : USINT := 75; (* CPU type *)
-   CPU_CODE : UINT := 1015; (* CPU code *)
+   CPU_CODE : UINT := 1000; (* CPU code *)
 END_VAR
 
 TYPE
-
-   TVideoRamArray : ARRAY[0..79] OF USINT;
 
    TCHStatistic : STRUCT
       STAT : USINT;
@@ -31,23 +29,34 @@ TYPE
       NoData : USINT;
    END_STRUCT;
 
-   TBIN_6DIW : STRUCT
+   r0_p3_TCIB_IN : STRUCT
+      intgr : REAL;
+   END_STRUCT;
+
+   r0_p3_TCIB_OUT : STRUCT
+      NoData : USINT;
+   END_STRUCT;
+
+   TBIN_6DIM : STRUCT
       DI0 : BOOL;
       DI1 : BOOL;
       DI2 : BOOL;
       DI3 : BOOL;
-      DI4 : BOOL;
-      DI5 : BOOL;
+      IN230 : BOOL;
+      HDO : BOOL;
       dummy6 {HIDDEN} : BOOL;
       dummy7 {HIDDEN} : BOOL;
-      dummy8 {HIDDEN} : BOOL;
-      dummy9 {HIDDEN} : BOOL;
-      dummy10 {HIDDEN} : BOOL;
-      dummy11 {HIDDEN} : BOOL;
-      dummy12 {HIDDEN} : BOOL;
-      dummy13 {HIDDEN} : BOOL;
-      dummy14 {HIDDEN} : BOOL;
-      dummy15 {HIDDEN} : BOOL;
+   END_STRUCT;
+
+   TSTPW : STRUCT
+      WCIB1 : BOOL;
+      ECIB1 : BOOL;
+      WCIB2 : BOOL;
+      ECIB2 : BOOL;
+      WSRC : BOOL;
+      ESRC : BOOL;
+      WACU : BOOL;
+      EACU : BOOL;
    END_STRUCT;
 
    TAIStat : STRUCT
@@ -76,29 +85,22 @@ TYPE
       PCT : REAL;
    END_STRUCT;
 
-   TBIN_6DOW : STRUCT
-      DO0 : BOOL;
-      DO1 : BOOL;
-      DO2 : BOOL;
-      DO3 : BOOL;
-      DO4 : BOOL;
-      DO5 : BOOL;
-      dummy6 {HIDDEN} : BOOL;
-      dummy7 {HIDDEN} : BOOL;
-      dummy8 {HIDDEN} : BOOL;
-      dummy9 {HIDDEN} : BOOL;
-      dummy10 {HIDDEN} : BOOL;
-      dummy11 {HIDDEN} : BOOL;
-      dummy12 {HIDDEN} : BOOL;
-      dummy13 {HIDDEN} : BOOL;
-      dummy14 {HIDDEN} : BOOL;
-      dummy15 {HIDDEN} : BOOL;
+   TAIPW : STRUCT
+      UCIB1 : REAL;
+      UCIB2 : REAL;
+      USRC : REAL;
+      UACU : REAL;
    END_STRUCT;
 
-   TAO : STRUCT
-      FS : INT;
-      ENG : REAL;
-      PCT : REAL;
+   TBIN_2DO : STRUCT
+      DO0 : BOOL;
+      DO1 : BOOL;
+      dummy2 {HIDDEN} : BOOL;
+      dummy3 {HIDDEN} : BOOL;
+      dummy4 {HIDDEN} : BOOL;
+      dummy5 {HIDDEN} : BOOL;
+      dummy6 {HIDDEN} : BOOL;
+      dummy7 {HIDDEN} : BOOL;
    END_STRUCT;
 
    TPLCx_ETH1_PLCx0_ADR3_TX_DATA : ARRAY[0..237] OF USINT;
@@ -122,35 +124,37 @@ TYPE
 END_TYPE
 
 VAR_GLOBAL_INPUT
-(* OI-1083 *)
-   r0_p1_Keyb : USINT;
 (* CF-1140 *)
    r0_p2_CIB_Statistic : TCHStatistic;
    r0_p2_CIB_STAT : TCIB_STAT_ARRAY;
    r0_p2_CIB_ERR : TCIB_STAT_ARRAY;
    r0_p2_CIB_IN : r0_p2_TCIB_IN;
-(* IR-1064 *)
-   r0_p3_DI : TBIN_6DIW;
-   r0_p3_AI0 : TAI;
-   r0_p3_AI1 : TAI;
-   r0_p3_AI2 : TAI;
-   r0_p3_AI3 : TAI;
-   r0_p3_AI4 : TAI;
-   r0_p3_AI5 : TAI;
+(* CF-1140 *)
+   r0_p3_CIB_Statistic : TCHStatistic;
+   r0_p3_CIB_STAT : TCIB_STAT_ARRAY;
+   r0_p3_CIB_ERR : TCIB_STAT_ARRAY;
+   r0_p3_CIB_IN : r0_p3_TCIB_IN;
+(* IR-1061 *)
+   r0_p5_DI : TBIN_6DIM;
+   r0_p5_STPW : TSTPW;
+   r0_p5_AI0 : TAI;
+   r0_p5_AI1 : TAI;
+   r0_p5_AI2 : TAI;
+   r0_p5_AI3 : TAI;
+   r0_p5_AIPW : TAIPW := (UCIB1 := 1, UCIB2 := 1, USRC := 1, UACU := 1);
 (* ETH1_PLCx0 *)
    r0_p0_Statistic_ETH1_PLCx0 : TCHStatistic;
 END_VAR
 
 VAR_GLOBAL_OUTPUT
-(* OI-1083 *)
-   r0_p1_VideoRam : TVideoRamArray;
 (* CF-1140 *)
    r0_p2_CIB_Control : TCHControl;
    r0_p2_CIB_OUT : r0_p2_TCIB_OUT;
-(* IR-1064 *)
-   r0_p3_DO : TBIN_6DOW;
-   r0_p3_AO0 : TAO;
-   r0_p3_AO1 : TAO;
+(* CF-1140 *)
+   r0_p3_CIB_Control : TCHControl;
+   r0_p3_CIB_OUT : r0_p3_TCIB_OUT;
+(* IR-1061 *)
+   r0_p5_DO : TBIN_2DO;
 (* ETH1_PLCx0 *)
    r0_p0_Control_ETH1_PLCx0 : TCHControl;
 END_VAR

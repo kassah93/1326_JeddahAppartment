@@ -1,30 +1,6 @@
 ;Warning
 ;The file is automatically generated and all manual modifications will be lost.
 
-#struct _TTS_Head
-        UINT ModulID,
-        BYTE Stat0,
-        BYTE Stat1
-
-#struct _TTS_OI1084
-        _TTS_Head Head,
-        BYTE EKEY,
-        BYTE EDISP,
-        UINT CDPG,
-        USINT AREP,
-        BYTE MARK
-
-#struct TModulE1
-        USINT version,
-        USINT rack,
-        USINT address,
-        UINT LogAddress,
-        UINT LenInputs,
-        UINT LenOutputs,
-        DINT OffsetInputs,
-        DINT OffsetOutputs,
-        UINT InitTable
-
 #struct TCIBHeader
         WORD code,
         WORD mode,
@@ -95,13 +71,43 @@
         _TTS_CIBHead Head,
         _TTS_LINE[33] Line
 
+#struct TModulE1
+        USINT version,
+        USINT rack,
+        USINT address,
+        UINT LogAddress,
+        UINT LenInputs,
+        UINT LenOutputs,
+        DINT OffsetInputs,
+        DINT OffsetOutputs,
+        UINT InitTable
+
+#struct r0_p3_TCIBDesc
+        BYTE version,
+        USINT numStr,
+        USINT lenStr,
+        WORD tabType
+
+#struct r0_p3_TCIBDest
+        BYTE version,
+        USINT numStr,
+        USINT lenStr,
+        WORD tabType
+
+#struct r0_p3_TConvertIN
+        BYTE[1] ID0,
+        BYTE END
+
+#struct r0_p3_TConvertOUT
+        BYTE END
+
+#struct _TTS_Head
+        UINT ModulID,
+        BYTE Stat0,
+        BYTE Stat1
+
 #struct _TTS_EnbCHAI
         BYTE ESTAT,
-        BYTE EFS,
-        BYTE EENG,
-        BYTE EPCT
-
-#struct _TTS_EnbCHAO
         BYTE EFS,
         BYTE EENG,
         BYTE EPCT
@@ -112,21 +118,17 @@
         REAL Offset,
         REAL Gain
 
-#struct _TTS_IniCHAO
-        BYTE Mode,
-        BYTE Block,
-        REAL Value
-
-#struct _TTS_IR1064
+#struct _TTS_IR1061
         _TTS_Head Head,
         USINT EDI,
-        USINT Erezi,
-        _TTS_EnbCHAI[6] EAI,
+        USINT ESTPW,
+        _TTS_EnbCHAI[4] EAI,
+        USINT EUCIB1,
+        USINT EUCIB2,
+        USINT EUSRC,
+        USINT EUACU,
         USINT EDO,
-        USINT Erezo,
-        _TTS_EnbCHAO[2] EAO,
-        _TTS_IniCHAI[6] SetAI,
-        _TTS_IniCHAO[2] SetAO
+        _TTS_IniCHAI[4] SetAI
 
 #struct _TTS_PLCxHead
         WORD code,
@@ -154,14 +156,6 @@
 #struct _TTS_PLCxINIT_ETH1_PLCx0
         _TTS_PLCxHead Head,
         _TTS_LPLCx[2] Line
-
-;OI-1083 - Initialization table of OI-1083 device
-#table _TTS_OI1084 r0_p1_Table = 1072,$02,$00,
-                                 $80,
-                                 $80,
-                                 1250,
-                                 15,
-                                 $80
 
 ;CF-1140 - Initialization table of CP-1140 unit
 #table TCIB_1140_init r0_p2_CF_1140_init = $0C38,$0000,$0000,$00,$01,
@@ -222,42 +216,96 @@
                                      $00,$00,$0000,0,0,
                                      $00,$00,$0000,0,0
 
-;IR-1064 - Initialization table of IR-1064 device
-#table _TTS_IR1064 r0_p3_Table = 1064,$00,$00,
+;CF-1140 - Initialization table of CP-1140 unit
+#table TCIB_1140_init r0_p3_CF_1140_init = $0C38,$0000,$0000,$00,$01,
+                                           $80,$00,$0010,$0000
+
+;CF-1140
+#table r0_p3_TCIBDesc r0_p3_Desc = $02,
+                                   0,
+                                   18,
+                                   $FFFF
+
+;CF-1140
+#table r0_p3_TCIBDest r0_p3_Dest = $02,
+                                   0,
+                                   32,
+                                   __indx(r0_p3_Desc)
+
+;CF-1140
+#table r0_p3_TConvertIN r0_p3_Convert_IN = $94, ;Master
+                                           $00
+
+;CF-1140
+#table r0_p3_TConvertOUT r0_p3_Convert_OUT = $00
+
+;CF-1140
+#table _TTS_CIBINIT_CH r0_p3_Table = $00C9,$0000,9,63,12,0,0,__indx(r0_p3_Dest),0,0,0,0,0,__offset32(r0_p3_CIB_IN),__offset32(r0_p3_CIB_OUT),__offset32(r0_p3_CIB_Stat),__offset32(r0_p3_CIB_Err),__indx(r0_p3_Convert_IN),__indx(r0_p3_Convert_OUT),1,33,
+                                     $C0,$00,__indx(r0_p3_CF_1140_init),2,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0,
+                                     $00,$00,$0000,0,0
+
+;IR-1061 - Initialization table of IR-1061 device
+#table _TTS_IR1061 r0_p5_Table = 1061,$00,$00,
                                  128,
-                                 0,
-                                 $00,$00,$00,$00,
-                                 $00,$00,$00,$00,
-                                 $00,$00,$00,$00,
-                                 $00,$00,$00,$00,
-                                 $00,$00,$00,$00,
-                                 $00,$00,$00,$00,
                                  128,
+                                 $00,$00,$00,$00,
+                                 $00,$00,$00,$00,
+                                 $00,$00,$00,$00,
+                                 $00,$00,$00,$00,
                                  0,
-                                 $00,$00,$00,
-                                 $00,$00,$00,
-                                 $80,0,0,1,
-                                 $80,0,0,1,
-                                 $80,0,0,1,
-                                 $80,0,0,1,
-                                 $80,0,0,1,
-                                 $80,0,0,1,
-                                 $80,$01,0,
-                                 $80,$01,0
+                                 0,
+                                 0,
+                                 0,
+                                 128,
+                                 $2C,0,0,1,
+                                 $2C,0,0,1,
+                                 $2C,0,0,1,
+                                 $2C,0,0,1
 
 ;ETH1_PLCx0
 #table _TTS_PLCxINIT_ETH1_PLCx0 r0_p0_Table_PLCx_ETH1_PLCx0 = $00C3,$0000,3,3,0,0,0,$11D8,0,$06E1,0,$00000000,$00000000,2,20,
                                                               0,3,238,__offset32(PLCx_ETH1_PLCx0_ADR3_TX),
                                                               0,1,50,__offset32(PLCx_ETH1_PLCx0_ADR1_RX)
 
-;OI-1083 - OI-1084 device declaration
-#module TModulE1 $01,0,1,0,1,80,__offset(r0_p1_Keyb),__offset(r0_p1_VideoRam),__indx(r0_p1_Table)
-
 ;CF-1140
 #module TModulE1 $01,0,2,272,10,2,__offset(r0_p2_CIB_Statistic),__offset(r0_p2_CIB_Control),__indx(r0_p2_Table)
 
-;IR-1064 - IR-1064 device declaration
-#module TModulE1 $01,0,3,0,74,22,__offset(r0_p3_DI),__offset(r0_p3_DO),__indx(r0_p3_Table)
+;CF-1140
+#module TModulE1 $01,0,3,272,10,2,__offset(r0_p3_CIB_Statistic),__offset(r0_p3_CIB_Control),__indx(r0_p3_Table)
+
+;IR-1061 - IR-1061 device declaration
+#module TModulE1 $01,0,5,0,66,1,__offset(r0_p5_DI),__offset(r0_p5_DO),__indx(r0_p5_Table)
 
 #ifdef r0_p0_Table_PLCx_ETH1_PLCx0
 ;ETH1_PLCx0 - PLCx_ETH declaration

@@ -105,9 +105,9 @@
 #table byte __Init___PrgRoom1_enCurtainsDW_FT = 
       4,  4;
 #table byte __Init___PrgRoom1_enCurtainsUP_SW_FT = 
-      4,170;
+      4,131;
 #table byte __Init___PrgRoom1_enCurtainsDW_SW_FT = 
-      4,226;
+      4,228;
 #table byte __Init___PrgRoom1_enFCUs_FT = 
       4,  4;
 #table byte __Init___PrgRoom1_enSetTempIncr_FT = 

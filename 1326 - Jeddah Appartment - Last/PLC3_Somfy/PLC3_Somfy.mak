@@ -37,11 +37,9 @@
 #endlibs
 
 ;**************************************
-#usefile "PanelMaker\DeklarPT.mos", 'auto'
 #usefile "IOConfigurator\CONFIG.ST", 'auto'
 #usefile "IOConfigurator\CONFIG.HWC", 'auto'
 #usefile "PLC3_SOMFY.ST"
 #usefile "fbSomfyRTSControl.ST"
 #usefile "prgMain.ST"
-#usefile "PanelMaker\r0_p1_OI_1083.mos", 'auto'
 #usefile "PLC3_Somfy.mcf", 'auto'

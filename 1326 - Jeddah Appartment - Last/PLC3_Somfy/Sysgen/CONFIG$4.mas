@@ -1,8 +1,8 @@
 #srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\IOCONFIGURATOR\CONFIG.ST'
 
 ; Global variables
-#def  CPU_TYPE 76
-#def  CPU_CODE 1001
+#def  CPU_TYPE 75
+#def  CPU_CODE 1000
 
 ; Global types
 #struct  TCHStatistic
@@ -81,6 +81,12 @@
   usint SIGN,
   uint NUMT,
   TPLCx_ETH1_PLCx0_ADR3_TX_DATA DATA
+#def  TPLCx_ETH1_PLCx0_ADR1_RX_DATA usint[50]
+#struct  TPLCx_ETH1_PLCx0_ADR1_RX
+  usint STAT,
+  usint ERR,
+  uint NUMR,
+  TPLCx_ETH1_PLCx0_ADR1_RX_DATA DATA
 
 ; Global variables
 #input  TCHStatistic r0_p2_CIB_Statistic
@@ -110,7 +116,9 @@
 
 ; Global variables
 #reg  TPLCx_ETH1_PLCx0_ADR3_TX PLCx_ETH1_PLCx0_ADR3_TX
+#reg  TPLCx_ETH1_PLCx0_ADR1_RX PLCx_ETH1_PLCx0_ADR1_RX
 #def  PLC3 PLCx_ETH1_PLCx0_ADR3_TX
+#def  PLC1_Curtains PLCx_ETH1_PLCx0_ADR1_RX
 
 ; Global variables
 #table byte __Init____r0_p5_AIPW = 
