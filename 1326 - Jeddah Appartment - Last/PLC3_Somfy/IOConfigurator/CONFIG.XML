@@ -19,7 +19,7 @@
         <Channel Options="PC PLC UNI MPC MDB PFB" Name="CH1" SysMap="CH1" SysMapCode="0101" LAddr="0101"/>
       </SerialChannels>
       <Ethernets>
-        <Ethernet Name="ETH1" LAddr="E1">
+        <Ethernet Name="ETH1" LAddr="E1" expanded="true">
           <Channel Options="PC" Name="SOCK0"/>
           <Channel Options="PLC" Name="SOCK1"/>
           <Channel xmlns="http://www.tecomat.com" Mode="PLCx" Alias="Channel of PLCx" enabled="true" expanded="true" Options="PLCx" Name="PLCx0" LAddr="06E1">
@@ -58,11 +58,11 @@
           <Channel Options="UNI" Name="SOCK11"/>
         </Ethernet>
       </Ethernets>
-      <Piggybacks>
+      <Piggybacks expanded="true">
         <Piggyback xmlns="http://www.tecomat.com" slot="0"/>
       </Piggybacks>
       <Interfaces>
-        <Interface Class="TCL2" SubClass="INTERN" alias="Internal bus" rackOffset="0" busID="0">
+        <Interface Class="TCL2" SubClass="INTERN" alias="Internal bus" rackOffset="0" busID="0" expanded="true">
           <Peripheries>
             <Device xmlns="http://www.tecomat.com" alias="CIB Master" rack="0" position="2" default="true" expanded="true" statLoc="%S102" validStat="A2">
               <Info>
@@ -85,7 +85,7 @@
               </Interfaces>
               <Editor/>
             </Device>
-            <Device xmlns="http://www.tecomat.com" alias="CIB Master" rack="0" position="3" default="true" statLoc="%S103" validStat="A2">
+            <Device xmlns="http://www.tecomat.com" alias="CIB Master" rack="0" position="3" default="true" statLoc="%S103" validStat="A2" expanded="true">
               <Info>
                 <ProductCode>1141</ProductCode>
                 <ProductName>CF-1140</ProductName>

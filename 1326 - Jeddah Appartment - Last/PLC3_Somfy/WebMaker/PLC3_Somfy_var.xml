@@ -1,5 +1,5 @@
 <Variables>
-	<Item Name="main.up" Pos="030008C4" Type="1" />
-	<Item Name="main.dw" Pos="030008C4" Type="2" />
-	<Item Name="main.stop" Pos="030008C4" Type="3" />
+	<Item Name="main.up" Pos="03000929" Type="1" />
+	<Item Name="main.dw" Pos="03000929" Type="2" />
+	<Item Name="main.stop" Pos="03000929" Type="3" />
 </Variables>

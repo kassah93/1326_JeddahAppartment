@@ -1,5 +1,7 @@
 VAR_GLOBAL RETAIN
-   curtainsFB : Array[1..numOfCurtains] of fb_iJalousie;
+   curtainsFB    : Array[1..numOfCurtains] of fb_iJalousie;
+   packetsBuffer : TSomfyRTSPacketBuff;
+   buffIndex     : UINT;
 END_VAR
 
 TYPE
@@ -20,9 +22,13 @@ PROGRAM prgMain
   
   i : USINT;
   
+  Trsnsmitter1_ID ,Trsnsmitter2_ID : TVendorID;
+  HostID : TVendorID;
+  
   // for test
   test, up, dw, stop, block : BOOl;
   up_RT , dw_RT : R_TRIG;
+  
   END_VAR
   VAR_TEMP
   END_VAR
@@ -31,7 +37,23 @@ PROGRAM prgMain
       PLC1_EnCurtains_RT[i].UP(CLK := PLC1_EnCurtains[i].UP);
       PLC1_EnCurtains_RT[i].DW(CLK := PLC1_EnCurtains[i].DW);
       PLC1_EnCurtains_RT[i].STOP(CLK := PLC1_EnCurtains[i].STOP);
+      
+      
+      // Generate RTS control packets
+      if PLC1_EnCurtains_RT[i].UP.Q then
+         fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TrsnsmitterID := Trsnsmitter1_ID, UP := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
+      end_if;
+      
+       if PLC1_EnCurtains_RT[i].DW.Q then
+         fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TrsnsmitterID := Trsnsmitter1_ID, DW := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
+      end_if;
+      
+       if PLC1_EnCurtains_RT[i].STOP.Q then
+         fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TrsnsmitterID := Trsnsmitter1_ID, stop := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
+      end_if;
 
+
+      // handle curtains status
       if (PLC1_EnCurtains_RT[i].UP.Q and curtainsFB[i].outDw) or (PLC1_EnCurtains_RT[i].DW.Q and curtainsFB[i].outUp) then
          curtainsFB[i].up := 0;
          curtainsFB[i].dw := 0;

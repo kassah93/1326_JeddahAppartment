@@ -40,7 +40,7 @@ watchobjEx14=0,"curtainsFB[1]|"
 watchobj14="curtainsFB[1]",1,0,0,""
 watchobjEx15=0,"PLC1_EnCurtains[6]|"
 watchobj15="PLC1_EnCurtains[6]",1,0,0,""
-watchobjEx16=0,"curtainsFB[6]|{+}"
+watchobjEx16=0,"curtainsFB[6]|"
 watchobj16="curtainsFB[6]",1,0,0,""
 [/Watch2Bank0]
 
