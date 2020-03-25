@@ -5,7 +5,7 @@ Version="xPRO","4.3.00"
 [dockinfo]
 centralpc=65287512,1,0,1
 leftpane=65313976,0,1,1,245,1
-bottompane=65321204,1,154
+bottompane=65321204,1,184
 rightpane=65286384,0,498,0
 [/dockinfo]
 
@@ -86,7 +86,8 @@ sprompt=0
 iecoperands=1
 ieccomments=1
 promptonreplace=0
-findhistory="curtaUpDwTime","uni3","Room2","uni2","Room1","Majles1","Incr","uni0","RCU_Master","Inter","k"
+findhistory="PLC1_E","curtaUpDwTime","uni3","Room2","uni2","Room1","Majles1","Incr","uni0","RCU_Master","Inter","k"
+findhistory="E"
 [/replacedialog]
 
 [plcdiskdlg]
@@ -95,15 +96,15 @@ showdetails=1
 [/plcdiskdlg]
 
 [msgwin2]
-window=65321204,1,0,0,125,1663,39,572,125,1276,0,0,1
+window=65321204,1,0,0,155,1663,39,572,155,1276,0,0,1
 [/msgwin2]
 
 [msgwin1]
-window=65321204,1,0,0,125,1663,39,572,125,1276,0,0,0
+window=65321204,1,0,0,155,1663,39,572,155,1276,0,0,0
 [/msgwin1]
 
 [symbwin]
-window=65321204,1,0,0,125,1663,39,572,125,1276,0,0,2
+window=65321204,1,0,0,155,1663,39,572,155,1276,0,0,2
 hdrwidth2=100
 hdrwidth3=100
 [/symbwin]
@@ -159,7 +160,7 @@ font="courier new",1,0,9,-12,0,0,0
 [/memwin2]
 
 [watch2win]
-window=65321204,1,0,0,125,1663,39,572,125,1276,0,0,4
+window=65321204,1,0,0,155,1663,39,572,155,1276,0,0,4
 hdrnamew=326,66,0
 font="courier new",238,0,10,-13,-2147483640,0,0
 defbank="Bank1"
@@ -172,7 +173,7 @@ mem1w=180
 mem1visible=0
 mem2w=190
 mem2visible=0
-storednames="curtainsFB[6]","PLC1_EnCurtains[6]","Main.test","curtainsFB[1].posit","curtainsFB[1].pd","curtainsFB[1].sigDw","curtainsFB[1].sigUp","curtainsFB[1].outDw","curtainsFB[1].outUp","curtainsFB[1].timDw","curtainsFB[1].timUp","Main.block","Main.STOP","Main.DW","Main.UP","curtainsFB[1]"
+storednames="buffIndex","packetsBuffer","curtainsFB[6]","PLC1_EnCurtains[6]","Main.test","curtainsFB[1].posit","curtainsFB[1].pd","curtainsFB[1].sigDw","curtainsFB[1].sigUp","curtainsFB[1].outDw","curtainsFB[1].outUp","curtainsFB[1].timDw","curtainsFB[1].timUp","Main.block","Main.STOP","Main.DW"
 [/watch2win]
 
 [weblc]
@@ -195,7 +196,7 @@ window=65287512,0,0,0,712,1741,320,145,741,1616,0,0,0
 [/Datalogger]
 
 [IOConfigurator]
-window=65286384,1,0,0,769,490,798,136,886,490,0,0,0
+window=65286384,1,0,0,739,490,798,136,886,490,0,0,0
 [/IOConfigurator]
 
 [PanelSIM_1]
@@ -213,12 +214,12 @@ window=65313976,0,0,0,927,237,956,245,886,237,0,0,5
 [/PlcNetManager]
 
 [FormDesign1]
-window=65287512,1,0,0,769,1663,956,1920,582,1671,0,0,5
+window=65287512,1,0,0,739,1663,956,1920,582,1671,0,0,5
 [/FormDesign1]
 
 [textsyneditor]
-editor="prgMain.ST",1,1,0,56,26,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=65287512,1,0,0,769,1663,956,1920,956,1355,0,0,1
+editor="prgMain.ST",1,1,0,42,65,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
+window=65287512,1,0,0,739,1663,956,1920,956,1355,0,0,1
 localparams=0,1,1,1,1,30,0,80,1,2,1,0
 font="Courier New",10
 relay=0,0,0,0,0,"",0,0
@@ -227,8 +228,8 @@ debugparams=1,0,1
 [/textsyneditor]
 
 [textsyneditor]
-editor="PLC3_SOMFY.ST",1,0,0,12,29,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=65287512,1,0,0,769,1663,956,1920,602,1169,0,0,2
+editor="PLC3_SOMFY.ST",1,0,0,21,22,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
+window=65287512,1,0,0,739,1663,956,1920,602,1169,0,0,2
 localparams=0,1,1,1,1,30,0,80,1,2,1,0
 font="Courier New",10
 relay=0,0,0,0,0,"",0,0
@@ -238,7 +239,7 @@ debugparams=1,0,1
 
 [textsyneditor]
 editor="LOCALLIB\iControlLib_V23_20190315.mlb",1,0,0,441,8,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=65287512,1,0,0,769,1663,956,1920,274,1671,0,0,3
+window=65287512,1,0,0,739,1663,956,1920,274,1671,0,0,3
 localparams=0,1,1,1,1,30,0,80,1,2,1,0
 font="Courier New",10
 relay=0,0,0,0,0,"",0,0
@@ -248,7 +249,7 @@ debugparams=1,0,1
 
 [textsyneditor]
 editor="IOCONFIGURATOR\CONFIG.HWC",1,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=65287512,1,0,0,769,1663,956,1920,582,1671,0,0,4
+window=65287512,1,0,0,739,1663,956,1920,582,1671,0,0,4
 localparams=0,1,1,1,1,30,0,80,1,4,0,0
 font="Lucida Console",11
 relay=0,0,0,0,0,"",0,0
@@ -258,7 +259,7 @@ debugparams=1,0,1
 
 [textsyneditor]
 editor="fbSomfyRTSControl.ST",1,0,0,13,13,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=65287512,1,0,0,769,1663,956,1920,798,1671,0,0,6
+window=65287512,1,0,0,739,1663,956,1920,798,1671,0,0,6
 localparams=0,1,1,1,1,30,0,80,1,2,1,0
 font="Courier New",10
 relay=0,0,0,0,0,"",0,0

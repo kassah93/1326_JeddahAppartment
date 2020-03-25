@@ -6,7 +6,7 @@ contentversion=1
 [Watch2Bank0]
 bankname="Bank1"
 shortcut=1
-watchcnt=17
+watchcnt=19
 bindfile=""
 watchobjEx0=0,"PLC3.DATA|"
 watchobj0="PLC3.DATA",1,0,0,""
@@ -42,5 +42,9 @@ watchobjEx15=0,"PLC1_EnCurtains[6]|"
 watchobj15="PLC1_EnCurtains[6]",1,0,0,""
 watchobjEx16=0,"curtainsFB[6]|"
 watchobj16="curtainsFB[6]",1,0,0,""
+watchobjEx17=0,"packetsBuffer|"
+watchobj17="packetsBuffer",1,0,0,""
+watchobjEx18=0,"buffIndex|"
+watchobj18="buffIndex",1,0,0,""
 [/Watch2Bank0]
 

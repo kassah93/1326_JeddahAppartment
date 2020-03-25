@@ -63,13 +63,13 @@ setTimeout("FunWatchDog()", 20000);
 }
 
 function PostXML1() {
-PostXML('PAGE1.XML', encodeURIComponent('__R2345.1_BOOL_i=1')); 
+PostXML('PAGE1.XML', encodeURIComponent('__R2380.1_BOOL_i=1')); 
 }
 function PostXML2() {
-PostXML('PAGE1.XML', encodeURIComponent('__R2345.2_BOOL_i=1')); 
+PostXML('PAGE1.XML', encodeURIComponent('__R2380.2_BOOL_i=1')); 
 }
 function PostXML3() {
-PostXML('PAGE1.XML', encodeURIComponent('__R2345.3_BOOL_i=1')); 
+PostXML('PAGE1.XML', encodeURIComponent('__R2380.3_BOOL_i=1')); 
 }
 
 function PostGlobal() {

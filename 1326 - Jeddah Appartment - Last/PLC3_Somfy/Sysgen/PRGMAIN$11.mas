@@ -12,8 +12,10 @@
   R_TRIG STOP
 
 #defpou prgMain
-  TEnCurtainRT[9] PLC1_EnCurtains_RT,
+  TEnCurtain[14] EnCurtains,
+  TEnCurtainRT[14] EnCurtains_RT,
   usint i,
+  usint curIndex,
   TVendorID Trsnsmitter1_ID,
   TVendorID Trsnsmitter2_ID,
   TVendorID HostID,
@@ -129,10 +131,10 @@ prgMain_L0:
  LINK __SizeOf(prgMain__temp__)
 ; Initialize - dynamic variables
 ; End initialize - dynamic variables
-#srcline 36 ;  for i := 1 to numOfCurtains_PLC1 do
+#srcline 38 ;  for i := 1 to numOfCurtains do
  LD   usint 1
  WRX  i
- LD   usint 9
+ LD   usint 14
  WRY  P0__st__
 prgMain_L1:
  LDX  i
@@ -140,16 +142,68 @@ prgMain_L1:
  GT   
  JMD  prgMain_L2
  DBG  
-#srcline 37 ;      PLC1_EnCurtains_RT[i].UP(CLK := PLC1_EnCurtains[i].UP);
- LEAX PLC1_EnCurtains_RT
+#srcline 39 ;      if i <= numOfCurtains_PLC1 then
+ LDX  i
+#debug usint i
+ LD   usint 9
+ GT
+ NEG
+ JMC  prgMain_L3
+#srcline 40 ;         EnCurtains[i] := PLC1_EnCurtains[i];
+ LEA  PLC1_EnCurtains
  LDX  i
 #debug usint i
  SUB  1   ; Low range[1]
  RCHK 8   ; Range Check
+ ADD     ; + offset 
+#debug pointer PLC1_EnCurtains[i]
+ SRC  %IB0
+ LEAX EnCurtains
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ ADD     ; + offset 
+#debug_left pointer EnCurtains[i]
+ LD   1   ;SizeOf() 
+ MOV  %IB0
+#srcline 41 ;      else
+ JMP  prgMain_L4
+prgMain_L3:
+#srcline 42 ;         EnCurtains[i] := PLC2_EnCurtains[i - numOfCurtains_PLC1];
+ LEA  PLC2_EnCurtains
+ LDX  i
+#debug usint i
+ LD   usint 9
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 4   ; Range Check
+ ADD     ; + offset 
+#debug pointer PLC2_EnCurtains[i-numOfCurtains_PLC1]
+ SRC  %IB0
+ LEAX EnCurtains
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
+ ADD     ; + offset 
+#debug_left pointer EnCurtains[i]
+ LD   1   ;SizeOf() 
+ MOV  %IB0
+#srcline 43 ;      end_if;
+prgMain_L4:
+#srcline 44 ;      
+#srcline 45 ;      EnCurtains_RT[i].UP(CLK := EnCurtains[i].UP);
+ LEAX EnCurtains_RT
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 13   ; Range Check
  MUL  3   ; SizeOf(...)
  ADD     ; + offset 
  WRY  P1__st__  ; offset instance
- LEA  PLC1_EnCurtains
+ LEAX EnCurtains
  LDX  i
 #debug usint i
  SUB  1   ; Low range[1]
@@ -157,23 +211,23 @@ prgMain_L1:
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  LDIB 
-#debug bool PLC1_EnCurtains[i].UP
+#debug bool EnCurtains[i].UP
  LDY  P1__st__  ; offset instance
  MUL  8   ; -> bool pointer 
  WRIB 
  LDY  P1__st__  ; offset instance
  CAL  R_TRIG_L0
-#srcline 38 ;      PLC1_EnCurtains_RT[i].DW(CLK := PLC1_EnCurtains[i].DW);
- LEAX PLC1_EnCurtains_RT
+#srcline 46 ;      EnCurtains_RT[i].DW(CLK := EnCurtains[i].DW);
+ LEAX EnCurtains_RT
  LDX  i
 #debug usint i
  SUB  1   ; Low range[1]
- RCHK 8   ; Range Check
+ RCHK 13   ; Range Check
  MUL  3   ; SizeOf(...)
  ADD     ; + offset 
  ADD  1  ; + offset 
  WRY  P2__st__  ; offset instance
- LEA  PLC1_EnCurtains
+ LEAX EnCurtains
  LDX  i
 #debug usint i
  SUB  1   ; Low range[1]
@@ -182,23 +236,23 @@ prgMain_L1:
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
  LDIB 
-#debug bool PLC1_EnCurtains[i].DW
+#debug bool EnCurtains[i].DW
  LDY  P2__st__  ; offset instance
  MUL  8   ; -> bool pointer 
  WRIB 
  LDY  P2__st__  ; offset instance
  CAL  R_TRIG_L0
-#srcline 39 ;      PLC1_EnCurtains_RT[i].STOP(CLK := PLC1_EnCurtains[i].STOP);
- LEAX PLC1_EnCurtains_RT
+#srcline 47 ;      EnCurtains_RT[i].STOP(CLK := EnCurtains[i].STOP);
+ LEAX EnCurtains_RT
  LDX  i
 #debug usint i
  SUB  1   ; Low range[1]
- RCHK 8   ; Range Check
+ RCHK 13   ; Range Check
  MUL  3   ; SizeOf(...)
  ADD     ; + offset 
  ADD  2  ; + offset 
  WRY  P3__st__  ; offset instance
- LEA  PLC1_EnCurtains
+ LEAX EnCurtains
  LDX  i
 #debug usint i
  SUB  1   ; Low range[1]
@@ -207,29 +261,29 @@ prgMain_L1:
  MUL  8   ; -> bool pointer 
  ADD  2   ; Bool offset 
  LDIB 
-#debug bool PLC1_EnCurtains[i].STOP
+#debug bool EnCurtains[i].STOP
  LDY  P3__st__  ; offset instance
  MUL  8   ; -> bool pointer 
  WRIB 
  LDY  P3__st__  ; offset instance
  CAL  R_TRIG_L0
-#srcline 40 ;      
-#srcline 41 ;      
-#srcline 42 ;      // Generate RTS control packets
-#srcline 43 ;      if PLC1_EnCurtains_RT[i].UP.Q then
- LEAX PLC1_EnCurtains_RT
+#srcline 48 ;      
+#srcline 49 ;      
+#srcline 50 ;      // Generate RTS control packets
+#srcline 51 ;      if EnCurtains_RT[i].UP.Q then
+ LEAX EnCurtains_RT
  LDX  i
 #debug usint i
  SUB  1   ; Low range[1]
- RCHK 8   ; Range Check
+ RCHK 13   ; Range Check
  MUL  3   ; SizeOf(...)
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
  LDIB 
-#debug bool PLC1_EnCurtains_RT[i].UP.Q
- JMC  prgMain_L3
-#srcline 44 ;         fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TrsnsmitterID := Trsnsmitter1_ID, UP := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
+#debug bool EnCurtains_RT[i].UP.Q
+ JMC  prgMain_L5
+#srcline 52 ;         fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TrsnsmitterID := Trsnsmitter1_ID, UP := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
  NXT
  LDX  i
 #debug usint i
@@ -268,24 +322,24 @@ prgMain_L1:
  PRV
  LEA  __Instance__fbSomfyRTS_Cmnd
  CAL  fbSomfyRTS_Cmnd_L0
-#srcline 45 ;      end_if;
-prgMain_L3:
-#srcline 46 ;      
-#srcline 47 ;       if PLC1_EnCurtains_RT[i].DW.Q then
- LEAX PLC1_EnCurtains_RT
+#srcline 53 ;      end_if;
+prgMain_L5:
+#srcline 54 ;      
+#srcline 55 ;       if EnCurtains_RT[i].DW.Q then
+ LEAX EnCurtains_RT
  LDX  i
 #debug usint i
  SUB  1   ; Low range[1]
- RCHK 8   ; Range Check
+ RCHK 13   ; Range Check
  MUL  3   ; SizeOf(...)
  ADD     ; + offset 
  ADD  1  ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
  LDIB 
-#debug bool PLC1_EnCurtains_RT[i].DW.Q
- JMC  prgMain_L5
-#srcline 48 ;         fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TrsnsmitterID := Trsnsmitter1_ID, DW := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
+#debug bool EnCurtains_RT[i].DW.Q
+ JMC  prgMain_L7
+#srcline 56 ;         fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TrsnsmitterID := Trsnsmitter1_ID, DW := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
  NXT
  LDX  i
 #debug usint i
@@ -324,24 +378,24 @@ prgMain_L3:
  PRV
  LEA  __Instance__fbSomfyRTS_Cmnd
  CAL  fbSomfyRTS_Cmnd_L0
-#srcline 49 ;      end_if;
-prgMain_L5:
-#srcline 50 ;      
-#srcline 51 ;       if PLC1_EnCurtains_RT[i].STOP.Q then
- LEAX PLC1_EnCurtains_RT
+#srcline 57 ;      end_if;
+prgMain_L7:
+#srcline 58 ;      
+#srcline 59 ;       if EnCurtains_RT[i].STOP.Q then
+ LEAX EnCurtains_RT
  LDX  i
 #debug usint i
  SUB  1   ; Low range[1]
- RCHK 8   ; Range Check
+ RCHK 13   ; Range Check
  MUL  3   ; SizeOf(...)
  ADD     ; + offset 
  ADD  2  ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
  LDIB 
-#debug bool PLC1_EnCurtains_RT[i].STOP.Q
- JMC  prgMain_L7
-#srcline 52 ;         fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TrsnsmitterID := Trsnsmitter1_ID, stop := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
+#debug bool EnCurtains_RT[i].STOP.Q
+ JMC  prgMain_L9
+#srcline 60 ;         fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TrsnsmitterID := Trsnsmitter1_ID, stop := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
  NXT
  LDX  i
 #debug usint i
@@ -380,21 +434,21 @@ prgMain_L5:
  PRV
  LEA  __Instance__fbSomfyRTS_Cmnd
  CAL  fbSomfyRTS_Cmnd_L0
-#srcline 53 ;      end_if;
-prgMain_L7:
-#srcline 56 ;      // handle curtains status
-#srcline 57 ;      if (PLC1_EnCurtains_RT[i].UP.Q and curtainsFB[i].outDw) or (PLC1_EnCurtains_RT[i].DW.Q and curtainsFB[i].outUp) then
- LEAX PLC1_EnCurtains_RT
+#srcline 61 ;      end_if;
+prgMain_L9:
+#srcline 64 ;      // handle curtains status
+#srcline 65 ;      if (EnCurtains_RT[i].UP.Q and curtainsFB[i].outDw) or (EnCurtains_RT[i].DW.Q and curtainsFB[i].outUp) then
+ LEAX EnCurtains_RT
  LDX  i
 #debug usint i
  SUB  1   ; Low range[1]
- RCHK 8   ; Range Check
+ RCHK 13   ; Range Check
  MUL  3   ; SizeOf(...)
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
  LDIB 
-#debug bool PLC1_EnCurtains_RT[i].UP.Q
+#debug bool EnCurtains_RT[i].UP.Q
  LEA  curtainsFB
  LDX  i
 #debug usint i
@@ -408,18 +462,18 @@ prgMain_L7:
  LDIB 
 #debug bool curtainsFB[i].outDw
  AND
- LEAX PLC1_EnCurtains_RT
+ LEAX EnCurtains_RT
  LDX  i
 #debug usint i
  SUB  1   ; Low range[1]
- RCHK 8   ; Range Check
+ RCHK 13   ; Range Check
  MUL  3   ; SizeOf(...)
  ADD     ; + offset 
  ADD  1  ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
  LDIB 
-#debug bool PLC1_EnCurtains_RT[i].DW.Q
+#debug bool EnCurtains_RT[i].DW.Q
  LEA  curtainsFB
  LDX  i
 #debug usint i
@@ -433,8 +487,8 @@ prgMain_L7:
 #debug bool curtainsFB[i].outUp
  AND
  OR  
- JMC  prgMain_L9
-#srcline 58 ;         curtainsFB[i].up := 0;
+ JMC  prgMain_L11
+#srcline 66 ;         curtainsFB[i].up := 0;
  LD   bool 0       ; false
  LEA  curtainsFB
  LDX  i
@@ -447,7 +501,7 @@ prgMain_L7:
  ADD  1   ; Bool offset 
  WRIB 
 #debug_left bool curtainsFB[i].up
-#srcline 59 ;         curtainsFB[i].dw := 0;
+#srcline 67 ;         curtainsFB[i].dw := 0;
  LD   bool 0       ; false
  LEA  curtainsFB
  LDX  i
@@ -460,7 +514,7 @@ prgMain_L7:
  ADD  3   ; Bool offset 
  WRIB 
 #debug_left bool curtainsFB[i].dw
-#srcline 60 ;         curtainsFB[i](stop := 1, upDwTime := curtUpDwTime) ;
+#srcline 68 ;         curtainsFB[i](stop := 1, upDwTime := curtUpDwTime) ;
  LEA  curtainsFB
  LDX  i
 #debug usint i
@@ -480,10 +534,10 @@ prgMain_L7:
  WRIL 
  LDY  P4__st__  ; offset instance
  CAL  fb_iJalousie_L0
-#srcline 61 ;      else
- JMP  prgMain_L10
-prgMain_L9:
-#srcline 62 ;         curtainsFB[i](up := PLC1_EnCurtains[i].UP, dw := PLC1_EnCurtains[i].DW, stop := PLC1_EnCurtains[i].STOP, upDwTime := curtUpDwTime) ;
+#srcline 69 ;      else
+ JMP  prgMain_L12
+prgMain_L11:
+#srcline 70 ;         curtainsFB[i](up := EnCurtains[i].UP, dw := EnCurtains[i].DW, stop := EnCurtains[i].STOP, upDwTime := curtUpDwTime) ;
  LEA  curtainsFB
  LDX  i
 #debug usint i
@@ -492,7 +546,7 @@ prgMain_L9:
  MUL  124   ; SizeOf(...)
  ADD     ; + offset 
  WRY  P5__st__  ; offset instance
- LEA  PLC1_EnCurtains
+ LEAX EnCurtains
  LDX  i
 #debug usint i
  SUB  1   ; Low range[1]
@@ -500,12 +554,12 @@ prgMain_L9:
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  LDIB 
-#debug bool PLC1_EnCurtains[i].UP
+#debug bool EnCurtains[i].UP
  LDY  P5__st__  ; offset instance
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
  WRIB 
- LEA  PLC1_EnCurtains
+ LEAX EnCurtains
  LDX  i
 #debug usint i
  SUB  1   ; Low range[1]
@@ -514,12 +568,12 @@ prgMain_L9:
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
  LDIB 
-#debug bool PLC1_EnCurtains[i].DW
+#debug bool EnCurtains[i].DW
  LDY  P5__st__  ; offset instance
  MUL  8   ; -> bool pointer 
  ADD  3   ; Bool offset 
  WRIB 
- LEA  PLC1_EnCurtains
+ LEAX EnCurtains
  LDX  i
 #debug usint i
  SUB  1   ; Low range[1]
@@ -528,7 +582,7 @@ prgMain_L9:
  MUL  8   ; -> bool pointer 
  ADD  2   ; Bool offset 
  LDIB 
-#debug bool PLC1_EnCurtains[i].STOP
+#debug bool EnCurtains[i].STOP
  LDY  P5__st__  ; offset instance
  MUL  8   ; -> bool pointer 
  ADD  5   ; Bool offset 
@@ -539,10 +593,10 @@ prgMain_L9:
  WRIL 
  LDY  P5__st__  ; offset instance
  CAL  fb_iJalousie_L0
-#srcline 63 ;      end_if;
-prgMain_L10:
-#srcline 64 ;      
-#srcline 65 ;      curtainsStatus[i].outUP   := curtainsFB[i].outUp;
+#srcline 71 ;      end_if;
+prgMain_L12:
+#srcline 72 ;      
+#srcline 73 ;      curtainsStatus[i].outUP   := curtainsFB[i].outUp;
  LEA  curtainsFB
  LDX  i
 #debug usint i
@@ -564,7 +618,7 @@ prgMain_L10:
  MUL  8   ; -> bool pointer 
  WRIB 
 #debug_left bool curtainsStatus[i].outUP
-#srcline 66 ;      curtainsStatus[i].outDW   := curtainsFB[i].outDw;
+#srcline 74 ;      curtainsStatus[i].outDW   := curtainsFB[i].outDw;
  LEA  curtainsFB
  LDX  i
 #debug usint i
@@ -588,7 +642,7 @@ prgMain_L10:
  ADD  1   ; Bool offset 
  WRIB 
 #debug_left bool curtainsStatus[i].outDW
-#srcline 67 ;      curtainsStatus[i].pos     := 100 - curtainsFB[i].posit;
+#srcline 75 ;      curtainsStatus[i].pos     := 100 - curtainsFB[i].posit;
  LD   usint 100
  LEA  curtainsFB
  LDX  i
@@ -612,7 +666,7 @@ prgMain_L10:
  ADD  1  ; + offset 
  WRI 
 #debug_left usint curtainsStatus[i].pos
-#srcline 68 ;      curtainsStatus[i].normPos := curtainsStatus[i].pos / 25;
+#srcline 76 ;      curtainsStatus[i].normPos := curtainsStatus[i].pos / 25;
  LEA  curtainsStatus
  LDX  i
 #debug usint i
@@ -636,8 +690,8 @@ prgMain_L10:
  ADD  2  ; + offset 
  WRI 
 #debug_left usint curtainsStatus[i].normPos
-#srcline 69 ;      
-#srcline 70 ;  end_for;
+#srcline 77 ;      
+#srcline 78 ;  end_for;
  LDX  i
  LD   1
  ADD  
@@ -645,21 +699,21 @@ prgMain_L10:
  JMP  prgMain_L1
 prgMain_L2:
  NOP  -1
-#srcline 71 ; (*
-#srcline 72 ;  up_RT(CLK := up);
-#srcline 73 ;  dw_RT(CLK := dw);
-#srcline 75 ;  if (up_RT.Q and curtainsFB[1].outDw) or (dw_RT.Q and curtainsFB[1].outUp) then
-#srcline 76 ;     curtainsFB[1].up := 0;
-#srcline 77 ;     curtainsFB[1].dw := 0;
-#srcline 78 ;     curtainsFB[1](stop := 1, upDwTime := curtUpDwTime) ;
-#srcline 79 ;     test := 1;
-#srcline 80 ;  else
-#srcline 81 ;     curtainsFB[1](up := up, dw := dw, stop := STOP, upDwTime := curtUpDwTime) ;
-#srcline 82 ;     up   := 0;
-#srcline 83 ;     dw   := 0;
-#srcline 84 ;     stop := 0;
-#srcline 85 ;  end_if;  *)
-#srcline 87 ;END_PROGRAM
+#srcline 79 ; (*
+#srcline 80 ;  up_RT(CLK := up);
+#srcline 81 ;  dw_RT(CLK := dw);
+#srcline 83 ;  if (up_RT.Q and curtainsFB[1].outDw) or (dw_RT.Q and curtainsFB[1].outUp) then
+#srcline 84 ;     curtainsFB[1].up := 0;
+#srcline 85 ;     curtainsFB[1].dw := 0;
+#srcline 86 ;     curtainsFB[1](stop := 1, upDwTime := curtUpDwTime) ;
+#srcline 87 ;     test := 1;
+#srcline 88 ;  else
+#srcline 89 ;     curtainsFB[1](up := up, dw := dw, stop := STOP, upDwTime := curtUpDwTime) ;
+#srcline 90 ;     up   := 0;
+#srcline 91 ;     dw   := 0;
+#srcline 92 ;     stop := 0;
+#srcline 93 ;  end_if;  *)
+#srcline 95 ;END_PROGRAM
  ULNK
 RET
 E     61

@@ -18,11 +18,13 @@ END_TYPE
 VAR_GLOBAL CONSTANT
    numOfCurtains      : USINT := 14;
    numOfCurtains_PLC1 : USINT := 9;
+   numOfCurtains_PLC2 : USINT := 5;
    curtUpDwTime      : TIME := T#18s;
 END_VAR
 
 VAR_GLOBAL
   curtainsStatus AT PLC3.DATA : Array[1..numOfCurtains] of TCurtainStatus;
-  PLC1_EnCurtains AT PLC1_Curtains.DATA : Array[1..numOfCurtains] of TEnCurtain;
+  PLC1_EnCurtains AT PLC1_Curtains.DATA : Array[1..numOfCurtains_PLC1] of TEnCurtain;
+  PLC2_EnCurtains (*AT PLC2_Curtains.DATA*) : Array[1..numOfCurtains_PLC2] of TEnCurtain;
 END_VAR
 

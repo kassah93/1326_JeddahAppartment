@@ -18,9 +18,11 @@ PROGRAM prgMain
   VAR_OUTPUT
   END_VAR
   VAR
-  PLC1_EnCurtains_RT : Array[1..numOfCurtains_PLC1] of TEnCurtainRT;
+  EnCurtains    : Array[1..numOfCurtains] of TEnCurtain;
+  EnCurtains_RT : Array[1..numOfCurtains] of TEnCurtainRT;
   
   i : USINT;
+  curIndex : USINT;
   
   Trsnsmitter1_ID ,Trsnsmitter2_ID : TVendorID;
   HostID : TVendorID;
@@ -33,33 +35,39 @@ PROGRAM prgMain
   VAR_TEMP
   END_VAR
 
-  for i := 1 to numOfCurtains_PLC1 do
-      PLC1_EnCurtains_RT[i].UP(CLK := PLC1_EnCurtains[i].UP);
-      PLC1_EnCurtains_RT[i].DW(CLK := PLC1_EnCurtains[i].DW);
-      PLC1_EnCurtains_RT[i].STOP(CLK := PLC1_EnCurtains[i].STOP);
+  for i := 1 to numOfCurtains do
+      if i <= numOfCurtains_PLC1 then
+         EnCurtains[i] := PLC1_EnCurtains[i];
+      else
+         EnCurtains[i] := PLC2_EnCurtains[i - numOfCurtains_PLC1];
+      end_if;
+      
+      EnCurtains_RT[i].UP(CLK := EnCurtains[i].UP);
+      EnCurtains_RT[i].DW(CLK := EnCurtains[i].DW);
+      EnCurtains_RT[i].STOP(CLK := EnCurtains[i].STOP);
       
       
       // Generate RTS control packets
-      if PLC1_EnCurtains_RT[i].UP.Q then
+      if EnCurtains_RT[i].UP.Q then
          fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TrsnsmitterID := Trsnsmitter1_ID, UP := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
       end_if;
       
-       if PLC1_EnCurtains_RT[i].DW.Q then
+       if EnCurtains_RT[i].DW.Q then
          fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TrsnsmitterID := Trsnsmitter1_ID, DW := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
       end_if;
       
-       if PLC1_EnCurtains_RT[i].STOP.Q then
+       if EnCurtains_RT[i].STOP.Q then
          fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TrsnsmitterID := Trsnsmitter1_ID, stop := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
       end_if;
 
 
       // handle curtains status
-      if (PLC1_EnCurtains_RT[i].UP.Q and curtainsFB[i].outDw) or (PLC1_EnCurtains_RT[i].DW.Q and curtainsFB[i].outUp) then
+      if (EnCurtains_RT[i].UP.Q and curtainsFB[i].outDw) or (EnCurtains_RT[i].DW.Q and curtainsFB[i].outUp) then
          curtainsFB[i].up := 0;
          curtainsFB[i].dw := 0;
          curtainsFB[i](stop := 1, upDwTime := curtUpDwTime) ;
       else
-         curtainsFB[i](up := PLC1_EnCurtains[i].UP, dw := PLC1_EnCurtains[i].DW, stop := PLC1_EnCurtains[i].STOP, upDwTime := curtUpDwTime) ;
+         curtainsFB[i](up := EnCurtains[i].UP, dw := EnCurtains[i].DW, stop := EnCurtains[i].STOP, upDwTime := curtUpDwTime) ;
       end_if;
       
       curtainsStatus[i].outUP   := curtainsFB[i].outUp;
