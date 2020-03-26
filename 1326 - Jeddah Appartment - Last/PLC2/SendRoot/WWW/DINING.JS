@@ -495,31 +495,31 @@ setTimeout("FunWatchDog()", 20000);
 }
 
 function PostXML10() {
-PostXML('DINING.XML', encodeURIComponent('__R3278_USINT_u=0')); 
+PostXML('DINING.XML', encodeURIComponent('__R3628_USINT_u=0')); 
 }
 function PostXML11() {
-PostXML('DINING.XML', encodeURIComponent('__R3278_USINT_u=1')); 
+PostXML('DINING.XML', encodeURIComponent('__R3628_USINT_u=1')); 
 }
 function PostXML16() {
-PostXML('DINING.XML', encodeURIComponent('__R3278_USINT_u=2')); 
+PostXML('DINING.XML', encodeURIComponent('__R3628_USINT_u=2')); 
 }
 function PostXML23() {
-PostXML('DINING.XML', encodeURIComponent('__R6436.0_BOOL_i=1')); 
+PostXML('DINING.XML', encodeURIComponent('__R6786.0_BOOL_i=1')); 
 }
 function PostXML24() {
-PostXML('DINING.XML', encodeURIComponent('__R6436.1_BOOL_i=1')); 
+PostXML('DINING.XML', encodeURIComponent('__R6786.1_BOOL_i=1')); 
 }
 function PostXML25() {
-PostXML('DINING.XML', encodeURIComponent('__R6436.2_BOOL_i=1')); 
+PostXML('DINING.XML', encodeURIComponent('__R6786.2_BOOL_i=1')); 
 }
 function PostXML26() {
-PostXML('DINING.XML', encodeURIComponent('__R6436.3_BOOL_i=1')); 
+PostXML('DINING.XML', encodeURIComponent('__R6786.3_BOOL_i=1')); 
 }
 function PostXML27() {
-PostXML('DINING.XML', encodeURIComponent('__R6436.4_BOOL_i=1')); 
+PostXML('DINING.XML', encodeURIComponent('__R6786.4_BOOL_i=1')); 
 }
 function PostXML28() {
-PostXML('DINING.XML', encodeURIComponent('__R6456.0_BOOL_i=1')); 
+PostXML('DINING.XML', encodeURIComponent('__R6806.0_BOOL_i=1')); 
 }
 function PostXML29() {
 var Input29h = document.getElementById('INPUT29h');
@@ -540,16 +540,16 @@ var Input41h = document.getElementById('INPUT41h');
 PostXML('DINING.XML', encodeURIComponent(Input41h.name+'='+Input41h.value));
 }
 function PostXML50() {
-PostXML('DINING.XML', encodeURIComponent('__R6584_USINT_u=0')); 
+PostXML('DINING.XML', encodeURIComponent('__R6934_USINT_u=0')); 
 }
 function PostXML51() {
-PostXML('DINING.XML', encodeURIComponent('__R6584_USINT_u=1')); 
+PostXML('DINING.XML', encodeURIComponent('__R6934_USINT_u=1')); 
 }
 function PostXML52() {
-PostXML('DINING.XML', encodeURIComponent('__R6584_USINT_u=2')); 
+PostXML('DINING.XML', encodeURIComponent('__R6934_USINT_u=2')); 
 }
 function PostXML53() {
-PostXML('DINING.XML', encodeURIComponent('__R6584_USINT_u=3')); 
+PostXML('DINING.XML', encodeURIComponent('__R6934_USINT_u=3')); 
 }
 
 function PostGlobal() {

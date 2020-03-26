@@ -205,6 +205,12 @@
   usint SIGN,
   uint NUMT,
   TPLCx_ETH1_PLCx0_ADR1_TX_DATA DATA
+#def  TPLCx_ETH1_PLCx0_ADR2_RX_DATA usint[50]
+#struct  TPLCx_ETH1_PLCx0_ADR2_RX
+  usint STAT,
+  usint ERR,
+  uint NUMR,
+  TPLCx_ETH1_PLCx0_ADR2_RX_DATA DATA
 #def  TZONE_ARRAY_ETH1_UNI0_RX usint[1350]
 #struct  TUNI_ETH1_UNI0_IN
   TUniStat STAT,
@@ -410,8 +416,10 @@
 #def  FCU_Temp_Room3 r9_p5_IN~iTHERM
 #reg  TPLCx_ETH1_PLCx0_ADR3_RX PLCx_ETH1_PLCx0_ADR3_RX
 #reg  TPLCx_ETH1_PLCx0_ADR1_TX PLCx_ETH1_PLCx0_ADR1_TX
+#reg  TPLCx_ETH1_PLCx0_ADR2_RX PLCx_ETH1_PLCx0_ADR2_RX
 #def  PLC3 PLCx_ETH1_PLCx0_ADR3_RX
 #def  PLC1_Curtains PLCx_ETH1_PLCx0_ADR1_TX
+#def  PLC2_Curtains PLCx_ETH1_PLCx0_ADR2_RX
 
 ; Global variables
 #table byte __Init____r0_p5_AIPW = 

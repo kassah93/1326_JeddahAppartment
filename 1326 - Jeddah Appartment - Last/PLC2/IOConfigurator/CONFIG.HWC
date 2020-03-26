@@ -215,6 +215,33 @@
         UINT plm,
         UINT mlm
 
+#struct _TTS_PLCxHead
+        WORD code,
+        WORD mode,
+        USINT chMod,
+        USINT adr,
+        USINT speed,
+        USINT timeout,
+        USINT pause,
+        WORD netID,
+        USINT pldMode,
+        WORD sysMap,
+        UINT port,
+        DWORD key1,
+        DWORD key2,
+        USINT nnt,
+        USINT raster
+
+#struct _TTS_LPLCx
+        USINT raster,
+        USINT adr,
+        UINT len,
+        UDINT idat
+
+#struct _TTS_PLCxINIT_ETH1_PLCx0
+        _TTS_PLCxHead Head,
+        _TTS_LPLCx[3] Line
+
 #struct _TTS_UNIINIT_ETH
         _TTS_UNIINIT uniInit,
         DWORD his_ip,
@@ -515,6 +542,12 @@
                                           0,
                                           0
 
+;ETH1_PLCx0
+#table _TTS_PLCxINIT_ETH1_PLCx0 r0_p0_Table_PLCx_ETH1_PLCx0 = $00C3,$0000,3,2,0,0,0,$3CF0,0,$06E1,0,$00000000,$00000000,3,20,
+                                                              0,3,238,__offset32(PLCx_ETH1_PLCx0_ADR3_RX),
+                                                              0,1,50,__offset32(PLCx_ETH1_PLCx0_ADR1_RX),
+                                                              0,2,50,__offset32(PLCx_ETH1_PLCx0_ADR2_TX)
+
 ;ETH1_UNI0 - Initialization table of UNI Ethernet channel mode
 #table _TTS_UNIINIT_ETH r0_p0_Table_UNI_ETH1_UNI0 = 197,2,5,0,14,0,0,0,0,0,$07E1,0,0,0,0,0,0,0,0,0,0,804,516,__offset32(UNI_ETH1_UNI0_IN),__offset32(UNI_ETH1_UNI0_OUT),0,0,0,0,16,0,0,0,0,0,0,0,0,0,0,
                                                     $00000000,
@@ -568,6 +601,11 @@
 
 ;CH2 - UNI_SC declaration
 #module TModulE1 $01,0,0,$0102,__sizeof(r0_p0_Statistic_CH2),__sizeof(r0_p0_Control_CH2),__offset(r0_p0_Statistic_CH2),__offset(r0_p0_Control_CH2),__indx(r0_p0_Table_UNI_CH2)
+
+#ifdef r0_p0_Table_PLCx_ETH1_PLCx0
+;ETH1_PLCx0 - PLCx_ETH declaration
+   #module TModulE1 $01,0,0,$06E1,10,2,__offset(r0_p0_Statistic_ETH1_PLCx0),__offset(r0_p0_Control_ETH1_PLCx0),__indx(r0_p0_Table_PLCx_ETH1_PLCx0)
+#endif
 
 ;ETH1_UNI0 - UNI_ETH declaration
 #module TModulE1 $01,0,0,$07E1,10,2,__offset(r0_p0_Statistic_ETH1_UNI0),__offset(r0_p0_Control_ETH1_UNI0),__indx(r0_p0_Table_UNI_ETH1_UNI0)

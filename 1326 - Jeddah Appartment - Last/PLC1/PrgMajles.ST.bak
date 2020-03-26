@@ -317,11 +317,11 @@ PROGRAM PrgMajles
          enCurtainsDW_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].Dw.0);
 
          //
-         enCurtainsUP_SW_RT[i](CLK := controlRoom.SwitchUPStatus[i]);
-         enCurtainsUP_SW_FT[i](CLK := controlRoom.SwitchUPStatus[i]);
+         enCurtainsUP_SW_RT[i](CLK := controlRoomRCU2.SwitchUPStatus[i]);
+         enCurtainsUP_SW_FT[i](CLK := controlRoomRCU2.SwitchUPStatus[i]);
 
-         enCurtainsDW_SW_RT[i](CLK := controlRoom.SwitchDWStatus[i]);
-         enCurtainsDW_SW_FT[i](CLK := controlRoom.SwitchDWStatus[i]);
+         enCurtainsDW_SW_RT[i](CLK := controlRoomRCU2.SwitchDWStatus[i]);
+         enCurtainsDW_SW_FT[i](CLK := controlRoomRCU2.SwitchDWStatus[i]);
 
          if  enCurtainsUP_RT[j,i].Q  or enCurtainsUP_FT[j,i].Q then
              enCurtainsUP_GUI[i] := 1;

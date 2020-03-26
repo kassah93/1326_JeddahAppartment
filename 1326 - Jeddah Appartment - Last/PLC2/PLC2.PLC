@@ -19,14 +19,14 @@ dirs=""
 
 [plcselection]
 connection=2
-openchannel=0
+openchannel=1
 chanel=0
 speed=9
 tout=500
 parity=1
 rs485=1
 dtron=0
-networksel=1
+networksel=0
 ipaddr="192.168.0.16"
 isdyn=0
 dynip=""
@@ -36,7 +36,7 @@ altport=0
 udpport=61682
 excltchdr=0
 onemsgpckt=0
-ipaddr2="127.0.0.1"
+ipaddr2="82.137.228.136"
 isdyn2=0
 dynip2=""
 iptout2=1000
@@ -99,8 +99,8 @@ fifwhere=0
 fifsubdirs=0
 fif2ndmsg=1
 fif2ndmsg=1
-findhistory="CLK := (HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed = 0)"
-replacehistory="uni6"
+findhistory="PLC1_EnCurtains"
+replacehistory="PLC2_EnCurtains"
 dirhistory=""
 maskhistory=""
 GModif=0
@@ -174,7 +174,7 @@ initiallibtestpassed=1
 [weblc]
 lcifile=""
 maymod=""
-lastfile=""
+lastfile="NONAME1.txt"
 modlock=1
 listwidth=121
 findhistory=""

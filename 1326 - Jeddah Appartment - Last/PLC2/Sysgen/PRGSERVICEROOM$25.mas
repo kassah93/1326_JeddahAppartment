@@ -66,7 +66,7 @@
 #table byte __Init___PrgServiceRoom_enOutlets_FT = 
       4,  4,  4,  4,  4;
 #table byte __Init___PrgServiceRoom_HMI_Addresses = 
-      8, 25;
+      8,129;
 
 #struct PrgServiceRoom__temp__
   usint P0__st__,

@@ -98,191 +98,191 @@ outletsStatusRoom3[5] R B 2601 .4 BOOL
 outletsStatusRoom3[6] R B 2601 .5 BOOL
 outletsStatusRoom3[7] R B 2601 .6 BOOL
 outletsStatusRoom3[8] R B 2601 .7 BOOL
-Majles.EnLightsAN[1] R B 9712 USINT
-Majles.EnLightsAN[2] R B 9713 USINT
-Majles.EnLightsAN[3] R B 9714 USINT
-Majles.EnLightsAN[4] R B 9715 USINT
-Majles.EnLightsAN[5] R B 9716 USINT
-Majles.EnLightsAN[6] R B 9717 USINT
-Majles.EnLightsAN[7] R B 9718 USINT
-Majles.EnLightsAN[8] R B 9719 USINT
-Majles.EnLightsAN[9] R B 9720 USINT
-Majles.EnLightsAN[10] R B 9721 USINT
-Majles.EnLightsAN[11] R B 9722 USINT
-Majles.EnLightsAN[12] R B 9723 USINT
-Majles.EnLightsAN[13] R B 9724 USINT
-Majles.EnLightsAN[14] R B 9725 USINT
-Majles.EnLightsAN[15] R B 9726 USINT
-Majles.EnLightsAN[16] R B 9727 USINT
-Majles.EnLightsAN[17] R B 9728 USINT
-Majles.EnOutletsAN[1] R B 9730 USINT
-Majles.EnOutletsAN[2] R B 9731 USINT
-Majles.EnOutletsAN[3] R B 9732 USINT
-Majles.EnOutletsAN[4] R B 9733 USINT
-Majles.EnOutletsAN[5] R B 9734 USINT
-Majles.EnOutletsAN[6] R B 9735 USINT
-Majles.EnOutletsAN[7] R B 9736 USINT
-Majles.EnOutletsAN[8] R B 9737 USINT
-Majles.EnCurtainsUp[1] R B 9738 .0 BOOL
-Majles.EnCurtainsUp[2] R B 9738 .1 BOOL
-Majles.EnCurtainsUp[3] R B 9738 .2 BOOL
-Majles.EnCurtainsUp[4] R B 9738 .3 BOOL
-Majles.EnCurtainsUp[5] R B 9738 .4 BOOL
-Majles.EnCurtainsUp[6] R B 9738 .5 BOOL
-Majles.EnCurtainsDw[1] R B 9739 .0 BOOL
-Majles.EnCurtainsDw[2] R B 9739 .1 BOOL
-Majles.EnCurtainsDw[3] R B 9739 .2 BOOL
-Majles.EnCurtainsDw[4] R B 9739 .3 BOOL
-Majles.EnCurtainsDw[5] R B 9739 .4 BOOL
-Majles.EnCurtainsDw[6] R B 9739 .5 BOOL
-Majles.CurtainsUpStatus[1] R B 9991 .0 BOOL
-Majles.CurtainsUpStatus[2] R B 9991 .1 BOOL
-Majles.CurtainsUpStatus[3] R B 9991 .2 BOOL
-Majles.CurtainsUpStatus[4] R B 9991 .3 BOOL
-Majles.CurtainsUpStatus[5] R B 9991 .4 BOOL
-Majles.CurtainsUpStatus[6] R B 9991 .5 BOOL
-Majles.CurtainsDwStatus[1] R B 9992 .0 BOOL
-Majles.CurtainsDwStatus[2] R B 9992 .1 BOOL
-Majles.CurtainsDwStatus[3] R B 9992 .2 BOOL
-Majles.CurtainsDwStatus[4] R B 9992 .3 BOOL
-Majles.CurtainsDwStatus[5] R B 9992 .4 BOOL
-Majles.CurtainsDwStatus[6] R B 9992 .5 BOOL
-Room1.EnLightsAN[1] R B 13430 USINT
-Room1.EnLightsAN[2] R B 13431 USINT
-Room1.EnLightsAN[3] R B 13432 USINT
-Room1.EnLightsAN[4] R B 13433 USINT
-Room1.EnLightsAN[5] R B 13434 USINT
-Room1.EnLightsAN[6] R B 13435 USINT
-Room1.EnLightsAN[7] R B 13436 USINT
-Room1.EnLightsAN[8] R B 13437 USINT
-Room1.EnLightsAN[9] R B 13438 USINT
-Room1.EnLightsAN[10] R B 13439 USINT
-Room1.EnLightsAN[11] R B 13440 USINT
-Room1.EnLightsAN[12] R B 13441 USINT
-Room1.EnLightsAN[13] R B 13442 USINT
-Room1.EnLightsAN[14] R B 13443 USINT
-Room1.EnLightsAN[15] R B 13444 USINT
-Room1.EnLightsAN[16] R B 13445 USINT
-Room1.EnLightsAN[17] R B 13446 USINT
-Room1.EnOutletsAN[1] R B 13448 USINT
-Room1.EnOutletsAN[2] R B 13449 USINT
-Room1.EnOutletsAN[3] R B 13450 USINT
-Room1.EnOutletsAN[4] R B 13451 USINT
-Room1.EnOutletsAN[5] R B 13452 USINT
-Room1.EnOutletsAN[6] R B 13453 USINT
-Room1.EnOutletsAN[7] R B 13454 USINT
-Room1.EnOutletsAN[8] R B 13455 USINT
-Room1.CurtainsUpStatus[1] R B 13515 .0 BOOL
-Room1.CurtainsUpStatus[2] R B 13515 .1 BOOL
-Room1.CurtainsUpStatus[3] R B 13515 .2 BOOL
-Room1.CurtainsUpStatus[4] R B 13515 .3 BOOL
-Room1.CurtainsUpStatus[5] R B 13515 .4 BOOL
-Room1.CurtainsUpStatus[6] R B 13515 .5 BOOL
-Room1.CurtainsDwStatus[1] R B 13516 .0 BOOL
-Room1.CurtainsDwStatus[2] R B 13516 .1 BOOL
-Room1.CurtainsDwStatus[3] R B 13516 .2 BOOL
-Room1.CurtainsDwStatus[4] R B 13516 .3 BOOL
-Room1.CurtainsDwStatus[5] R B 13516 .4 BOOL
-Room1.CurtainsDwStatus[6] R B 13516 .5 BOOL
-Room2.EnLightsAN[1] R B 16812 USINT
-Room2.EnLightsAN[2] R B 16813 USINT
-Room2.EnLightsAN[3] R B 16814 USINT
-Room2.EnLightsAN[4] R B 16815 USINT
-Room2.EnLightsAN[5] R B 16816 USINT
-Room2.EnLightsAN[6] R B 16817 USINT
-Room2.EnLightsAN[7] R B 16818 USINT
-Room2.EnLightsAN[8] R B 16819 USINT
-Room2.EnLightsAN[9] R B 16820 USINT
-Room2.EnLightsAN[10] R B 16821 USINT
-Room2.EnLightsAN[11] R B 16822 USINT
-Room2.EnLightsAN[12] R B 16823 USINT
-Room2.EnLightsAN[13] R B 16824 USINT
-Room2.EnLightsAN[14] R B 16825 USINT
-Room2.EnLightsAN[15] R B 16826 USINT
-Room2.EnLightsAN[16] R B 16827 USINT
-Room2.EnLightsAN[17] R B 16828 USINT
-Room2.EnOutletsAN[1] R B 16830 USINT
-Room2.EnOutletsAN[2] R B 16831 USINT
-Room2.EnOutletsAN[3] R B 16832 USINT
-Room2.EnOutletsAN[4] R B 16833 USINT
-Room2.EnOutletsAN[5] R B 16834 USINT
-Room2.EnOutletsAN[6] R B 16835 USINT
-Room2.EnOutletsAN[7] R B 16836 USINT
-Room2.EnOutletsAN[8] R B 16837 USINT
-Room2.EnCurtainsUp[1] R B 16838 .0 BOOL
-Room2.EnCurtainsUp[2] R B 16838 .1 BOOL
-Room2.EnCurtainsUp[3] R B 16838 .2 BOOL
-Room2.EnCurtainsUp[4] R B 16838 .3 BOOL
-Room2.EnCurtainsUp[5] R B 16838 .4 BOOL
-Room2.EnCurtainsUp[6] R B 16838 .5 BOOL
-Room2.EnCurtainsDw[1] R B 16839 .0 BOOL
-Room2.EnCurtainsDw[2] R B 16839 .1 BOOL
-Room2.EnCurtainsDw[3] R B 16839 .2 BOOL
-Room2.EnCurtainsDw[4] R B 16839 .3 BOOL
-Room2.EnCurtainsDw[5] R B 16839 .4 BOOL
-Room2.EnCurtainsDw[6] R B 16839 .5 BOOL
-Room2.CurtainsUpStatus[1] R B 16899 .0 BOOL
-Room2.CurtainsUpStatus[2] R B 16899 .1 BOOL
-Room2.CurtainsUpStatus[3] R B 16899 .2 BOOL
-Room2.CurtainsUpStatus[4] R B 16899 .3 BOOL
-Room2.CurtainsUpStatus[5] R B 16899 .4 BOOL
-Room2.CurtainsUpStatus[6] R B 16899 .5 BOOL
-Room2.CurtainsDwStatus[1] R B 16900 .0 BOOL
-Room2.CurtainsDwStatus[2] R B 16900 .1 BOOL
-Room2.CurtainsDwStatus[3] R B 16900 .2 BOOL
-Room2.CurtainsDwStatus[4] R B 16900 .3 BOOL
-Room2.CurtainsDwStatus[5] R B 16900 .4 BOOL
-Room2.CurtainsDwStatus[6] R B 16900 .5 BOOL
-Room3.EnLightsAN[1] R B 20196 USINT
-Room3.EnLightsAN[2] R B 20197 USINT
-Room3.EnLightsAN[3] R B 20198 USINT
-Room3.EnLightsAN[4] R B 20199 USINT
-Room3.EnLightsAN[5] R B 20200 USINT
-Room3.EnLightsAN[6] R B 20201 USINT
-Room3.EnLightsAN[7] R B 20202 USINT
-Room3.EnLightsAN[8] R B 20203 USINT
-Room3.EnLightsAN[9] R B 20204 USINT
-Room3.EnLightsAN[10] R B 20205 USINT
-Room3.EnLightsAN[11] R B 20206 USINT
-Room3.EnLightsAN[12] R B 20207 USINT
-Room3.EnLightsAN[13] R B 20208 USINT
-Room3.EnLightsAN[14] R B 20209 USINT
-Room3.EnLightsAN[15] R B 20210 USINT
-Room3.EnLightsAN[16] R B 20211 USINT
-Room3.EnLightsAN[17] R B 20212 USINT
-Room3.EnOutletsAN[1] R B 20214 USINT
-Room3.EnOutletsAN[2] R B 20215 USINT
-Room3.EnOutletsAN[3] R B 20216 USINT
-Room3.EnOutletsAN[4] R B 20217 USINT
-Room3.EnOutletsAN[5] R B 20218 USINT
-Room3.EnOutletsAN[6] R B 20219 USINT
-Room3.EnOutletsAN[7] R B 20220 USINT
-Room3.EnOutletsAN[8] R B 20221 USINT
-Room3.EnCurtainsUp[1] R B 20222 .0 BOOL
-Room3.EnCurtainsUp[2] R B 20222 .1 BOOL
-Room3.EnCurtainsUp[3] R B 20222 .2 BOOL
-Room3.EnCurtainsUp[4] R B 20222 .3 BOOL
-Room3.EnCurtainsUp[5] R B 20222 .4 BOOL
-Room3.EnCurtainsUp[6] R B 20222 .5 BOOL
-Room3.EnCurtainsDw[1] R B 20223 .0 BOOL
-Room3.EnCurtainsDw[2] R B 20223 .1 BOOL
-Room3.EnCurtainsDw[3] R B 20223 .2 BOOL
-Room3.EnCurtainsDw[4] R B 20223 .3 BOOL
-Room3.EnCurtainsDw[5] R B 20223 .4 BOOL
-Room3.EnCurtainsDw[6] R B 20223 .5 BOOL
-Room3.CurtainsUpStatus[1] R B 20299 .0 BOOL
-Room3.CurtainsUpStatus[2] R B 20299 .1 BOOL
-Room3.CurtainsUpStatus[3] R B 20299 .2 BOOL
-Room3.CurtainsUpStatus[4] R B 20299 .3 BOOL
-Room3.CurtainsUpStatus[5] R B 20299 .4 BOOL
-Room3.CurtainsUpStatus[6] R B 20299 .5 BOOL
-Room3.CurtainsDwStatus[1] R B 20300 .0 BOOL
-Room3.CurtainsDwStatus[2] R B 20300 .1 BOOL
-Room3.CurtainsDwStatus[3] R B 20300 .2 BOOL
-Room3.CurtainsDwStatus[4] R B 20300 .3 BOOL
-Room3.CurtainsDwStatus[5] R B 20300 .4 BOOL
-Room3.CurtainsDwStatus[6] R B 20300 .5 BOOL
+Majles.EnLightsAN[1] R B 9766 USINT
+Majles.EnLightsAN[2] R B 9767 USINT
+Majles.EnLightsAN[3] R B 9768 USINT
+Majles.EnLightsAN[4] R B 9769 USINT
+Majles.EnLightsAN[5] R B 9770 USINT
+Majles.EnLightsAN[6] R B 9771 USINT
+Majles.EnLightsAN[7] R B 9772 USINT
+Majles.EnLightsAN[8] R B 9773 USINT
+Majles.EnLightsAN[9] R B 9774 USINT
+Majles.EnLightsAN[10] R B 9775 USINT
+Majles.EnLightsAN[11] R B 9776 USINT
+Majles.EnLightsAN[12] R B 9777 USINT
+Majles.EnLightsAN[13] R B 9778 USINT
+Majles.EnLightsAN[14] R B 9779 USINT
+Majles.EnLightsAN[15] R B 9780 USINT
+Majles.EnLightsAN[16] R B 9781 USINT
+Majles.EnLightsAN[17] R B 9782 USINT
+Majles.EnOutletsAN[1] R B 9784 USINT
+Majles.EnOutletsAN[2] R B 9785 USINT
+Majles.EnOutletsAN[3] R B 9786 USINT
+Majles.EnOutletsAN[4] R B 9787 USINT
+Majles.EnOutletsAN[5] R B 9788 USINT
+Majles.EnOutletsAN[6] R B 9789 USINT
+Majles.EnOutletsAN[7] R B 9790 USINT
+Majles.EnOutletsAN[8] R B 9791 USINT
+Majles.EnCurtainsUp[1] R B 9792 .0 BOOL
+Majles.EnCurtainsUp[2] R B 9792 .1 BOOL
+Majles.EnCurtainsUp[3] R B 9792 .2 BOOL
+Majles.EnCurtainsUp[4] R B 9792 .3 BOOL
+Majles.EnCurtainsUp[5] R B 9792 .4 BOOL
+Majles.EnCurtainsUp[6] R B 9792 .5 BOOL
+Majles.EnCurtainsDw[1] R B 9793 .0 BOOL
+Majles.EnCurtainsDw[2] R B 9793 .1 BOOL
+Majles.EnCurtainsDw[3] R B 9793 .2 BOOL
+Majles.EnCurtainsDw[4] R B 9793 .3 BOOL
+Majles.EnCurtainsDw[5] R B 9793 .4 BOOL
+Majles.EnCurtainsDw[6] R B 9793 .5 BOOL
+Majles.CurtainsUpStatus[1] R B 10045 .0 BOOL
+Majles.CurtainsUpStatus[2] R B 10045 .1 BOOL
+Majles.CurtainsUpStatus[3] R B 10045 .2 BOOL
+Majles.CurtainsUpStatus[4] R B 10045 .3 BOOL
+Majles.CurtainsUpStatus[5] R B 10045 .4 BOOL
+Majles.CurtainsUpStatus[6] R B 10045 .5 BOOL
+Majles.CurtainsDwStatus[1] R B 10046 .0 BOOL
+Majles.CurtainsDwStatus[2] R B 10046 .1 BOOL
+Majles.CurtainsDwStatus[3] R B 10046 .2 BOOL
+Majles.CurtainsDwStatus[4] R B 10046 .3 BOOL
+Majles.CurtainsDwStatus[5] R B 10046 .4 BOOL
+Majles.CurtainsDwStatus[6] R B 10046 .5 BOOL
+Room1.EnLightsAN[1] R B 13484 USINT
+Room1.EnLightsAN[2] R B 13485 USINT
+Room1.EnLightsAN[3] R B 13486 USINT
+Room1.EnLightsAN[4] R B 13487 USINT
+Room1.EnLightsAN[5] R B 13488 USINT
+Room1.EnLightsAN[6] R B 13489 USINT
+Room1.EnLightsAN[7] R B 13490 USINT
+Room1.EnLightsAN[8] R B 13491 USINT
+Room1.EnLightsAN[9] R B 13492 USINT
+Room1.EnLightsAN[10] R B 13493 USINT
+Room1.EnLightsAN[11] R B 13494 USINT
+Room1.EnLightsAN[12] R B 13495 USINT
+Room1.EnLightsAN[13] R B 13496 USINT
+Room1.EnLightsAN[14] R B 13497 USINT
+Room1.EnLightsAN[15] R B 13498 USINT
+Room1.EnLightsAN[16] R B 13499 USINT
+Room1.EnLightsAN[17] R B 13500 USINT
+Room1.EnOutletsAN[1] R B 13502 USINT
+Room1.EnOutletsAN[2] R B 13503 USINT
+Room1.EnOutletsAN[3] R B 13504 USINT
+Room1.EnOutletsAN[4] R B 13505 USINT
+Room1.EnOutletsAN[5] R B 13506 USINT
+Room1.EnOutletsAN[6] R B 13507 USINT
+Room1.EnOutletsAN[7] R B 13508 USINT
+Room1.EnOutletsAN[8] R B 13509 USINT
+Room1.CurtainsUpStatus[1] R B 13569 .0 BOOL
+Room1.CurtainsUpStatus[2] R B 13569 .1 BOOL
+Room1.CurtainsUpStatus[3] R B 13569 .2 BOOL
+Room1.CurtainsUpStatus[4] R B 13569 .3 BOOL
+Room1.CurtainsUpStatus[5] R B 13569 .4 BOOL
+Room1.CurtainsUpStatus[6] R B 13569 .5 BOOL
+Room1.CurtainsDwStatus[1] R B 13570 .0 BOOL
+Room1.CurtainsDwStatus[2] R B 13570 .1 BOOL
+Room1.CurtainsDwStatus[3] R B 13570 .2 BOOL
+Room1.CurtainsDwStatus[4] R B 13570 .3 BOOL
+Room1.CurtainsDwStatus[5] R B 13570 .4 BOOL
+Room1.CurtainsDwStatus[6] R B 13570 .5 BOOL
+Room2.EnLightsAN[1] R B 16866 USINT
+Room2.EnLightsAN[2] R B 16867 USINT
+Room2.EnLightsAN[3] R B 16868 USINT
+Room2.EnLightsAN[4] R B 16869 USINT
+Room2.EnLightsAN[5] R B 16870 USINT
+Room2.EnLightsAN[6] R B 16871 USINT
+Room2.EnLightsAN[7] R B 16872 USINT
+Room2.EnLightsAN[8] R B 16873 USINT
+Room2.EnLightsAN[9] R B 16874 USINT
+Room2.EnLightsAN[10] R B 16875 USINT
+Room2.EnLightsAN[11] R B 16876 USINT
+Room2.EnLightsAN[12] R B 16877 USINT
+Room2.EnLightsAN[13] R B 16878 USINT
+Room2.EnLightsAN[14] R B 16879 USINT
+Room2.EnLightsAN[15] R B 16880 USINT
+Room2.EnLightsAN[16] R B 16881 USINT
+Room2.EnLightsAN[17] R B 16882 USINT
+Room2.EnOutletsAN[1] R B 16884 USINT
+Room2.EnOutletsAN[2] R B 16885 USINT
+Room2.EnOutletsAN[3] R B 16886 USINT
+Room2.EnOutletsAN[4] R B 16887 USINT
+Room2.EnOutletsAN[5] R B 16888 USINT
+Room2.EnOutletsAN[6] R B 16889 USINT
+Room2.EnOutletsAN[7] R B 16890 USINT
+Room2.EnOutletsAN[8] R B 16891 USINT
+Room2.EnCurtainsUp[1] R B 16892 .0 BOOL
+Room2.EnCurtainsUp[2] R B 16892 .1 BOOL
+Room2.EnCurtainsUp[3] R B 16892 .2 BOOL
+Room2.EnCurtainsUp[4] R B 16892 .3 BOOL
+Room2.EnCurtainsUp[5] R B 16892 .4 BOOL
+Room2.EnCurtainsUp[6] R B 16892 .5 BOOL
+Room2.EnCurtainsDw[1] R B 16893 .0 BOOL
+Room2.EnCurtainsDw[2] R B 16893 .1 BOOL
+Room2.EnCurtainsDw[3] R B 16893 .2 BOOL
+Room2.EnCurtainsDw[4] R B 16893 .3 BOOL
+Room2.EnCurtainsDw[5] R B 16893 .4 BOOL
+Room2.EnCurtainsDw[6] R B 16893 .5 BOOL
+Room2.CurtainsUpStatus[1] R B 16953 .0 BOOL
+Room2.CurtainsUpStatus[2] R B 16953 .1 BOOL
+Room2.CurtainsUpStatus[3] R B 16953 .2 BOOL
+Room2.CurtainsUpStatus[4] R B 16953 .3 BOOL
+Room2.CurtainsUpStatus[5] R B 16953 .4 BOOL
+Room2.CurtainsUpStatus[6] R B 16953 .5 BOOL
+Room2.CurtainsDwStatus[1] R B 16954 .0 BOOL
+Room2.CurtainsDwStatus[2] R B 16954 .1 BOOL
+Room2.CurtainsDwStatus[3] R B 16954 .2 BOOL
+Room2.CurtainsDwStatus[4] R B 16954 .3 BOOL
+Room2.CurtainsDwStatus[5] R B 16954 .4 BOOL
+Room2.CurtainsDwStatus[6] R B 16954 .5 BOOL
+Room3.EnLightsAN[1] R B 20250 USINT
+Room3.EnLightsAN[2] R B 20251 USINT
+Room3.EnLightsAN[3] R B 20252 USINT
+Room3.EnLightsAN[4] R B 20253 USINT
+Room3.EnLightsAN[5] R B 20254 USINT
+Room3.EnLightsAN[6] R B 20255 USINT
+Room3.EnLightsAN[7] R B 20256 USINT
+Room3.EnLightsAN[8] R B 20257 USINT
+Room3.EnLightsAN[9] R B 20258 USINT
+Room3.EnLightsAN[10] R B 20259 USINT
+Room3.EnLightsAN[11] R B 20260 USINT
+Room3.EnLightsAN[12] R B 20261 USINT
+Room3.EnLightsAN[13] R B 20262 USINT
+Room3.EnLightsAN[14] R B 20263 USINT
+Room3.EnLightsAN[15] R B 20264 USINT
+Room3.EnLightsAN[16] R B 20265 USINT
+Room3.EnLightsAN[17] R B 20266 USINT
+Room3.EnOutletsAN[1] R B 20268 USINT
+Room3.EnOutletsAN[2] R B 20269 USINT
+Room3.EnOutletsAN[3] R B 20270 USINT
+Room3.EnOutletsAN[4] R B 20271 USINT
+Room3.EnOutletsAN[5] R B 20272 USINT
+Room3.EnOutletsAN[6] R B 20273 USINT
+Room3.EnOutletsAN[7] R B 20274 USINT
+Room3.EnOutletsAN[8] R B 20275 USINT
+Room3.EnCurtainsUp[1] R B 20276 .0 BOOL
+Room3.EnCurtainsUp[2] R B 20276 .1 BOOL
+Room3.EnCurtainsUp[3] R B 20276 .2 BOOL
+Room3.EnCurtainsUp[4] R B 20276 .3 BOOL
+Room3.EnCurtainsUp[5] R B 20276 .4 BOOL
+Room3.EnCurtainsUp[6] R B 20276 .5 BOOL
+Room3.EnCurtainsDw[1] R B 20277 .0 BOOL
+Room3.EnCurtainsDw[2] R B 20277 .1 BOOL
+Room3.EnCurtainsDw[3] R B 20277 .2 BOOL
+Room3.EnCurtainsDw[4] R B 20277 .3 BOOL
+Room3.EnCurtainsDw[5] R B 20277 .4 BOOL
+Room3.EnCurtainsDw[6] R B 20277 .5 BOOL
+Room3.CurtainsUpStatus[1] R B 20353 .0 BOOL
+Room3.CurtainsUpStatus[2] R B 20353 .1 BOOL
+Room3.CurtainsUpStatus[3] R B 20353 .2 BOOL
+Room3.CurtainsUpStatus[4] R B 20353 .3 BOOL
+Room3.CurtainsUpStatus[5] R B 20353 .4 BOOL
+Room3.CurtainsUpStatus[6] R B 20353 .5 BOOL
+Room3.CurtainsDwStatus[1] R B 20354 .0 BOOL
+Room3.CurtainsDwStatus[2] R B 20354 .1 BOOL
+Room3.CurtainsDwStatus[3] R B 20354 .2 BOOL
+Room3.CurtainsDwStatus[4] R B 20354 .3 BOOL
+Room3.CurtainsDwStatus[5] R B 20354 .4 BOOL
+Room3.CurtainsDwStatus[6] R B 20354 .5 BOOL
 
 
 ;* Map completed.
-;* Crc="4F21"
+;* Crc="EC28"

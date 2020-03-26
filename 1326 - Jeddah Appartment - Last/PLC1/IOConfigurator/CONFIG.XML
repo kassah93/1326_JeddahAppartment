@@ -51,7 +51,7 @@
             </Objects>
             <Interfaces/>
             <Editor/>
-            <Network configFile="..\..\Networks.xml" id="0" addr="1" crc="4568"/>
+            <Network configFile="..\..\Networks.xml" id="0" addr="1" crc="15600"/>
           </Channel>
           <Channel Options="BAC" Name="SOCK3"/>
           <Channel xmlns="http://www.tecomat.com" Mode="UNI" Alias="Majles1" enabled="true" Options="UNI" Name="UNI0" LAddr="07E1">

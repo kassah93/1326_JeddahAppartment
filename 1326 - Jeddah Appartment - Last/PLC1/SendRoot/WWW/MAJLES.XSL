@@ -15,18 +15,18 @@
 <title>
 <xsl:value-of select="/PAGE/@TITLE" />
 Majles</title>
-<script src="MAJLES.JS?U=1585229296" language="JavaScript" charset="utf-8" />
+<script src="MAJLES.JS?U=1585234457" language="JavaScript" charset="utf-8" />
 <style type="text/css">.mono {font-family: Verdana, Arial, FreeSans, sans-serif;}</style>
 </head>
 <body onload="GetXML('MAJLES.XML'); FunWatchDog();" style="margin: 0px 0px 0px 0px">
-<xsl:if test="1585229296 != ACCESS/@UCID">
+<xsl:if test="1585234457 != ACCESS/@UCID">
 <xsl:attribute name="onload">
 null;
 </xsl:attribute>
 <div id="cachewarning" style="text-align: left;"></div>
 <script src="REFCLR.JS" language="JavaScript" charset="utf-8"></script>
 </xsl:if>
-<xsl:if test="1585229296 = ACCESS/@UCID">
+<xsl:if test="1585234457 = ACCESS/@UCID">
 <table cellpadding="0" cellspacing="0">
 <tr>
 <!--menu-->

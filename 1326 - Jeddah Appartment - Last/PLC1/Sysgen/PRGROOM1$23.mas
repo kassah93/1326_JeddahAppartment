@@ -104,9 +104,9 @@
 #table byte __Init___PrgRoom1_enCurtainsDW_FT = 
       4,  4;
 #table byte __Init___PrgRoom1_enCurtainsUP_SW_FT = 
-      4,199;
+      4, 10;
 #table byte __Init___PrgRoom1_enCurtainsDW_SW_FT = 
-      4,191;
+      4, 39;
 #table byte __Init___PrgRoom1_enFCUs_FT = 
       4,  4;
 #table byte __Init___PrgRoom1_enSetTempIncr_FT = 
@@ -1749,7 +1749,7 @@ PrgRoom1_L44:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  WRIB 
@@ -1767,7 +1767,7 @@ PrgRoom1_L44:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
@@ -1786,7 +1786,7 @@ PrgRoom1_L44:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  2   ; Bool offset 
@@ -1860,7 +1860,7 @@ PrgRoom1_L46:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  WRIB 
@@ -1878,7 +1878,7 @@ PrgRoom1_L46:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
@@ -1897,7 +1897,7 @@ PrgRoom1_L46:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  2   ; Bool offset 
@@ -1972,7 +1972,7 @@ PrgRoom1_L48:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  WRIB 
@@ -1990,7 +1990,7 @@ PrgRoom1_L48:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
@@ -2009,7 +2009,7 @@ PrgRoom1_L48:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  2   ; Bool offset 
@@ -2081,7 +2081,7 @@ PrgRoom1_L50:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  WRIB 
@@ -2099,7 +2099,7 @@ PrgRoom1_L50:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
@@ -2118,7 +2118,7 @@ PrgRoom1_L50:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  2   ; Bool offset 

@@ -3,9 +3,10 @@
   <Ethernet>
     <PLDNetworks/>
     <PLCxNetworks>
-      <PLCxNetwork id="0" name="PLCx3" raster="200" crc="4568">
+      <PLCxNetwork id="0" name="PLCx3" raster="200" crc="15600">
         <Node name="PLC3" addr="3" zoneSize="238"/>
         <Node name="PLC1_Curtains" addr="1" zoneSize="50"/>
+        <Node name="PLC2_Curtains" addr="2" zoneSize="50"/>
       </PLCxNetwork>
     </PLCxNetworks>
   </Ethernet>

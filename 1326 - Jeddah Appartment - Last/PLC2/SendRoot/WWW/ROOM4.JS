@@ -43,7 +43,7 @@ if(xmlhttpGET.status != 200){
 alert('Problem retrieving XML data ' + xmlhttpGET.statusText + '(' + xmlhttpGET.status + ')');
 document.location.reload(true)
 return;}
-var access = xmlhttpGET.responseXML.documentElement.getElementsByTagName('ACCESS')[0]; if(!access || access.getAttribute('UCID') != 1584613339) {document.location.reload(true); return;}
+var access = xmlhttpGET.responseXML.documentElement.getElementsByTagName('ACCESS')[0]; if(!access || access.getAttribute('UCID') != 1585234965) {document.location.reload(true); return;}
 var pd = '';
 var x=xmlhttpGET.responseXML.documentElement.getElementsByTagName('INPUT');
 if(x[0]) {
@@ -189,82 +189,82 @@ var Input19 = document.getElementById('INPUT19');
 var Input20 = document.getElementById('INPUT20');
 var Input21 = document.getElementById('INPUT21');
 var Input22 = document.getElementById('INPUT22');
-if(x[8].getAttribute('VALUE') == '0') {
+if(x[9].getAttribute('VALUE') != '0') {
 Input22.style.visibility = 'hidden';
 } else {
 Input22.style.visibility = 'visible';
 }
 var Input23 = document.getElementById('INPUT23');
-if(x[8].getAttribute('VALUE') == '0') {
+if(x[9].getAttribute('VALUE') != '0') {
 Input23.style.visibility = 'hidden';
 } else {
 Input23.style.visibility = 'visible';
 }
 var Input24 = document.getElementById('INPUT24');
-if(x[8].getAttribute('VALUE') == '0') {
+if(x[9].getAttribute('VALUE') == '0') {
 Input24.style.visibility = 'hidden';
 } else {
 Input24.style.visibility = 'visible';
 }
 var Input25 = document.getElementById('INPUT25');
-if(x[8].getAttribute('VALUE') == '0') {
-Input25.style.display = 'none';
+if(x[9].getAttribute('VALUE') == '0') {
+Input25.style.visibility = 'hidden';
 } else {
-Input25.style.display = 'block';
+Input25.style.visibility = 'visible';
 }
 var Input26 = document.getElementById('INPUT26');
-if(x[8].getAttribute('VALUE') == '0') {
-Input26.style.display = 'none';
-} else {
-Input26.style.display = 'block';
-}
 var Input27 = document.getElementById('INPUT27');
-if(x[9].getAttribute('VALUE') != '0') {
-Input27.style.visibility = 'hidden';
+if(x[10].getAttribute('VALUE') == '0') {
+SetBg('INPUT27', 'MOTION_S.PNG');
 } else {
-Input27.style.visibility = 'visible';
+SetBg('INPUT27', 'MOTION_S.GIF');
 }
 var Input28 = document.getElementById('INPUT28');
-if(x[9].getAttribute('VALUE') != '0') {
-Input28.style.visibility = 'hidden';
+if(x[11].getAttribute('VALUE') == '0') {
+SetBg('INPUT28', 'MOTION_S.PNG');
 } else {
-Input28.style.visibility = 'visible';
+SetBg('INPUT28', 'MOTION_S.GIF');
 }
 var Input29 = document.getElementById('INPUT29');
-if(x[9].getAttribute('VALUE') == '0') {
-Input29.style.visibility = 'hidden';
+if(x[12].getAttribute('VALUE') == '0') {
+SetBg('INPUT29', 'IDEA_4_1.PNG');
 } else {
-Input29.style.visibility = 'visible';
+SetBg('INPUT29', 'IDEA_3_1.PNG');
+}
+if(x[0].getAttribute('VALUE') == '0') {
+Input29.style.display = 'none';
+} else {
+Input29.style.display = 'block';
 }
 var Input30 = document.getElementById('INPUT30');
-if(x[9].getAttribute('VALUE') == '0') {
+if(x[0].getAttribute('VALUE') == '0') {
 Input30.style.visibility = 'hidden';
 } else {
 Input30.style.visibility = 'visible';
 }
 var Input31 = document.getElementById('INPUT31');
-var Input32 = document.getElementById('INPUT32');
-if(x[10].getAttribute('VALUE') == '0') {
-SetBg('INPUT32', 'MOTION_S.PNG');
+if(x[0].getAttribute('VALUE') == '0') {
+Input31.style.visibility = 'hidden';
 } else {
-SetBg('INPUT32', 'MOTION_S.GIF');
+Input31.style.visibility = 'visible';
+}
+var Input32 = document.getElementById('INPUT32');
+if(x[0].getAttribute('VALUE') == '0') {
+Input32.style.visibility = 'hidden';
+} else {
+Input32.style.visibility = 'visible';
 }
 var Input33 = document.getElementById('INPUT33');
-if(x[11].getAttribute('VALUE') == '0') {
-SetBg('INPUT33', 'MOTION_S.PNG');
+if(x[0].getAttribute('VALUE') == '0') {
+Input33.style.visibility = 'hidden';
 } else {
-SetBg('INPUT33', 'MOTION_S.GIF');
+Input33.style.visibility = 'visible';
 }
 var Input34 = document.getElementById('INPUT34');
-if(x[12].getAttribute('VALUE') == '0') {
-SetBg('INPUT34', 'IDEA_4_1.PNG');
-} else {
-SetBg('INPUT34', 'IDEA_3_1.PNG');
-}
 if(x[0].getAttribute('VALUE') == '0') {
-Input34.style.display = 'none';
+Input34.style.visibility = 'hidden';
 } else {
-Input34.style.display = 'block';
+Input34.style.visibility = 'visible';
 }
 var Input35 = document.getElementById('INPUT35');
 if(x[0].getAttribute('VALUE') == '0') {
@@ -273,112 +273,112 @@ Input35.style.visibility = 'hidden';
 Input35.style.visibility = 'visible';
 }
 var Input36 = document.getElementById('INPUT36');
-if(x[0].getAttribute('VALUE') == '0') {
+if(x[6].getAttribute('VALUE') == '0') {
 Input36.style.visibility = 'hidden';
 } else {
 Input36.style.visibility = 'visible';
 }
 var Input37 = document.getElementById('INPUT37');
-if(x[0].getAttribute('VALUE') == '0') {
-Input37.style.visibility = 'hidden';
-} else {
-Input37.style.visibility = 'visible';
-}
-var Input38 = document.getElementById('INPUT38');
-if(x[0].getAttribute('VALUE') == '0') {
-Input38.style.visibility = 'hidden';
-} else {
-Input38.style.visibility = 'visible';
-}
-var Input39 = document.getElementById('INPUT39');
-if(x[0].getAttribute('VALUE') == '0') {
-Input39.style.visibility = 'hidden';
-} else {
-Input39.style.visibility = 'visible';
-}
-var Input40 = document.getElementById('INPUT40');
-if(x[0].getAttribute('VALUE') == '0') {
-Input40.style.visibility = 'hidden';
-} else {
-Input40.style.visibility = 'visible';
-}
-var Input41 = document.getElementById('INPUT41');
-if(x[6].getAttribute('VALUE') == '0') {
-Input41.style.visibility = 'hidden';
-} else {
-Input41.style.visibility = 'visible';
-}
-var Input42 = document.getElementById('INPUT42');
-var Input42h = document.getElementById('INPUT42h');
-if(Input42h) { vz = x[13].getAttribute('VALUE') == '0'; iz = Input42h.value == '0';
+var Input37h = document.getElementById('INPUT37h');
+if(Input37h) { vz = x[13].getAttribute('VALUE') == '0'; iz = Input37h.value == '0';
 if(vz == iz) {
 if(vz) {
-Input42h.value = '1';
-Input42.style.backgroundImage = 'url("IMAGES/OFF.PNG")';
-if(Input42.getAttribute('value') != null) {Input42.value = '';} else {}
+Input37h.value = '1';
+Input37.style.backgroundImage = 'url("IMAGES/OFF.PNG")';
+if(Input37.getAttribute('value') != null) {Input37.value = '';} else {}
 } else {
-Input42h.value = '0';
-Input42.style.backgroundImage = 'url("IMAGES/ON.PNG")';
-if(Input42.getAttribute('value') != null) {Input42.value = '';
+Input37h.value = '0';
+Input37.style.backgroundImage = 'url("IMAGES/ON.PNG")';
+if(Input37.getAttribute('value') != null) {Input37.value = '';
 } else {}
 }}} else {
 if(x[13].getAttribute('VALUE') == '0') {
-SetBg('INPUT42', 'OFF.PNG');
+SetBg('INPUT37', 'OFF.PNG');
 } else {
-SetBg('INPUT42', 'ON.PNG');
+SetBg('INPUT37', 'ON.PNG');
 }}
 if(x[9].getAttribute('VALUE') == '0') {
-Input42.style.display = 'none';
+Input37.style.display = 'none';
 } else {
-Input42.style.display = 'block';
+Input37.style.display = 'block';
 }
-var Input43 = document.getElementById('INPUT43');
+var Input38 = document.getElementById('INPUT38');
 switch(parseInt(x[14].getAttribute('VALUE'))) {
 case 0 : gTemp = 'url("IMAGES/INDICATO.PNG")'; break;
 case 1 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 case 2 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 case 3 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 default: gTemp = ''; }
-if(Input43.style.backgroundImage != gTemp) Input43.style.backgroundImage = gTemp;
+if(Input38.style.backgroundImage != gTemp) Input38.style.backgroundImage = gTemp;
 if(x[9].getAttribute('VALUE') == '0') {
-Input43.style.visibility = 'hidden';
+Input38.style.visibility = 'hidden';
 } else {
-Input43.style.visibility = 'visible';
+Input38.style.visibility = 'visible';
 }
-var Input44 = document.getElementById('INPUT44');
+var Input39 = document.getElementById('INPUT39');
 switch(parseInt(x[14].getAttribute('VALUE'))) {
 case 0 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 case 1 : gTemp = 'url("IMAGES/INDICATO.PNG")'; break;
 case 2 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 case 3 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 default: gTemp = ''; }
-if(Input44.style.backgroundImage != gTemp) Input44.style.backgroundImage = gTemp;
+if(Input39.style.backgroundImage != gTemp) Input39.style.backgroundImage = gTemp;
 if(x[9].getAttribute('VALUE') == '0') {
-Input44.style.visibility = 'hidden';
+Input39.style.visibility = 'hidden';
 } else {
-Input44.style.visibility = 'visible';
+Input39.style.visibility = 'visible';
 }
-var Input45 = document.getElementById('INPUT45');
+var Input40 = document.getElementById('INPUT40');
 switch(parseInt(x[14].getAttribute('VALUE'))) {
 case 0 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 case 1 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 case 2 : gTemp = 'url("IMAGES/INDICATO.PNG")'; break;
 case 3 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 default: gTemp = ''; }
-if(Input45.style.backgroundImage != gTemp) Input45.style.backgroundImage = gTemp;
+if(Input40.style.backgroundImage != gTemp) Input40.style.backgroundImage = gTemp;
 if(x[9].getAttribute('VALUE') == '0') {
-Input45.style.visibility = 'hidden';
+Input40.style.visibility = 'hidden';
 } else {
-Input45.style.visibility = 'visible';
+Input40.style.visibility = 'visible';
 }
-var Input46 = document.getElementById('INPUT46');
+var Input41 = document.getElementById('INPUT41');
 switch(parseInt(x[14].getAttribute('VALUE'))) {
 case 0 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 case 1 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 case 2 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 case 3 : gTemp = 'url("IMAGES/INDICATO.PNG")'; break;
 default: gTemp = ''; }
-if(Input46.style.backgroundImage != gTemp) Input46.style.backgroundImage = gTemp;
+if(Input41.style.backgroundImage != gTemp) Input41.style.backgroundImage = gTemp;
+if(x[9].getAttribute('VALUE') == '0') {
+Input41.style.visibility = 'hidden';
+} else {
+Input41.style.visibility = 'visible';
+}
+var Input42 = document.getElementById('INPUT42');
+if(x[9].getAttribute('VALUE') == '0') {
+Input42.style.visibility = 'hidden';
+} else {
+Input42.style.visibility = 'visible';
+}
+var Input43 = document.getElementById('INPUT43');
+if(x[9].getAttribute('VALUE') == '0') {
+Input43.style.visibility = 'hidden';
+} else {
+Input43.style.visibility = 'visible';
+}
+var Input44 = document.getElementById('INPUT44');
+if(x[9].getAttribute('VALUE') == '0') {
+Input44.style.visibility = 'hidden';
+} else {
+Input44.style.visibility = 'visible';
+}
+var Input45 = document.getElementById('INPUT45');
+if(x[9].getAttribute('VALUE') == '0') {
+Input45.style.visibility = 'hidden';
+} else {
+Input45.style.visibility = 'visible';
+}
+var Input46 = document.getElementById('INPUT46');
 if(x[9].getAttribute('VALUE') == '0') {
 Input46.style.visibility = 'hidden';
 } else {
@@ -403,28 +403,76 @@ Input49.style.visibility = 'hidden';
 Input49.style.visibility = 'visible';
 }
 var Input50 = document.getElementById('INPUT50');
+switch(parseInt(x[15].getAttribute('VALUE'))) {
+case 0 : gTemp = 'url("IMAGES/FAN_OFF.PNG")'; break;
+case 1 : gTemp = 'url("IMAGES/80.GIF")'; break;
+case 2 : gTemp = 'url("IMAGES/50.GIF")'; break;
+case 3 : gTemp = 'url("IMAGES/50.GIF")'; break;
+case 4 : gTemp = 'url("IMAGES/20.GIF")'; break;
+default: gTemp = ''; }
+if(Input50.style.backgroundImage != gTemp) Input50.style.backgroundImage = gTemp;
 if(x[9].getAttribute('VALUE') == '0') {
 Input50.style.visibility = 'hidden';
 } else {
 Input50.style.visibility = 'visible';
 }
 var Input51 = document.getElementById('INPUT51');
-if(x[9].getAttribute('VALUE') == '0') {
-Input51.style.visibility = 'hidden';
+var Input51h = document.getElementById('INPUT51h');
+if(Input51h) { vz = x[16].getAttribute('VALUE') == '0'; iz = Input51h.value == '0';
+if(vz == iz) {
+if(vz) {
+Input51h.value = '1';
+Input51.style.backgroundImage = 'url("IMAGES/AIR-CON1.PNG")';
+if(Input51.getAttribute('value') != null) {Input51.value = '';} else {}
 } else {
-Input51.style.visibility = 'visible';
+Input51h.value = '0';
+Input51.style.backgroundImage = 'url("IMAGES/VENTILA1.PNG")';
+if(Input51.getAttribute('value') != null) {Input51.value = '';
+} else {}
+}}} else {
+if(x[16].getAttribute('VALUE') == '0') {
+SetBg('INPUT51', 'AIR-CON1.PNG');
+} else {
+SetBg('INPUT51', 'VENTILA1.PNG');
+}}
+if(x[9].getAttribute('VALUE') == '0') {
+Input51.style.display = 'none';
+} else {
+Input51.style.display = 'block';
 }
 var Input52 = document.getElementById('INPUT52');
+if(!InputEdited[51]) {
+UpdateValue(Input52, x[17], '#3C3C3C');}
+var Input52x = document.getElementById('INPUT52x');
 if(x[9].getAttribute('VALUE') == '0') {
-Input52.style.visibility = 'hidden';
+if(Input52x) Input52x.style.visibility = 'hidden';
+Input52.style.display = 'none';
 } else {
-Input52.style.visibility = 'visible';
+Input52.style.display = 'inline';
 }
 var Input53 = document.getElementById('INPUT53');
-if(x[9].getAttribute('VALUE') == '0') {
-Input53.style.visibility = 'hidden';
+var Input53h = document.getElementById('INPUT53h');
+if(Input53h) { vz = x[18].getAttribute('VALUE') == '0'; iz = Input53h.value == '0';
+if(vz == iz) {
+if(vz) {
+Input53h.value = '1';
+Input53.style.backgroundImage = 'url("IMAGES/CONTROL-.PNG")';
+if(Input53.getAttribute('value') != null) {Input53.value = '';} else {}
 } else {
-Input53.style.visibility = 'visible';
+Input53h.value = '0';
+Input53.style.backgroundImage = 'url("IMAGES/CONTROL1.PNG")';
+if(Input53.getAttribute('value') != null) {Input53.value = '';
+} else {}
+}}} else {
+if(x[18].getAttribute('VALUE') == '0') {
+SetBg('INPUT53', 'CONTROL-.PNG');
+} else {
+SetBg('INPUT53', 'CONTROL1.PNG');
+}}
+if(x[9].getAttribute('VALUE') == '0') {
+Input53.style.display = 'none';
+} else {
+Input53.style.display = 'block';
 }
 var Input54 = document.getElementById('INPUT54');
 if(x[9].getAttribute('VALUE') == '0') {
@@ -433,76 +481,29 @@ Input54.style.visibility = 'hidden';
 Input54.style.visibility = 'visible';
 }
 var Input55 = document.getElementById('INPUT55');
-switch(parseInt(x[15].getAttribute('VALUE'))) {
-case 0 : gTemp = 'url("IMAGES/FAN_OFF.PNG")'; break;
-case 1 : gTemp = 'url("IMAGES/80.GIF")'; break;
-case 2 : gTemp = 'url("IMAGES/50.GIF")'; break;
-case 3 : gTemp = 'url("IMAGES/50.GIF")'; break;
-case 4 : gTemp = 'url("IMAGES/20.GIF")'; break;
-default: gTemp = ''; }
-if(Input55.style.backgroundImage != gTemp) Input55.style.backgroundImage = gTemp;
+Input55.value = x[19].getAttribute('VALUE');
 if(x[9].getAttribute('VALUE') == '0') {
 Input55.style.visibility = 'hidden';
 } else {
 Input55.style.visibility = 'visible';
 }
 var Input56 = document.getElementById('INPUT56');
-var Input56h = document.getElementById('INPUT56h');
-if(Input56h) { vz = x[16].getAttribute('VALUE') == '0'; iz = Input56h.value == '0';
-if(vz == iz) {
-if(vz) {
-Input56h.value = '1';
-Input56.style.backgroundImage = 'url("IMAGES/AIR-CON1.PNG")';
-if(Input56.getAttribute('value') != null) {Input56.value = '';} else {}
-} else {
-Input56h.value = '0';
-Input56.style.backgroundImage = 'url("IMAGES/VENTILA1.PNG")';
-if(Input56.getAttribute('value') != null) {Input56.value = '';
-} else {}
-}}} else {
-if(x[16].getAttribute('VALUE') == '0') {
-SetBg('INPUT56', 'AIR-CON1.PNG');
-} else {
-SetBg('INPUT56', 'VENTILA1.PNG');
-}}
 if(x[9].getAttribute('VALUE') == '0') {
-Input56.style.display = 'none';
+Input56.style.visibility = 'hidden';
 } else {
-Input56.style.display = 'block';
+Input56.style.visibility = 'visible';
 }
 var Input57 = document.getElementById('INPUT57');
-if(!InputEdited[56]) {
-UpdateValue(Input57, x[17], '#3C3C3C');}
-var Input57x = document.getElementById('INPUT57x');
 if(x[9].getAttribute('VALUE') == '0') {
-if(Input57x) Input57x.style.visibility = 'hidden';
-Input57.style.display = 'none';
+Input57.style.visibility = 'hidden';
 } else {
-Input57.style.display = 'inline';
+Input57.style.visibility = 'visible';
 }
 var Input58 = document.getElementById('INPUT58');
-var Input58h = document.getElementById('INPUT58h');
-if(Input58h) { vz = x[18].getAttribute('VALUE') == '0'; iz = Input58h.value == '0';
-if(vz == iz) {
-if(vz) {
-Input58h.value = '1';
-Input58.style.backgroundImage = 'url("IMAGES/CONTROL-.PNG")';
-if(Input58.getAttribute('value') != null) {Input58.value = '';} else {}
-} else {
-Input58h.value = '0';
-Input58.style.backgroundImage = 'url("IMAGES/CONTROL1.PNG")';
-if(Input58.getAttribute('value') != null) {Input58.value = '';
-} else {}
-}}} else {
-if(x[18].getAttribute('VALUE') == '0') {
-SetBg('INPUT58', 'CONTROL-.PNG');
-} else {
-SetBg('INPUT58', 'CONTROL1.PNG');
-}}
 if(x[9].getAttribute('VALUE') == '0') {
-Input58.style.display = 'none';
+Input58.style.visibility = 'hidden';
 } else {
-Input58.style.display = 'block';
+Input58.style.visibility = 'visible';
 }
 var Input59 = document.getElementById('INPUT59');
 if(x[9].getAttribute('VALUE') == '0') {
@@ -511,54 +512,85 @@ Input59.style.visibility = 'hidden';
 Input59.style.visibility = 'visible';
 }
 var Input60 = document.getElementById('INPUT60');
-Input60.value = x[19].getAttribute('VALUE');
 if(x[9].getAttribute('VALUE') == '0') {
 Input60.style.visibility = 'hidden';
 } else {
 Input60.style.visibility = 'visible';
 }
 var Input61 = document.getElementById('INPUT61');
-if(x[9].getAttribute('VALUE') == '0') {
-Input61.style.visibility = 'hidden';
+if(x[16].getAttribute('VALUE') == '0') {
+SetBg('INPUT61', 'TRANSPE2.PNG');
+Input61.innerHTML = 'Cooling';
 } else {
-Input61.style.visibility = 'visible';
+SetBg('INPUT61', 'TRANSPE2.PNG');
+Input61.innerHTML = 'Fan only';
+}
+if(x[9].getAttribute('VALUE') == '0') {
+Input61.style.display = 'none';
+} else {
+Input61.style.display = 'block';
 }
 var Input62 = document.getElementById('INPUT62');
-if(x[9].getAttribute('VALUE') == '0') {
+switch(parseInt(x[20].getAttribute('VALUE'))) {
+case 0 : gTemp = 'url("IMAGES/WINDOW9.PNG")'; break;
+case 1 : gTemp = 'url("IMAGES/WINDOW10.PNG")'; break;
+case 2 : gTemp = 'url("IMAGES/WINDOW11.PNG")'; break;
+case 3 : gTemp = 'url("IMAGES/WINDOW12.PNG")'; break;
+case 4 : gTemp = 'url("IMAGES/WINDOW13.PNG")'; break;
+default: gTemp = ''; }
+if(Input62.style.backgroundImage != gTemp) Input62.style.backgroundImage = gTemp;
+if(x[8].getAttribute('VALUE') == '0') {
 Input62.style.visibility = 'hidden';
 } else {
 Input62.style.visibility = 'visible';
 }
 var Input63 = document.getElementById('INPUT63');
-if(x[9].getAttribute('VALUE') == '0') {
+if(!InputEdited[62]) {
+UpdateValue(Input63, x[21], '#000000');}
+if(x[8].getAttribute('VALUE') == '0') {
 Input63.style.visibility = 'hidden';
 } else {
 Input63.style.visibility = 'visible';
 }
 var Input64 = document.getElementById('INPUT64');
-if(x[9].getAttribute('VALUE') == '0') {
+if(x[8].getAttribute('VALUE') == '0') {
 Input64.style.visibility = 'hidden';
 } else {
 Input64.style.visibility = 'visible';
 }
 var Input65 = document.getElementById('INPUT65');
-if(x[9].getAttribute('VALUE') == '0') {
-Input65.style.visibility = 'hidden';
+if(x[22].getAttribute('VALUE') == '0') {
+SetBg('INPUT65', 'BTN_BL_5.PNG');
 } else {
-Input65.style.visibility = 'visible';
+SetBg('INPUT65', 'BTN_GREE.PNG');
+}
+if(x[8].getAttribute('VALUE') == '0') {
+Input65.style.display = 'none';
+} else {
+Input65.style.display = 'block';
 }
 var Input66 = document.getElementById('INPUT66');
-if(x[16].getAttribute('VALUE') == '0') {
-SetBg('INPUT66', 'TRANSPE2.PNG');
-Input66.innerHTML = 'Cooling';
+if(x[23].getAttribute('VALUE') == '0') {
+SetBg('INPUT66', 'BTN_BL_7.PNG');
 } else {
-SetBg('INPUT66', 'TRANSPE2.PNG');
-Input66.innerHTML = 'Fan only';
+SetBg('INPUT66', 'BTN_GRE1.PNG');
 }
-if(x[9].getAttribute('VALUE') == '0') {
+if(x[8].getAttribute('VALUE') == '0') {
 Input66.style.display = 'none';
 } else {
 Input66.style.display = 'block';
+}
+var Input67 = document.getElementById('INPUT67');
+if(x[8].getAttribute('VALUE') == '0') {
+Input67.style.visibility = 'hidden';
+} else {
+Input67.style.visibility = 'visible';
+}
+var Input68 = document.getElementById('INPUT68');
+if(x[8].getAttribute('VALUE') == '0') {
+Input68.style.visibility = 'hidden';
+} else {
+Input68.style.visibility = 'visible';
 }
 } else {document.location.reload(true); return;}
 } catch(err) {console.log(err.message)}
@@ -573,68 +605,77 @@ setTimeout("FunWatchDog()", 20000);
 }
 
 function PostXML19() {
-PostXML('ROOM4.XML', encodeURIComponent('__R19860_USINT_u=0')); 
+PostXML('ROOM4.XML', encodeURIComponent('__R20234_USINT_u=0')); 
 }
 function PostXML20() {
-PostXML('ROOM4.XML', encodeURIComponent('__R19860_USINT_u=1')); 
+PostXML('ROOM4.XML', encodeURIComponent('__R20234_USINT_u=1')); 
 }
 function PostXML21() {
-PostXML('ROOM4.XML', encodeURIComponent('__R19860_USINT_u=2')); 
+PostXML('ROOM4.XML', encodeURIComponent('__R20234_USINT_u=2')); 
+}
+function PostXML26() {
+PostXML('ROOM4.XML', encodeURIComponent('__R20234_USINT_u=3')); 
+}
+function PostXML30() {
+PostXML('ROOM4.XML', encodeURIComponent('__R23428.0_BOOL_i=1')); 
 }
 function PostXML31() {
-PostXML('ROOM4.XML', encodeURIComponent('__R19860_USINT_u=3')); 
+PostXML('ROOM4.XML', encodeURIComponent('__R23428.1_BOOL_i=1')); 
+}
+function PostXML32() {
+PostXML('ROOM4.XML', encodeURIComponent('__R23428.2_BOOL_i=1')); 
+}
+function PostXML33() {
+PostXML('ROOM4.XML', encodeURIComponent('__R23428.3_BOOL_i=1')); 
+}
+function PostXML34() {
+PostXML('ROOM4.XML', encodeURIComponent('__R23428.4_BOOL_i=1')); 
 }
 function PostXML35() {
-PostXML('ROOM4.XML', encodeURIComponent('__R23054.0_BOOL_i=1')); 
+PostXML('ROOM4.XML', encodeURIComponent('__R23428.5_BOOL_i=1')); 
 }
 function PostXML36() {
-PostXML('ROOM4.XML', encodeURIComponent('__R23054.1_BOOL_i=1')); 
+PostXML('ROOM4.XML', encodeURIComponent('__R23448.0_BOOL_i=1')); 
 }
 function PostXML37() {
-PostXML('ROOM4.XML', encodeURIComponent('__R23054.2_BOOL_i=1')); 
+var Input37h = document.getElementById('INPUT37h');
+PostXML('ROOM4.XML', encodeURIComponent(Input37h.name+'='+Input37h.value));
 }
-function PostXML38() {
-PostXML('ROOM4.XML', encodeURIComponent('__R23054.3_BOOL_i=1')); 
+function PostXML46() {
+PostXML('ROOM4.XML', encodeURIComponent('__R23596_USINT_u=0')); 
 }
-function PostXML39() {
-PostXML('ROOM4.XML', encodeURIComponent('__R23054.4_BOOL_i=1')); 
+function PostXML47() {
+PostXML('ROOM4.XML', encodeURIComponent('__R23596_USINT_u=1')); 
 }
-function PostXML40() {
-PostXML('ROOM4.XML', encodeURIComponent('__R23054.5_BOOL_i=1')); 
+function PostXML48() {
+PostXML('ROOM4.XML', encodeURIComponent('__R23596_USINT_u=2')); 
 }
-function PostXML41() {
-PostXML('ROOM4.XML', encodeURIComponent('__R23074.0_BOOL_i=1')); 
-}
-function PostXML42() {
-var Input42h = document.getElementById('INPUT42h');
-PostXML('ROOM4.XML', encodeURIComponent(Input42h.name+'='+Input42h.value));
+function PostXML49() {
+PostXML('ROOM4.XML', encodeURIComponent('__R23596_USINT_u=3')); 
 }
 function PostXML51() {
-PostXML('ROOM4.XML', encodeURIComponent('__R23214_USINT_u=0')); 
+var Input51h = document.getElementById('INPUT51h');
+PostXML('ROOM4.XML', encodeURIComponent(Input51h.name+'='+Input51h.value));
 }
 function PostXML52() {
-PostXML('ROOM4.XML', encodeURIComponent('__R23214_USINT_u=1')); 
+var Input52 = document.getElementById('INPUT52');
+document.getElementById('INPUT52x').style.visibility = 'hidden';if(InputEdited[51]) {
+PostXML('ROOM4.XML', encodeURIComponent(Input52.name+'='+Input52.value)); InputEdited[51] = 0;
+}
 }
 function PostXML53() {
-PostXML('ROOM4.XML', encodeURIComponent('__R23214_USINT_u=2')); 
+var Input53h = document.getElementById('INPUT53h');
+PostXML('ROOM4.XML', encodeURIComponent(Input53h.name+'='+Input53h.value));
 }
-function PostXML54() {
-PostXML('ROOM4.XML', encodeURIComponent('__R23214_USINT_u=3')); 
+function PostXML67() {
+PostXML('ROOM4.XML', encodeURIComponent('__R23503.0_BOOL_i=1')); 
 }
-function PostXML56() {
-var Input56h = document.getElementById('INPUT56h');
-PostXML('ROOM4.XML', encodeURIComponent(Input56h.name+'='+Input56h.value));
-}
-function PostXML57() {
-var Input57 = document.getElementById('INPUT57');
-document.getElementById('INPUT57x').style.visibility = 'hidden';if(InputEdited[56]) {
-PostXML('ROOM4.XML', encodeURIComponent(Input57.name+'='+Input57.value)); InputEdited[56] = 0;
-}
-}
-function PostXML58() {
-var Input58h = document.getElementById('INPUT58h');
-PostXML('ROOM4.XML', encodeURIComponent(Input58h.name+'='+Input58h.value));
+function PostXML68() {
+PostXML('ROOM4.XML', encodeURIComponent('__R23504.0_BOOL_i=1')); 
 }
 
 function PostGlobal() {
+var Input63 = document.getElementById('INPUT63');
+PostXML('ROOM4.XML', (InputEdited[62] ? encodeURIComponent(Input63.name)+'='+encodeURIComponent(Input63.value)+'&' : ''));
+InputEdited[62]=0;
 }

@@ -140,30 +140,24 @@
   udint P18__st__,
   udint P19__st__,
   udint P20__st__,
-  usint P21__st__,
-  usint P22__st__,
+  udint P21__st__,
+  udint P22__st__,
   udint P23__st__,
   udint P24__st__,
-  udint P25__st__,
-  udint P26__st__,
+  usint P25__st__,
+  usint P26__st__,
   udint P27__st__,
   udint P28__st__,
   udint P29__st__,
   udint P30__st__,
-  usint P31__st__,
-  usint P32__st__,
+  udint P31__st__,
+  udint P32__st__,
   udint P33__st__,
   udint P34__st__,
   udint P35__st__,
   udint P36__st__,
   udint P37__st__,
-  udint P38__st__,
-  udint P39__st__,
-  udint P40__st__,
-  udint P41__st__,
-  udint P42__st__,
-  udint P43__st__,
-  udint P44__st__
+  udint P38__st__
 P     61
 PrgRoom3_L0:
  LINK __SizeOf(PrgRoom3__temp__)
@@ -1303,6 +1297,7 @@ PrgRoom3_L35:
  JMP  PrgRoom3_L32
 PrgRoom3_L33:
  NOP  -1
+#srcline 256 ;   
 #srcline 257 ;   for j := 1 to NumOfHMIsRoom3 do
  LD   usint 1
  WRX  j
@@ -1413,54 +1408,7 @@ PrgRoom3_L40:
  WRIB 
  LDY  P18__st__  ; offset instance
  CAL  F_TRIG_L0
-#srcline 264 ;         if enCurtainsUP_RT[j,i].Q or enCurtainsUP_FT[j,i].Q then
- LEAX enCurtainsUP_RT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  2   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 1   ; Range Check
- ADD
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool enCurtainsUP_RT[j,i].Q
- LEAX enCurtainsUP_FT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  2   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 1   ; Range Check
- ADD
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool enCurtainsUP_FT[j,i].Q
- OR  
- JMC  PrgRoom3_L42
-#srcline 265 ;            EnCurtainsUp[i] := 1;
- LD   bool -1      ; true
- LEAX EnCurtainsUp
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 5   ; Range Check
- ADD     ; + offset 
- WRIB 
-#debug_left bool EnCurtainsUp[i]
-#srcline 266 ;         end_if;
-PrgRoom3_L42:
-#srcline 269 ;         enCurtainsDW_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].Dw.0);
+#srcline 264 ;         enCurtainsDW_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].Dw.0);
  LEAX enCurtainsDW_RT
  LDX  j
 #debug usint j
@@ -1503,7 +1451,7 @@ PrgRoom3_L42:
  WRIB 
  LDY  P19__st__  ; offset instance
  CAL  R_TRIG_L0
-#srcline 271 ;         enCurtainsDW_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].Dw.0);
+#srcline 266 ;         enCurtainsDW_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].Dw.0);
  LEAX enCurtainsDW_FT
  LDX  j
 #debug usint j
@@ -1546,7 +1494,147 @@ PrgRoom3_L42:
  WRIB 
  LDY  P20__st__  ; offset instance
  CAL  F_TRIG_L0
-#srcline 273 ;         if enCurtainsDW_RT[j,i].Q or enCurtainsDW_FT[j,i].Q then
+#srcline 268 ;         //
+#srcline 269 ;         enCurtainsUP_SW_RT[i](CLK := controlRoom.SwitchUPStatus[i]);
+ LEAX enCurtainsUP_SW_RT
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ ADD     ; + offset 
+ WRY  P21__st__  ; offset instance
+ LEAX controlRoom
+ ADD  418  ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 5   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool controlRoom.SwitchUPStatus[i]
+ LDY  P21__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P21__st__  ; offset instance
+ CAL  R_TRIG_L0
+#srcline 270 ;         enCurtainsUP_SW_FT[i](CLK := controlRoom.SwitchUPStatus[i]);
+ LEAX enCurtainsUP_SW_FT
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ ADD     ; + offset 
+ WRY  P22__st__  ; offset instance
+ LEAX controlRoom
+ ADD  418  ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 5   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool controlRoom.SwitchUPStatus[i]
+ LDY  P22__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P22__st__  ; offset instance
+ CAL  F_TRIG_L0
+#srcline 272 ;         enCurtainsDW_SW_RT[i](CLK := controlRoom.SwitchDWStatus[i]);
+ LEAX enCurtainsDW_SW_RT
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ ADD     ; + offset 
+ WRY  P23__st__  ; offset instance
+ LEAX controlRoom
+ ADD  419  ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 5   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool controlRoom.SwitchDWStatus[i]
+ LDY  P23__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P23__st__  ; offset instance
+ CAL  R_TRIG_L0
+#srcline 273 ;         enCurtainsDW_SW_FT[i](CLK := controlRoom.SwitchDWStatus[i]);
+ LEAX enCurtainsDW_SW_FT
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ ADD     ; + offset 
+ WRY  P24__st__  ; offset instance
+ LEAX controlRoom
+ ADD  419  ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 5   ; Range Check
+ ADD     ; + offset 
+ LDIB 
+#debug bool controlRoom.SwitchDWStatus[i]
+ LDY  P24__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P24__st__  ; offset instance
+ CAL  F_TRIG_L0
+#srcline 275 ;         if  enCurtainsUP_RT[j,i].Q  or enCurtainsUP_FT[j,i].Q then
+ LEAX enCurtainsUP_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  2   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 1   ; Range Check
+ ADD
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enCurtainsUP_RT[j,i].Q
+ LEAX enCurtainsUP_FT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  2   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 1   ; Range Check
+ ADD
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enCurtainsUP_FT[j,i].Q
+ OR  
+ JMC  PrgRoom3_L42
+#srcline 276 ;             enCurtainsUP_GUI[i] := 1;
+ LD   bool -1      ; true
+ LEAX enCurtainsUP_GUI
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool enCurtainsUP_GUI[i]
+#srcline 277 ;         end_if;
+PrgRoom3_L42:
+#srcline 279 ;         if  enCurtainsDW_RT[j,i].Q  or enCurtainsDW_FT[j,i].Q then
  LEAX enCurtainsDW_RT
  LDX  j
 #debug usint j
@@ -1581,407 +1669,7 @@ PrgRoom3_L42:
 #debug bool enCurtainsDW_FT[j,i].Q
  OR  
  JMC  PrgRoom3_L44
-#srcline 274 ;            EnCurtainsDw[i] := 1;
- LD   bool -1      ; true
- LEAX EnCurtainsDw
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 5   ; Range Check
- ADD     ; + offset 
- WRIB 
-#debug_left bool EnCurtainsDw[i]
-#srcline 275 ;         end_if;
-PrgRoom3_L44:
-#srcline 277 ;     end_for;
- LDX  i
- LD   1
- ADD  
- WRX  i
- JMP  PrgRoom3_L40
-PrgRoom3_L41:
- NOP  -1
-#srcline 278 ;   end_for;
- LDX  j
- LD   1
- ADD  
- WRX  j
- JMP  PrgRoom3_L38
-PrgRoom3_L39:
- NOP  -1
-#srcline 279 ;   
-#srcline 280 ;   for j := 1 to NumOfHMIsRoom3 do
- LD   usint 1
- WRX  j
- LD   usint 2
- WRY  P21__st__
-PrgRoom3_L46:
- LDX  j
- LDY  P21__st__
- GT   
- JMD  PrgRoom3_L47
- DBG  
-#srcline 281 ;     for i := 1 to NumOfCurtainRoom3 do
- LD   usint 1
- WRX  i
- LD   usint 2
- WRY  P22__st__
-PrgRoom3_L48:
- LDX  i
- LDY  P22__st__
- GT   
- JMD  PrgRoom3_L49
- DBG  
-#srcline 283 ;         enCurtainsUP_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].UP.0);
- LEAX enCurtainsUP_RT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  2   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 1   ; Range Check
- ADD
- ADD     ; + offset 
- WRY  P23__st__  ; offset instance
- LEA  HMIs_DataRead
- LDX  HMI_Index
-#debug usint HMI_Index
- LDX  j
-#debug usint j
- ADD
- AND  $FF
- LD   usint 1
- SUB
- AND  $FF
- SUB  1   ; Low range[1]
- RCHK 9   ; Range Check
- MUL  104   ; SizeOf(...)
- ADD     ; + offset 
- ADD  50  ; + offset 
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 5   ; Range Check
- MUL  4   ; SizeOf(...)
- ADD     ; + offset 
- ADD  2  ; + offset 
- MUL  8   ; -> bool pointer 
- LDIB 
-#debug bool HMIs_DataRead[HMI_Index+j-1].enShutters[i].UP.0
- LDY  P23__st__  ; offset instance
- MUL  8   ; -> bool pointer 
- WRIB 
- LDY  P23__st__  ; offset instance
- CAL  R_TRIG_L0
-#srcline 285 ;         enCurtainsUP_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].UP.0);
- LEAX enCurtainsUP_FT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  2   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 1   ; Range Check
- ADD
- ADD     ; + offset 
- WRY  P24__st__  ; offset instance
- LEA  HMIs_DataRead
- LDX  HMI_Index
-#debug usint HMI_Index
- LDX  j
-#debug usint j
- ADD
- AND  $FF
- LD   usint 1
- SUB
- AND  $FF
- SUB  1   ; Low range[1]
- RCHK 9   ; Range Check
- MUL  104   ; SizeOf(...)
- ADD     ; + offset 
- ADD  50  ; + offset 
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 5   ; Range Check
- MUL  4   ; SizeOf(...)
- ADD     ; + offset 
- ADD  2  ; + offset 
- MUL  8   ; -> bool pointer 
- LDIB 
-#debug bool HMIs_DataRead[HMI_Index+j-1].enShutters[i].UP.0
- LDY  P24__st__  ; offset instance
- MUL  8   ; -> bool pointer 
- WRIB 
- LDY  P24__st__  ; offset instance
- CAL  F_TRIG_L0
-#srcline 287 ;         enCurtainsDW_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].Dw.0);
- LEAX enCurtainsDW_RT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  2   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 1   ; Range Check
- ADD
- ADD     ; + offset 
- WRY  P25__st__  ; offset instance
- LEA  HMIs_DataRead
- LDX  HMI_Index
-#debug usint HMI_Index
- LDX  j
-#debug usint j
- ADD
- AND  $FF
- LD   usint 1
- SUB
- AND  $FF
- SUB  1   ; Low range[1]
- RCHK 9   ; Range Check
- MUL  104   ; SizeOf(...)
- ADD     ; + offset 
- ADD  50  ; + offset 
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 5   ; Range Check
- MUL  4   ; SizeOf(...)
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- LDIB 
-#debug bool HMIs_DataRead[HMI_Index+j-1].enShutters[i].Dw.0
- LDY  P25__st__  ; offset instance
- MUL  8   ; -> bool pointer 
- WRIB 
- LDY  P25__st__  ; offset instance
- CAL  R_TRIG_L0
-#srcline 289 ;         enCurtainsDW_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].Dw.0);
- LEAX enCurtainsDW_FT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  2   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 1   ; Range Check
- ADD
- ADD     ; + offset 
- WRY  P26__st__  ; offset instance
- LEA  HMIs_DataRead
- LDX  HMI_Index
-#debug usint HMI_Index
- LDX  j
-#debug usint j
- ADD
- AND  $FF
- LD   usint 1
- SUB
- AND  $FF
- SUB  1   ; Low range[1]
- RCHK 9   ; Range Check
- MUL  104   ; SizeOf(...)
- ADD     ; + offset 
- ADD  50  ; + offset 
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 5   ; Range Check
- MUL  4   ; SizeOf(...)
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- LDIB 
-#debug bool HMIs_DataRead[HMI_Index+j-1].enShutters[i].Dw.0
- LDY  P26__st__  ; offset instance
- MUL  8   ; -> bool pointer 
- WRIB 
- LDY  P26__st__  ; offset instance
- CAL  F_TRIG_L0
-#srcline 291 ;         //
-#srcline 292 ;         enCurtainsUP_SW_RT[i](CLK := controlRoom.SwitchUPStatus[i]);
- LEAX enCurtainsUP_SW_RT
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- ADD     ; + offset 
- WRY  P27__st__  ; offset instance
- LEAX controlRoom
- ADD  418  ; + offset 
- MUL  8   ; -> bool pointer 
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 5   ; Range Check
- ADD     ; + offset 
- LDIB 
-#debug bool controlRoom.SwitchUPStatus[i]
- LDY  P27__st__  ; offset instance
- MUL  8   ; -> bool pointer 
- WRIB 
- LDY  P27__st__  ; offset instance
- CAL  R_TRIG_L0
-#srcline 293 ;         enCurtainsUP_SW_FT[i](CLK := controlRoom.SwitchUPStatus[i]);
- LEAX enCurtainsUP_SW_FT
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- ADD     ; + offset 
- WRY  P28__st__  ; offset instance
- LEAX controlRoom
- ADD  418  ; + offset 
- MUL  8   ; -> bool pointer 
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 5   ; Range Check
- ADD     ; + offset 
- LDIB 
-#debug bool controlRoom.SwitchUPStatus[i]
- LDY  P28__st__  ; offset instance
- MUL  8   ; -> bool pointer 
- WRIB 
- LDY  P28__st__  ; offset instance
- CAL  F_TRIG_L0
-#srcline 295 ;         enCurtainsDW_SW_RT[i](CLK := controlRoom.SwitchDWStatus[i]);
- LEAX enCurtainsDW_SW_RT
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- ADD     ; + offset 
- WRY  P29__st__  ; offset instance
- LEAX controlRoom
- ADD  419  ; + offset 
- MUL  8   ; -> bool pointer 
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 5   ; Range Check
- ADD     ; + offset 
- LDIB 
-#debug bool controlRoom.SwitchDWStatus[i]
- LDY  P29__st__  ; offset instance
- MUL  8   ; -> bool pointer 
- WRIB 
- LDY  P29__st__  ; offset instance
- CAL  R_TRIG_L0
-#srcline 296 ;         enCurtainsDW_SW_FT[i](CLK := controlRoom.SwitchDWStatus[i]);
- LEAX enCurtainsDW_SW_FT
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- ADD     ; + offset 
- WRY  P30__st__  ; offset instance
- LEAX controlRoom
- ADD  419  ; + offset 
- MUL  8   ; -> bool pointer 
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 5   ; Range Check
- ADD     ; + offset 
- LDIB 
-#debug bool controlRoom.SwitchDWStatus[i]
- LDY  P30__st__  ; offset instance
- MUL  8   ; -> bool pointer 
- WRIB 
- LDY  P30__st__  ; offset instance
- CAL  F_TRIG_L0
-#srcline 298 ;         if  enCurtainsUP_RT[j,i].Q  or enCurtainsUP_FT[j,i].Q then
- LEAX enCurtainsUP_RT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  2   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 1   ; Range Check
- ADD
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool enCurtainsUP_RT[j,i].Q
- LEAX enCurtainsUP_FT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  2   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 1   ; Range Check
- ADD
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool enCurtainsUP_FT[j,i].Q
- OR  
- JMC  PrgRoom3_L50
-#srcline 299 ;             enCurtainsUP_GUI[i] := 1;
- LD   bool -1      ; true
- LEAX enCurtainsUP_GUI
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- ADD     ; + offset 
- WRIB 
-#debug_left bool enCurtainsUP_GUI[i]
-#srcline 300 ;         end_if;
-PrgRoom3_L50:
-#srcline 302 ;         if  enCurtainsDW_RT[j,i].Q  or enCurtainsDW_FT[j,i].Q then
- LEAX enCurtainsDW_RT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  2   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 1   ; Range Check
- ADD
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool enCurtainsDW_RT[j,i].Q
- LEAX enCurtainsDW_FT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  2   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 1   ; Range Check
- ADD
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool enCurtainsDW_FT[j,i].Q
- OR  
- JMC  PrgRoom3_L52
-#srcline 303 ;             enCurtainsDW_GUI[i] := 1;
+#srcline 280 ;             enCurtainsDW_GUI[i] := 1;
  LD   bool -1      ; true
  LEAX enCurtainsDW_GUI
  LDX  i
@@ -1991,10 +1679,10 @@ PrgRoom3_L50:
  ADD     ; + offset 
  WRIB 
 #debug_left bool enCurtainsDW_GUI[i]
-#srcline 304 ;         end_if;
-PrgRoom3_L52:
-#srcline 306 ;         // if up button is pressed and the curtain is not moving up
-#srcline 308 ;         if (enCurtainsUP_GUI[i] or enCurtainsUP_SW_RT[i].Q) and not curtainsStatus[CurtStatus_Index - 1 + i].outUP then
+#srcline 281 ;         end_if;
+PrgRoom3_L44:
+#srcline 283 ;         // if up button is pressed and the curtain is not moving up
+#srcline 285 ;         if (enCurtainsUP_GUI[i] or enCurtainsUP_SW_RT[i].Q) and not curtainsStatus[CurtStatus_Index - 1 + i].outUP then
  LEAX enCurtainsUP_GUI
  LDX  i
 #debug usint i
@@ -2033,8 +1721,8 @@ PrgRoom3_L52:
 #debug bool curtainsStatus[CurtStatus_Index-1+i].outUP
  NEG
  AND
- JMC  PrgRoom3_L54
-#srcline 309 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].UP   := 1;
+ JMC  PrgRoom3_L46
+#srcline 286 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].UP   := 1;
  LD   bool -1      ; true
  LEA  PLC1_EnCurtains
  LDX  CurtEn_Index
@@ -2047,12 +1735,12 @@ PrgRoom3_L52:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  WRIB 
 #debug_left bool PLC1_EnCurtains[CurtEn_Index-1+i].UP
-#srcline 310 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].DW   := 0;
+#srcline 287 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].DW   := 0;
  LD   bool 0       ; false
  LEA  PLC1_EnCurtains
  LDX  CurtEn_Index
@@ -2065,13 +1753,13 @@ PrgRoom3_L52:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
  WRIB 
 #debug_left bool PLC1_EnCurtains[CurtEn_Index-1+i].DW
-#srcline 311 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].STOP := 0;
+#srcline 288 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].STOP := 0;
  LD   bool 0       ; false
  LEA  PLC1_EnCurtains
  LDX  CurtEn_Index
@@ -2084,13 +1772,13 @@ PrgRoom3_L52:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  2   ; Bool offset 
  WRIB 
 #debug_left bool PLC1_EnCurtains[CurtEn_Index-1+i].STOP
-#srcline 313 ;             enCurtainsUP_GUI[i] := 0;
+#srcline 290 ;             enCurtainsUP_GUI[i] := 0;
  LD   bool 0       ; false
  LEAX enCurtainsUP_GUI
  LDX  i
@@ -2100,10 +1788,10 @@ PrgRoom3_L52:
  ADD     ; + offset 
  WRIB 
 #debug_left bool enCurtainsUP_GUI[i]
-#srcline 314 ;         end_if;
-PrgRoom3_L54:
-#srcline 316 ;         // if up button is pressed and the curtain is moving up
-#srcline 318 ;         if (enCurtainsUP_GUI[i] or enCurtainsUP_SW_FT[i].Q) and curtainsStatus[CurtStatus_Index - 1 + i].outUP then
+#srcline 291 ;         end_if;
+PrgRoom3_L46:
+#srcline 293 ;         // if up button is pressed and the curtain is moving up
+#srcline 295 ;         if (enCurtainsUP_GUI[i] or enCurtainsUP_SW_FT[i].Q) and curtainsStatus[CurtStatus_Index - 1 + i].outUP then
  LEAX enCurtainsUP_GUI
  LDX  i
 #debug usint i
@@ -2141,8 +1829,8 @@ PrgRoom3_L54:
  LDIB 
 #debug bool curtainsStatus[CurtStatus_Index-1+i].outUP
  AND
- JMC  PrgRoom3_L56
-#srcline 319 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].UP   := 0;
+ JMC  PrgRoom3_L48
+#srcline 296 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].UP   := 0;
  LD   bool 0       ; false
  LEA  PLC1_EnCurtains
  LDX  CurtEn_Index
@@ -2155,12 +1843,12 @@ PrgRoom3_L54:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  WRIB 
 #debug_left bool PLC1_EnCurtains[CurtEn_Index-1+i].UP
-#srcline 320 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].DW   := 0;
+#srcline 297 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].DW   := 0;
  LD   bool 0       ; false
  LEA  PLC1_EnCurtains
  LDX  CurtEn_Index
@@ -2173,13 +1861,13 @@ PrgRoom3_L54:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
  WRIB 
 #debug_left bool PLC1_EnCurtains[CurtEn_Index-1+i].DW
-#srcline 321 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].STOP := 1;
+#srcline 298 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].STOP := 1;
  LD   bool -1      ; true
  LEA  PLC1_EnCurtains
  LDX  CurtEn_Index
@@ -2192,13 +1880,13 @@ PrgRoom3_L54:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  2   ; Bool offset 
  WRIB 
 #debug_left bool PLC1_EnCurtains[CurtEn_Index-1+i].STOP
-#srcline 323 ;             enCurtainsUP_GUI[i] := 0;
+#srcline 300 ;             enCurtainsUP_GUI[i] := 0;
  LD   bool 0       ; false
  LEAX enCurtainsUP_GUI
  LDX  i
@@ -2208,10 +1896,10 @@ PrgRoom3_L54:
  ADD     ; + offset 
  WRIB 
 #debug_left bool enCurtainsUP_GUI[i]
-#srcline 324 ;         end_if;
-PrgRoom3_L56:
-#srcline 327 ;          // if down button is pressed and the curtain is not moving down
-#srcline 329 ;         if (enCurtainsDW_GUI[i] or enCurtainsDW_SW_RT[i].Q) and not curtainsStatus[CurtStatus_Index - 1 + i].outDW then
+#srcline 301 ;         end_if;
+PrgRoom3_L48:
+#srcline 304 ;          // if down button is pressed and the curtain is not moving down
+#srcline 306 ;         if (enCurtainsDW_GUI[i] or enCurtainsDW_SW_RT[i].Q) and not curtainsStatus[CurtStatus_Index - 1 + i].outDW then
  LEAX enCurtainsDW_GUI
  LDX  i
 #debug usint i
@@ -2251,8 +1939,8 @@ PrgRoom3_L56:
 #debug bool curtainsStatus[CurtStatus_Index-1+i].outDW
  NEG
  AND
- JMC  PrgRoom3_L58
-#srcline 330 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].UP   := 0;
+ JMC  PrgRoom3_L50
+#srcline 307 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].UP   := 0;
  LD   bool 0       ; false
  LEA  PLC1_EnCurtains
  LDX  CurtEn_Index
@@ -2265,12 +1953,12 @@ PrgRoom3_L56:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  WRIB 
 #debug_left bool PLC1_EnCurtains[CurtEn_Index-1+i].UP
-#srcline 331 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].DW   := 1;
+#srcline 308 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].DW   := 1;
  LD   bool -1      ; true
  LEA  PLC1_EnCurtains
  LDX  CurtEn_Index
@@ -2283,13 +1971,13 @@ PrgRoom3_L56:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
  WRIB 
 #debug_left bool PLC1_EnCurtains[CurtEn_Index-1+i].DW
-#srcline 332 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].STOP := 0;
+#srcline 309 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].STOP := 0;
  LD   bool 0       ; false
  LEA  PLC1_EnCurtains
  LDX  CurtEn_Index
@@ -2302,13 +1990,13 @@ PrgRoom3_L56:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  2   ; Bool offset 
  WRIB 
 #debug_left bool PLC1_EnCurtains[CurtEn_Index-1+i].STOP
-#srcline 334 ;             enCurtainsDW_GUI[i] := 0;
+#srcline 311 ;             enCurtainsDW_GUI[i] := 0;
  LD   bool 0       ; false
  LEAX enCurtainsDW_GUI
  LDX  i
@@ -2318,10 +2006,10 @@ PrgRoom3_L56:
  ADD     ; + offset 
  WRIB 
 #debug_left bool enCurtainsDW_GUI[i]
-#srcline 335 ;         end_if;
-PrgRoom3_L58:
-#srcline 337 ;         // if down button is pressed and the curtain is moving down
-#srcline 339 ;         if (enCurtainsDW_GUI[i] or enCurtainsDW_SW_FT[i].Q) and curtainsStatus[CurtStatus_Index - 1 + i].outDW then
+#srcline 312 ;         end_if;
+PrgRoom3_L50:
+#srcline 314 ;         // if down button is pressed and the curtain is moving down
+#srcline 316 ;         if (enCurtainsDW_GUI[i] or enCurtainsDW_SW_FT[i].Q) and curtainsStatus[CurtStatus_Index - 1 + i].outDW then
  LEAX enCurtainsDW_GUI
  LDX  i
 #debug usint i
@@ -2360,8 +2048,8 @@ PrgRoom3_L58:
  LDIB 
 #debug bool curtainsStatus[CurtStatus_Index-1+i].outDW
  AND
- JMC  PrgRoom3_L60
-#srcline 340 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].UP   := 0;
+ JMC  PrgRoom3_L52
+#srcline 317 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].UP   := 0;
  LD   bool 0       ; false
  LEA  PLC1_EnCurtains
  LDX  CurtEn_Index
@@ -2374,12 +2062,12 @@ PrgRoom3_L58:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  WRIB 
 #debug_left bool PLC1_EnCurtains[CurtEn_Index-1+i].UP
-#srcline 341 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].DW   := 0;
+#srcline 318 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].DW   := 0;
  LD   bool 0       ; false
  LEA  PLC1_EnCurtains
  LDX  CurtEn_Index
@@ -2392,13 +2080,13 @@ PrgRoom3_L58:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
  WRIB 
 #debug_left bool PLC1_EnCurtains[CurtEn_Index-1+i].DW
-#srcline 342 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].STOP := 1;
+#srcline 319 ;             PLC1_EnCurtains[CurtEn_Index - 1 + i].STOP := 1;
  LD   bool -1      ; true
  LEA  PLC1_EnCurtains
  LDX  CurtEn_Index
@@ -2411,13 +2099,13 @@ PrgRoom3_L58:
  ADD
  AND  $FF
  SUB  1   ; Low range[1]
- RCHK 13   ; Range Check
+ RCHK 8   ; Range Check
  ADD     ; + offset 
  MUL  8   ; -> bool pointer 
  ADD  2   ; Bool offset 
  WRIB 
 #debug_left bool PLC1_EnCurtains[CurtEn_Index-1+i].STOP
-#srcline 344 ;             enCurtainsDW_GUI[i] := 0;
+#srcline 321 ;             enCurtainsDW_GUI[i] := 0;
  LD   bool 0       ; false
  LEAX enCurtainsDW_GUI
  LDX  i
@@ -2427,48 +2115,499 @@ PrgRoom3_L58:
  ADD     ; + offset 
  WRIB 
 #debug_left bool enCurtainsDW_GUI[i]
-#srcline 345 ;         end_if;
-PrgRoom3_L60:
-#srcline 347 ;     end_for;
+#srcline 322 ;         end_if;
+PrgRoom3_L52:
+#srcline 324 ;     end_for;
  LDX  i
  LD   1
  ADD  
  WRX  i
- JMP  PrgRoom3_L48
-PrgRoom3_L49:
+ JMP  PrgRoom3_L40
+PrgRoom3_L41:
  NOP  -1
-#srcline 348 ;   end_for;
+#srcline 325 ;   end_for;
  LDX  j
  LD   1
  ADD  
  WRX  j
- JMP  PrgRoom3_L46
-PrgRoom3_L47:
+ JMP  PrgRoom3_L38
+PrgRoom3_L39:
  NOP  -1
-#srcline 350 ;   for j := 1 to NumOfHMIsRoom3 do
+#srcline 327 ;   for j := 1 to NumOfHMIsRoom3 do
  LD   usint 1
  WRX  j
  LD   usint 2
- WRY  P31__st__
-PrgRoom3_L62:
+ WRY  P25__st__
+PrgRoom3_L54:
  LDX  j
- LDY  P31__st__
+ LDY  P25__st__
  GT   
- JMD  PrgRoom3_L63
+ JMD  PrgRoom3_L55
  DBG  
-#srcline 351 ;      for i := 1 to NumOfFCUsRoom3 do
+#srcline 328 ;      for i := 1 to NumOfFCUsRoom3 do
  LD   usint 1
  WRX  i
  LD   usint 1
- WRY  P32__st__
-PrgRoom3_L64:
+ WRY  P26__st__
+PrgRoom3_L56:
  LDX  i
- LDY  P32__st__
+ LDY  P26__st__
  GT   
- JMD  PrgRoom3_L65
+ JMD  PrgRoom3_L57
  DBG  
-#srcline 352 ;          enFCUs_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].onOff);
+#srcline 329 ;          enFCUs_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].onOff);
  LEAX enFCUs_FT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  1   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 0   ; Range Check
+ ADD
+ ADD     ; + offset 
+ WRY  P27__st__  ; offset instance
+ LEA  HMIs_DataRead
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  j
+#debug usint j
+ ADD
+ AND  $FF
+ LD   usint 1
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 9   ; Range Check
+ MUL  104   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  74  ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 2   ; Range Check
+ MUL  10   ; SizeOf(...)
+ ADD     ; + offset 
+ LDIW 
+#debug word HMIs_DataRead[HMI_Index+j-1].enFCUs[i].onOff
+ LDY  P27__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P27__st__  ; offset instance
+ CAL  F_TRIG_L0
+#srcline 330 ;          enFCUs_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].onOff);
+ LEAX enFCUs_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  1   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 0   ; Range Check
+ ADD
+ ADD     ; + offset 
+ WRY  P28__st__  ; offset instance
+ LEA  HMIs_DataRead
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  j
+#debug usint j
+ ADD
+ AND  $FF
+ LD   usint 1
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 9   ; Range Check
+ MUL  104   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  74  ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 2   ; Range Check
+ MUL  10   ; SizeOf(...)
+ ADD     ; + offset 
+ LDIW 
+#debug word HMIs_DataRead[HMI_Index+j-1].enFCUs[i].onOff
+ LDY  P28__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P28__st__  ; offset instance
+ CAL  R_TRIG_L0
+#srcline 332 ;          if enFCUs_FT[j,i].Q then
+ LEAX enFCUs_FT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  1   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 0   ; Range Check
+ ADD
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enFCUs_FT[j,i].Q
+ JMC  PrgRoom3_L58
+#srcline 333 ;             enableFCU[i] := 0;
+ LD   bool 0       ; false
+ LEAX enableFCU
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 0   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool enableFCU[i]
+#srcline 334 ;          end_if;
+PrgRoom3_L58:
+#srcline 335 ;          if enFCUs_RT[j,i].Q then
+ LEAX enFCUs_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  1   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 0   ; Range Check
+ ADD
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enFCUs_RT[j,i].Q
+ JMC  PrgRoom3_L60
+#srcline 336 ;             enableFCU[i] := 1;
+ LD   bool -1      ; true
+ LEAX enableFCU
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 0   ; Range Check
+ ADD     ; + offset 
+ WRIB 
+#debug_left bool enableFCU[i]
+#srcline 337 ;          end_if;
+PrgRoom3_L60:
+#srcline 339 ;          enFanAuto_RT[j,i](CLK := (HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed = 8));
+ LEAX enFanAuto_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  1   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 0   ; Range Check
+ ADD
+ ADD     ; + offset 
+ WRY  P29__st__  ; offset instance
+ LEA  HMIs_DataRead
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  j
+#debug usint j
+ ADD
+ AND  $FF
+ LD   usint 1
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 9   ; Range Check
+ MUL  104   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  74  ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 2   ; Range Check
+ MUL  10   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  6  ; + offset 
+ LDIW 
+#debug word HMIs_DataRead[HMI_Index+j-1].enFCUs[i].fanSpeed
+ LD   word 8
+ EQ
+ LDY  P29__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P29__st__  ; offset instance
+ CAL  R_TRIG_L0
+#srcline 340 ;          enFanLow_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed.0);
+ LEAX enFanLow_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  1   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 0   ; Range Check
+ ADD
+ ADD     ; + offset 
+ WRY  P30__st__  ; offset instance
+ LEA  HMIs_DataRead
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  j
+#debug usint j
+ ADD
+ AND  $FF
+ LD   usint 1
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 9   ; Range Check
+ MUL  104   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  74  ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 2   ; Range Check
+ MUL  10   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  6  ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDIB 
+#debug bool HMIs_DataRead[HMI_Index+j-1].enFCUs[i].fanSpeed.0
+ LDY  P30__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P30__st__  ; offset instance
+ CAL  R_TRIG_L0
+#srcline 341 ;          enFanMed_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed.1);
+ LEAX enFanMed_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  1   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 0   ; Range Check
+ ADD
+ ADD     ; + offset 
+ WRY  P31__st__  ; offset instance
+ LEA  HMIs_DataRead
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  j
+#debug usint j
+ ADD
+ AND  $FF
+ LD   usint 1
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 9   ; Range Check
+ MUL  104   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  74  ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 2   ; Range Check
+ MUL  10   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  6  ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool HMIs_DataRead[HMI_Index+j-1].enFCUs[i].fanSpeed.1
+ LDY  P31__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P31__st__  ; offset instance
+ CAL  R_TRIG_L0
+#srcline 342 ;          enFanHigh_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed.2);
+ LEAX enFanHigh_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  1   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 0   ; Range Check
+ ADD
+ ADD     ; + offset 
+ WRY  P32__st__  ; offset instance
+ LEA  HMIs_DataRead
+ LDX  HMI_Index
+#debug usint HMI_Index
+ LDX  j
+#debug usint j
+ ADD
+ AND  $FF
+ LD   usint 1
+ SUB
+ AND  $FF
+ SUB  1   ; Low range[1]
+ RCHK 9   ; Range Check
+ MUL  104   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  74  ; + offset 
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 2   ; Range Check
+ MUL  10   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  6  ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  2   ; Bool offset 
+ LDIB 
+#debug bool HMIs_DataRead[HMI_Index+j-1].enFCUs[i].fanSpeed.2
+ LDY  P32__st__  ; offset instance
+ MUL  8   ; -> bool pointer 
+ WRIB 
+ LDY  P32__st__  ; offset instance
+ CAL  R_TRIG_L0
+#srcline 344 ;          if enFanAuto_RT[j,i].Q then
+ LEAX enFanAuto_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  1   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 0   ; Range Check
+ ADD
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enFanAuto_RT[j,i].Q
+ JMC  PrgRoom3_L62
+#srcline 345 ;             settingsFCU[i].FCU_FanSpeed := auto;
+ LD   udint 0  ; TFCU_FanSpeed#auto
+ LEAX settingsFCU
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 0   ; Range Check
+ MUL  2   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ WRI 
+#debug_left usint settingsFCU[i].FCU_FanSpeed
+#srcline 346 ;          end_if;
+PrgRoom3_L62:
+#srcline 347 ;          if enFanLow_RT[j,i].Q then
+ LEAX enFanLow_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  1   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 0   ; Range Check
+ ADD
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enFanLow_RT[j,i].Q
+ JMC  PrgRoom3_L64
+#srcline 348 ;             settingsFCU[i].FCU_FanSpeed := low;
+ LD   udint 1  ; TFCU_FanSpeed#low
+ LEAX settingsFCU
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 0   ; Range Check
+ MUL  2   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ WRI 
+#debug_left usint settingsFCU[i].FCU_FanSpeed
+#srcline 349 ;          end_if;
+PrgRoom3_L64:
+#srcline 350 ;          if enFanMed_RT[j,i].Q then
+ LEAX enFanMed_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  1   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 0   ; Range Check
+ ADD
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enFanMed_RT[j,i].Q
+ JMC  PrgRoom3_L66
+#srcline 351 ;             settingsFCU[i].FCU_FanSpeed := med;
+ LD   udint 2  ; TFCU_FanSpeed#med
+ LEAX settingsFCU
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 0   ; Range Check
+ MUL  2   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ WRI 
+#debug_left usint settingsFCU[i].FCU_FanSpeed
+#srcline 352 ;          end_if;
+PrgRoom3_L66:
+#srcline 353 ;          if enFanHigh_RT[j,i].Q then
+ LEAX enFanHigh_RT
+ LDX  j
+#debug usint j
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ MUL  1   ; Num items[2]
+ LDX  i
+#debug usint i
+ SUB  1  ; Low range[2]
+ RCHK 0   ; Range Check
+ ADD
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enFanHigh_RT[j,i].Q
+ JMC  PrgRoom3_L68
+#srcline 354 ;             settingsFCU[i].FCU_FanSpeed := high;
+ LD   udint 3  ; TFCU_FanSpeed#high
+ LEAX settingsFCU
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 0   ; Range Check
+ MUL  2   ; SizeOf(...)
+ ADD     ; + offset 
+ ADD  1  ; + offset 
+ WRI 
+#debug_left usint settingsFCU[i].FCU_FanSpeed
+#srcline 355 ;          end_if;
+PrgRoom3_L68:
+#srcline 357 ;          enFCUCool_RT[j,i](CLK := (HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].mode = 0));
+ LEAX enFCUCool_RT
  LDX  j
 #debug usint j
  SUB  1   ; Low range[1]
@@ -2502,15 +2641,18 @@ PrgRoom3_L64:
  RCHK 2   ; Range Check
  MUL  10   ; SizeOf(...)
  ADD     ; + offset 
+ ADD  8  ; + offset 
  LDIW 
-#debug word HMIs_DataRead[HMI_Index+j-1].enFCUs[i].onOff
+#debug word HMIs_DataRead[HMI_Index+j-1].enFCUs[i].mode
+ LD   word 0
+ EQ
  LDY  P33__st__  ; offset instance
  MUL  8   ; -> bool pointer 
  WRIB 
  LDY  P33__st__  ; offset instance
- CAL  F_TRIG_L0
-#srcline 353 ;          enFCUs_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].onOff);
- LEAX enFCUs_RT
+ CAL  R_TRIG_L0
+#srcline 358 ;          enFCUFanOnly_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].mode.0);
+ LEAX enFCUFanOnly_RT
  LDX  j
 #debug usint j
  SUB  1   ; Low range[1]
@@ -2544,15 +2686,17 @@ PrgRoom3_L64:
  RCHK 2   ; Range Check
  MUL  10   ; SizeOf(...)
  ADD     ; + offset 
- LDIW 
-#debug word HMIs_DataRead[HMI_Index+j-1].enFCUs[i].onOff
+ ADD  8  ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDIB 
+#debug bool HMIs_DataRead[HMI_Index+j-1].enFCUs[i].mode.0
  LDY  P34__st__  ; offset instance
  MUL  8   ; -> bool pointer 
  WRIB 
  LDY  P34__st__  ; offset instance
  CAL  R_TRIG_L0
-#srcline 355 ;          if enFCUs_FT[j,i].Q then
- LEAX enFCUs_FT
+#srcline 360 ;          if enFCUCool_RT[j,i].Q then
+ LEAX enFCUCool_RT
  LDX  j
 #debug usint j
  SUB  1   ; Low range[1]
@@ -2567,22 +2711,23 @@ PrgRoom3_L64:
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
  LDIB 
-#debug bool enFCUs_FT[j,i].Q
- JMC  PrgRoom3_L66
-#srcline 356 ;             enableFCU[i] := 0;
- LD   bool 0       ; false
- LEAX enableFCU
+#debug bool enFCUCool_RT[j,i].Q
+ JMC  PrgRoom3_L70
+#srcline 361 ;             settingsFCU[i].FCU_Mode := cooling;
+ LD   udint 0  ; TFCU_Mode#cooling
+ LEAX settingsFCU
  LDX  i
 #debug usint i
  SUB  1   ; Low range[1]
  RCHK 0   ; Range Check
+ MUL  2   ; SizeOf(...)
  ADD     ; + offset 
- WRIB 
-#debug_left bool enableFCU[i]
-#srcline 357 ;          end_if;
-PrgRoom3_L66:
-#srcline 358 ;          if enFCUs_RT[j,i].Q then
- LEAX enFCUs_RT
+ WRI 
+#debug_left usint settingsFCU[i].FCU_Mode
+#srcline 362 ;          end_if;
+PrgRoom3_L70:
+#srcline 363 ;          if enFCUFanOnly_RT[j,i].Q then
+ LEAX enFCUFanOnly_RT
  LDX  j
 #debug usint j
  SUB  1   ; Low range[1]
@@ -2597,22 +2742,23 @@ PrgRoom3_L66:
  MUL  8   ; -> bool pointer 
  ADD  1   ; Bool offset 
  LDIB 
-#debug bool enFCUs_RT[j,i].Q
- JMC  PrgRoom3_L68
-#srcline 359 ;             enableFCU[i] := 1;
- LD   bool -1      ; true
- LEAX enableFCU
+#debug bool enFCUFanOnly_RT[j,i].Q
+ JMC  PrgRoom3_L72
+#srcline 364 ;             settingsFCU[i].FCU_Mode := fanOnly;
+ LD   udint 1  ; TFCU_Mode#fanOnly
+ LEAX settingsFCU
  LDX  i
 #debug usint i
  SUB  1   ; Low range[1]
  RCHK 0   ; Range Check
+ MUL  2   ; SizeOf(...)
  ADD     ; + offset 
- WRIB 
-#debug_left bool enableFCU[i]
-#srcline 360 ;          end_if;
-PrgRoom3_L68:
-#srcline 362 ;          enFanAuto_RT[j,i](CLK := (HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed = 8));
- LEAX enFanAuto_RT
+ WRI 
+#debug_left usint settingsFCU[i].FCU_Mode
+#srcline 365 ;          end_if;
+PrgRoom3_L72:
+#srcline 367 ;          enSetTempIncr_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].SetTempCtrl.0);
+ LEAX enSetTempIncr_RT
  LDX  j
 #debug usint j
  SUB  1   ; Low range[1]
@@ -2646,18 +2792,17 @@ PrgRoom3_L68:
  RCHK 2   ; Range Check
  MUL  10   ; SizeOf(...)
  ADD     ; + offset 
- ADD  6  ; + offset 
- LDIW 
-#debug word HMIs_DataRead[HMI_Index+j-1].enFCUs[i].fanSpeed
- LD   word 8
- EQ
+ ADD  2  ; + offset 
+ MUL  8   ; -> bool pointer 
+ LDIB 
+#debug bool HMIs_DataRead[HMI_Index+j-1].enFCUs[i].SetTempCtrl.0
  LDY  P35__st__  ; offset instance
  MUL  8   ; -> bool pointer 
  WRIB 
  LDY  P35__st__  ; offset instance
  CAL  R_TRIG_L0
-#srcline 363 ;          enFanLow_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed.0);
- LEAX enFanLow_RT
+#srcline 368 ;          enSetTempIncr_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].SetTempCtrl.0);
+ LEAX enSetTempIncr_FT
  LDX  j
 #debug usint j
  SUB  1   ; Low range[1]
@@ -2691,473 +2836,16 @@ PrgRoom3_L68:
  RCHK 2   ; Range Check
  MUL  10   ; SizeOf(...)
  ADD     ; + offset 
- ADD  6  ; + offset 
- MUL  8   ; -> bool pointer 
- LDIB 
-#debug bool HMIs_DataRead[HMI_Index+j-1].enFCUs[i].fanSpeed.0
- LDY  P36__st__  ; offset instance
- MUL  8   ; -> bool pointer 
- WRIB 
- LDY  P36__st__  ; offset instance
- CAL  R_TRIG_L0
-#srcline 364 ;          enFanMed_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed.1);
- LEAX enFanMed_RT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  1   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 0   ; Range Check
- ADD
- ADD     ; + offset 
- WRY  P37__st__  ; offset instance
- LEA  HMIs_DataRead
- LDX  HMI_Index
-#debug usint HMI_Index
- LDX  j
-#debug usint j
- ADD
- AND  $FF
- LD   usint 1
- SUB
- AND  $FF
- SUB  1   ; Low range[1]
- RCHK 9   ; Range Check
- MUL  104   ; SizeOf(...)
- ADD     ; + offset 
- ADD  74  ; + offset 
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 2   ; Range Check
- MUL  10   ; SizeOf(...)
- ADD     ; + offset 
- ADD  6  ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool HMIs_DataRead[HMI_Index+j-1].enFCUs[i].fanSpeed.1
- LDY  P37__st__  ; offset instance
- MUL  8   ; -> bool pointer 
- WRIB 
- LDY  P37__st__  ; offset instance
- CAL  R_TRIG_L0
-#srcline 365 ;          enFanHigh_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed.2);
- LEAX enFanHigh_RT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  1   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 0   ; Range Check
- ADD
- ADD     ; + offset 
- WRY  P38__st__  ; offset instance
- LEA  HMIs_DataRead
- LDX  HMI_Index
-#debug usint HMI_Index
- LDX  j
-#debug usint j
- ADD
- AND  $FF
- LD   usint 1
- SUB
- AND  $FF
- SUB  1   ; Low range[1]
- RCHK 9   ; Range Check
- MUL  104   ; SizeOf(...)
- ADD     ; + offset 
- ADD  74  ; + offset 
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 2   ; Range Check
- MUL  10   ; SizeOf(...)
- ADD     ; + offset 
- ADD  6  ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  2   ; Bool offset 
- LDIB 
-#debug bool HMIs_DataRead[HMI_Index+j-1].enFCUs[i].fanSpeed.2
- LDY  P38__st__  ; offset instance
- MUL  8   ; -> bool pointer 
- WRIB 
- LDY  P38__st__  ; offset instance
- CAL  R_TRIG_L0
-#srcline 367 ;          if enFanAuto_RT[j,i].Q then
- LEAX enFanAuto_RT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  1   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 0   ; Range Check
- ADD
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool enFanAuto_RT[j,i].Q
- JMC  PrgRoom3_L70
-#srcline 368 ;             settingsFCU[i].FCU_FanSpeed := auto;
- LD   udint 0  ; TFCU_FanSpeed#auto
- LEAX settingsFCU
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 0   ; Range Check
- MUL  2   ; SizeOf(...)
- ADD     ; + offset 
- ADD  1  ; + offset 
- WRI 
-#debug_left usint settingsFCU[i].FCU_FanSpeed
-#srcline 369 ;          end_if;
-PrgRoom3_L70:
-#srcline 370 ;          if enFanLow_RT[j,i].Q then
- LEAX enFanLow_RT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  1   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 0   ; Range Check
- ADD
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool enFanLow_RT[j,i].Q
- JMC  PrgRoom3_L72
-#srcline 371 ;             settingsFCU[i].FCU_FanSpeed := low;
- LD   udint 1  ; TFCU_FanSpeed#low
- LEAX settingsFCU
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 0   ; Range Check
- MUL  2   ; SizeOf(...)
- ADD     ; + offset 
- ADD  1  ; + offset 
- WRI 
-#debug_left usint settingsFCU[i].FCU_FanSpeed
-#srcline 372 ;          end_if;
-PrgRoom3_L72:
-#srcline 373 ;          if enFanMed_RT[j,i].Q then
- LEAX enFanMed_RT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  1   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 0   ; Range Check
- ADD
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool enFanMed_RT[j,i].Q
- JMC  PrgRoom3_L74
-#srcline 374 ;             settingsFCU[i].FCU_FanSpeed := med;
- LD   udint 2  ; TFCU_FanSpeed#med
- LEAX settingsFCU
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 0   ; Range Check
- MUL  2   ; SizeOf(...)
- ADD     ; + offset 
- ADD  1  ; + offset 
- WRI 
-#debug_left usint settingsFCU[i].FCU_FanSpeed
-#srcline 375 ;          end_if;
-PrgRoom3_L74:
-#srcline 376 ;          if enFanHigh_RT[j,i].Q then
- LEAX enFanHigh_RT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  1   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 0   ; Range Check
- ADD
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool enFanHigh_RT[j,i].Q
- JMC  PrgRoom3_L76
-#srcline 377 ;             settingsFCU[i].FCU_FanSpeed := high;
- LD   udint 3  ; TFCU_FanSpeed#high
- LEAX settingsFCU
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 0   ; Range Check
- MUL  2   ; SizeOf(...)
- ADD     ; + offset 
- ADD  1  ; + offset 
- WRI 
-#debug_left usint settingsFCU[i].FCU_FanSpeed
-#srcline 378 ;          end_if;
-PrgRoom3_L76:
-#srcline 380 ;          enFCUCool_RT[j,i](CLK := (HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].mode = 0));
- LEAX enFCUCool_RT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  1   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 0   ; Range Check
- ADD
- ADD     ; + offset 
- WRY  P39__st__  ; offset instance
- LEA  HMIs_DataRead
- LDX  HMI_Index
-#debug usint HMI_Index
- LDX  j
-#debug usint j
- ADD
- AND  $FF
- LD   usint 1
- SUB
- AND  $FF
- SUB  1   ; Low range[1]
- RCHK 9   ; Range Check
- MUL  104   ; SizeOf(...)
- ADD     ; + offset 
- ADD  74  ; + offset 
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 2   ; Range Check
- MUL  10   ; SizeOf(...)
- ADD     ; + offset 
- ADD  8  ; + offset 
- LDIW 
-#debug word HMIs_DataRead[HMI_Index+j-1].enFCUs[i].mode
- LD   word 0
- EQ
- LDY  P39__st__  ; offset instance
- MUL  8   ; -> bool pointer 
- WRIB 
- LDY  P39__st__  ; offset instance
- CAL  R_TRIG_L0
-#srcline 381 ;          enFCUFanOnly_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].mode.0);
- LEAX enFCUFanOnly_RT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  1   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 0   ; Range Check
- ADD
- ADD     ; + offset 
- WRY  P40__st__  ; offset instance
- LEA  HMIs_DataRead
- LDX  HMI_Index
-#debug usint HMI_Index
- LDX  j
-#debug usint j
- ADD
- AND  $FF
- LD   usint 1
- SUB
- AND  $FF
- SUB  1   ; Low range[1]
- RCHK 9   ; Range Check
- MUL  104   ; SizeOf(...)
- ADD     ; + offset 
- ADD  74  ; + offset 
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 2   ; Range Check
- MUL  10   ; SizeOf(...)
- ADD     ; + offset 
- ADD  8  ; + offset 
- MUL  8   ; -> bool pointer 
- LDIB 
-#debug bool HMIs_DataRead[HMI_Index+j-1].enFCUs[i].mode.0
- LDY  P40__st__  ; offset instance
- MUL  8   ; -> bool pointer 
- WRIB 
- LDY  P40__st__  ; offset instance
- CAL  R_TRIG_L0
-#srcline 383 ;          if enFCUCool_RT[j,i].Q then
- LEAX enFCUCool_RT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  1   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 0   ; Range Check
- ADD
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool enFCUCool_RT[j,i].Q
- JMC  PrgRoom3_L78
-#srcline 384 ;             settingsFCU[i].FCU_Mode := cooling;
- LD   udint 0  ; TFCU_Mode#cooling
- LEAX settingsFCU
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 0   ; Range Check
- MUL  2   ; SizeOf(...)
- ADD     ; + offset 
- WRI 
-#debug_left usint settingsFCU[i].FCU_Mode
-#srcline 385 ;          end_if;
-PrgRoom3_L78:
-#srcline 386 ;          if enFCUFanOnly_RT[j,i].Q then
- LEAX enFCUFanOnly_RT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  1   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 0   ; Range Check
- ADD
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool enFCUFanOnly_RT[j,i].Q
- JMC  PrgRoom3_L80
-#srcline 387 ;             settingsFCU[i].FCU_Mode := fanOnly;
- LD   udint 1  ; TFCU_Mode#fanOnly
- LEAX settingsFCU
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 0   ; Range Check
- MUL  2   ; SizeOf(...)
- ADD     ; + offset 
- WRI 
-#debug_left usint settingsFCU[i].FCU_Mode
-#srcline 388 ;          end_if;
-PrgRoom3_L80:
-#srcline 390 ;          enSetTempIncr_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].SetTempCtrl.0);
- LEAX enSetTempIncr_RT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  1   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 0   ; Range Check
- ADD
- ADD     ; + offset 
- WRY  P41__st__  ; offset instance
- LEA  HMIs_DataRead
- LDX  HMI_Index
-#debug usint HMI_Index
- LDX  j
-#debug usint j
- ADD
- AND  $FF
- LD   usint 1
- SUB
- AND  $FF
- SUB  1   ; Low range[1]
- RCHK 9   ; Range Check
- MUL  104   ; SizeOf(...)
- ADD     ; + offset 
- ADD  74  ; + offset 
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 2   ; Range Check
- MUL  10   ; SizeOf(...)
- ADD     ; + offset 
  ADD  2  ; + offset 
  MUL  8   ; -> bool pointer 
  LDIB 
 #debug bool HMIs_DataRead[HMI_Index+j-1].enFCUs[i].SetTempCtrl.0
- LDY  P41__st__  ; offset instance
+ LDY  P36__st__  ; offset instance
  MUL  8   ; -> bool pointer 
  WRIB 
- LDY  P41__st__  ; offset instance
- CAL  R_TRIG_L0
-#srcline 391 ;          enSetTempIncr_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].SetTempCtrl.0);
- LEAX enSetTempIncr_FT
- LDX  j
-#debug usint j
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- MUL  1   ; Num items[2]
- LDX  i
-#debug usint i
- SUB  1  ; Low range[2]
- RCHK 0   ; Range Check
- ADD
- ADD     ; + offset 
- WRY  P42__st__  ; offset instance
- LEA  HMIs_DataRead
- LDX  HMI_Index
-#debug usint HMI_Index
- LDX  j
-#debug usint j
- ADD
- AND  $FF
- LD   usint 1
- SUB
- AND  $FF
- SUB  1   ; Low range[1]
- RCHK 9   ; Range Check
- MUL  104   ; SizeOf(...)
- ADD     ; + offset 
- ADD  74  ; + offset 
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 2   ; Range Check
- MUL  10   ; SizeOf(...)
- ADD     ; + offset 
- ADD  2  ; + offset 
- MUL  8   ; -> bool pointer 
- LDIB 
-#debug bool HMIs_DataRead[HMI_Index+j-1].enFCUs[i].SetTempCtrl.0
- LDY  P42__st__  ; offset instance
- MUL  8   ; -> bool pointer 
- WRIB 
- LDY  P42__st__  ; offset instance
+ LDY  P36__st__  ; offset instance
  CAL  F_TRIG_L0
-#srcline 393 ;          if enSetTempIncr_RT[j,i].Q or enSetTempIncr_FT[j,i].Q then
+#srcline 370 ;          if enSetTempIncr_RT[j,i].Q or enSetTempIncr_FT[j,i].Q then
  LEAX enSetTempIncr_RT
  LDX  j
 #debug usint j
@@ -3191,8 +2879,8 @@ PrgRoom3_L80:
  LDIB 
 #debug bool enSetTempIncr_FT[j,i].Q
  OR  
- JMC  PrgRoom3_L82
-#srcline 394 ;             setTempFCU_Room3[j] := setTempFCU_Room3[j] + 0.5;
+ JMC  PrgRoom3_L74
+#srcline 371 ;             setTempFCU_Room3[j] := setTempFCU_Room3[j] + 0.5;
  LEA  setTempFCU_Room3
  LDX  j
 #debug usint j
@@ -3213,9 +2901,9 @@ PrgRoom3_L80:
  ADD     ; + offset 
  WRIL 
 #debug_left real setTempFCU_Room3[j]
-#srcline 395 ;          end_if;
-PrgRoom3_L82:
-#srcline 397 ;          enSetTempDecr_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].SetTempCtrl.1);
+#srcline 372 ;          end_if;
+PrgRoom3_L74:
+#srcline 374 ;          enSetTempDecr_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].SetTempCtrl.1);
  LEAX enSetTempDecr_RT
  LDX  j
 #debug usint j
@@ -3228,7 +2916,7 @@ PrgRoom3_L82:
  RCHK 0   ; Range Check
  ADD
  ADD     ; + offset 
- WRY  P43__st__  ; offset instance
+ WRY  P37__st__  ; offset instance
  LEA  HMIs_DataRead
  LDX  HMI_Index
 #debug usint HMI_Index
@@ -3255,12 +2943,12 @@ PrgRoom3_L82:
  ADD  1   ; Bool offset 
  LDIB 
 #debug bool HMIs_DataRead[HMI_Index+j-1].enFCUs[i].SetTempCtrl.1
- LDY  P43__st__  ; offset instance
+ LDY  P37__st__  ; offset instance
  MUL  8   ; -> bool pointer 
  WRIB 
- LDY  P43__st__  ; offset instance
+ LDY  P37__st__  ; offset instance
  CAL  R_TRIG_L0
-#srcline 398 ;          enSetTempDecr_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].SetTempCtrl.1);
+#srcline 375 ;          enSetTempDecr_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].SetTempCtrl.1);
  LEAX enSetTempDecr_FT
  LDX  j
 #debug usint j
@@ -3273,7 +2961,7 @@ PrgRoom3_L82:
  RCHK 0   ; Range Check
  ADD
  ADD     ; + offset 
- WRY  P44__st__  ; offset instance
+ WRY  P38__st__  ; offset instance
  LEA  HMIs_DataRead
  LDX  HMI_Index
 #debug usint HMI_Index
@@ -3300,12 +2988,12 @@ PrgRoom3_L82:
  ADD  1   ; Bool offset 
  LDIB 
 #debug bool HMIs_DataRead[HMI_Index+j-1].enFCUs[i].SetTempCtrl.1
- LDY  P44__st__  ; offset instance
+ LDY  P38__st__  ; offset instance
  MUL  8   ; -> bool pointer 
  WRIB 
- LDY  P44__st__  ; offset instance
+ LDY  P38__st__  ; offset instance
  CAL  F_TRIG_L0
-#srcline 400 ;          if enSetTempDecr_RT[j,i].Q or enSetTempDecr_FT[j,i].Q then
+#srcline 377 ;          if enSetTempDecr_RT[j,i].Q or enSetTempDecr_FT[j,i].Q then
  LEAX enSetTempDecr_RT
  LDX  j
 #debug usint j
@@ -3339,8 +3027,8 @@ PrgRoom3_L82:
  LDIB 
 #debug bool enSetTempDecr_FT[j,i].Q
  OR  
- JMC  PrgRoom3_L84
-#srcline 401 ;             setTempFCU_Room3[j] := setTempFCU_Room3[j] - 0.5;
+ JMC  PrgRoom3_L76
+#srcline 378 ;             setTempFCU_Room3[j] := setTempFCU_Room3[j] - 0.5;
  LEA  setTempFCU_Room3
  LDX  j
 #debug usint j
@@ -3361,25 +3049,25 @@ PrgRoom3_L82:
  ADD     ; + offset 
  WRIL 
 #debug_left real setTempFCU_Room3[j]
-#srcline 402 ;          end_if;
-PrgRoom3_L84:
-#srcline 404 ;      end_for;
+#srcline 379 ;          end_if;
+PrgRoom3_L76:
+#srcline 381 ;      end_for;
  LDX  i
  LD   1
  ADD  
  WRX  i
- JMP  PrgRoom3_L64
-PrgRoom3_L65:
+ JMP  PrgRoom3_L56
+PrgRoom3_L57:
  NOP  -1
-#srcline 405 ;   end_for;
+#srcline 382 ;   end_for;
  LDX  j
  LD   1
  ADD  
  WRX  j
- JMP  PrgRoom3_L62
-PrgRoom3_L63:
+ JMP  PrgRoom3_L54
+PrgRoom3_L55:
  NOP  -1
-#srcline 407 ;END_PROGRAM
+#srcline 384 ;END_PROGRAM
  ULNK
 RET
 E     61

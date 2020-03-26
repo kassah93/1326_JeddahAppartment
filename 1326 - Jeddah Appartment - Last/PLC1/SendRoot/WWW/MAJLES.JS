@@ -43,7 +43,7 @@ if(xmlhttpGET.status != 200){
 alert('Problem retrieving XML data ' + xmlhttpGET.statusText + '(' + xmlhttpGET.status + ')');
 document.location.reload(true)
 return;}
-var access = xmlhttpGET.responseXML.documentElement.getElementsByTagName('ACCESS')[0]; if(!access || access.getAttribute('UCID') != 1585229296) {document.location.reload(true); return;}
+var access = xmlhttpGET.responseXML.documentElement.getElementsByTagName('ACCESS')[0]; if(!access || access.getAttribute('UCID') != 1585234457) {document.location.reload(true); return;}
 var pd = '';
 var x=xmlhttpGET.responseXML.documentElement.getElementsByTagName('INPUT');
 if(x[0]) {
@@ -1000,32 +1000,32 @@ setTimeout("FunWatchDog()", 20000);
 }
 
 function PostXML34() {
-PostXML('MAJLES.XML', encodeURIComponent('__R3428_USINT_u=0')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R3482_USINT_u=0')); 
 }
 function PostXML35() {
-PostXML('MAJLES.XML', encodeURIComponent('__R3428_USINT_u=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R3482_USINT_u=1')); 
 }
 function PostXML36() {
-PostXML('MAJLES.XML', encodeURIComponent('__R3428_USINT_u=2')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R3482_USINT_u=2')); 
 }
 function PostXML61() {
-PostXML('MAJLES.XML', encodeURIComponent('__R3428_USINT_u=3')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R3482_USINT_u=3')); 
 }
 function PostXML63() {
 var Input63h = document.getElementById('INPUT63h');
 PostXML('MAJLES.XML', encodeURIComponent(Input63h.name+'='+Input63h.value));
 }
 function PostXML72() {
-PostXML('MAJLES.XML', encodeURIComponent('__R10127_USINT_u=0')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R10181_USINT_u=0')); 
 }
 function PostXML73() {
-PostXML('MAJLES.XML', encodeURIComponent('__R10127_USINT_u=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R10181_USINT_u=1')); 
 }
 function PostXML74() {
-PostXML('MAJLES.XML', encodeURIComponent('__R10127_USINT_u=2')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R10181_USINT_u=2')); 
 }
 function PostXML75() {
-PostXML('MAJLES.XML', encodeURIComponent('__R10127_USINT_u=3')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R10181_USINT_u=3')); 
 }
 function PostXML77() {
 var Input77h = document.getElementById('INPUT77h');
@@ -1042,82 +1042,82 @@ var Input79h = document.getElementById('INPUT79h');
 PostXML('MAJLES.XML', encodeURIComponent(Input79h.name+'='+Input79h.value));
 }
 function PostXML88() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9729.0_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R9783.0_BOOL_i=1')); 
 }
 function PostXML89() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9709.0_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R9763.0_BOOL_i=1')); 
 }
 function PostXML90() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9709.1_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R9763.1_BOOL_i=1')); 
 }
 function PostXML91() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9709.2_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R9763.2_BOOL_i=1')); 
 }
 function PostXML92() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9709.3_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R9763.3_BOOL_i=1')); 
 }
 function PostXML93() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9709.4_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R9763.4_BOOL_i=1')); 
 }
 function PostXML94() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9709.5_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R9763.5_BOOL_i=1')); 
 }
 function PostXML95() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9709.6_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R9763.6_BOOL_i=1')); 
 }
 function PostXML96() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9709.7_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R9763.7_BOOL_i=1')); 
 }
 function PostXML97() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9710.0_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R9764.0_BOOL_i=1')); 
 }
 function PostXML98() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9710.1_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R9764.1_BOOL_i=1')); 
 }
 function PostXML99() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9710.2_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R9764.2_BOOL_i=1')); 
 }
 function PostXML100() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9710.3_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R9764.3_BOOL_i=1')); 
 }
 function PostXML101() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9710.4_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R9764.4_BOOL_i=1')); 
 }
 function PostXML102() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9710.5_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R9764.5_BOOL_i=1')); 
 }
 function PostXML103() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9710.6_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R9764.6_BOOL_i=1')); 
 }
 function PostXML104() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9968.0_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R10022.0_BOOL_i=1')); 
 }
 function PostXML105() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9969.0_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R10023.0_BOOL_i=1')); 
 }
 function PostXML106() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9968.1_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R10022.1_BOOL_i=1')); 
 }
 function PostXML107() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9969.1_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R10023.1_BOOL_i=1')); 
 }
 function PostXML108() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9968.2_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R10022.2_BOOL_i=1')); 
 }
 function PostXML109() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9969.2_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R10023.2_BOOL_i=1')); 
 }
 function PostXML110() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9968.3_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R10022.3_BOOL_i=1')); 
 }
 function PostXML111() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9969.3_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R10023.3_BOOL_i=1')); 
 }
 function PostXML112() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9968.4_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R10022.4_BOOL_i=1')); 
 }
 function PostXML113() {
-PostXML('MAJLES.XML', encodeURIComponent('__R9969.4_BOOL_i=1')); 
+PostXML('MAJLES.XML', encodeURIComponent('__R10023.4_BOOL_i=1')); 
 }
 
 function PostGlobal() {

@@ -64,23 +64,23 @@ PROGRAM PrgRoom3
 
 
   // HMIs
-  enCurtainsUP_RT : Array[1..NumOfHMIsRoom1,1..NumOfCurtainRoom1] of R_TRIG;
-  enCurtainsUP_FT : Array[1..NumOfHMIsRoom1,1..NumOfCurtainRoom1] of F_TRIG;
+  enCurtainsUP_RT : Array[1..NumOfHMIsRoom3,1..NumOfCurtainRoom3] of R_TRIG;
+  enCurtainsUP_FT : Array[1..NumOfHMIsRoom3,1..NumOfCurtainRoom3] of F_TRIG;
 
-  enCurtainsDW_RT : Array[1..NumOfHMIsRoom1,1..NumOfCurtainRoom1] of R_TRIG;
-  enCurtainsDW_FT : Array[1..NumOfHMIsRoom1,1..NumOfCurtainRoom1] of F_TRIG;
+  enCurtainsDW_RT : Array[1..NumOfHMIsRoom3,1..NumOfCurtainRoom3] of R_TRIG;
+  enCurtainsDW_FT : Array[1..NumOfHMIsRoom3,1..NumOfCurtainRoom3] of F_TRIG;
 
 
   // RCU Switches
-  enCurtainsUP_SW_RT : Array[1..NumOfCurtainRoom1] of R_TRIG;
-  enCurtainsUP_SW_FT : Array[1..NumOfCurtainRoom1] of F_TRIG;
+  enCurtainsUP_SW_RT : Array[1..NumOfCurtainRoom3] of R_TRIG;
+  enCurtainsUP_SW_FT : Array[1..NumOfCurtainRoom3] of F_TRIG;
 
-  enCurtainsDW_SW_RT : Array[1..NumOfCurtainRoom1] of R_TRIG;
-  enCurtainsDW_SW_FT : Array[1..NumOfCurtainRoom1] of F_TRIG;
+  enCurtainsDW_SW_RT : Array[1..NumOfCurtainRoom3] of R_TRIG;
+  enCurtainsDW_SW_FT : Array[1..NumOfCurtainRoom3] of F_TRIG;
 
   // GUI
-  enCurtainsUP_GUI : Array[1..NumOfCurtainRoom1] of BOOL;
-  enCurtainsDW_GUI : Array[1..NumOfCurtainRoom1] of BOOL;
+  enCurtainsUP_GUI : Array[1..NumOfCurtainRoom3] of BOOL;
+  enCurtainsDW_GUI : Array[1..NumOfCurtainRoom3] of BOOL;
 
   CurtStatus_Index : USINT;
   CurtEn_Index     : USINT;
@@ -214,8 +214,8 @@ PROGRAM PrgRoom3
       HMIs_DataWrite[HMI_Index].FCUs_Status[i] := FCU[i].FCU_Status;
    end_for;
    
-    if NumOfCurtainRoom1 > 0 then
-      for i := 1 to NumOfCurtainRoom1 do
+    if NumOfCurtainRoom3 > 0 then
+      for i := 1 to NumOfCurtainRoom3 do
           HMIs_DataWrite[HMI_Index].shuttersStatus[i].UP.0 := curtainsStatus[CurtStatus_Index - 1 + i].outUP;
           HMIs_DataWrite[HMI_Index].shuttersStatus[i].Dw.0 := curtainsStatus[CurtStatus_Index - 1 + i].outDW;
           HMIs_DataWrite[HMI_Index].shuttersStatus[i].pos  := USINT_TO_WORD(curtainsStatus[CurtStatus_Index - 1 + i].pos);

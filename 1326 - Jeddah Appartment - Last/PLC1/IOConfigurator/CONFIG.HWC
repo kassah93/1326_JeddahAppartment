@@ -243,7 +243,7 @@
 
 #struct _TTS_PLCxINIT_ETH1_PLCx0
         _TTS_PLCxHead Head,
-        _TTS_LPLCx[2] Line
+        _TTS_LPLCx[3] Line
 
 #struct _TTS_UNIINIT_ETH
         _TTS_UNIINIT uniInit,
@@ -616,9 +616,10 @@
                                           0
 
 ;ETH1_PLCx0
-#table _TTS_PLCxINIT_ETH1_PLCx0 r0_p0_Table_PLCx_ETH1_PLCx0 = $00C3,$0000,3,1,0,0,0,$11D8,0,$06E1,0,$00000000,$00000000,2,20,
+#table _TTS_PLCxINIT_ETH1_PLCx0 r0_p0_Table_PLCx_ETH1_PLCx0 = $00C3,$0000,3,1,0,0,0,$3CF0,0,$06E1,0,$00000000,$00000000,3,20,
                                                               0,3,238,__offset32(PLCx_ETH1_PLCx0_ADR3_RX),
-                                                              0,1,50,__offset32(PLCx_ETH1_PLCx0_ADR1_TX)
+                                                              0,1,50,__offset32(PLCx_ETH1_PLCx0_ADR1_TX),
+                                                              0,2,50,__offset32(PLCx_ETH1_PLCx0_ADR2_RX)
 
 ;ETH1_UNI0 - Initialization table of UNI Ethernet channel mode
 #table _TTS_UNIINIT_ETH r0_p0_Table_UNI_ETH1_UNI0 = 197,2,5,0,14,0,0,0,0,0,$07E1,0,0,0,0,0,0,0,0,0,0,1354,1354,__offset32(UNI_ETH1_UNI0_IN),__offset32(UNI_ETH1_UNI0_OUT),0,0,0,0,16,0,0,0,0,0,0,0,0,0,0,

@@ -18,7 +18,28 @@
         <Ethernet Name="ETH1" LAddr="E1" expanded="true">
           <Channel Options="PC" Name="SOCK0"/>
           <Channel Options="PLC" Name="SOCK1"/>
-          <Channel Options="PLCx" Name="SOCK2"/>
+          <Channel xmlns="http://www.tecomat.com" Mode="PLCx" Alias="Channel of PLCx" Options="PLCx" Name="PLCx0" LAddr="06E1" enabled="true">
+            <Info>
+              <Descriptor>PLCx_ETH.tdd</Descriptor>
+            </Info>
+            <Objects xmlns="http://www.tecomat.com">
+              <Aliases>
+                <ObjectAlias name="PLCx_{CHANNEL}_ADR3_RX" public="false" publicAPI="false" userDef="false">PLC3</ObjectAlias>
+                <ObjectAlias name="PLCx_{CHANNEL}_ADR1_RX" public="false" publicAPI="false" userDef="false">PLC1_Curtains</ObjectAlias>
+                <ObjectAlias name="PLCx_{CHANNEL}_ADR2_TX" public="false" publicAPI="false" userDef="false">PLC2_Curtains</ObjectAlias>
+              </Aliases>
+              <Data>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_PLCx_{CHANNEL}.ComAddress">02</ObjectData>
+                <ObjectData name="r{RACK}_p{POSITION}_Settings_PLCx_{CHANNEL}.ZoneSize">3200</ObjectData>
+              </Data>
+              <Notes>
+                <ObjectNote name="r{RACK}_p{POSITION}_Module_PLCx_{CHANNEL}">PLCx_ETH declaration</ObjectNote>
+              </Notes>
+            </Objects>
+            <Interfaces/>
+            <Editor/>
+            <Network configFile="..\..\Networks.xml" id="0" addr="2" crc="15600"/>
+          </Channel>
           <Channel Options="BAC" Name="SOCK3"/>
           <Channel xmlns="http://www.tecomat.com" Mode="UNI" Alias="Interance" Options="UNI" Name="UNI0" LAddr="07E1" enabled="true">
             <Info>
@@ -296,6 +317,7 @@
               </Objects>
               <Interfaces/>
               <Editor/>
+              <Network/>
             </Channel>
           </SerialChannels>
           <Ethernets/>

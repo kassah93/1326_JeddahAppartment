@@ -478,28 +478,28 @@ setTimeout("FunWatchDog()", 20000);
 }
 
 function PostXML9() {
-PostXML('KITCHEN.XML', encodeURIComponent('__R9909_USINT_u=0')); 
+PostXML('KITCHEN.XML', encodeURIComponent('__R10271_USINT_u=0')); 
 }
 function PostXML10() {
-PostXML('KITCHEN.XML', encodeURIComponent('__R9909_USINT_u=1')); 
+PostXML('KITCHEN.XML', encodeURIComponent('__R10271_USINT_u=1')); 
 }
 function PostXML15() {
-PostXML('KITCHEN.XML', encodeURIComponent('__R9909_USINT_u=2')); 
+PostXML('KITCHEN.XML', encodeURIComponent('__R10271_USINT_u=2')); 
 }
 function PostXML22() {
-PostXML('KITCHEN.XML', encodeURIComponent('__R13067.0_BOOL_i=1')); 
+PostXML('KITCHEN.XML', encodeURIComponent('__R13429.0_BOOL_i=1')); 
 }
 function PostXML23() {
-PostXML('KITCHEN.XML', encodeURIComponent('__R13067.1_BOOL_i=1')); 
+PostXML('KITCHEN.XML', encodeURIComponent('__R13429.1_BOOL_i=1')); 
 }
 function PostXML24() {
-PostXML('KITCHEN.XML', encodeURIComponent('__R13067.2_BOOL_i=1')); 
+PostXML('KITCHEN.XML', encodeURIComponent('__R13429.2_BOOL_i=1')); 
 }
 function PostXML25() {
-PostXML('KITCHEN.XML', encodeURIComponent('__R13067.3_BOOL_i=1')); 
+PostXML('KITCHEN.XML', encodeURIComponent('__R13429.3_BOOL_i=1')); 
 }
 function PostXML26() {
-PostXML('KITCHEN.XML', encodeURIComponent('__R13087.0_BOOL_i=1')); 
+PostXML('KITCHEN.XML', encodeURIComponent('__R13449.0_BOOL_i=1')); 
 }
 function PostXML27() {
 var Input27h = document.getElementById('INPUT27h');
@@ -520,16 +520,16 @@ var Input39h = document.getElementById('INPUT39h');
 PostXML('KITCHEN.XML', encodeURIComponent(Input39h.name+'='+Input39h.value));
 }
 function PostXML48() {
-PostXML('KITCHEN.XML', encodeURIComponent('__R13205_USINT_u=0')); 
+PostXML('KITCHEN.XML', encodeURIComponent('__R13567_USINT_u=0')); 
 }
 function PostXML49() {
-PostXML('KITCHEN.XML', encodeURIComponent('__R13205_USINT_u=1')); 
+PostXML('KITCHEN.XML', encodeURIComponent('__R13567_USINT_u=1')); 
 }
 function PostXML50() {
-PostXML('KITCHEN.XML', encodeURIComponent('__R13205_USINT_u=2')); 
+PostXML('KITCHEN.XML', encodeURIComponent('__R13567_USINT_u=2')); 
 }
 function PostXML51() {
-PostXML('KITCHEN.XML', encodeURIComponent('__R13205_USINT_u=3')); 
+PostXML('KITCHEN.XML', encodeURIComponent('__R13567_USINT_u=3')); 
 }
 
 function PostGlobal() {

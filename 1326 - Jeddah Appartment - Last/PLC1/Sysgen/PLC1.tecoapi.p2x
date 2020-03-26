@@ -981,9 +981,9 @@ the lights, curtains, and outlets" >
   <ARRAY size="1" lo="1" hi="8" > 
     <ITEM name="outletsStatusRoom3" type="BOOL" location="%M" addr="2601" bit="0" size="1" puball="1" />
     </ARRAY> 
-  <ITEM name="Majles" type="PrgMajles" location="%M" addr="3427" size="6805" />
-  <ITEM name="Room1" type="PrgRoom1" location="%M" addr="10232" size="3382" />
-  <ITEM name="Room2" type="PrgRoom2" location="%M" addr="13614" size="3384" />
-  <ITEM name="Room3" type="PrgRoom3" location="%M" addr="16998" size="3400" />
+  <ITEM name="Majles" type="PrgMajles" location="%M" addr="3481" size="6805" />
+  <ITEM name="Room1" type="PrgRoom1" location="%M" addr="10286" size="3382" />
+  <ITEM name="Room2" type="PrgRoom2" location="%M" addr="13668" size="3384" />
+  <ITEM name="Room3" type="PrgRoom3" location="%M" addr="17052" size="3400" />
  </DATA>
 </MAP>

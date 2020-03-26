@@ -4,7 +4,7 @@
 	<Grid Enable="1" X="5" Y="5" />
 	<globalset newdim="1" />
 	<group caption="" Uid="14574">
-		<page caption="Majles" name="MAJLES.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="1000" level="0" default="true" ucid="1585229296" width="406" height="718" Uid="14903">
+		<page caption="Majles" name="MAJLES.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="1000" level="0" default="true" ucid="1585234457" width="406" height="718" Uid="14903">
 			<object caption="" X="1" Y="22" xoff="6" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="14912" layer="7">
 				<picture href="" img="CONSOLE.PNG" />
 			</object>
@@ -487,7 +487,7 @@
 				<block width="90" height="35" border="false" variable="Room1.navSelect" type="USINT" value="2" />
 			</object>
 			<object caption="" X="20" Y="26" xoff="6" yoff="6" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room1.shuttersSelect" vistype="BOOL" visneg="false" Uid="14817" layer="3">
-				<mulimg variable="curtainsStatus[6].normPos" type="USINT" count="5">
+				<mulimg variable="curtainsStatus[6].normPos" type="" count="5">
 					<img name="WINDOW9.PNG" />
 					<img name="WINDOW10.PNG" />
 					<img name="WINDOW11.PNG" />
@@ -496,16 +496,16 @@
 				</mulimg>
 			</object>
 			<object caption="" X="24" Y="39" xoff="6" yoff="7" level="0" readonly="false" front="0" back="14474460" strong="false" italic="false" size="13" transparent="false" visvar="Room1.shuttersSelect" vistype="BOOL" visneg="false" Uid="14818" layer="3">
-				<edit variable="curtainsStatus[6].pos" type="USINT" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="32" height="20" tabindex="1" />
+				<edit variable="curtainsStatus[6].pos" type="" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="32" height="20" tabindex="1" />
 			</object>
 			<object caption="%" X="29" Y="40" xoff="0" yoff="0" level="0" readonly="false" front="2565927" back="16777215" strong="false" italic="false" size="15" transparent="true" visvar="Room1.shuttersSelect" vistype="BOOL" visneg="false" Uid="14819" layer="3">
 				<label />
 			</object>
 			<object caption="" X="28" Y="43" xoff="6" yoff="6" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room1.shuttersSelect" vistype="BOOL" visneg="false" Uid="14820" layer="3">
-				<image optcap="" variable="curtainsStatus[6].outUP" type="BOOL" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
+				<image optcap="" variable="curtainsStatus[6].outUP" type="" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
 			</object>
 			<object caption="" X="19" Y="43" xoff="7" yoff="6" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room1.shuttersSelect" vistype="BOOL" visneg="false" Uid="14821" layer="3">
-				<image optcap="" variable="curtainsStatus[6].outDW" type="BOOL" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
+				<image optcap="" variable="curtainsStatus[6].outDW" type="" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
 			</object>
 			<object caption="" X="38" Y="14" xoff="5" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Room1.AC_Select" vistype="BOOL" visneg="true" Uid="14822">
 				<block dynamic="true" width="90" height="5" border="false" color="1" />

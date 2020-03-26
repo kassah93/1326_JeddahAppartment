@@ -87,11 +87,11 @@
       </SubItems>
     </DataType>
     <DataType>
-      <Name>_TTS_LPLCx[2]</Name>
+      <Name>_TTS_LPLCx[3]</Name>
       <BaseType>_TTS_LPLCx</BaseType>
       <ArrayInfo>
         <LBound>0</LBound>
-        <Elements>2</Elements>
+        <Elements>3</Elements>
       </ArrayInfo>
     </DataType>
     <DataType>
@@ -103,7 +103,7 @@
         </SubItem>
         <SubItem>
           <Name>Line</Name>
-          <Type>_TTS_LPLCx[2]</Type>
+          <Type>_TTS_LPLCx[3]</Type>
         </SubItem>
       </SubItems>
     </DataType>
@@ -165,6 +165,35 @@
         <Elements>50</Elements>
       </ArrayInfo>
     </DataType>
+    <DataType>
+      <Name>TPLCx_{CHANNEL}_ADR2_RX</Name>
+      <SubItems>
+        <SubItem>
+          <Name>STAT</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>ERR</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>NUMR</Name>
+          <Type>UINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>DATA</Name>
+          <Type>TPLCx_{CHANNEL}_ADR2_RX_DATA</Type>
+        </SubItem>
+      </SubItems>
+    </DataType>
+    <DataType>
+      <Name>TPLCx_{CHANNEL}_ADR2_RX_DATA</Name>
+      <BaseType>USINT</BaseType>
+      <ArrayInfo>
+        <LBound>0</LBound>
+        <Elements>50</Elements>
+      </ArrayInfo>
+    </DataType>
   </DataTypes>
   <Objects>
     <Object index="#x9FFF" name="r{RACK}_p{POSITION}_Table_PLCx_{CHANNEL}" type="_TTS_PLCxINIT_{CHANNEL}" access="ro">
@@ -181,13 +210,13 @@
               <DefaultValue>1</DefaultValue>
             </SubObject>
             <SubObject name="netID">
-              <DefaultValue>4568</DefaultValue>
+              <DefaultValue>15600</DefaultValue>
             </SubObject>
             <SubObject name="sysMap">
               <MacroValue>${CHANNEL_CODE}</MacroValue>
             </SubObject>
             <SubObject name="nnt">
-              <DefaultValue>2</DefaultValue>
+              <DefaultValue>3</DefaultValue>
             </SubObject>
             <SubObject name="raster">
               <DefaultValue>20</DefaultValue>
@@ -229,11 +258,27 @@
                 </SubObject>
               </SubObjects>
             </SubObject>
+            <SubObject name="Line[2]">
+              <Comment>
+                <label>PLC2_Curtains</label>
+              </Comment>
+              <SubObjects>
+                <SubObject name="adr">
+                  <DefaultValue>2</DefaultValue>
+                </SubObject>
+                <SubObject name="len">
+                  <DefaultValue>50</DefaultValue>
+                </SubObject>
+                <SubObject name="idat">
+                  <MacroValue>__offset32(PLCx_{CHANNEL}_ADR2_RX)</MacroValue>
+                </SubObject>
+              </SubObjects>
+            </SubObject>
           </SubObjects>
         </SubObject>
       </SubObjects>
     </Object>
-    <Object index="#x5FFE" name="PLCx_{CHANNEL}_ADR3_RX" type="TPLCx_{CHANNEL}_ADR3_RX">
+    <Object index="#x5FFD" name="PLCx_{CHANNEL}_ADR3_RX" type="TPLCx_{CHANNEL}_ADR3_RX">
       <SubObjects>
         <SubObject name="DATA">
           <Xml>
@@ -247,7 +292,7 @@
         <label>PLC3</label>
       </Alias>
     </Object>
-    <Object index="#x5FFF" name="PLCx_{CHANNEL}_ADR1_TX" type="TPLCx_{CHANNEL}_ADR1_TX">
+    <Object index="#x5FFE" name="PLCx_{CHANNEL}_ADR1_TX" type="TPLCx_{CHANNEL}_ADR1_TX">
       <SubObjects>
         <SubObject name="DATA" at="@r{RACK}_p{POSITION}_Settings_PLCx_{CHANNEL}.FixedLocation.Address">
           <ArrayDependency>
@@ -264,6 +309,20 @@
       </SubObjects>
       <Alias warn="true">
         <label>PLC1_Curtains</label>
+      </Alias>
+    </Object>
+    <Object index="#x5FFF" name="PLCx_{CHANNEL}_ADR2_RX" type="TPLCx_{CHANNEL}_ADR2_RX">
+      <SubObjects>
+        <SubObject name="DATA">
+          <Xml>
+            <Editor>
+              <Expanded>0</Expanded>
+            </Editor>
+          </Xml>
+        </SubObject>
+      </SubObjects>
+      <Alias warn="true">
+        <label>PLC2_Curtains</label>
       </Alias>
     </Object>
   </Objects>

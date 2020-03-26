@@ -440,7 +440,7 @@ the lights, curtains, and outlets" >
       <ITEM name="HMI_Addresses" type="USINT" addr="3334" size="1" var="var" value="[2, 10]" />
       </ARRAY> 
   </RECORD>
-  <RECORD name="PrgLivingRoom" size="3295" pou="prog" descr="" >
+  <RECORD name="PrgLivingRoom" size="3307" pou="prog" descr="" >
     <ITEM name="lightsSelect" type="BOOL" addr="0" bit="0" size="1" var="var" />
     <ITEM name="socketsSelect" type="BOOL" addr="0" bit="1" size="1" var="var" />
     <ITEM name="shuttersSelect" type="BOOL" addr="0" bit="2" size="1" var="var" />
@@ -514,23 +514,43 @@ the lights, curtains, and outlets" >
     <ARRAY size="4" lo="1" hi="2" > <ARRAY size="2" lo="1" hi="2" > 
       <ITEM name="enCurtainsDW_FT" type="F_TRIG" addr="3266" size="1" var="var" />
       </ARRAY> </ARRAY> 
-    <ITEM name="i" type="USINT" addr="3270" size="1" var="var" />
-    <ITEM name="j" type="USINT" addr="3271" size="1" var="var" />
-    <ITEM name="afterRestart_TP" type="TP" addr="3272" size="15" var="var" />
-    <ITEM name="afterRestart_TP_FT" type="F_TRIG" addr="3287" size="1" var="var" />
-    <ARRAY size="1" lo="1" hi="4" > 
-      <ITEM name="motionSensStatus" type="BOOL" addr="3288" bit="0" size="1" var="var" />
-      </ARRAY> 
-    <ARRAY size="1" lo="1" hi="6" > 
-      <ITEM name="CurtainsUpStatus" type="BOOL" addr="3289" bit="0" size="1" var="var" puball="1" />
-      </ARRAY> 
-    <ARRAY size="1" lo="1" hi="6" > 
-      <ITEM name="CurtainsDwStatus" type="BOOL" addr="3290" bit="0" size="1" var="var" puball="1" />
-      </ARRAY> 
-    <ITEM name="HMI_Index" type="USINT" addr="3291" size="1" var="var" />
-    <ITEM name="RCU_Index" type="USINT" addr="3292" size="1" var="var" />
     <ARRAY size="2" lo="1" hi="2" > 
-      <ITEM name="HMI_Addresses" type="USINT" addr="3293" size="1" var="var" value="[3, 5]" />
+      <ITEM name="enCurtainsUP_SW_RT" type="R_TRIG" addr="3270" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enCurtainsUP_SW_FT" type="F_TRIG" addr="3272" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enCurtainsDW_SW_RT" type="R_TRIG" addr="3274" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enCurtainsDW_SW_FT" type="F_TRIG" addr="3276" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="2" > 
+      <ITEM name="enCurtainsUP_GUI" type="BOOL" addr="3278" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="2" > 
+      <ITEM name="enCurtainsDW_GUI" type="BOOL" addr="3279" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ITEM name="CurtStatus_Index" type="USINT" addr="3280" size="1" var="var" />
+    <ITEM name="CurtEn_Index" type="USINT" addr="3281" size="1" var="var" />
+    <ITEM name="i" type="USINT" addr="3282" size="1" var="var" />
+    <ITEM name="j" type="USINT" addr="3283" size="1" var="var" />
+    <ITEM name="afterRestart_TP" type="TP" addr="3284" size="15" var="var" />
+    <ITEM name="afterRestart_TP_FT" type="F_TRIG" addr="3299" size="1" var="var" />
+    <ARRAY size="1" lo="1" hi="4" > 
+      <ITEM name="motionSensStatus" type="BOOL" addr="3300" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsUpStatus" type="BOOL" addr="3301" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsDwStatus" type="BOOL" addr="3302" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ITEM name="HMI_Index" type="USINT" addr="3303" size="1" var="var" />
+    <ITEM name="RCU_Index" type="USINT" addr="3304" size="1" var="var" />
+    <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="HMI_Addresses" type="USINT" addr="3305" size="1" var="var" value="[3, 5]" />
       </ARRAY> 
   </RECORD>
   <RECORD name="PrgKitchen" size="3313" pou="prog" descr="" >
@@ -728,7 +748,7 @@ the lights, curtains, and outlets" >
       <ITEM name="HMI_Addresses" type="USINT" addr="3229" size="1" var="var" value="[8]" />
       </ARRAY> 
   </RECORD>
-  <RECORD name="PrgMasterRoom" size="3408" pou="prog" descr="" >
+  <RECORD name="PrgMasterRoom" size="3420" pou="prog" descr="" >
     <ITEM name="lightsSelect" type="BOOL" addr="0" bit="0" size="1" var="var" />
     <ITEM name="socketsSelect" type="BOOL" addr="0" bit="1" size="1" var="var" />
     <ITEM name="shuttersSelect" type="BOOL" addr="0" bit="2" size="1" var="var" />
@@ -804,71 +824,91 @@ the lights, curtains, and outlets" >
     <ARRAY size="4" lo="1" hi="2" > <ARRAY size="2" lo="1" hi="2" > 
       <ITEM name="enCurtainsDW_FT" type="F_TRIG" addr="3286" size="1" var="var" />
       </ARRAY> </ARRAY> 
-    <ITEM name="i" type="USINT" addr="3290" size="1" var="var" />
-    <ITEM name="j" type="USINT" addr="3291" size="1" var="var" />
-    <ITEM name="afterRestart_TP" type="TP" addr="3292" size="15" var="var" />
-    <ITEM name="afterRestart_TP_FT" type="F_TRIG" addr="3307" size="1" var="var" />
+    <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enCurtainsUP_SW_RT" type="R_TRIG" addr="3290" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enCurtainsUP_SW_FT" type="F_TRIG" addr="3292" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enCurtainsDW_SW_RT" type="R_TRIG" addr="3294" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="2" lo="1" hi="2" > 
+      <ITEM name="enCurtainsDW_SW_FT" type="F_TRIG" addr="3296" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="2" > 
+      <ITEM name="enCurtainsUP_GUI" type="BOOL" addr="3298" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="2" > 
+      <ITEM name="enCurtainsDW_GUI" type="BOOL" addr="3299" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ITEM name="CurtStatus_Index" type="USINT" addr="3300" size="1" var="var" />
+    <ITEM name="CurtEn_Index" type="USINT" addr="3301" size="1" var="var" />
+    <ITEM name="i" type="USINT" addr="3302" size="1" var="var" />
+    <ITEM name="j" type="USINT" addr="3303" size="1" var="var" />
+    <ITEM name="afterRestart_TP" type="TP" addr="3304" size="15" var="var" />
+    <ITEM name="afterRestart_TP_FT" type="F_TRIG" addr="3319" size="1" var="var" />
     <ARRAY size="1" lo="1" hi="4" > 
-      <ITEM name="motionSensStatus" type="BOOL" addr="3308" bit="0" size="1" var="var" />
+      <ITEM name="motionSensStatus" type="BOOL" addr="3320" bit="0" size="1" var="var" />
       </ARRAY> 
     <ARRAY size="1" lo="1" hi="6" > 
-      <ITEM name="CurtainsUpStatus" type="BOOL" addr="3309" bit="0" size="1" var="var" puball="1" />
+      <ITEM name="CurtainsUpStatus" type="BOOL" addr="3321" bit="0" size="1" var="var" puball="1" />
       </ARRAY> 
     <ARRAY size="1" lo="1" hi="6" > 
-      <ITEM name="CurtainsDwStatus" type="BOOL" addr="3310" bit="0" size="1" var="var" puball="1" />
+      <ITEM name="CurtainsDwStatus" type="BOOL" addr="3322" bit="0" size="1" var="var" puball="1" />
       </ARRAY> 
     <ARRAY size="66" lo="1" hi="1" > 
-      <ITEM name="FCU" type="fbControlFCU" addr="3311" size="66" var="var" />
+      <ITEM name="FCU" type="fbControlFCU" addr="3323" size="66" var="var" />
       </ARRAY> 
     <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enableFCU" type="BOOL" addr="3377" bit="0" size="1" var="var" />
+      <ITEM name="enableFCU" type="BOOL" addr="3389" bit="0" size="1" var="var" />
       </ARRAY> 
     <ARRAY size="2" lo="1" hi="1" > 
-      <ITEM name="settingsFCU" type="TFCU_Settings" addr="3378" size="2" var="var" />
+      <ITEM name="settingsFCU" type="TFCU_Settings" addr="3390" size="2" var="var" />
       </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enFCUs_FT" type="F_TRIG" addr="3380" size="1" var="var" />
+      <ITEM name="enFCUs_FT" type="F_TRIG" addr="3392" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enFCUs_RT" type="R_TRIG" addr="3382" size="1" var="var" />
+      <ITEM name="enFCUs_RT" type="R_TRIG" addr="3394" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enFanHigh_RT" type="R_TRIG" addr="3384" size="1" var="var" />
+      <ITEM name="enFanHigh_RT" type="R_TRIG" addr="3396" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enFanMed_RT" type="R_TRIG" addr="3386" size="1" var="var" />
+      <ITEM name="enFanMed_RT" type="R_TRIG" addr="3398" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enFanLow_RT" type="R_TRIG" addr="3388" size="1" var="var" />
+      <ITEM name="enFanLow_RT" type="R_TRIG" addr="3400" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enFanAuto_RT" type="R_TRIG" addr="3390" size="1" var="var" />
+      <ITEM name="enFanAuto_RT" type="R_TRIG" addr="3402" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enFCUCool_RT" type="R_TRIG" addr="3392" size="1" var="var" />
+      <ITEM name="enFCUCool_RT" type="R_TRIG" addr="3404" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enFCUFanOnly_RT" type="R_TRIG" addr="3394" size="1" var="var" />
+      <ITEM name="enFCUFanOnly_RT" type="R_TRIG" addr="3406" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enSetTempIncr_RT" type="R_TRIG" addr="3396" size="1" var="var" />
+      <ITEM name="enSetTempIncr_RT" type="R_TRIG" addr="3408" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enSetTempIncr_FT" type="F_TRIG" addr="3398" size="1" var="var" />
+      <ITEM name="enSetTempIncr_FT" type="F_TRIG" addr="3410" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enSetTempDecr_RT" type="R_TRIG" addr="3400" size="1" var="var" />
+      <ITEM name="enSetTempDecr_RT" type="R_TRIG" addr="3412" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enSetTempDecr_FT" type="F_TRIG" addr="3402" size="1" var="var" />
+      <ITEM name="enSetTempDecr_FT" type="F_TRIG" addr="3414" size="1" var="var" />
       </ARRAY> </ARRAY> 
-    <ITEM name="HMI_Index" type="USINT" addr="3404" size="1" var="var" />
-    <ITEM name="RCU_Index" type="USINT" addr="3405" size="1" var="var" />
+    <ITEM name="HMI_Index" type="USINT" addr="3416" size="1" var="var" />
+    <ITEM name="RCU_Index" type="USINT" addr="3417" size="1" var="var" />
     <ARRAY size="2" lo="1" hi="2" > 
-      <ITEM name="HMI_Addresses" type="USINT" addr="3406" size="1" var="var" value="[4, 6]" />
+      <ITEM name="HMI_Addresses" type="USINT" addr="3418" size="1" var="var" value="[4, 6]" />
       </ARRAY> 
   </RECORD>
-  <RECORD name="PrgRoom4" size="3384" pou="prog" descr="" >
+  <RECORD name="PrgRoom4" size="3392" pou="prog" descr="" >
     <ITEM name="lightsSelect" type="BOOL" addr="0" bit="0" size="1" var="var" />
     <ITEM name="socketsSelect" type="BOOL" addr="0" bit="1" size="1" var="var" />
     <ITEM name="shuttersSelect" type="BOOL" addr="0" bit="2" size="1" var="var" />
@@ -942,68 +982,88 @@ the lights, curtains, and outlets" >
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
       <ITEM name="enCurtainsDW_FT" type="F_TRIG" addr="3264" size="1" var="var" />
       </ARRAY> </ARRAY> 
-    <ITEM name="i" type="USINT" addr="3266" size="1" var="var" />
-    <ITEM name="j" type="USINT" addr="3267" size="1" var="var" />
-    <ITEM name="afterRestart_TP" type="TP" addr="3268" size="15" var="var" />
-    <ITEM name="afterRestart_TP_FT" type="F_TRIG" addr="3283" size="1" var="var" />
-    <ARRAY size="1" lo="1" hi="4" > 
-      <ITEM name="motionSensStatus" type="BOOL" addr="3284" bit="0" size="1" var="var" />
-      </ARRAY> 
-    <ARRAY size="1" lo="1" hi="6" > 
-      <ITEM name="CurtainsUpStatus" type="BOOL" addr="3285" bit="0" size="1" var="var" puball="1" />
-      </ARRAY> 
-    <ARRAY size="1" lo="1" hi="6" > 
-      <ITEM name="CurtainsDwStatus" type="BOOL" addr="3286" bit="0" size="1" var="var" puball="1" />
-      </ARRAY> 
-    <ARRAY size="66" lo="1" hi="1" > 
-      <ITEM name="FCU" type="fbControlFCU" addr="3287" size="66" var="var" />
+    <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enCurtainsUP_SW_RT" type="R_TRIG" addr="3266" size="1" var="var" />
       </ARRAY> 
     <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enableFCU" type="BOOL" addr="3353" bit="0" size="1" var="var" />
+      <ITEM name="enCurtainsUP_SW_FT" type="F_TRIG" addr="3267" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enCurtainsDW_SW_RT" type="R_TRIG" addr="3268" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enCurtainsDW_SW_FT" type="F_TRIG" addr="3269" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enCurtainsUP_GUI" type="BOOL" addr="3270" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enCurtainsDW_GUI" type="BOOL" addr="3271" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ITEM name="CurtStatus_Index" type="USINT" addr="3272" size="1" var="var" />
+    <ITEM name="CurtEn_Index" type="USINT" addr="3273" size="1" var="var" />
+    <ITEM name="i" type="USINT" addr="3274" size="1" var="var" />
+    <ITEM name="j" type="USINT" addr="3275" size="1" var="var" />
+    <ITEM name="afterRestart_TP" type="TP" addr="3276" size="15" var="var" />
+    <ITEM name="afterRestart_TP_FT" type="F_TRIG" addr="3291" size="1" var="var" />
+    <ARRAY size="1" lo="1" hi="4" > 
+      <ITEM name="motionSensStatus" type="BOOL" addr="3292" bit="0" size="1" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsUpStatus" type="BOOL" addr="3293" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="6" > 
+      <ITEM name="CurtainsDwStatus" type="BOOL" addr="3294" bit="0" size="1" var="var" puball="1" />
+      </ARRAY> 
+    <ARRAY size="66" lo="1" hi="1" > 
+      <ITEM name="FCU" type="fbControlFCU" addr="3295" size="66" var="var" />
+      </ARRAY> 
+    <ARRAY size="1" lo="1" hi="1" > 
+      <ITEM name="enableFCU" type="BOOL" addr="3361" bit="0" size="1" var="var" />
       </ARRAY> 
     <ARRAY size="2" lo="1" hi="1" > 
-      <ITEM name="settingsFCU" type="TFCU_Settings" addr="3354" size="2" var="var" />
+      <ITEM name="settingsFCU" type="TFCU_Settings" addr="3362" size="2" var="var" />
       </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enFCUs_FT" type="F_TRIG" addr="3356" size="1" var="var" />
+      <ITEM name="enFCUs_FT" type="F_TRIG" addr="3364" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enFCUs_RT" type="R_TRIG" addr="3358" size="1" var="var" />
+      <ITEM name="enFCUs_RT" type="R_TRIG" addr="3366" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enFanHigh_RT" type="R_TRIG" addr="3360" size="1" var="var" />
+      <ITEM name="enFanHigh_RT" type="R_TRIG" addr="3368" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enFanMed_RT" type="R_TRIG" addr="3362" size="1" var="var" />
+      <ITEM name="enFanMed_RT" type="R_TRIG" addr="3370" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enFanLow_RT" type="R_TRIG" addr="3364" size="1" var="var" />
+      <ITEM name="enFanLow_RT" type="R_TRIG" addr="3372" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enFanAuto_RT" type="R_TRIG" addr="3366" size="1" var="var" />
+      <ITEM name="enFanAuto_RT" type="R_TRIG" addr="3374" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enFCUCool_RT" type="R_TRIG" addr="3368" size="1" var="var" />
+      <ITEM name="enFCUCool_RT" type="R_TRIG" addr="3376" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enFCUFanOnly_RT" type="R_TRIG" addr="3370" size="1" var="var" />
+      <ITEM name="enFCUFanOnly_RT" type="R_TRIG" addr="3378" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enSetTempIncr_RT" type="R_TRIG" addr="3372" size="1" var="var" />
+      <ITEM name="enSetTempIncr_RT" type="R_TRIG" addr="3380" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enSetTempIncr_FT" type="F_TRIG" addr="3374" size="1" var="var" />
+      <ITEM name="enSetTempIncr_FT" type="F_TRIG" addr="3382" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enSetTempDecr_RT" type="R_TRIG" addr="3376" size="1" var="var" />
+      <ITEM name="enSetTempDecr_RT" type="R_TRIG" addr="3384" size="1" var="var" />
       </ARRAY> </ARRAY> 
     <ARRAY size="2" lo="1" hi="2" > <ARRAY size="1" lo="1" hi="1" > 
-      <ITEM name="enSetTempDecr_FT" type="F_TRIG" addr="3378" size="1" var="var" />
+      <ITEM name="enSetTempDecr_FT" type="F_TRIG" addr="3386" size="1" var="var" />
       </ARRAY> </ARRAY> 
-    <ITEM name="HMI_Index" type="USINT" addr="3380" size="1" var="var" />
-    <ITEM name="RCU_Index" type="USINT" addr="3381" size="1" var="var" />
+    <ITEM name="HMI_Index" type="USINT" addr="3388" size="1" var="var" />
+    <ITEM name="RCU_Index" type="USINT" addr="3389" size="1" var="var" />
     <ARRAY size="2" lo="1" hi="2" > 
-      <ITEM name="HMI_Addresses" type="USINT" addr="3382" size="1" var="var" value="[9, 11]" />
+      <ITEM name="HMI_Addresses" type="USINT" addr="3390" size="1" var="var" value="[9, 11]" />
       </ARRAY> 
   </RECORD>
   <RECORD name="PrgInterance" size="3230" pou="prog" descr="" >
@@ -1125,12 +1185,12 @@ the lights, curtains, and outlets" >
   <ARRAY size="1" lo="1" hi="8" > 
     <ITEM name="outletsStatusInterance" type="BOOL" location="%M" addr="2876" bit="0" size="1" puball="1" />
     </ARRAY> 
-  <ITEM name="DiningRoom" type="PrgDiningRoom" location="%M" addr="3277" size="3336" />
-  <ITEM name="LivingRoom" type="PrgLivingRoom" location="%M" addr="6613" size="3295" />
-  <ITEM name="Kitchen" type="PrgKitchen" location="%M" addr="9908" size="3313" />
-  <ITEM name="ServiceRoom" type="PrgServiceRoom" location="%M" addr="13221" size="3230" />
-  <ITEM name="MasterRoom" type="PrgMasterRoom" location="%M" addr="16451" size="3408" />
-  <ITEM name="Room4" type="PrgRoom4" location="%M" addr="19859" size="3384" />
-  <ITEM name="Interance" type="PrgInterance" location="%M" addr="23243" size="3230" />
+  <ITEM name="DiningRoom" type="PrgDiningRoom" location="%M" addr="3627" size="3336" />
+  <ITEM name="LivingRoom" type="PrgLivingRoom" location="%M" addr="6963" size="3307" />
+  <ITEM name="Kitchen" type="PrgKitchen" location="%M" addr="10270" size="3313" />
+  <ITEM name="ServiceRoom" type="PrgServiceRoom" location="%M" addr="13583" size="3230" />
+  <ITEM name="MasterRoom" type="PrgMasterRoom" location="%M" addr="16813" size="3420" />
+  <ITEM name="Room4" type="PrgRoom4" location="%M" addr="20233" size="3392" />
+  <ITEM name="Interance" type="PrgInterance" location="%M" addr="23625" size="3230" />
  </DATA>
 </MAP>

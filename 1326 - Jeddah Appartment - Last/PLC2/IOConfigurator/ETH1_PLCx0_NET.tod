@@ -1,0 +1,329 @@
+﻿<TecoDictionary xmlns="http://www.tecomat.com">
+  <DataTypes>
+    <DataType>
+      <Name>_TTS_PLCxHead</Name>
+      <SubItems>
+        <SubItem>
+          <Name>code</Name>
+          <Type>WORD</Type>
+        </SubItem>
+        <SubItem>
+          <Name>mode</Name>
+          <Type>WORD</Type>
+        </SubItem>
+        <SubItem>
+          <Name>chMod</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>adr</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>speed</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>timeout</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>pause</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>netID</Name>
+          <Type>WORD</Type>
+        </SubItem>
+        <SubItem>
+          <Name>pldMode</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>sysMap</Name>
+          <Type>WORD</Type>
+        </SubItem>
+        <SubItem>
+          <Name>port</Name>
+          <Type>UINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>key1</Name>
+          <Type>DWORD</Type>
+        </SubItem>
+        <SubItem>
+          <Name>key2</Name>
+          <Type>DWORD</Type>
+        </SubItem>
+        <SubItem>
+          <Name>nnt</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>raster</Name>
+          <Type>USINT</Type>
+        </SubItem>
+      </SubItems>
+    </DataType>
+    <DataType>
+      <Name>_TTS_LPLCx</Name>
+      <SubItems>
+        <SubItem>
+          <Name>raster</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>adr</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>len</Name>
+          <Type>UINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>idat</Name>
+          <Type>UDINT</Type>
+        </SubItem>
+      </SubItems>
+    </DataType>
+    <DataType>
+      <Name>_TTS_LPLCx[3]</Name>
+      <BaseType>_TTS_LPLCx</BaseType>
+      <ArrayInfo>
+        <LBound>0</LBound>
+        <Elements>3</Elements>
+      </ArrayInfo>
+    </DataType>
+    <DataType>
+      <Name>_TTS_PLCxINIT_{CHANNEL}</Name>
+      <SubItems>
+        <SubItem>
+          <Name>Head</Name>
+          <Type>_TTS_PLCxHead</Type>
+        </SubItem>
+        <SubItem>
+          <Name>Line</Name>
+          <Type>_TTS_LPLCx[3]</Type>
+        </SubItem>
+      </SubItems>
+    </DataType>
+    <DataType>
+      <Name>TPLCx_{CHANNEL}_ADR3_RX</Name>
+      <SubItems>
+        <SubItem>
+          <Name>STAT</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>ERR</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>NUMR</Name>
+          <Type>UINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>DATA</Name>
+          <Type>TPLCx_{CHANNEL}_ADR3_RX_DATA</Type>
+        </SubItem>
+      </SubItems>
+    </DataType>
+    <DataType>
+      <Name>TPLCx_{CHANNEL}_ADR3_RX_DATA</Name>
+      <BaseType>USINT</BaseType>
+      <ArrayInfo>
+        <LBound>0</LBound>
+        <Elements>238</Elements>
+      </ArrayInfo>
+    </DataType>
+    <DataType>
+      <Name>TPLCx_{CHANNEL}_ADR1_RX</Name>
+      <SubItems>
+        <SubItem>
+          <Name>STAT</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>ERR</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>NUMR</Name>
+          <Type>UINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>DATA</Name>
+          <Type>TPLCx_{CHANNEL}_ADR1_RX_DATA</Type>
+        </SubItem>
+      </SubItems>
+    </DataType>
+    <DataType>
+      <Name>TPLCx_{CHANNEL}_ADR1_RX_DATA</Name>
+      <BaseType>USINT</BaseType>
+      <ArrayInfo>
+        <LBound>0</LBound>
+        <Elements>50</Elements>
+      </ArrayInfo>
+    </DataType>
+    <DataType>
+      <Name>TPLCx_{CHANNEL}_ADR2_TX</Name>
+      <SubItems>
+        <SubItem>
+          <Name>CONT</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>SIGN</Name>
+          <Type>USINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>NUMT</Name>
+          <Type>UINT</Type>
+        </SubItem>
+        <SubItem>
+          <Name>DATA</Name>
+          <Type>TPLCx_{CHANNEL}_ADR2_TX_DATA</Type>
+        </SubItem>
+      </SubItems>
+    </DataType>
+    <DataType>
+      <Name>TPLCx_{CHANNEL}_ADR2_TX_DATA</Name>
+      <BaseType>USINT</BaseType>
+      <ArrayInfo>
+        <LBound>0</LBound>
+        <Elements>50</Elements>
+      </ArrayInfo>
+    </DataType>
+  </DataTypes>
+  <Objects>
+    <Object index="#x9FFF" name="r{RACK}_p{POSITION}_Table_PLCx_{CHANNEL}" type="_TTS_PLCxINIT_{CHANNEL}" access="ro">
+      <SubObjects>
+        <SubObject name="Head" access="ro">
+          <SubObjects>
+            <SubObject name="code">
+              <DefaultData>C3</DefaultData>
+            </SubObject>
+            <SubObject name="chMod">
+              <DefaultData>03</DefaultData>
+            </SubObject>
+            <SubObject name="adr">
+              <DefaultValue>2</DefaultValue>
+            </SubObject>
+            <SubObject name="netID">
+              <DefaultValue>15600</DefaultValue>
+            </SubObject>
+            <SubObject name="sysMap">
+              <MacroValue>${CHANNEL_CODE}</MacroValue>
+            </SubObject>
+            <SubObject name="nnt">
+              <DefaultValue>3</DefaultValue>
+            </SubObject>
+            <SubObject name="raster">
+              <DefaultValue>20</DefaultValue>
+            </SubObject>
+          </SubObjects>
+        </SubObject>
+        <SubObject name="Line" access="ro">
+          <Excluded>@r{RACK}_p{POSITION}_Table_PLCx_{CHANNEL}.Head.nnt == 0</Excluded>
+          <SubObjects>
+            <SubObject name="Line[0]">
+              <Comment>
+                <label>PLC3</label>
+              </Comment>
+              <SubObjects>
+                <SubObject name="adr">
+                  <DefaultValue>3</DefaultValue>
+                </SubObject>
+                <SubObject name="len">
+                  <DefaultValue>238</DefaultValue>
+                </SubObject>
+                <SubObject name="idat">
+                  <MacroValue>__offset32(PLCx_{CHANNEL}_ADR3_RX)</MacroValue>
+                </SubObject>
+              </SubObjects>
+            </SubObject>
+            <SubObject name="Line[1]">
+              <Comment>
+                <label>PLC1_Curtains</label>
+              </Comment>
+              <SubObjects>
+                <SubObject name="adr">
+                  <DefaultValue>1</DefaultValue>
+                </SubObject>
+                <SubObject name="len">
+                  <DefaultValue>50</DefaultValue>
+                </SubObject>
+                <SubObject name="idat">
+                  <MacroValue>__offset32(PLCx_{CHANNEL}_ADR1_RX)</MacroValue>
+                </SubObject>
+              </SubObjects>
+            </SubObject>
+            <SubObject name="Line[2]">
+              <Comment>
+                <label>PLC2_Curtains</label>
+              </Comment>
+              <SubObjects>
+                <SubObject name="adr">
+                  <DefaultValue>2</DefaultValue>
+                </SubObject>
+                <SubObject name="len">
+                  <DefaultValue>50</DefaultValue>
+                </SubObject>
+                <SubObject name="idat">
+                  <MacroValue>__offset32(PLCx_{CHANNEL}_ADR2_TX)</MacroValue>
+                </SubObject>
+              </SubObjects>
+            </SubObject>
+          </SubObjects>
+        </SubObject>
+      </SubObjects>
+    </Object>
+    <Object index="#x5FFD" name="PLCx_{CHANNEL}_ADR3_RX" type="TPLCx_{CHANNEL}_ADR3_RX">
+      <SubObjects>
+        <SubObject name="DATA">
+          <Xml>
+            <Editor>
+              <Expanded>0</Expanded>
+            </Editor>
+          </Xml>
+        </SubObject>
+      </SubObjects>
+      <Alias warn="true">
+        <label>PLC3</label>
+      </Alias>
+    </Object>
+    <Object index="#x5FFE" name="PLCx_{CHANNEL}_ADR1_RX" type="TPLCx_{CHANNEL}_ADR1_RX">
+      <SubObjects>
+        <SubObject name="DATA">
+          <Xml>
+            <Editor>
+              <Expanded>0</Expanded>
+            </Editor>
+          </Xml>
+        </SubObject>
+      </SubObjects>
+      <Alias warn="true">
+        <label>PLC1_Curtains</label>
+      </Alias>
+    </Object>
+    <Object index="#x5FFF" name="PLCx_{CHANNEL}_ADR2_TX" type="TPLCx_{CHANNEL}_ADR2_TX">
+      <SubObjects>
+        <SubObject name="DATA" at="@r{RACK}_p{POSITION}_Settings_PLCx_{CHANNEL}.FixedLocation.Address">
+          <ArrayDependency>
+            <Elements>
+              <ValueOf>r{RACK}_p{POSITION}_Settings_PLCx_{CHANNEL}.ZoneSize</ValueOf>
+            </Elements>
+          </ArrayDependency>
+          <Xml>
+            <Editor>
+              <Expanded>0</Expanded>
+            </Editor>
+          </Xml>
+        </SubObject>
+      </SubObjects>
+      <Alias warn="true">
+        <label>PLC2_Curtains</label>
+      </Alias>
+    </Object>
+  </Objects>
+</TecoDictionary>

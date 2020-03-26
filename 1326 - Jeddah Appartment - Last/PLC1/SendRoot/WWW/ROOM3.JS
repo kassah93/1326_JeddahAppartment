@@ -701,32 +701,32 @@ setTimeout("FunWatchDog()", 20000);
 }
 
 function PostXML19() {
-PostXML('ROOM3.XML', encodeURIComponent('__R16999_USINT_u=0')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R17053_USINT_u=0')); 
 }
 function PostXML20() {
-PostXML('ROOM3.XML', encodeURIComponent('__R16999_USINT_u=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R17053_USINT_u=1')); 
 }
 function PostXML21() {
-PostXML('ROOM3.XML', encodeURIComponent('__R16999_USINT_u=2')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R17053_USINT_u=2')); 
 }
 function PostXML31() {
-PostXML('ROOM3.XML', encodeURIComponent('__R16999_USINT_u=3')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R17053_USINT_u=3')); 
 }
 function PostXML39() {
 var Input39h = document.getElementById('INPUT39h');
 PostXML('ROOM3.XML', encodeURIComponent(Input39h.name+'='+Input39h.value));
 }
 function PostXML48() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20369_USINT_u=0')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20423_USINT_u=0')); 
 }
 function PostXML49() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20369_USINT_u=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20423_USINT_u=1')); 
 }
 function PostXML50() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20369_USINT_u=2')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20423_USINT_u=2')); 
 }
 function PostXML51() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20369_USINT_u=3')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20423_USINT_u=3')); 
 }
 function PostXML53() {
 var Input53h = document.getElementById('INPUT53h');
@@ -743,31 +743,31 @@ var Input55h = document.getElementById('INPUT55h');
 PostXML('ROOM3.XML', encodeURIComponent(Input55h.name+'='+Input55h.value));
 }
 function PostXML69() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20193.1_BOOL_i=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20247.1_BOOL_i=1')); 
 }
 function PostXML70() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20193.0_BOOL_i=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20247.0_BOOL_i=1')); 
 }
 function PostXML71() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20193.2_BOOL_i=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20247.2_BOOL_i=1')); 
 }
 function PostXML72() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20193.3_BOOL_i=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20247.3_BOOL_i=1')); 
 }
 function PostXML73() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20193.4_BOOL_i=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20247.4_BOOL_i=1')); 
 }
 function PostXML75() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20193.5_BOOL_i=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20247.5_BOOL_i=1')); 
 }
 function PostXML77() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20213.0_BOOL_i=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20267.0_BOOL_i=1')); 
 }
 function PostXML83() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20276.0_BOOL_i=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20330.0_BOOL_i=1')); 
 }
 function PostXML84() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20277.0_BOOL_i=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20331.0_BOOL_i=1')); 
 }
 
 function PostGlobal() {

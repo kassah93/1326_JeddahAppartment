@@ -1,0 +1,1489 @@
+<?xml version="1.0" encoding="windows-1250" ?>
+<web version="8.1" propfont="true" foot="© 2007 - 2020 Teco a.s." MaxUid="20676" height="754" width="432" menu="false" title="false" border="true" top="0" left="0" iniScale="100" maxScale="100" useIniScale="false" useMaxScale="false" userScale="true" webApp="false" bgdupl="false" bgcolor="16777215" icon="" id18="1" author="Teco a.s." encoding="windows-1250">
+	<panels></panels>
+	<Grid Enable="1" X="5" Y="5" />
+	<globalset newdim="0" />
+	<group caption="" Uid="19992">
+		<page caption="DiningRoom" name="DINING.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1584613147" width="406" height="718" default="true" Uid="20210">
+			<object caption="" X="1" Y="22" xoff="6" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20406" layer="9">
+				<picture href="" img="CONSOLE.PNG" />
+			</object>
+			<object caption="" X="24" Y="47" xoff="1" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20008" layer="2">
+				<image optcap="" variable="outletsStatusDiningRoom[1]" type="BOOL" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
+			</object>
+			<object caption="" X="2" Y="2" xoff="2" yoff="6" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20019">
+				<picture href="" img="TECO-LOG.PNG" />
+			</object>
+			<object caption="" X="1" Y="8" xoff="6" yoff="4" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20020">
+				<picture href="" img="BAR_-_WI.PNG" />
+			</object>
+			<object caption="" X="9" Y="14" xoff="7" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="DiningRoom.lightsSelect" vistype="BOOL" visneg="true" Uid="20021">
+				<block width="90" height="5" border="false" />
+			</object>
+			<object caption="" X="21" Y="14" xoff="1" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="DiningRoom.socketsSelect" vistype="BOOL" visneg="true" Uid="20022">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="LIGHTS" X="12" Y="11" xoff="2" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="DiningRoom.lightsSelect" vistype="BOOL" visneg="true" Uid="20024">
+				<label />
+			</object>
+			<object caption="SOCKETS" X="22" Y="11" xoff="6" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="DiningRoom.socketsSelect" vistype="BOOL" visneg="true" Uid="20025">
+				<label />
+			</object>
+			<object caption="LIGHTS" X="12" Y="11" xoff="2" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="DiningRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20027">
+				<label />
+			</object>
+			<object caption="SOCKETS" X="22" Y="11" xoff="6" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="DiningRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20028">
+				<label />
+			</object>
+			<object caption="" X="9" Y="14" xoff="7" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="DiningRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20030">
+				<block width="90" height="5" border="false" />
+			</object>
+			<object caption="" X="21" Y="14" xoff="1" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="DiningRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20031">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="9" Y="10" xoff="6" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20033" layer="15">
+				<block width="90" height="35" border="false" variable="DiningRoom.navSelect" type="USINT" value="0" />
+			</object>
+			<object caption="" X="21" Y="10" xoff="1" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20034" layer="15">
+				<block width="90" height="35" border="false" variable="DiningRoom.navSelect" type="USINT" value="1" />
+			</object>
+			<object caption="" X="32" Y="14" xoff="3" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="true" Uid="20056">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="AC" X="36" Y="11" xoff="6" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="true" Uid="20057">
+				<label />
+			</object>
+			<object caption="AC" X="36" Y="11" xoff="6" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20058">
+				<label />
+			</object>
+			<object caption="" X="32" Y="14" xoff="3" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20059">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="32" Y="10" xoff="3" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20060" layer="15">
+				<block width="90" height="35" border="false" variable="DiningRoom.navSelect" type="USINT" value="2" />
+			</object>
+			<object caption="" X="22" Y="81" xoff="6" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20061">
+				<image optcap="" variable="DiningRoom.motionSensStatus[1]" type="BOOL" on="MOTION_S.GIF" off="MOTION_S.PNG" />
+			</object>
+			<object caption="" X="6" Y="38" xoff="5" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20062" layer="1">
+				<image optcap="" variable="lightsStatusDiningRoom[1]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="22" Y="38" xoff="6" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20063" layer="1">
+				<image optcap="" variable="lightsStatusDiningRoom[2]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="38" Y="38" xoff="7" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20064" layer="1">
+				<image optcap="" variable="lightsStatusDiningRoom[3]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="14" Y="53" xoff="1" yoff="4" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20065" layer="1">
+				<image optcap="" variable="lightsStatusDiningRoom[4]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="32" Y="53" xoff="3" yoff="4" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20066" layer="1">
+				<image optcap="" variable="lightsStatusDiningRoom[5]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="6" Y="37" xoff="6" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20471" layer="5">
+				<block width="65" height="70" border="false" variable="DiningRoom.EnLights[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="22" Y="37" xoff="5" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20472" layer="5">
+				<block width="65" height="70" border="false" variable="DiningRoom.EnLights[2]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="38" Y="37" xoff="7" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20473" layer="5">
+				<block width="65" height="70" border="false" variable="DiningRoom.EnLights[3]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="14" Y="53" xoff="2" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20474" layer="5">
+				<block width="65" height="70" border="false" variable="DiningRoom.EnLights[4]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="32" Y="53" xoff="2" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20475" layer="5">
+				<block width="65" height="70" border="false" variable="DiningRoom.EnLights[5]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="22" Y="46" xoff="7" yoff="0" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20497" layer="6">
+				<block width="65" height="70" border="false" variable="DiningRoom.EnOutlets[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="3" Y="25" xoff="3" yoff="0" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20566" layer="4">
+				<image optcap="" variable="DiningRoom.enableFCU[1]" type="BOOL" on="ON.PNG" off="OFF.PNG" />
+			</object>
+			<object caption="" X="4" Y="44" xoff="0" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20567" layer="4">
+				<mulimg variable="DiningRoom.settingsFCU[1].FCU_FanSpeed" type="ENUM" count="4">
+					<img name="INDICATO.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="10" Y="44" xoff="4" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20568" layer="4">
+				<mulimg variable="DiningRoom.settingsFCU[1].FCU_FanSpeed" type="ENUM" count="4">
+					<img name="INDICAT1.PNG" />
+					<img name="INDICATO.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="16" Y="44" xoff="7" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20569" layer="4">
+				<mulimg variable="DiningRoom.settingsFCU[1].FCU_FanSpeed" type="ENUM" count="4">
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICATO.PNG" />
+					<img name="INDICAT1.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="23" Y="44" xoff="3" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20570" layer="4">
+				<mulimg variable="DiningRoom.settingsFCU[1].FCU_FanSpeed" type="ENUM" count="4">
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICATO.PNG" />
+				</mulimg>
+			</object>
+			<object caption="Auto" X="4" Y="49" xoff="0" yoff="3" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20571" layer="4">
+				<label />
+			</object>
+			<object caption="Low" X="10" Y="49" xoff="2" yoff="3" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20572" layer="4">
+				<label />
+			</object>
+			<object caption="Med" X="16" Y="49" xoff="4" yoff="3" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20573" layer="4">
+				<label />
+			</object>
+			<object caption="High" X="23" Y="49" xoff="3" yoff="3" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20574" layer="4">
+				<label />
+			</object>
+			<object caption="" X="34" Y="40" xoff="5" yoff="0" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20575" layer="4">
+				<mulimg variable="DiningRoom.FCU[1].FCU_Status.fanSpeed" type="WORD" count="5">
+					<img name="FAN_OFF.PNG" />
+					<img name="80.GIF" />
+					<img name="50.GIF" />
+					<img name="50.GIF" />
+					<img name="20.GIF" />
+				</mulimg>
+			</object>
+			<object caption="" X="3" Y="37" xoff="3" yoff="4" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20576" layer="4">
+				<image optcap="" variable="DiningRoom.settingsFCU[1].FCU_Mode" type="ENUM" on="VENTILA1.PNG" off="AIR-CON1.PNG" />
+			</object>
+			<object caption="" X="13" Y="32" xoff="3" yoff="4" level="0" readonly="false" front="3947580" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20577" layer="4">
+				<edit variable="setTempFCU_DiningRoom[1]" type="REAL" intf="0" timf="" align="left" zero="false" prec="1" size="4" global="false" border="true" width="37" height="21" tabindex="1" />
+			</object>
+			<object caption="" X="41" Y="23" xoff="4" yoff="5" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20578" layer="4">
+				<image optcap="" variable="DiningRoom.FCU[1].FCU_Status.valve" type="WORD" on="CONTROL1.PNG" off="CONTROL-.PNG" />
+			</object>
+			<object caption="Set Temp" X="3" Y="32" xoff="3" yoff="7" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20579" layer="4">
+				<label />
+			</object>
+			<object caption="" X="44" Y="32" xoff="0" yoff="4" level="0" readonly="true" front="0" back="6579300" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20580" layer="4">
+				<edit variable="FCU_Temp_DiningRoom" type="REAL" intf="0" timf="" align="left" zero="false" prec="1" size="4" global="true" border="true" width="37" height="21" tabindex="2" />
+			</object>
+			<object caption="Room" X="35" Y="32" xoff="2" yoff="7" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20581" layer="4">
+				<label />
+			</object>
+			<object caption="" X="41" Y="30" xoff="4" yoff="5" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20582" layer="4">
+				<picture href="" img="THERMOME.PNG" />
+			</object>
+			<object caption="Valve" X="35" Y="26" xoff="2" yoff="0" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20583" layer="4">
+				<label />
+			</object>
+			<object caption="C" X="21" Y="33" xoff="6" yoff="0" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20584" layer="4">
+				<label />
+			</object>
+			<object caption="C" X="49" Y="32" xoff="5" yoff="7" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20585" layer="4">
+				<label />
+			</object>
+			<object caption="Cooling" X="9" Y="36" xoff="1" yoff="3" level="0" readonly="true" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20586" layer="4">
+				<image optcap="Fan only" variable="DiningRoom.settingsFCU[1].FCU_Mode" type="ENUM" on="TRANSPE2.PNG" off="TRANSPE2.PNG" />
+			</object>
+			<object caption="" X="4" Y="44" xoff="2" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20595" layer="8">
+				<block width="30" height="30" border="false" variable="DiningRoom.settingsFCU[1].FCU_FanSpeed" type="ENUM" value="0" />
+			</object>
+			<object caption="" X="10" Y="44" xoff="4" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20596" layer="8">
+				<block width="30" height="30" border="false" variable="DiningRoom.settingsFCU[1].FCU_FanSpeed" type="ENUM" value="1" />
+			</object>
+			<object caption="" X="17" Y="44" xoff="0" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20597" layer="8">
+				<block width="30" height="30" border="false" variable="DiningRoom.settingsFCU[1].FCU_FanSpeed" type="ENUM" value="2" />
+			</object>
+			<object caption="" X="23" Y="44" xoff="5" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="DiningRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20598" layer="8">
+				<block width="30" height="30" border="false" variable="DiningRoom.settingsFCU[1].FCU_FanSpeed" type="ENUM" value="3" />
+			</object>
+			<object caption="" X="44" Y="84" xoff="6" yoff="1" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20624">
+				<picture href="HOME.XML" img="HOME1_50.PNG" />
+			</object>
+			<object caption="DINING ROOM" X="16" Y="17" xoff="0" yoff="7" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="20" transparent="true" visneg="false" Uid="20639">
+				<label />
+			</object>
+		</page>
+		<page caption="kitchen" name="KITCHEN.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1584613310" width="406" height="718" Uid="20400">
+			<object caption="" X="1" Y="22" xoff="6" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20407" layer="9">
+				<picture href="" img="CONSOLE.PNG" />
+			</object>
+			<object caption="" X="2" Y="2" xoff="2" yoff="6" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20218">
+				<picture href="" img="TECO-LOG.PNG" />
+			</object>
+			<object caption="" X="1" Y="8" xoff="6" yoff="4" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20219">
+				<picture href="" img="BAR_-_WI.PNG" />
+			</object>
+			<object caption="" X="9" Y="14" xoff="7" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Kitchen.lightsSelect" vistype="BOOL" visneg="true" Uid="20220">
+				<block width="90" height="5" border="false" />
+			</object>
+			<object caption="" X="21" Y="14" xoff="1" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Kitchen.socketsSelect" vistype="BOOL" visneg="true" Uid="20221">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="LIGHTS" X="12" Y="11" xoff="2" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Kitchen.lightsSelect" vistype="BOOL" visneg="true" Uid="20222">
+				<label />
+			</object>
+			<object caption="SOCKETS" X="22" Y="11" xoff="6" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Kitchen.socketsSelect" vistype="BOOL" visneg="true" Uid="20223">
+				<label />
+			</object>
+			<object caption="LIGHTS" X="12" Y="11" xoff="2" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Kitchen.lightsSelect" vistype="BOOL" visneg="false" Uid="20224">
+				<label />
+			</object>
+			<object caption="SOCKETS" X="22" Y="11" xoff="6" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Kitchen.socketsSelect" vistype="BOOL" visneg="false" Uid="20225">
+				<label />
+			</object>
+			<object caption="" X="9" Y="14" xoff="7" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="Kitchen.lightsSelect" vistype="BOOL" visneg="false" Uid="20226">
+				<block width="90" height="5" border="false" />
+			</object>
+			<object caption="" X="21" Y="14" xoff="1" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="Kitchen.socketsSelect" vistype="BOOL" visneg="false" Uid="20227">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="9" Y="10" xoff="6" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20228" layer="15">
+				<block width="90" height="35" border="false" variable="Kitchen.navSelect" type="USINT" value="0" />
+			</object>
+			<object caption="" X="21" Y="10" xoff="1" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20229" layer="15">
+				<block width="90" height="35" border="false" variable="Kitchen.navSelect" type="USINT" value="1" />
+			</object>
+			<object caption="" X="32" Y="14" xoff="3" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="true" Uid="20230">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="AC" X="36" Y="11" xoff="6" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="true" Uid="20231">
+				<label />
+			</object>
+			<object caption="AC" X="36" Y="11" xoff="6" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20232">
+				<label />
+			</object>
+			<object caption="" X="32" Y="14" xoff="3" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20233">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="32" Y="10" xoff="3" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20234" layer="15">
+				<block width="90" height="35" border="false" variable="Kitchen.navSelect" type="USINT" value="2" />
+			</object>
+			<object caption="" X="22" Y="81" xoff="6" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20235">
+				<image optcap="" variable="Kitchen.motionSensStatus[1]" type="BOOL" on="MOTION_S.GIF" off="MOTION_S.PNG" />
+			</object>
+			<object caption="" X="14" Y="38" xoff="1" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.lightsSelect" vistype="BOOL" visneg="false" Uid="20236" layer="1">
+				<image optcap="" variable="lightsStatusKitchen[1]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="32" Y="38" xoff="3" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.lightsSelect" vistype="BOOL" visneg="false" Uid="20237" layer="1">
+				<image optcap="" variable="lightsStatusKitchen[2]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="14" Y="53" xoff="1" yoff="4" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.lightsSelect" vistype="BOOL" visneg="false" Uid="20239" layer="1">
+				<image optcap="" variable="lightsStatusKitchen[3]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="32" Y="53" xoff="3" yoff="4" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.lightsSelect" vistype="BOOL" visneg="false" Uid="20240" layer="1">
+				<image optcap="" variable="lightsStatusKitchen[4]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="24" Y="47" xoff="1" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.socketsSelect" vistype="BOOL" visneg="false" Uid="20243" layer="2">
+				<image optcap="" variable="outletsStatusKitchen[1]" type="BOOL" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
+			</object>
+			<object caption="" X="14" Y="37" xoff="2" yoff="7" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.lightsSelect" vistype="BOOL" visneg="false" Uid="20465" layer="5">
+				<block width="65" height="70" border="false" variable="Kitchen.EnLights[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="32" Y="37" xoff="4" yoff="7" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.lightsSelect" vistype="BOOL" visneg="false" Uid="20466" layer="5">
+				<block width="65" height="70" border="false" variable="Kitchen.EnLights[2]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="14" Y="53" xoff="2" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.lightsSelect" vistype="BOOL" visneg="false" Uid="20468" layer="5">
+				<block width="65" height="70" border="false" variable="Kitchen.EnLights[3]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="32" Y="53" xoff="4" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.lightsSelect" vistype="BOOL" visneg="false" Uid="20469" layer="5">
+				<block width="65" height="70" border="false" variable="Kitchen.EnLights[4]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="22" Y="46" xoff="7" yoff="0" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.socketsSelect" vistype="BOOL" visneg="false" Uid="20492" layer="6">
+				<block width="65" height="70" border="false" variable="Kitchen.EnOutlets[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="3" Y="24" xoff="5" yoff="7" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20545" layer="4">
+				<image optcap="" variable="Kitchen.enableFCU[1]" type="BOOL" on="ON.PNG" off="OFF.PNG" />
+			</object>
+			<object caption="" X="4" Y="44" xoff="2" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20546" layer="4">
+				<mulimg variable="Kitchen.settingsFCU[1].FCU_FanSpeed" type="ENUM" count="4">
+					<img name="INDICATO.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="10" Y="44" xoff="6" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20547" layer="4">
+				<mulimg variable="Kitchen.settingsFCU[1].FCU_FanSpeed" type="ENUM" count="4">
+					<img name="INDICAT1.PNG" />
+					<img name="INDICATO.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="17" Y="44" xoff="1" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20548" layer="4">
+				<mulimg variable="Kitchen.settingsFCU[1].FCU_FanSpeed" type="ENUM" count="4">
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICATO.PNG" />
+					<img name="INDICAT1.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="23" Y="44" xoff="5" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20549" layer="4">
+				<mulimg variable="Kitchen.settingsFCU[1].FCU_FanSpeed" type="ENUM" count="4">
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICATO.PNG" />
+				</mulimg>
+			</object>
+			<object caption="Auto" X="4" Y="49" xoff="2" yoff="2" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20550" layer="4">
+				<label />
+			</object>
+			<object caption="Low" X="10" Y="49" xoff="4" yoff="2" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20551" layer="4">
+				<label />
+			</object>
+			<object caption="Med" X="16" Y="49" xoff="6" yoff="2" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20552" layer="4">
+				<label />
+			</object>
+			<object caption="High" X="23" Y="49" xoff="5" yoff="2" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20553" layer="4">
+				<label />
+			</object>
+			<object caption="" X="34" Y="39" xoff="7" yoff="7" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20554" layer="4">
+				<mulimg variable="Kitchen.FCU[1].FCU_Status.fanSpeed" type="WORD" count="5">
+					<img name="FAN_OFF.PNG" />
+					<img name="80.GIF" />
+					<img name="50.GIF" />
+					<img name="50.GIF" />
+					<img name="20.GIF" />
+				</mulimg>
+			</object>
+			<object caption="" X="3" Y="37" xoff="5" yoff="3" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20555" layer="4">
+				<image optcap="" variable="Kitchen.settingsFCU[1].FCU_Mode" type="ENUM" on="VENTILA1.PNG" off="AIR-CON1.PNG" />
+			</object>
+			<object caption="" X="13" Y="32" xoff="5" yoff="3" level="0" readonly="false" front="3947580" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20556" layer="4">
+				<edit variable="setTempFCU_Kitchen[1]" type="REAL" intf="0" timf="" align="left" zero="false" prec="1" size="4" global="false" border="true" width="37" height="21" tabindex="1" />
+			</object>
+			<object caption="" X="41" Y="23" xoff="6" yoff="4" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20557" layer="4">
+				<image optcap="" variable="Kitchen.FCU[1].FCU_Status.valve" type="WORD" on="CONTROL1.PNG" off="CONTROL-.PNG" />
+			</object>
+			<object caption="Set Temp" X="3" Y="32" xoff="5" yoff="6" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20558" layer="4">
+				<label />
+			</object>
+			<object caption="" X="44" Y="32" xoff="2" yoff="3" level="0" readonly="true" front="0" back="6579300" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20559" layer="4">
+				<edit variable="FCU_Temp_Kitchen" type="REAL" intf="0" timf="" align="left" zero="false" prec="1" size="4" global="true" border="true" width="37" height="21" tabindex="2" />
+			</object>
+			<object caption="Room" X="35" Y="32" xoff="4" yoff="6" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20560" layer="4">
+				<label />
+			</object>
+			<object caption="" X="41" Y="30" xoff="6" yoff="4" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20561" layer="4">
+				<picture href="" img="THERMOME.PNG" />
+			</object>
+			<object caption="Valve" X="35" Y="25" xoff="4" yoff="7" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20562" layer="4">
+				<label />
+			</object>
+			<object caption="C" X="22" Y="32" xoff="0" yoff="7" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20563" layer="4">
+				<label />
+			</object>
+			<object caption="C" X="49" Y="32" xoff="7" yoff="6" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20564" layer="4">
+				<label />
+			</object>
+			<object caption="Cooling" X="9" Y="36" xoff="3" yoff="2" level="0" readonly="true" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20565" layer="4">
+				<image optcap="Fan only" variable="Kitchen.settingsFCU[1].FCU_Mode" type="ENUM" on="TRANSPE2.PNG" off="TRANSPE2.PNG" />
+			</object>
+			<object caption="" X="4" Y="44" xoff="3" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20591" layer="8">
+				<block width="30" height="30" border="false" variable="Kitchen.settingsFCU[1].FCU_FanSpeed" type="ENUM" value="0" />
+			</object>
+			<object caption="" X="10" Y="44" xoff="5" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20592" layer="8">
+				<block width="30" height="30" border="false" variable="Kitchen.settingsFCU[1].FCU_FanSpeed" type="ENUM" value="1" />
+			</object>
+			<object caption="" X="17" Y="44" xoff="1" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20593" layer="8">
+				<block width="30" height="30" border="false" variable="Kitchen.settingsFCU[1].FCU_FanSpeed" type="ENUM" value="2" />
+			</object>
+			<object caption="" X="23" Y="44" xoff="6" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.AC_Select" vistype="BOOL" visneg="false" Uid="20594" layer="8">
+				<block width="30" height="30" border="false" variable="Kitchen.settingsFCU[1].FCU_FanSpeed" type="ENUM" value="3" />
+			</object>
+			<object caption="" X="44" Y="84" xoff="6" yoff="1" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20630">
+				<picture href="HOME.XML" img="HOME1_50.PNG" />
+			</object>
+			<object caption="KITCHEN" X="20" Y="17" xoff="3" yoff="7" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="20" transparent="true" visneg="false" Uid="20640">
+				<label />
+			</object>
+		</page>
+		<page caption="LivingRoom" name="LIVING.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1585234692" width="406" height="718" Uid="20211">
+			<object caption="" X="1" Y="22" xoff="6" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20408" layer="9">
+				<picture href="" img="CONSOLE.PNG" />
+			</object>
+			<object caption="" X="2" Y="2" xoff="2" yoff="6" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20093">
+				<picture href="" img="TECO-LOG.PNG" />
+			</object>
+			<object caption="" X="1" Y="8" xoff="6" yoff="4" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20094">
+				<picture href="" img="BAR_-_WI.PNG" />
+			</object>
+			<object caption="" X="9" Y="14" xoff="3" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="LivingRoom.lightsSelect" vistype="BOOL" visneg="true" Uid="20095">
+				<block width="90" height="5" border="false" />
+			</object>
+			<object caption="" X="20" Y="14" xoff="5" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="LivingRoom.socketsSelect" vistype="BOOL" visneg="true" Uid="20096">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="31" Y="14" xoff="7" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="true" Uid="20097">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="LIGHTS" X="11" Y="11" xoff="6" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="LivingRoom.lightsSelect" vistype="BOOL" visneg="true" Uid="20098">
+				<label />
+			</object>
+			<object caption="SOCKETS" X="22" Y="11" xoff="2" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="LivingRoom.socketsSelect" vistype="BOOL" visneg="true" Uid="20099">
+				<label />
+			</object>
+			<object caption="CURTAINS" X="33" Y="11" xoff="0" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="true" Uid="20100">
+				<label />
+			</object>
+			<object caption="LIGHTS" X="11" Y="11" xoff="6" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="LivingRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20101">
+				<label />
+			</object>
+			<object caption="SOCKETS" X="22" Y="11" xoff="2" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="LivingRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20102">
+				<label />
+			</object>
+			<object caption="CURTAINS" X="33" Y="11" xoff="0" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20103">
+				<label />
+			</object>
+			<object caption="" X="9" Y="14" xoff="3" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="LivingRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20104">
+				<block width="90" height="5" border="false" />
+			</object>
+			<object caption="" X="20" Y="14" xoff="5" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="LivingRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20105">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="31" Y="14" xoff="7" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20106">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="9" Y="10" xoff="2" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20107" layer="15">
+				<block width="90" height="35" border="false" variable="LivingRoom.navSelect" type="USINT" value="0" />
+			</object>
+			<object caption="" X="20" Y="10" xoff="5" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20108" layer="15">
+				<block width="90" height="35" border="false" variable="LivingRoom.navSelect" type="USINT" value="1" />
+			</object>
+			<object caption="" X="31" Y="10" xoff="7" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20109" layer="15">
+				<block width="90" height="35" border="false" variable="LivingRoom.navSelect" type="USINT" value="2" />
+			</object>
+			<object caption="" X="22" Y="81" xoff="6" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20135">
+				<image optcap="" variable="LivingRoom.motionSensStatus[1]" type="BOOL" on="MOTION_S.GIF" off="MOTION_S.PNG" />
+			</object>
+			<object caption="" X="6" Y="38" xoff="5" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20205" layer="1">
+				<image optcap="" variable="lightsStatusLivingRoom[1]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="22" Y="38" xoff="6" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20206" layer="1">
+				<image optcap="" variable="lightsStatusLivingRoom[2]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="38" Y="38" xoff="7" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20207" layer="1">
+				<image optcap="" variable="lightsStatusLivingRoom[3]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="14" Y="53" xoff="1" yoff="4" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20208" layer="1">
+				<image optcap="" variable="lightsStatusLivingRoom[4]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="32" Y="53" xoff="3" yoff="4" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20209" layer="1">
+				<image optcap="" variable="lightsStatusLivingRoom[5]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="24" Y="47" xoff="1" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20214" layer="2">
+				<image optcap="" variable="outletsStatusLivingRoom[1]" type="BOOL" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
+			</object>
+			<object caption="" X="6" Y="37" xoff="6" yoff="4" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20459" layer="5">
+				<block width="65" height="70" border="false" variable="LivingRoom.EnLights[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="22" Y="37" xoff="5" yoff="4" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20460" layer="5">
+				<block width="65" height="70" border="false" variable="LivingRoom.EnLights[2]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="38" Y="37" xoff="7" yoff="4" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20461" layer="5">
+				<block width="65" height="70" border="false" variable="LivingRoom.EnLights[3]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="14" Y="53" xoff="2" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20462" layer="5">
+				<block width="65" height="70" border="false" variable="LivingRoom.EnLights[4]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="32" Y="53" xoff="2" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20463" layer="5">
+				<block width="65" height="70" border="false" variable="LivingRoom.EnLights[5]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="22" Y="46" xoff="7" yoff="0" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20488" layer="6">
+				<block width="65" height="70" border="false" variable="LivingRoom.EnOutlets[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="44" Y="84" xoff="6" yoff="1" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20629">
+				<picture href="HOME.XML" img="HOME1_50.PNG" />
+			</object>
+			<object caption="LIVING ROOM" X="16" Y="17" xoff="0" yoff="7" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="20" transparent="true" visneg="false" Uid="20641">
+				<label />
+			</object>
+			<object caption="" X="10" Y="31" xoff="7" yoff="4" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20662" layer="3">
+				<mulimg variable="curtainsStatus[10].normPos" type="USINT" count="5">
+					<img name="WINDOW9.PNG" />
+					<img name="WINDOW10.PNG" />
+					<img name="WINDOW11.PNG" />
+					<img name="WINDOW12.PNG" />
+					<img name="WINDOW13.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="14" Y="44" xoff="7" yoff="5" level="0" readonly="false" front="0" back="14474460" strong="false" italic="false" size="13" transparent="false" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20663" layer="3">
+				<edit variable="curtainsStatus[10].pos" type="USINT" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="27" height="19" tabindex="1" />
+			</object>
+			<object caption="%" X="19" Y="44" xoff="1" yoff="6" level="0" readonly="false" front="2565927" back="16777215" strong="false" italic="false" size="15" transparent="true" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20664" layer="3">
+				<label />
+			</object>
+			<object caption="" X="18" Y="48" xoff="3" yoff="4" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20665" layer="3">
+				<image optcap="" variable="curtainsStatus[10].outUP" type="BOOL" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
+			</object>
+			<object caption="" X="9" Y="48" xoff="7" yoff="4" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20666" layer="3">
+				<image optcap="" variable="curtainsStatus[10].outDW" type="BOOL" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
+			</object>
+			<object caption="" X="28" Y="31" xoff="2" yoff="6" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20667" layer="3">
+				<mulimg variable="curtainsStatus[11].normPos" type="USINT" count="5">
+					<img name="WINDOW9.PNG" />
+					<img name="WINDOW10.PNG" />
+					<img name="WINDOW11.PNG" />
+					<img name="WINDOW12.PNG" />
+					<img name="WINDOW13.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="32" Y="44" xoff="2" yoff="7" level="0" readonly="false" front="0" back="14474460" strong="false" italic="false" size="13" transparent="false" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20668" layer="3">
+				<edit variable="curtainsStatus[11].pos" type="USINT" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="27" height="19" tabindex="2" />
+			</object>
+			<object caption="%" X="36" Y="45" xoff="4" yoff="0" level="0" readonly="false" front="2565927" back="16777215" strong="false" italic="false" size="15" transparent="true" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20669" layer="3">
+				<label />
+			</object>
+			<object caption="" X="35" Y="48" xoff="3" yoff="6" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20670" layer="3">
+				<image optcap="" variable="curtainsStatus[11].outUP" type="BOOL" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
+			</object>
+			<object caption="" X="27" Y="48" xoff="1" yoff="6" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20671" layer="3">
+				<image optcap="" variable="curtainsStatus[11].outDW" type="BOOL" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
+			</object>
+			<object caption="" X="18" Y="48" xoff="5" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20672" layer="7">
+				<block width="50" height="50" border="false" variable="LivingRoom.enCurtainsUP_GUI[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="9" Y="48" xoff="6" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20673" layer="7">
+				<block width="50" height="50" border="false" variable="LivingRoom.enCurtainsDW_GUI[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="35" Y="48" xoff="4" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20674" layer="7">
+				<block width="50" height="50" border="false" variable="LivingRoom.enCurtainsUP_GUI[2]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="27" Y="48" xoff="1" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="LivingRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20675" layer="7">
+				<block width="50" height="50" border="false" variable="LivingRoom.enCurtainsDW_GUI[2]" type="BOOL" value="1" />
+			</object>
+		</page>
+		<page caption="MasterRoom" name="MASTER.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1584613324" width="406" height="718" Uid="20401">
+			<object caption="" X="1" Y="22" xoff="6" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20405" layer="9">
+				<picture href="" img="CONSOLE.PNG" />
+			</object>
+			<object caption="" X="7" Y="38" xoff="2" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20269" layer="1">
+				<image optcap="" variable="lightsStatusMasterRoom[1]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="17" Y="38" xoff="3" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20270" layer="1">
+				<image optcap="" variable="lightsStatusMasterRoom[2]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="27" Y="38" xoff="5" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20271" layer="1">
+				<image optcap="" variable="lightsStatusMasterRoom[3]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="37" Y="38" xoff="6" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20272" layer="1">
+				<image optcap="" variable="lightsStatusMasterRoom[4]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="7" Y="53" xoff="2" yoff="4" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20274" layer="1">
+				<image optcap="" variable="lightsStatusMasterRoom[5]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="17" Y="53" xoff="3" yoff="4" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20275" layer="1">
+				<image optcap="" variable="lightsStatusMasterRoom[6]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="27" Y="53" xoff="5" yoff="4" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20276" layer="1">
+				<image optcap="" variable="lightsStatusMasterRoom[7]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="37" Y="53" xoff="6" yoff="4" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20277" layer="1">
+				<image optcap="" variable="lightsStatusMasterRoom[8]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="2" Y="2" xoff="2" yoff="6" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20295">
+				<picture href="" img="TECO-LOG.PNG" />
+			</object>
+			<object caption="" X="1" Y="8" xoff="6" yoff="4" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20296">
+				<picture href="" img="BAR_-_WI.PNG" />
+			</object>
+			<object caption="" X="4" Y="14" xoff="7" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="true" Uid="20297">
+				<block width="90" height="5" border="false" />
+			</object>
+			<object caption="" X="16" Y="14" xoff="1" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.socketsSelect" vistype="BOOL" visneg="true" Uid="20298">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="27" Y="14" xoff="3" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="true" Uid="20299">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="LIGHTS" X="7" Y="11" xoff="2" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="true" Uid="20300">
+				<label />
+			</object>
+			<object caption="SOCKETS" X="17" Y="11" xoff="6" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.socketsSelect" vistype="BOOL" visneg="true" Uid="20301">
+				<label />
+			</object>
+			<object caption="CURTAINS" X="28" Y="11" xoff="4" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="true" Uid="20302">
+				<label />
+			</object>
+			<object caption="LIGHTS" X="7" Y="11" xoff="2" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20303">
+				<label />
+			</object>
+			<object caption="SOCKETS" X="17" Y="11" xoff="6" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20304">
+				<label />
+			</object>
+			<object caption="CURTAINS" X="28" Y="11" xoff="4" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20305">
+				<label />
+			</object>
+			<object caption="" X="4" Y="14" xoff="7" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20306">
+				<block width="90" height="5" border="false" />
+			</object>
+			<object caption="" X="16" Y="14" xoff="1" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20307">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="27" Y="14" xoff="3" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20308">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="4" Y="10" xoff="6" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20309" layer="15">
+				<block width="90" height="35" border="false" variable="MasterRoom.navSelect" type="USINT" value="0" />
+			</object>
+			<object caption="" X="16" Y="10" xoff="1" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20310" layer="15">
+				<block width="90" height="35" border="false" variable="MasterRoom.navSelect" type="USINT" value="1" />
+			</object>
+			<object caption="" X="27" Y="10" xoff="3" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20311" layer="15">
+				<block width="90" height="35" border="false" variable="MasterRoom.navSelect" type="USINT" value="2" />
+			</object>
+			<object caption="" X="38" Y="14" xoff="5" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="true" Uid="20332">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="AC" X="43" Y="11" xoff="0" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="true" Uid="20333">
+				<label />
+			</object>
+			<object caption="AC" X="43" Y="11" xoff="0" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20334">
+				<label />
+			</object>
+			<object caption="" X="38" Y="14" xoff="5" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20335">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="38" Y="10" xoff="5" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20336" layer="15">
+				<block width="90" height="35" border="false" variable="MasterRoom.navSelect" type="USINT" value="3" />
+			</object>
+			<object caption="" X="8" Y="38" xoff="7" yoff="2" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20342" layer="3">
+				<mulimg variable="main.test" type="" count="5">
+					<img name="WINDOW9.PNG" />
+					<img name="WINDOW10.PNG" />
+					<img name="WINDOW11.PNG" />
+					<img name="WINDOW12.PNG" />
+					<img name="WINDOW13.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="12" Y="51" xoff="7" yoff="3" level="0" readonly="false" front="0" back="14474460" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20343" layer="3">
+				<edit variable="main.test" type="" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="27" height="19" tabindex="1" />
+			</object>
+			<object caption="%" X="17" Y="51" xoff="1" yoff="4" level="0" readonly="false" front="2565927" back="16777215" strong="false" italic="false" size="15" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20344" layer="3">
+				<label />
+			</object>
+			<object caption="" X="15" Y="55" xoff="3" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20345" layer="3">
+				<image optcap="" variable="main.test" type="" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
+			</object>
+			<object caption="" X="9" Y="55" xoff="0" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20346" layer="3">
+				<image optcap="" variable="main.test" type="" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
+			</object>
+			<object caption="" X="31" Y="38" xoff="3" yoff="2" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20347" layer="3">
+				<mulimg variable="main.test" type="" count="5">
+					<img name="WINDOW9.PNG" />
+					<img name="WINDOW10.PNG" />
+					<img name="WINDOW11.PNG" />
+					<img name="WINDOW12.PNG" />
+					<img name="WINDOW13.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="35" Y="51" xoff="3" yoff="3" level="0" readonly="false" front="0" back="14474460" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20348" layer="3">
+				<edit variable="main.test" type="" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="27" height="19" tabindex="2" />
+			</object>
+			<object caption="%" X="39" Y="51" xoff="5" yoff="4" level="0" readonly="false" front="2565927" back="16777215" strong="false" italic="false" size="15" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20349" layer="3">
+				<label />
+			</object>
+			<object caption="" X="37" Y="55" xoff="7" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20350" layer="3">
+				<image optcap="" variable="main.test" type="" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
+			</object>
+			<object caption="" X="31" Y="55" xoff="4" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20351" layer="3">
+				<image optcap="" variable="main.test" type="" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
+			</object>
+			<object caption="" X="24" Y="47" xoff="1" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20352" layer="2">
+				<image optcap="" variable="outletsStatusMasterRoom[1]" type="BOOL" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
+			</object>
+			<object caption="" X="22" Y="81" xoff="6" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20441">
+				<image optcap="" variable="MasterRoom.motionSensStatus[1]" type="BOOL" on="MOTION_S.GIF" off="MOTION_S.PNG" />
+			</object>
+			<object caption="" X="7" Y="37" xoff="2" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20451" layer="5">
+				<block width="65" height="70" border="false" variable="MasterRoom.EnLights[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="17" Y="37" xoff="3" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20452" layer="5">
+				<block width="65" height="70" border="false" variable="MasterRoom.EnLights[2]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="38" Y="37" xoff="0" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20453" layer="5">
+				<block width="65" height="70" border="false" variable="MasterRoom.EnLights[4]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="7" Y="53" xoff="2" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20454" layer="5">
+				<block width="65" height="70" border="false" variable="MasterRoom.EnLights[5]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="17" Y="53" xoff="3" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20455" layer="5">
+				<block width="65" height="70" border="false" variable="MasterRoom.EnLights[6]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="38" Y="53" xoff="0" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20456" layer="5">
+				<block width="65" height="70" border="false" variable="MasterRoom.EnLights[8]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="27" Y="37" xoff="7" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20457" layer="5">
+				<block width="65" height="70" border="false" variable="MasterRoom.EnLights[3]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="27" Y="53" xoff="7" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20458" layer="5">
+				<block width="65" height="70" border="false" variable="MasterRoom.EnLights[7]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="22" Y="46" xoff="7" yoff="0" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20484" layer="6">
+				<block width="65" height="70" border="false" variable="MasterRoom.EnOutlets[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="3" Y="24" xoff="5" yoff="6" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20524" layer="4">
+				<image optcap="" variable="MasterRoom.enableFCU[1]" type="BOOL" on="ON.PNG" off="OFF.PNG" />
+			</object>
+			<object caption="" X="4" Y="44" xoff="2" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20525" layer="4">
+				<mulimg variable="MasterRoom.settingsFCU[1].FCU_FanSpeed" type="ENUM" count="4">
+					<img name="INDICATO.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="10" Y="44" xoff="6" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20526" layer="4">
+				<mulimg variable="MasterRoom.settingsFCU[1].FCU_FanSpeed" type="ENUM" count="4">
+					<img name="INDICAT1.PNG" />
+					<img name="INDICATO.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="17" Y="44" xoff="1" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20527" layer="4">
+				<mulimg variable="MasterRoom.settingsFCU[1].FCU_FanSpeed" type="ENUM" count="4">
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICATO.PNG" />
+					<img name="INDICAT1.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="23" Y="44" xoff="5" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20528" layer="4">
+				<mulimg variable="MasterRoom.settingsFCU[1].FCU_FanSpeed" type="ENUM" count="4">
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICATO.PNG" />
+				</mulimg>
+			</object>
+			<object caption="Auto" X="4" Y="49" xoff="2" yoff="1" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20529" layer="4">
+				<label />
+			</object>
+			<object caption="Low" X="10" Y="49" xoff="4" yoff="1" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20530" layer="4">
+				<label />
+			</object>
+			<object caption="Med" X="16" Y="49" xoff="6" yoff="1" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20531" layer="4">
+				<label />
+			</object>
+			<object caption="High" X="23" Y="49" xoff="5" yoff="1" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20532" layer="4">
+				<label />
+			</object>
+			<object caption="" X="34" Y="39" xoff="7" yoff="6" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20533" layer="4">
+				<mulimg variable="MasterRoom.FCU[1].FCU_Status.fanSpeed" type="WORD" count="5">
+					<img name="FAN_OFF.PNG" />
+					<img name="80.GIF" />
+					<img name="50.GIF" />
+					<img name="50.GIF" />
+					<img name="20.GIF" />
+				</mulimg>
+			</object>
+			<object caption="" X="3" Y="37" xoff="5" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20534" layer="4">
+				<image optcap="" variable="MasterRoom.settingsFCU[1].FCU_Mode" type="ENUM" on="VENTILA1.PNG" off="AIR-CON1.PNG" />
+			</object>
+			<object caption="" X="13" Y="32" xoff="5" yoff="2" level="0" readonly="false" front="3947580" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20535" layer="4">
+				<edit variable="setTempFCU_MasterRoom[1]" type="REAL" intf="0" timf="" align="left" zero="false" prec="1" size="4" global="false" border="true" width="37" height="21" tabindex="3" />
+			</object>
+			<object caption="" X="41" Y="23" xoff="6" yoff="3" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20536" layer="4">
+				<image optcap="" variable="MasterRoom.FCU[1].FCU_Status.valve" type="WORD" on="CONTROL1.PNG" off="CONTROL-.PNG" />
+			</object>
+			<object caption="Set Temp" X="3" Y="32" xoff="5" yoff="5" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20537" layer="4">
+				<label />
+			</object>
+			<object caption="" X="44" Y="32" xoff="2" yoff="2" level="0" readonly="true" front="0" back="6579300" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20538" layer="4">
+				<edit variable="FCU_Temp_MasterRoom" type="REAL" intf="0" timf="" align="left" zero="false" prec="1" size="4" global="true" border="true" width="37" height="21" tabindex="4" />
+			</object>
+			<object caption="Room" X="35" Y="32" xoff="4" yoff="5" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20539" layer="4">
+				<label />
+			</object>
+			<object caption="" X="41" Y="30" xoff="6" yoff="3" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20540" layer="4">
+				<picture href="" img="THERMOME.PNG" />
+			</object>
+			<object caption="Valve" X="35" Y="25" xoff="4" yoff="6" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20541" layer="4">
+				<label />
+			</object>
+			<object caption="C" X="22" Y="32" xoff="0" yoff="6" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20542" layer="4">
+				<label />
+			</object>
+			<object caption="C" X="49" Y="32" xoff="7" yoff="5" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20543" layer="4">
+				<label />
+			</object>
+			<object caption="Cooling" X="9" Y="36" xoff="3" yoff="1" level="0" readonly="true" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20544" layer="4">
+				<image optcap="Fan only" variable="MasterRoom.settingsFCU[1].FCU_Mode" type="ENUM" on="TRANSPE2.PNG" off="TRANSPE2.PNG" />
+			</object>
+			<object caption="" X="4" Y="44" xoff="3" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20587" layer="8">
+				<block width="30" height="30" border="false" variable="MasterRoom.settingsFCU[1].FCU_FanSpeed" type="ENUM" value="0" />
+			</object>
+			<object caption="" X="10" Y="44" xoff="5" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20588" layer="8">
+				<block width="30" height="30" border="false" variable="MasterRoom.settingsFCU[1].FCU_FanSpeed" type="ENUM" value="1" />
+			</object>
+			<object caption="" X="17" Y="44" xoff="1" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20589" layer="8">
+				<block width="30" height="30" border="false" variable="MasterRoom.settingsFCU[1].FCU_FanSpeed" type="ENUM" value="2" />
+			</object>
+			<object caption="" X="23" Y="44" xoff="6" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.AC_Select" vistype="BOOL" visneg="false" Uid="20590" layer="8">
+				<block width="30" height="30" border="false" variable="MasterRoom.settingsFCU[1].FCU_FanSpeed" type="ENUM" value="3" />
+			</object>
+			<object caption="" X="44" Y="84" xoff="6" yoff="1" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20628">
+				<picture href="HOME.XML" img="HOME1_50.PNG" />
+			</object>
+			<object caption="MASTER ROOM" X="16" Y="17" xoff="0" yoff="7" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="20" transparent="true" visneg="false" Uid="20642">
+				<label />
+			</object>
+		</page>
+		<page caption="ServiceRoom" name="SERVICE.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1584613331" width="406" height="718" Uid="20402">
+			<object caption="" X="1" Y="22" xoff="6" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20409" layer="9">
+				<picture href="" img="CONSOLE.PNG" />
+			</object>
+			<object caption="" X="8" Y="46" xoff="3" yoff="3" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="ServiceRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20244" layer="1">
+				<image optcap="" variable="lightsStatusServiceRoom[1]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="22" Y="46" xoff="4" yoff="3" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="ServiceRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20245" layer="1">
+				<image optcap="" variable="lightsStatusServiceRoom[2]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="36" Y="46" xoff="4" yoff="3" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="ServiceRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20246" layer="1">
+				<image optcap="" variable="lightsStatusServiceRoom[3]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="2" Y="2" xoff="2" yoff="6" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20251">
+				<picture href="" img="TECO-LOG.PNG" />
+			</object>
+			<object caption="" X="1" Y="8" xoff="6" yoff="4" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20252">
+				<picture href="" img="BAR_-_WI.PNG" />
+			</object>
+			<object caption="" X="14" Y="14" xoff="2" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="ServiceRoom.lightsSelect" vistype="BOOL" visneg="true" Uid="20253">
+				<block width="90" height="5" border="false" />
+			</object>
+			<object caption="" X="25" Y="14" xoff="4" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="ServiceRoom.socketsSelect" vistype="BOOL" visneg="true" Uid="20254">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="LIGHTS" X="16" Y="11" xoff="5" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="ServiceRoom.lightsSelect" vistype="BOOL" visneg="true" Uid="20255">
+				<label />
+			</object>
+			<object caption="SOCKETS" X="27" Y="11" xoff="1" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="ServiceRoom.socketsSelect" vistype="BOOL" visneg="true" Uid="20256">
+				<label />
+			</object>
+			<object caption="LIGHTS" X="16" Y="11" xoff="5" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="ServiceRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20257">
+				<label />
+			</object>
+			<object caption="SOCKETS" X="27" Y="11" xoff="1" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="ServiceRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20258">
+				<label />
+			</object>
+			<object caption="" X="14" Y="14" xoff="2" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="ServiceRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20259">
+				<block width="90" height="5" border="false" />
+			</object>
+			<object caption="" X="25" Y="14" xoff="4" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="ServiceRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20260">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="14" Y="10" xoff="1" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20261" layer="15">
+				<block width="90" height="35" border="false" variable="ServiceRoom.navSelect" type="USINT" value="0" />
+			</object>
+			<object caption="" X="25" Y="10" xoff="4" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20262" layer="15">
+				<block width="90" height="35" border="false" variable="ServiceRoom.navSelect" type="USINT" value="1" />
+			</object>
+			<object caption="" X="22" Y="81" xoff="6" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20263">
+				<image optcap="" variable="ServiceRoom.motionSensStatus[1]" type="BOOL" on="MOTION_S.GIF" off="MOTION_S.PNG" />
+			</object>
+			<object caption="" X="24" Y="47" xoff="1" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="ServiceRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20268" layer="2">
+				<image optcap="" variable="outletsStatusServiceRoom[1]" type="BOOL" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
+			</object>
+			<object caption="" X="8" Y="46" xoff="3" yoff="0" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="ServiceRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20448" layer="5">
+				<block width="65" height="70" border="false" variable="ServiceRoom.EnLights[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="22" Y="46" xoff="4" yoff="0" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="ServiceRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20449" layer="5">
+				<block width="65" height="70" border="false" variable="ServiceRoom.EnLights[2]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="36" Y="46" xoff="4" yoff="0" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="ServiceRoom.lightsSelect" vistype="BOOL" visneg="false" Uid="20450" layer="5">
+				<block width="65" height="70" border="false" variable="ServiceRoom.EnLights[3]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="22" Y="46" xoff="7" yoff="0" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="ServiceRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20478" layer="6">
+				<block width="65" height="70" border="false" variable="ServiceRoom.EnOutlets[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="44" Y="84" xoff="6" yoff="1" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20627">
+				<picture href="HOME.XML" img="HOME1_50.PNG" />
+			</object>
+			<object caption="SERVICE ROOM" X="14" Y="17" xoff="6" yoff="7" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="20" transparent="true" visneg="false" Uid="20643">
+				<label />
+			</object>
+		</page>
+		<page caption="Room4" name="ROOM4.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1584613339" width="406" height="718" Uid="20403">
+			<object caption="" X="1" Y="22" xoff="6" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20410" layer="9">
+				<picture href="" img="CONSOLE.PNG" />
+			</object>
+			<object caption="" X="6" Y="38" xoff="5" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.lightsSelect" vistype="BOOL" visneg="false" Uid="20359" layer="1">
+				<image optcap="" variable="lightsStatusRoom4[1]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="22" Y="38" xoff="6" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.lightsSelect" vistype="BOOL" visneg="false" Uid="20360" layer="1">
+				<image optcap="" variable="lightsStatusRoom4[2]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="38" Y="38" xoff="7" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.lightsSelect" vistype="BOOL" visneg="false" Uid="20361" layer="1">
+				<image optcap="" variable="lightsStatusRoom4[3]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="6" Y="53" xoff="5" yoff="4" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.lightsSelect" vistype="BOOL" visneg="false" Uid="20362" layer="1">
+				<image optcap="" variable="lightsStatusRoom4[4]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="22" Y="53" xoff="6" yoff="4" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.lightsSelect" vistype="BOOL" visneg="false" Uid="20363" layer="1">
+				<image optcap="" variable="lightsStatusRoom4[5]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="24" Y="47" xoff="1" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.socketsSelect" vistype="BOOL" visneg="false" Uid="20364" layer="2">
+				<image optcap="" variable="outletsStatusRoom4[1]" type="BOOL" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
+			</object>
+			<object caption="" X="2" Y="2" xoff="2" yoff="6" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20366">
+				<picture href="" img="TECO-LOG.PNG" />
+			</object>
+			<object caption="" X="1" Y="8" xoff="6" yoff="4" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20367">
+				<picture href="" img="BAR_-_WI.PNG" />
+			</object>
+			<object caption="" X="4" Y="14" xoff="7" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Room4.lightsSelect" vistype="BOOL" visneg="true" Uid="20368">
+				<block width="90" height="5" border="false" />
+			</object>
+			<object caption="" X="16" Y="14" xoff="1" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Room4.socketsSelect" vistype="BOOL" visneg="true" Uid="20369">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="27" Y="14" xoff="3" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="true" Uid="20370">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="LIGHTS" X="7" Y="11" xoff="2" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.lightsSelect" vistype="BOOL" visneg="true" Uid="20371">
+				<label />
+			</object>
+			<object caption="SOCKETS" X="17" Y="11" xoff="6" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.socketsSelect" vistype="BOOL" visneg="true" Uid="20372">
+				<label />
+			</object>
+			<object caption="CURTAINS" X="28" Y="11" xoff="4" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="true" Uid="20373">
+				<label />
+			</object>
+			<object caption="LIGHTS" X="7" Y="11" xoff="2" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.lightsSelect" vistype="BOOL" visneg="false" Uid="20374">
+				<label />
+			</object>
+			<object caption="SOCKETS" X="17" Y="11" xoff="6" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.socketsSelect" vistype="BOOL" visneg="false" Uid="20375">
+				<label />
+			</object>
+			<object caption="CURTAINS" X="28" Y="11" xoff="4" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20376">
+				<label />
+			</object>
+			<object caption="" X="4" Y="14" xoff="7" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="Room4.lightsSelect" vistype="BOOL" visneg="false" Uid="20377">
+				<block width="90" height="5" border="false" />
+			</object>
+			<object caption="" X="16" Y="14" xoff="1" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="Room4.socketsSelect" vistype="BOOL" visneg="false" Uid="20378">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="27" Y="14" xoff="3" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20379">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="4" Y="10" xoff="6" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20380" layer="15">
+				<block width="90" height="35" border="false" variable="Room4.navSelect" type="USINT" value="0" />
+			</object>
+			<object caption="" X="16" Y="10" xoff="1" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20381" layer="15">
+				<block width="90" height="35" border="false" variable="Room4.navSelect" type="USINT" value="1" />
+			</object>
+			<object caption="" X="27" Y="10" xoff="3" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20382" layer="15">
+				<block width="90" height="35" border="false" variable="Room4.navSelect" type="USINT" value="2" />
+			</object>
+			<object caption="" X="20" Y="38" xoff="6" yoff="2" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20383" layer="3">
+				<mulimg variable="main.test" type="" count="5">
+					<img name="WINDOW9.PNG" />
+					<img name="WINDOW10.PNG" />
+					<img name="WINDOW11.PNG" />
+					<img name="WINDOW12.PNG" />
+					<img name="WINDOW13.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="24" Y="51" xoff="6" yoff="3" level="0" readonly="false" front="0" back="14474460" strong="false" italic="false" size="13" transparent="false" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20384" layer="3">
+				<edit variable="main.test" type="" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="27" height="19" tabindex="1" />
+			</object>
+			<object caption="%" X="29" Y="51" xoff="0" yoff="4" level="0" readonly="false" front="2565927" back="16777215" strong="false" italic="false" size="15" transparent="true" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20385" layer="3">
+				<label />
+			</object>
+			<object caption="" X="27" Y="55" xoff="2" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20386" layer="3">
+				<image optcap="" variable="main.test" type="" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
+			</object>
+			<object caption="" X="20" Y="55" xoff="7" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20387" layer="3">
+				<image optcap="" variable="main.test" type="" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
+			</object>
+			<object caption="" X="38" Y="14" xoff="5" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Room4.AC_Select" vistype="BOOL" visneg="true" Uid="20388">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="AC" X="43" Y="11" xoff="0" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="true" Uid="20389">
+				<label />
+			</object>
+			<object caption="AC" X="43" Y="11" xoff="0" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20390">
+				<label />
+			</object>
+			<object caption="" X="38" Y="14" xoff="5" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20391">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="38" Y="10" xoff="5" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20392" layer="15">
+				<block width="90" height="35" border="false" variable="Room4.navSelect" type="USINT" value="3" />
+			</object>
+			<object caption="" X="31" Y="81" xoff="4" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20393">
+				<image optcap="" variable="Room4.motionSensStatus[2]" type="BOOL" on="MOTION_S.GIF" off="MOTION_S.PNG" />
+			</object>
+			<object caption="" X="12" Y="81" xoff="6" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20399">
+				<image optcap="" variable="Room4.motionSensStatus[1]" type="BOOL" on="MOTION_S.GIF" off="MOTION_S.PNG" />
+			</object>
+			<object caption="" X="38" Y="53" xoff="7" yoff="4" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.lightsSelect" vistype="BOOL" visneg="false" Uid="20440" layer="1">
+				<image optcap="" variable="lightsStatusRoom4[6]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="6" Y="37" xoff="6" yoff="7" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Room4.lightsSelect" vistype="BOOL" visneg="false" Uid="20442" layer="5">
+				<block width="65" height="70" border="false" variable="Room4.EnLights[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="22" Y="37" xoff="5" yoff="7" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Room4.lightsSelect" vistype="BOOL" visneg="false" Uid="20443" layer="5">
+				<block width="65" height="70" border="false" variable="Room4.EnLights[2]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="38" Y="37" xoff="7" yoff="7" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Room4.lightsSelect" vistype="BOOL" visneg="false" Uid="20444" layer="5">
+				<block width="65" height="70" border="false" variable="Room4.EnLights[3]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="6" Y="53" xoff="6" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Room4.lightsSelect" vistype="BOOL" visneg="false" Uid="20445" layer="5">
+				<block width="65" height="70" border="false" variable="Room4.EnLights[4]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="22" Y="53" xoff="5" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Room4.lightsSelect" vistype="BOOL" visneg="false" Uid="20446" layer="5">
+				<block width="65" height="70" border="false" variable="Room4.EnLights[5]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="38" Y="53" xoff="7" yoff="3" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Room4.lightsSelect" vistype="BOOL" visneg="false" Uid="20447" layer="5">
+				<block width="65" height="70" border="false" variable="Room4.EnLights[6]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="22" Y="46" xoff="7" yoff="0" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Room4.socketsSelect" vistype="BOOL" visneg="false" Uid="20476" layer="6">
+				<block width="65" height="70" border="false" variable="Room4.EnOutlets[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="3" Y="24" xoff="5" yoff="6" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20499" layer="4">
+				<image optcap="" variable="Room4.enableFCU[1]" type="BOOL" on="ON.PNG" off="OFF.PNG" />
+			</object>
+			<object caption="" X="4" Y="44" xoff="2" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20500" layer="4">
+				<mulimg variable="Room4.settingsFCU[1].FCU_FanSpeed" type="ENUM" count="4">
+					<img name="INDICATO.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="10" Y="44" xoff="6" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20501" layer="4">
+				<mulimg variable="Room4.settingsFCU[1].FCU_FanSpeed" type="ENUM" count="4">
+					<img name="INDICAT1.PNG" />
+					<img name="INDICATO.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="17" Y="44" xoff="1" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20502" layer="4">
+				<mulimg variable="Room4.settingsFCU[1].FCU_FanSpeed" type="ENUM" count="4">
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICATO.PNG" />
+					<img name="INDICAT1.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="23" Y="44" xoff="5" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20503" layer="4">
+				<mulimg variable="Room4.settingsFCU[1].FCU_FanSpeed" type="ENUM" count="4">
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICAT1.PNG" />
+					<img name="INDICATO.PNG" />
+				</mulimg>
+			</object>
+			<object caption="Auto" X="4" Y="49" xoff="2" yoff="1" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20504" layer="4">
+				<label />
+			</object>
+			<object caption="Low" X="10" Y="49" xoff="4" yoff="1" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20505" layer="4">
+				<label />
+			</object>
+			<object caption="Med" X="16" Y="49" xoff="6" yoff="1" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20506" layer="4">
+				<label />
+			</object>
+			<object caption="High" X="23" Y="49" xoff="5" yoff="1" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20507" layer="4">
+				<label />
+			</object>
+			<object caption="" X="4" Y="44" xoff="3" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20508" layer="8">
+				<block width="30" height="30" border="false" variable="Room4.settingsFCU[1].FCU_FanSpeed" type="ENUM" value="0" />
+			</object>
+			<object caption="" X="10" Y="44" xoff="5" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20509" layer="8">
+				<block width="30" height="30" border="false" variable="Room4.settingsFCU[1].FCU_FanSpeed" type="ENUM" value="1" />
+			</object>
+			<object caption="" X="17" Y="44" xoff="1" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20510" layer="8">
+				<block width="30" height="30" border="false" variable="Room4.settingsFCU[1].FCU_FanSpeed" type="ENUM" value="2" />
+			</object>
+			<object caption="" X="23" Y="44" xoff="6" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20511" layer="8">
+				<block width="30" height="30" border="false" variable="Room4.settingsFCU[1].FCU_FanSpeed" type="ENUM" value="3" />
+			</object>
+			<object caption="" X="34" Y="39" xoff="7" yoff="6" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20512" layer="4">
+				<mulimg variable="Room4.FCU[1].FCU_Status.fanSpeed" type="WORD" count="5">
+					<img name="FAN_OFF.PNG" />
+					<img name="80.GIF" />
+					<img name="50.GIF" />
+					<img name="50.GIF" />
+					<img name="20.GIF" />
+				</mulimg>
+			</object>
+			<object caption="" X="3" Y="37" xoff="5" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20513" layer="4">
+				<image optcap="" variable="Room4.settingsFCU[1].FCU_Mode" type="ENUM" on="VENTILA1.PNG" off="AIR-CON1.PNG" />
+			</object>
+			<object caption="" X="13" Y="32" xoff="5" yoff="2" level="0" readonly="false" front="3947580" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20514" layer="4">
+				<edit variable="setTempFCU_Room4[1]" type="REAL" intf="0" timf="" align="left" zero="false" prec="1" size="4" global="false" border="true" width="37" height="21" tabindex="2" />
+			</object>
+			<object caption="" X="41" Y="23" xoff="6" yoff="3" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20515" layer="4">
+				<image optcap="" variable="Room4.FCU[1].FCU_Status.valve" type="WORD" on="CONTROL1.PNG" off="CONTROL-.PNG" />
+			</object>
+			<object caption="Set Temp" X="3" Y="32" xoff="5" yoff="5" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20516" layer="4">
+				<label />
+			</object>
+			<object caption="" X="44" Y="32" xoff="2" yoff="2" level="0" readonly="true" front="0" back="6579300" strong="false" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20517" layer="4">
+				<edit variable="FCU_Temp_Room4" type="REAL" intf="0" timf="" align="left" zero="false" prec="1" size="4" global="true" border="true" width="37" height="21" tabindex="3" />
+			</object>
+			<object caption="Room" X="35" Y="32" xoff="4" yoff="5" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20518" layer="4">
+				<label />
+			</object>
+			<object caption="" X="41" Y="30" xoff="6" yoff="3" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20519" layer="4">
+				<picture href="" img="THERMOME.PNG" />
+			</object>
+			<object caption="Valve" X="35" Y="25" xoff="4" yoff="6" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20520" layer="4">
+				<label />
+			</object>
+			<object caption="C" X="22" Y="32" xoff="0" yoff="6" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20521" layer="4">
+				<label />
+			</object>
+			<object caption="C" X="49" Y="32" xoff="7" yoff="5" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20522" layer="4">
+				<label />
+			</object>
+			<object caption="Cooling" X="9" Y="36" xoff="3" yoff="1" level="0" readonly="true" front="3289650" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="Room4.AC_Select" vistype="BOOL" visneg="false" Uid="20523" layer="4">
+				<image optcap="Fan only" variable="Room4.settingsFCU[1].FCU_Mode" type="ENUM" on="TRANSPE2.PNG" off="TRANSPE2.PNG" />
+			</object>
+			<object caption="" X="44" Y="84" xoff="6" yoff="1" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20626">
+				<picture href="HOME.XML" img="HOME1_50.PNG" />
+			</object>
+			<object caption="ROOM4" X="21" Y="17" xoff="0" yoff="7" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="20" transparent="true" visneg="false" Uid="20638">
+				<label />
+			</object>
+		</page>
+		<page caption="Interance &amp; Bathroom" name="ENTRANCE.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="250" level="0" ucid="1584613346" width="406" height="718" Uid="20439">
+			<object caption="" X="1" Y="22" xoff="6" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20411" layer="9">
+				<picture href="" img="CONSOLE.PNG" />
+			</object>
+			<object caption="" X="8" Y="31" xoff="3" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="interance.lightsSelect" vistype="BOOL" visneg="false" Uid="20412" layer="1">
+				<image optcap="" variable="lightsStatusInterance[1]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="22" Y="31" xoff="4" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="interance.lightsSelect" vistype="BOOL" visneg="false" Uid="20413" layer="1">
+				<image optcap="" variable="lightsStatusInterance[2]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="36" Y="31" xoff="4" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="interance.lightsSelect" vistype="BOOL" visneg="false" Uid="20414" layer="1">
+				<image optcap="" variable="lightsStatusInterance[3]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="8" Y="47" xoff="3" yoff="3" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="interance.lightsSelect" vistype="BOOL" visneg="false" Uid="20415" layer="1">
+				<image optcap="" variable="lightsStatusInterance[4]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="22" Y="47" xoff="4" yoff="3" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="interance.lightsSelect" vistype="BOOL" visneg="false" Uid="20416" layer="1">
+				<image optcap="" variable="lightsStatusInterance[5]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="36" Y="47" xoff="4" yoff="3" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="interance.lightsSelect" vistype="BOOL" visneg="false" Uid="20417" layer="1">
+				<image optcap="" variable="lightsStatusInterance[6]" type="BOOL" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+			</object>
+			<object caption="" X="24" Y="47" xoff="1" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Interance.socketsSelect" vistype="BOOL" visneg="false" Uid="20418" layer="2">
+				<image optcap="" variable="outletsStatusInterance[1]" type="BOOL" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
+			</object>
+			<object caption="" X="2" Y="2" xoff="2" yoff="6" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20419">
+				<picture href="" img="TECO-LOG.PNG" />
+			</object>
+			<object caption="" X="1" Y="8" xoff="6" yoff="4" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20420">
+				<picture href="" img="BAR_-_WI.PNG" />
+			</object>
+			<object caption="" X="14" Y="14" xoff="2" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="interance.lightsSelect" vistype="BOOL" visneg="true" Uid="20421">
+				<block width="90" height="5" border="false" />
+			</object>
+			<object caption="" X="25" Y="14" xoff="4" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="interance.socketsSelect" vistype="BOOL" visneg="true" Uid="20422">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="LIGHTS" X="16" Y="11" xoff="5" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="interance.lightsSelect" vistype="BOOL" visneg="true" Uid="20423">
+				<label />
+			</object>
+			<object caption="SOCKETS" X="27" Y="11" xoff="1" yoff="0" level="0" readonly="false" front="6579300" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="interance.socketsSelect" vistype="BOOL" visneg="true" Uid="20424">
+				<label />
+			</object>
+			<object caption="LIGHTS" X="16" Y="11" xoff="5" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="interance.lightsSelect" vistype="BOOL" visneg="false" Uid="20425">
+				<label />
+			</object>
+			<object caption="SOCKETS" X="27" Y="11" xoff="1" yoff="0" level="0" readonly="false" front="15597666" back="16777215" strong="true" italic="false" size="13" transparent="true" visvar="interance.socketsSelect" vistype="BOOL" visneg="false" Uid="20426">
+				<label />
+			</object>
+			<object caption="" X="14" Y="14" xoff="2" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="interance.lightsSelect" vistype="BOOL" visneg="false" Uid="20427">
+				<block width="90" height="5" border="false" />
+			</object>
+			<object caption="" X="25" Y="14" xoff="4" yoff="1" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="false" visvar="interance.socketsSelect" vistype="BOOL" visneg="false" Uid="20428">
+				<block dynamic="true" width="90" height="5" border="false" color="1" />
+			</object>
+			<object caption="" X="14" Y="10" xoff="1" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20429" layer="15">
+				<block width="90" height="35" border="false" variable="interance.navSelect" type="USINT" value="0" />
+			</object>
+			<object caption="" X="25" Y="10" xoff="4" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20430" layer="15">
+				<block width="90" height="35" border="false" variable="interance.navSelect" type="USINT" value="1" />
+			</object>
+			<object caption="" X="22" Y="81" xoff="6" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20431">
+				<image optcap="" variable="interance.motionSensStatus[1]" type="BOOL" on="MOTION_S.GIF" off="MOTION_S.PNG" />
+			</object>
+			<object caption="" X="8" Y="31" xoff="2" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="interance.lightsSelect" vistype="BOOL" visneg="false" Uid="20432" layer="5">
+				<block width="65" height="70" border="false" variable="Interance.EnLights[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="22" Y="31" xoff="5" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="interance.lightsSelect" vistype="BOOL" visneg="false" Uid="20433" layer="5">
+				<block width="65" height="70" border="false" variable="Interance.EnLights[2]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="36" Y="31" xoff="3" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="interance.lightsSelect" vistype="BOOL" visneg="false" Uid="20434" layer="5">
+				<block width="65" height="70" border="false" variable="Interance.EnLights[3]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="8" Y="47" xoff="2" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="interance.lightsSelect" vistype="BOOL" visneg="false" Uid="20435" layer="5">
+				<block width="65" height="70" border="false" variable="Interance.EnLights[4]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="22" Y="47" xoff="5" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="interance.lightsSelect" vistype="BOOL" visneg="false" Uid="20436" layer="5">
+				<block width="65" height="70" border="false" variable="Interance.EnLights[5]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="36" Y="47" xoff="3" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="interance.lightsSelect" vistype="BOOL" visneg="false" Uid="20437" layer="5">
+				<block width="65" height="70" border="false" variable="Interance.EnLights[6]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="22" Y="46" xoff="7" yoff="0" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Interance.socketsSelect" vistype="BOOL" visneg="false" Uid="20438" layer="6">
+				<block width="65" height="70" border="false" variable="Interance.EnOutlets[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="44" Y="84" xoff="6" yoff="1" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20625">
+				<picture href="HOME.XML" img="HOME1_50.PNG" />
+			</object>
+			<object caption="INTERANCE &amp; BATH" X="11" Y="17" xoff="5" yoff="7" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="20" transparent="true" visneg="false" Uid="20644">
+				<label />
+			</object>
+		</page>
+		<page caption="Home" name="HOME.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1584525588" width="399" height="569" Uid="20655">
+			<object caption="" X="2" Y="2" xoff="2" yoff="6" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20599">
+				<picture href="" img="TECO-LOG.PNG" />
+			</object>
+			<object caption="" X="2" Y="14" xoff="6" yoff="1" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20600">
+				<picture href="KITCHEN.XML" img="KITCHEN-.PNG" />
+			</object>
+			<object caption="Kitchen" X="7" Y="14" xoff="3" yoff="4" level="0" readonly="false" front="16777215" back="16777215" strong="false" italic="false" size="12" transparent="true" visneg="false" Uid="20601">
+				<label />
+			</object>
+			<object caption="" X="19" Y="14" xoff="0" yoff="1" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20602">
+				<picture href="DINING.XML" img="DINING_-.PNG" />
+			</object>
+			<object caption="" X="35" Y="14" xoff="7" yoff="1" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20603">
+				<picture href="LIVING.XML" img="LIVING_-.PNG" />
+			</object>
+			<object caption="Dining Room" X="21" Y="14" xoff="6" yoff="4" level="0" readonly="false" front="16777215" back="16777215" strong="false" italic="false" size="12" transparent="true" visneg="false" Uid="20604">
+				<label />
+			</object>
+			<object caption="Living Room" X="38" Y="14" xoff="5" yoff="4" level="0" readonly="false" front="16777215" back="16777215" strong="false" italic="false" size="12" transparent="true" visneg="false" Uid="20605">
+				<label />
+			</object>
+			<object caption="" X="2" Y="30" xoff="6" yoff="0" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20606">
+				<picture href="SERVICE.XML" img="SERVICE_.PNG" />
+			</object>
+			<object caption="Service Room" X="4" Y="30" xoff="7" yoff="3" level="0" readonly="false" front="16777215" back="16777215" strong="false" italic="false" size="12" transparent="true" visneg="false" Uid="20607">
+				<label />
+			</object>
+			<object caption="" X="19" Y="30" xoff="0" yoff="0" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20608">
+				<picture href="ENTRANCE.XML" img="BATH_-_C.PNG" />
+			</object>
+			<object caption="Interance &amp;  Bath" X="19" Y="30" xoff="4" yoff="3" level="0" readonly="false" front="16777215" back="16777215" strong="false" italic="false" size="12" transparent="true" visneg="false" Uid="20609">
+				<label />
+			</object>
+			<object caption="" X="35" Y="30" xoff="7" yoff="0" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20610">
+				<picture href="MASTER.XML" img="BED_-_CA.PNG" />
+			</object>
+			<object caption="Master Room" X="38" Y="30" xoff="1" yoff="3" level="0" readonly="false" front="16777215" back="16777215" strong="false" italic="false" size="12" transparent="true" visneg="false" Uid="20611">
+				<label />
+			</object>
+			<object caption="" X="2" Y="45" xoff="6" yoff="6" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20612">
+				<picture href="MAJLES.XML" img="MAJLES_-.PNG" />
+			</object>
+			<object caption="Majles" X="7" Y="46" xoff="6" yoff="1" level="0" readonly="false" front="16777215" back="16777215" strong="false" italic="false" size="12" transparent="true" visneg="false" Uid="20613">
+				<label />
+			</object>
+			<object caption="" X="19" Y="45" xoff="2" yoff="6" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20614">
+				<picture href="ROOM1.XML" img="BED_-_CA.PNG" />
+			</object>
+			<object caption="Room1" X="24" Y="46" xoff="0" yoff="1" level="0" readonly="false" front="16777215" back="16777215" strong="false" italic="false" size="12" transparent="true" visneg="false" Uid="20615">
+				<label />
+			</object>
+			<object caption="" X="35" Y="45" xoff="7" yoff="6" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20616">
+				<picture href="ROOM2.XML" img="BED_-_CA.PNG" />
+			</object>
+			<object caption="Room2" X="40" Y="46" xoff="5" yoff="1" level="0" readonly="false" front="16777215" back="16777215" strong="false" italic="false" size="12" transparent="true" visneg="false" Uid="20617">
+				<label />
+			</object>
+			<object caption="" X="2" Y="61" xoff="6" yoff="5" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20618">
+				<picture href="ROOM3.XML" img="BED_-_CA.PNG" />
+			</object>
+			<object caption="Room3" X="7" Y="62" xoff="4" yoff="0" level="0" readonly="false" front="16777215" back="16777215" strong="false" italic="false" size="12" transparent="true" visneg="false" Uid="20619">
+				<label />
+			</object>
+			<object caption="" X="19" Y="61" xoff="2" yoff="5" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20620">
+				<picture href="ROOM4.XML" img="BED_-_CA.PNG" />
+			</object>
+			<object caption="Room4" X="24" Y="62" xoff="0" yoff="0" level="0" readonly="false" front="16777215" back="16777215" strong="false" italic="false" size="12" transparent="true" visneg="false" Uid="20621">
+				<label />
+			</object>
+		</page>
+		<page caption="Majles" name="MAJLES.XML" background="" bgcolor="16777215" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1584525588" width="412" height="734" Uid="20656">
+			<object caption="" X="1" Y="1" xoff="0" yoff="0" level="0" readonly="true" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="20622">
+				<iframe width="412" height="734" href="http://192.168.0.15/MAJLES.XML" noscroll="1"></iframe>
+			</object>
+			<object caption="" X="44" Y="84" xoff="6" yoff="1" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20623">
+				<picture href="HOME.XML" img="HOME1_50.PNG" />
+			</object>
+		</page>
+		<page caption="Room1" name="ROOM1.XML" background="" bgcolor="16777215" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1584525588" width="412" height="734" Uid="20657">
+			<object caption="" X="1" Y="1" xoff="0" yoff="0" level="0" readonly="true" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="20631">
+				<iframe width="412" height="734" href="http://192.168.0.15/ROOM1.XML" noscroll="1"></iframe>
+			</object>
+			<object caption="" X="44" Y="84" xoff="6" yoff="1" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20632">
+				<picture href="HOME.XML" img="HOME1_50.PNG" />
+			</object>
+		</page>
+		<page caption="Room2" name="ROOM2.XML" background="" bgcolor="16777215" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1584525588" width="412" height="734" Uid="20658">
+			<object caption="" X="1" Y="1" xoff="0" yoff="0" level="0" readonly="true" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="20633">
+				<iframe width="412" height="734" href="http://192.168.0.15/ROOM2.XML" noscroll="1"></iframe>
+			</object>
+			<object caption="" X="44" Y="84" xoff="6" yoff="1" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20634">
+				<picture href="HOME.XML" img="HOME1_50.PNG" />
+			</object>
+		</page>
+		<page caption="Room3" name="ROOM3.XML" background="" bgcolor="16777215" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1584525588" width="412" height="734" Uid="20659">
+			<object caption="" X="1" Y="1" xoff="0" yoff="0" level="0" readonly="true" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="20635">
+				<iframe width="412" height="734" href="http://192.168.0.15/ROOM3.XML" noscroll="1"></iframe>
+			</object>
+			<object caption="" X="44" Y="84" xoff="6" yoff="1" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20636">
+				<picture href="HOME.XML" img="HOME1_50.PNG" />
+			</object>
+		</page>
+	</group>
+	<group caption="SPARE" level="0" locked="0" altdim="false" notforid="false" Uid="20661">
+		<page caption="SPARE" name="PAGE1.XML" background="" bgcolor="16777215" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1584613089" width="376" height="205" Uid="20660">
+			<object caption="" X="23" Y="4" xoff="7" yoff="2" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.socketsSelect" vistype="BOOL" visneg="false" Uid="20645">
+				<image optcap="" variable="outletsStatusKitchen[2]" type="BOOL" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
+			</object>
+			<object caption="" X="41" Y="4" xoff="3" yoff="2" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.socketsSelect" vistype="BOOL" visneg="false" Uid="20646">
+				<image optcap="" variable="outletsStatusKitchen[3]" type="BOOL" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
+			</object>
+			<object caption="" X="14" Y="19" xoff="4" yoff="6" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.socketsSelect" vistype="BOOL" visneg="false" Uid="20647">
+				<image optcap="" variable="outletsStatusKitchen[4]" type="BOOL" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
+			</object>
+			<object caption="" X="32" Y="19" xoff="0" yoff="6" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.socketsSelect" vistype="BOOL" visneg="false" Uid="20648">
+				<image optcap="" variable="outletsStatusKitchen[5]" type="BOOL" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
+			</object>
+			<object caption="" X="6" Y="4" xoff="3" yoff="2" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.socketsSelect" vistype="BOOL" visneg="false" Uid="20649">
+				<image optcap="" variable="outletsStatusKitchen[1]" type="BOOL" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
+			</object>
+			<object caption="" X="4" Y="2" xoff="7" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.socketsSelect" vistype="BOOL" visneg="false" Uid="20650">
+				<block width="65" height="70" border="false" variable="Kitchen.EnOutlets[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="22" Y="2" xoff="3" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.socketsSelect" vistype="BOOL" visneg="false" Uid="20651">
+				<block width="65" height="70" border="false" variable="Kitchen.EnOutlets[2]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="13" Y="17" xoff="1" yoff="7" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.socketsSelect" vistype="BOOL" visneg="false" Uid="20652">
+				<block width="65" height="70" border="false" variable="Kitchen.EnOutlets[4]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="30" Y="17" xoff="5" yoff="7" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.socketsSelect" vistype="BOOL" visneg="false" Uid="20653">
+				<block width="65" height="70" border="false" variable="Kitchen.EnOutlets[5]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="39" Y="2" xoff="7" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Kitchen.socketsSelect" vistype="BOOL" visneg="false" Uid="20654">
+				<block width="65" height="70" border="false" variable="Kitchen.EnOutlets[3]" type="BOOL" value="1" />
+			</object>
+		</page>
+	</group>
+	<images>
+		<img name="IDEA_3_1.PNG" type="PNG" height="64" width="64" longname="idea (3)" />
+		<img name="IDEA_4_1.PNG" type="PNG" height="64" width="64" longname="idea (4)" />
+		<img name="SOCKET_1.PNG" type="PNG" height="75" width="75" longname="socket - on_75" />
+		<img name="SOCKET_-.PNG" type="PNG" height="75" width="75" longname="socket - off _75" />
+		<img name="WINDOW9.PNG" type="PNG" height="100" width="100" longname="window1" />
+		<img name="WINDOW10.PNG" type="PNG" height="100" width="100" longname="window2" />
+		<img name="WINDOW11.PNG" type="PNG" height="100" width="100" longname="window3" />
+		<img name="WINDOW12.PNG" type="PNG" height="100" width="100" longname="window4" />
+		<img name="WINDOW13.PNG" type="PNG" height="100" width="100" longname="window5" />
+		<img name="BTN_GREE.PNG" type="PNG" height="50" width="50" longname="btn_green_off_right_50" />
+		<img name="BTN_BL_5.PNG" type="PNG" height="51" width="50" longname="btn_blu_off_right-01" />
+		<img name="BTN_GRE1.PNG" type="PNG" height="50" width="50" longname="btn_green_off_left_50" />
+		<img name="BTN_BL_7.PNG" type="PNG" height="51" width="50" longname="btn_blu_off_left-01" />
+		<img name="TECO-LOG.PNG" type="PNG" height="31" width="150" longname="TECO-Logo-MIDDLE EAST-Colored_150 " />
+		<img name="BAR_-_WI.PNG" type="PNG" height="65" width="400" longname="bar - without border" />
+		<img name="MOTION_S.GIF" type="GIF" height="78" width="63" longname="Motion Sensor" />
+		<img name="MOTION_S.PNG" type="PNG" height="78" width="63" longname="motion sensor - off" />
+		<img name="PLUG_G_S.PNG" type="PNG" height="40" width="40" longname="plug_g_s" />
+		<img name="PLUG_S.PNG" type="PNG" height="40" width="40" longname="plug_s" />
+		<img name="CONSOLE.PNG" type="PNG" height="450" width="400" longname="console" />
+		<img name="ON.PNG" type="PNG" height="31" width="65" longname="ON" />
+		<img name="OFF.PNG" type="PNG" height="31" width="65" longname="OFF" />
+		<img name="INDICATO.PNG" type="PNG" height="30" width="30" longname="indicator2" />
+		<img name="INDICAT1.PNG" type="PNG" height="30" width="30" longname="indicator2-off" />
+		<img name="FAN_OFF.PNG" type="PNG" height="114" width="112" longname="fan off" />
+		<img name="80.GIF" type="GIF" height="114" width="112" longname="80" />
+		<img name="50.GIF" type="GIF" height="114" width="112" longname="50" />
+		<img name="20.GIF" type="GIF" height="114" width="112" longname="20" />
+		<img name="VENTILA1.PNG" type="PNG" height="45" width="45" longname="ventilation2_45" />
+		<img name="AIR-CON1.PNG" type="PNG" height="45" width="45" longname="air-conditioning2-45" />
+		<img name="CONTROL1.PNG" type="PNG" height="40" width="50" longname="Control-valve-medium-green-50" />
+		<img name="CONTROL-.PNG" type="PNG" height="40" width="50" longname="Control-valve-large-40" />
+		<img name="THERMOME.PNG" type="PNG" height="40" width="14" longname="thermometer-hot-small" />
+		<img name="TRANSPE2.PNG" type="PNG" height="64" width="64" longname="Transperent64" />
+		<img name="KITCHEN-.PNG" type="PNG" height="84" width="120" longname="Kitchen-card" />
+		<img name="DINING_-.PNG" type="PNG" height="84" width="120" longname="Dining - card" />
+		<img name="LIVING_-.PNG" type="PNG" height="84" width="120" longname="Living - card" />
+		<img name="SERVICE_.PNG" type="PNG" height="84" width="120" longname="Service - card" />
+		<img name="BATH_-_C.PNG" type="PNG" height="84" width="120" longname="Bath - card" />
+		<img name="BED_-_CA.PNG" type="PNG" height="84" width="120" longname="Bed - card" />
+		<img name="MAJLES_-.PNG" type="PNG" height="84" width="120" longname="Majles - card" />
+		<img name="HOME1_50.PNG" type="PNG" height="50" width="50" longname="Home1_50" />
+	</images>
+	<Languages>
+		<Language Code="5" Editor="1" />
+	</Languages>
+	<Layers active="0" pasteMode="0">
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="0" frozen="0" name="Lights" />
+		<layer visible="0" frozen="0" name="Outlets" />
+		<layer visible="1" frozen="0" name="Curtains" />
+		<layer visible="0" frozen="0" name="AC" />
+		<layer visible="0" frozen="0" name="Lights Transperent" />
+		<layer visible="0" frozen="0" name="Outlets Transperent" />
+		<layer visible="1" frozen="0" name="Curtains Transperent" />
+		<layer visible="0" frozen="0" name="AC Transperent" />
+		<layer visible="1" frozen="1" name="Backgrounds" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="" />
+		<layer visible="1" frozen="0" name="navbar Transperent buttons" />
+	</Layers>
+	<security crypt="0" count="10">
+		<user level="0" name="" pass="" page="HOME.XML" />
+		<user level="-1" name="1" pass="CE" />
+		<user level="-1" name="2" pass="CD" />
+		<user level="-1" name="3" pass="CC" />
+		<user level="-1" name="4" pass="CB" />
+		<user level="-1" name="5" pass="CA" />
+		<user level="-1" name="6" pass="C9" />
+		<user level="-1" name="7" pass="C8" />
+		<user level="-1" name="8" pass="C7" />
+		<user level="-1" name="9" pass="C6" />
+	</security>
+	<autologin count="10">
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+		<mac level="0" mac="00:00:00:00:00:00" note="" />
+	</autologin>
+	<tecoapi count="10">
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+		<api level="-1" name="" pass="" />
+	</tecoapi>
+</web>

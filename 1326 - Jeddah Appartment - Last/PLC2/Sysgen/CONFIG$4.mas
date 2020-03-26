@@ -178,6 +178,24 @@
   TUniSign SIGN,
   uint NUMT,
   TZONE_ARRAY_CH2_TX DATA
+#def  TPLCx_ETH1_PLCx0_ADR3_RX_DATA usint[238]
+#struct  TPLCx_ETH1_PLCx0_ADR3_RX
+  usint STAT,
+  usint ERR,
+  uint NUMR,
+  TPLCx_ETH1_PLCx0_ADR3_RX_DATA DATA
+#def  TPLCx_ETH1_PLCx0_ADR1_RX_DATA usint[50]
+#struct  TPLCx_ETH1_PLCx0_ADR1_RX
+  usint STAT,
+  usint ERR,
+  uint NUMR,
+  TPLCx_ETH1_PLCx0_ADR1_RX_DATA DATA
+#def  TPLCx_ETH1_PLCx0_ADR2_TX_DATA usint[50]
+#struct  TPLCx_ETH1_PLCx0_ADR2_TX
+  usint CONT,
+  usint SIGN,
+  uint NUMT,
+  TPLCx_ETH1_PLCx0_ADR2_TX_DATA DATA
 #def  TZONE_ARRAY_ETH1_UNI0_RX usint[800]
 #struct  TUNI_ETH1_UNI0_IN
   TUniStat STAT,
@@ -290,6 +308,7 @@
 #input  TCHStatistic r0_p0_Statistic_CH2
 #input  TUNI_CH2_IN r0_p0_UNI_CH2_IN
 #def  CH2_IN r0_p0_UNI_CH2_IN~DATA
+#input  TCHStatistic r0_p0_Statistic_ETH1_PLCx0
 #input  TCHStatistic r0_p0_Statistic_ETH1_UNI0
 #input  TUNI_ETH1_UNI0_IN UNI_ETH1_UNI0_IN
 #def  Interance_Statistic_ETH1_UNI0 r0_p0_Statistic_ETH1_UNI0
@@ -339,6 +358,7 @@
 #output  TCHControl r0_p0_Control_CH2
 #output  TUNI_CH2_OUT r0_p0_UNI_CH2_OUT
 #def  CH2_OUT r0_p0_UNI_CH2_OUT~DATA
+#output  TCHControl r0_p0_Control_ETH1_PLCx0
 #output  TCHControl r0_p0_Control_ETH1_UNI0
 #output  TUNI_ETH1_UNI0_OUT UNI_ETH1_UNI0_OUT
 #def  Interance_Control_ETH1_UNI0 r0_p0_Control_ETH1_UNI0
@@ -408,6 +428,12 @@
 #def  FCU_Temp_MasterRoom r9_p2_IN~iTHERM
 #def  TS9_Room4_IN r9_p3_IN
 #def  FCU_Temp_Room4 r9_p3_IN~iTHERM
+#reg  TPLCx_ETH1_PLCx0_ADR3_RX PLCx_ETH1_PLCx0_ADR3_RX
+#reg  TPLCx_ETH1_PLCx0_ADR1_RX PLCx_ETH1_PLCx0_ADR1_RX
+#reg  TPLCx_ETH1_PLCx0_ADR2_TX PLCx_ETH1_PLCx0_ADR2_TX
+#def  PLC3 PLCx_ETH1_PLCx0_ADR3_RX
+#def  PLC1_Curtains PLCx_ETH1_PLCx0_ADR1_RX
+#def  PLC2_Curtains PLCx_ETH1_PLCx0_ADR2_TX
 
 ; Global variables
 #table byte __Init____r0_p5_AIPW = 

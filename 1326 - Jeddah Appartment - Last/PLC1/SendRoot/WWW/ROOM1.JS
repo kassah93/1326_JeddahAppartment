@@ -588,50 +588,50 @@ setTimeout("FunWatchDog()", 20000);
 }
 
 function PostXML19() {
-PostXML('ROOM1.XML', encodeURIComponent('__R10233_USINT_u=0')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R10287_USINT_u=0')); 
 }
 function PostXML20() {
-PostXML('ROOM1.XML', encodeURIComponent('__R10233_USINT_u=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R10287_USINT_u=1')); 
 }
 function PostXML21() {
-PostXML('ROOM1.XML', encodeURIComponent('__R10233_USINT_u=2')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R10287_USINT_u=2')); 
 }
 function PostXML31() {
-PostXML('ROOM1.XML', encodeURIComponent('__R10233_USINT_u=3')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R10287_USINT_u=3')); 
 }
 function PostXML34() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13427.0_BOOL_i=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13481.0_BOOL_i=1')); 
 }
 function PostXML35() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13427.1_BOOL_i=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13481.1_BOOL_i=1')); 
 }
 function PostXML36() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13427.2_BOOL_i=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13481.2_BOOL_i=1')); 
 }
 function PostXML37() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13427.3_BOOL_i=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13481.3_BOOL_i=1')); 
 }
 function PostXML38() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13427.4_BOOL_i=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13481.4_BOOL_i=1')); 
 }
 function PostXML39() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13447.0_BOOL_i=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13501.0_BOOL_i=1')); 
 }
 function PostXML40() {
 var Input40h = document.getElementById('INPUT40h');
 PostXML('ROOM1.XML', encodeURIComponent(Input40h.name+'='+Input40h.value));
 }
 function PostXML49() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13585_USINT_u=0')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13639_USINT_u=0')); 
 }
 function PostXML50() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13585_USINT_u=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13639_USINT_u=1')); 
 }
 function PostXML51() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13585_USINT_u=2')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13639_USINT_u=2')); 
 }
 function PostXML52() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13585_USINT_u=3')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13639_USINT_u=3')); 
 }
 function PostXML54() {
 var Input54h = document.getElementById('INPUT54h');
@@ -648,10 +648,10 @@ var Input56h = document.getElementById('INPUT56h');
 PostXML('ROOM1.XML', encodeURIComponent(Input56h.name+'='+Input56h.value));
 }
 function PostXML65() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13492.0_BOOL_i=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13546.0_BOOL_i=1')); 
 }
 function PostXML66() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13493.0_BOOL_i=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13547.0_BOOL_i=1')); 
 }
 
 function PostGlobal() {
