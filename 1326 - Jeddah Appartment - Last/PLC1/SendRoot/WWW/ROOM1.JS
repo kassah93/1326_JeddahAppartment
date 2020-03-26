@@ -43,7 +43,7 @@ if(xmlhttpGET.status != 200){
 alert('Problem retrieving XML data ' + xmlhttpGET.statusText + '(' + xmlhttpGET.status + ')');
 document.location.reload(true)
 return;}
-var access = xmlhttpGET.responseXML.documentElement.getElementsByTagName('ACCESS')[0]; if(!access || access.getAttribute('UCID') != 1584957179) {document.location.reload(true); return;}
+var access = xmlhttpGET.responseXML.documentElement.getElementsByTagName('ACCESS')[0]; if(!access || access.getAttribute('UCID') != 1585228103) {document.location.reload(true); return;}
 var pd = '';
 var x=xmlhttpGET.responseXML.documentElement.getElementsByTagName('INPUT');
 if(x[0]) {
@@ -588,50 +588,50 @@ setTimeout("FunWatchDog()", 20000);
 }
 
 function PostXML19() {
-PostXML('ROOM1.XML', encodeURIComponent('__R10209_USINT_u=0')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R10233_USINT_u=0')); 
 }
 function PostXML20() {
-PostXML('ROOM1.XML', encodeURIComponent('__R10209_USINT_u=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R10233_USINT_u=1')); 
 }
 function PostXML21() {
-PostXML('ROOM1.XML', encodeURIComponent('__R10209_USINT_u=2')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R10233_USINT_u=2')); 
 }
 function PostXML31() {
-PostXML('ROOM1.XML', encodeURIComponent('__R10209_USINT_u=3')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R10233_USINT_u=3')); 
 }
 function PostXML34() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13403.0_BOOL_i=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13427.0_BOOL_i=1')); 
 }
 function PostXML35() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13403.1_BOOL_i=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13427.1_BOOL_i=1')); 
 }
 function PostXML36() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13403.2_BOOL_i=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13427.2_BOOL_i=1')); 
 }
 function PostXML37() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13403.3_BOOL_i=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13427.3_BOOL_i=1')); 
 }
 function PostXML38() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13403.4_BOOL_i=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13427.4_BOOL_i=1')); 
 }
 function PostXML39() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13423.0_BOOL_i=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13447.0_BOOL_i=1')); 
 }
 function PostXML40() {
 var Input40h = document.getElementById('INPUT40h');
 PostXML('ROOM1.XML', encodeURIComponent(Input40h.name+'='+Input40h.value));
 }
 function PostXML49() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13560_USINT_u=0')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13585_USINT_u=0')); 
 }
 function PostXML50() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13560_USINT_u=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13585_USINT_u=1')); 
 }
 function PostXML51() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13560_USINT_u=2')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13585_USINT_u=2')); 
 }
 function PostXML52() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13560_USINT_u=3')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13585_USINT_u=3')); 
 }
 function PostXML54() {
 var Input54h = document.getElementById('INPUT54h');
@@ -648,10 +648,10 @@ var Input56h = document.getElementById('INPUT56h');
 PostXML('ROOM1.XML', encodeURIComponent(Input56h.name+'='+Input56h.value));
 }
 function PostXML65() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13469.0_BOOL_i=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13492.0_BOOL_i=1')); 
 }
 function PostXML66() {
-PostXML('ROOM1.XML', encodeURIComponent('__R13470.0_BOOL_i=1')); 
+PostXML('ROOM1.XML', encodeURIComponent('__R13493.0_BOOL_i=1')); 
 }
 
 function PostGlobal() {

@@ -18,16 +18,36 @@
 	<Item Name="Majles.socketsSelect" Pos="03000D63" Type="1" />
 	<Item Name="outletsStatusMajles[1]" Pos="03000A0D" Type="0" />
 	<Item Name="Majles.shuttersSelect" Pos="03000D63" Type="2" />
+	<Item Name="curtainsStatus[1].normPos" Pos="03000A50" Type="8" />
+	<Item Name="curtainsStatus[1].pos" Pos="03000A4F" Type="8" />
+	<Item Name="curtainsStatus[1].outUP" Pos="03000A4E" Type="0" />
+	<Item Name="curtainsStatus[1].outDW" Pos="03000A4E" Type="1" />
 	<Item Name="Majles.navSelect" Pos="03000D64" Type="8" />
+	<Item Name="curtainsStatus[3].normPos" Pos="03000A56" Type="8" />
+	<Item Name="curtainsStatus[3].pos" Pos="03000A55" Type="8" />
+	<Item Name="curtainsStatus[3].outUP" Pos="03000A54" Type="0" />
+	<Item Name="curtainsStatus[3].outDW" Pos="03000A54" Type="1" />
+	<Item Name="curtainsStatus[4].normPos" Pos="03000A59" Type="8" />
+	<Item Name="curtainsStatus[4].pos" Pos="03000A58" Type="8" />
+	<Item Name="curtainsStatus[4].outUP" Pos="03000A57" Type="0" />
+	<Item Name="curtainsStatus[4].outDW" Pos="03000A57" Type="1" />
+	<Item Name="curtainsStatus[5].normPos" Pos="03000A5C" Type="8" />
+	<Item Name="curtainsStatus[5].pos" Pos="03000A5B" Type="8" />
+	<Item Name="curtainsStatus[5].outUP" Pos="03000A5A" Type="0" />
+	<Item Name="curtainsStatus[5].outDW" Pos="03000A5A" Type="1" />
+	<Item Name="curtainsStatus[2].normPos" Pos="03000A53" Type="8" />
+	<Item Name="curtainsStatus[2].pos" Pos="03000A52" Type="8" />
+	<Item Name="curtainsStatus[2].outUP" Pos="03000A51" Type="0" />
+	<Item Name="curtainsStatus[2].outDW" Pos="03000A51" Type="1" />
 	<Item Name="Majles.AC_Select" Pos="03000D63" Type="3" />
-	<Item Name="Majles.motionSensStatus[1]" Pos="030026EE" Type="0" />
-	<Item Name="Room1.AC_Select" Pos="030027E0" Type="3" />
-	<Item Name="Majles.enableFCU[1]" Pos="03002775" Type="0" />
-	<Item Name="Majles.settingsFCU[1].FCU_FanSpeed" Pos="03002777" Type="8" />
-	<Item Name="Majles.FCU[1].FCU_Status.fanSpeed" Pos="03002702" Type="42" />
-	<Item Name="Majles.settingsFCU[1].FCU_Mode" Pos="03002776" Type="8" />
+	<Item Name="Majles.motionSensStatus[1]" Pos="03002706" Type="0" />
+	<Item Name="Room1.AC_Select" Pos="030027F8" Type="3" />
+	<Item Name="Majles.enableFCU[1]" Pos="0300278D" Type="0" />
+	<Item Name="Majles.settingsFCU[1].FCU_FanSpeed" Pos="0300278F" Type="8" />
+	<Item Name="Majles.FCU[1].FCU_Status.fanSpeed" Pos="0300271A" Type="42" />
+	<Item Name="Majles.settingsFCU[1].FCU_Mode" Pos="0300278E" Type="8" />
 	<Item Name="setTempFCU_Majles[1]" Pos="03000A0E" Type="28" />
-	<Item Name="Majles.FCU[1].FCU_Status.valve" Pos="03002706" Type="42" />
+	<Item Name="Majles.FCU[1].FCU_Status.valve" Pos="0300271E" Type="42" />
 	<Item Name="FCU_Temp_Majles1" Pos="0000006B" Type="28" />
 	<Item Name="Majles.EnOutlets[1]" Pos="03002601" Type="0" />
 	<Item Name="Majles.EnLights[1]" Pos="030025ED" Type="0" />
@@ -45,100 +65,118 @@
 	<Item Name="Majles.EnLights[13]" Pos="030025EE" Type="4" />
 	<Item Name="Majles.EnLights[14]" Pos="030025EE" Type="5" />
 	<Item Name="Majles.EnLights[15]" Pos="030025EE" Type="6" />
-	<Item Name="Room1.lightsSelect" Pos="030027E0" Type="0" />
+	<Item Name="Majles.enCurtainsUP_GUI[1]" Pos="030026F0" Type="0" />
+	<Item Name="Majles.enCurtainsDW_GUI[1]" Pos="030026F1" Type="0" />
+	<Item Name="Majles.enCurtainsUP_GUI[2]" Pos="030026F0" Type="1" />
+	<Item Name="Majles.enCurtainsDW_GUI[2]" Pos="030026F1" Type="1" />
+	<Item Name="Majles.enCurtainsUP_GUI[3]" Pos="030026F0" Type="2" />
+	<Item Name="Majles.enCurtainsDW_GUI[3]" Pos="030026F1" Type="2" />
+	<Item Name="Majles.enCurtainsUP_GUI[4]" Pos="030026F0" Type="3" />
+	<Item Name="Majles.enCurtainsDW_GUI[4]" Pos="030026F1" Type="3" />
+	<Item Name="Majles.enCurtainsUP_GUI[5]" Pos="030026F0" Type="4" />
+	<Item Name="Majles.enCurtainsDW_GUI[5]" Pos="030026F1" Type="4" />
+	<Item Name="Room1.lightsSelect" Pos="030027F8" Type="0" />
 	<Item Name="lightsStatusRoom1[1]" Pos="03000A16" Type="0" />
 	<Item Name="lightsStatusRoom1[2]" Pos="03000A16" Type="1" />
 	<Item Name="lightsStatusRoom1[3]" Pos="03000A16" Type="2" />
 	<Item Name="lightsStatusRoom1[4]" Pos="03000A16" Type="3" />
 	<Item Name="lightsStatusRoom1[5]" Pos="03000A16" Type="4" />
-	<Item Name="Room1.socketsSelect" Pos="030027E0" Type="1" />
+	<Item Name="Room1.socketsSelect" Pos="030027F8" Type="1" />
 	<Item Name="outletsStatusRoom1[1]" Pos="03000A19" Type="0" />
-	<Item Name="Room1.shuttersSelect" Pos="030027E0" Type="2" />
-	<Item Name="Room1.navSelect" Pos="030027E1" Type="8" />
+	<Item Name="Room1.shuttersSelect" Pos="030027F8" Type="2" />
+	<Item Name="Room1.navSelect" Pos="030027F9" Type="8" />
 	<Item Name="curtainsStatus[6].normPos" Pos="03000A5F" Type="8" />
 	<Item Name="curtainsStatus[6].pos" Pos="03000A5E" Type="8" />
 	<Item Name="curtainsStatus[6].outUP" Pos="03000A5D" Type="0" />
 	<Item Name="curtainsStatus[6].outDW" Pos="03000A5D" Type="1" />
-	<Item Name="Room1.motionSensStatus[2]" Pos="030034B1" Type="1" />
-	<Item Name="Room1.motionSensStatus[1]" Pos="030034B1" Type="0" />
-	<Item Name="room1.EnLights[1]" Pos="0300345B" Type="0" />
-	<Item Name="room1.EnLights[2]" Pos="0300345B" Type="1" />
-	<Item Name="room1.EnLights[3]" Pos="0300345B" Type="2" />
-	<Item Name="room1.EnLights[4]" Pos="0300345B" Type="3" />
-	<Item Name="room1.EnLights[5]" Pos="0300345B" Type="4" />
-	<Item Name="Room1.EnOutlets[1]" Pos="0300346F" Type="0" />
-	<Item Name="Room1.enableFCU[1]" Pos="030034F6" Type="0" />
-	<Item Name="Room1.settingsFCU[1].FCU_FanSpeed" Pos="030034F8" Type="8" />
-	<Item Name="Room1.FCU[1].FCU_Status.fanSpeed" Pos="030034C5" Type="42" />
-	<Item Name="Room1.settingsFCU[1].FCU_Mode" Pos="030034F7" Type="8" />
+	<Item Name="Room1.motionSensStatus[2]" Pos="030034CA" Type="1" />
+	<Item Name="Room1.motionSensStatus[1]" Pos="030034CA" Type="0" />
+	<Item Name="room1.EnLights[1]" Pos="03003473" Type="0" />
+	<Item Name="room1.EnLights[2]" Pos="03003473" Type="1" />
+	<Item Name="room1.EnLights[3]" Pos="03003473" Type="2" />
+	<Item Name="room1.EnLights[4]" Pos="03003473" Type="3" />
+	<Item Name="room1.EnLights[5]" Pos="03003473" Type="4" />
+	<Item Name="Room1.EnOutlets[1]" Pos="03003487" Type="0" />
+	<Item Name="Room1.enableFCU[1]" Pos="0300350F" Type="0" />
+	<Item Name="Room1.settingsFCU[1].FCU_FanSpeed" Pos="03003511" Type="8" />
+	<Item Name="Room1.FCU[1].FCU_Status.fanSpeed" Pos="030034DE" Type="42" />
+	<Item Name="Room1.settingsFCU[1].FCU_Mode" Pos="03003510" Type="8" />
 	<Item Name="setTempFCU_Room1[1]" Pos="03000A1A" Type="28" />
-	<Item Name="Room1.FCU[1].FCU_Status.valve" Pos="030034C9" Type="42" />
+	<Item Name="Room1.FCU[1].FCU_Status.valve" Pos="030034E2" Type="42" />
 	<Item Name="FCU_Temp_Room1" Pos="000000F5" Type="28" />
-	<Item Name="Room1.enCurtainsUP_GUI[1]" Pos="0300349D" Type="0" />
-	<Item Name="Room1.enCurtainsDW_GUI[1]" Pos="0300349E" Type="0" />
-	<Item Name="Room2.lightsSelect" Pos="03003517" Type="0" />
+	<Item Name="Room1.enCurtainsUP_GUI[1]" Pos="030034B4" Type="0" />
+	<Item Name="Room1.enCurtainsDW_GUI[1]" Pos="030034B5" Type="0" />
+	<Item Name="Room2.lightsSelect" Pos="0300352E" Type="0" />
 	<Item Name="lightsStatusRoom2[1]" Pos="03000A1E" Type="0" />
 	<Item Name="lightsStatusRoom2[2]" Pos="03000A1E" Type="1" />
 	<Item Name="lightsStatusRoom2[3]" Pos="03000A1E" Type="2" />
 	<Item Name="lightsStatusRoom2[4]" Pos="03000A1E" Type="3" />
 	<Item Name="lightsStatusRoom2[5]" Pos="03000A1E" Type="4" />
-	<Item Name="Room2.socketsSelect" Pos="03003517" Type="1" />
-	<Item Name="Room2.shuttersSelect" Pos="03003517" Type="2" />
-	<Item Name="Room2.navSelect" Pos="03003518" Type="8" />
-	<Item Name="Room2.AC_Select" Pos="03003517" Type="3" />
-	<Item Name="Room2.motionSensStatus[2]" Pos="030041E3" Type="1" />
-	<Item Name="Room2.motionSensStatus[1]" Pos="030041E3" Type="0" />
-	<Item Name="Room2.enableFCU[1]" Pos="03004228" Type="0" />
-	<Item Name="Room2.settingsFCU[1].FCU_FanSpeed" Pos="0300422A" Type="8" />
-	<Item Name="Room2.FCU[1].FCU_Status.fanSpeed" Pos="030041F7" Type="42" />
-	<Item Name="Room2.settingsFCU[1].FCU_Mode" Pos="03004229" Type="8" />
+	<Item Name="Room2.socketsSelect" Pos="0300352E" Type="1" />
+	<Item Name="Room2.shuttersSelect" Pos="0300352E" Type="2" />
+	<Item Name="Room2.navSelect" Pos="0300352F" Type="8" />
+	<Item Name="curtainsStatus[7].normPos" Pos="03000A62" Type="8" />
+	<Item Name="curtainsStatus[7].pos" Pos="03000A61" Type="8" />
+	<Item Name="curtainsStatus[7].outUP" Pos="03000A60" Type="0" />
+	<Item Name="curtainsStatus[7].outDW" Pos="03000A60" Type="1" />
+	<Item Name="Room2.AC_Select" Pos="0300352E" Type="3" />
+	<Item Name="Room2.motionSensStatus[2]" Pos="03004202" Type="1" />
+	<Item Name="Room2.motionSensStatus[1]" Pos="03004202" Type="0" />
+	<Item Name="Room2.enableFCU[1]" Pos="03004247" Type="0" />
+	<Item Name="Room2.settingsFCU[1].FCU_FanSpeed" Pos="03004249" Type="8" />
+	<Item Name="Room2.FCU[1].FCU_Status.fanSpeed" Pos="03004216" Type="42" />
+	<Item Name="Room2.settingsFCU[1].FCU_Mode" Pos="03004248" Type="8" />
 	<Item Name="setTempFCU_Room2[1]" Pos="03000A22" Type="28" />
-	<Item Name="Room2.FCU[1].FCU_Status.valve" Pos="030041FB" Type="42" />
+	<Item Name="Room2.FCU[1].FCU_Status.valve" Pos="0300421A" Type="42" />
 	<Item Name="FCU_Temp_Room2" Pos="000000FE" Type="28" />
-	<Item Name="room2.EnLights[2]" Pos="03004192" Type="1" />
+	<Item Name="room2.EnLights[2]" Pos="030041A9" Type="1" />
 	<Item Name="outletsStatusRoom2[1]" Pos="03000A21" Type="0" />
-	<Item Name="room2.EnLights[1]" Pos="03004192" Type="0" />
-	<Item Name="room2.EnLights[3]" Pos="03004192" Type="2" />
-	<Item Name="room2.EnLights[4]" Pos="03004192" Type="3" />
-	<Item Name="room2.EnLights[5]" Pos="03004192" Type="4" />
-	<Item Name="Room2.EnOutlets[1]" Pos="030041A6" Type="0" />
-	<Item Name="Room3.lightsSelect" Pos="03004247" Type="0" />
-	<Item Name="Room3.socketsSelect" Pos="03004247" Type="1" />
-	<Item Name="Room3.shuttersSelect" Pos="03004247" Type="2" />
-	<Item Name="Room3.navSelect" Pos="03004248" Type="8" />
-	<Item Name="Room3.AC_Select" Pos="03004247" Type="3" />
-	<Item Name="Room3.motionSensStatus[2]" Pos="03004F1F" Type="1" />
-	<Item Name="Room3.motionSensStatus[1]" Pos="03004F1F" Type="0" />
-	<Item Name="Room3.enableFCU[1]" Pos="03004F64" Type="0" />
-	<Item Name="Room3.settingsFCU[1].FCU_FanSpeed" Pos="03004F66" Type="8" />
-	<Item Name="Room3.FCU[1].FCU_Status.fanSpeed" Pos="03004F33" Type="42" />
-	<Item Name="Room3.settingsFCU[1].FCU_Mode" Pos="03004F65" Type="8" />
+	<Item Name="room2.EnLights[1]" Pos="030041A9" Type="0" />
+	<Item Name="room2.EnLights[3]" Pos="030041A9" Type="2" />
+	<Item Name="room2.EnLights[4]" Pos="030041A9" Type="3" />
+	<Item Name="room2.EnLights[5]" Pos="030041A9" Type="4" />
+	<Item Name="Room2.EnOutlets[1]" Pos="030041BD" Type="0" />
+	<Item Name="Room2.enCurtainsUP_GUI[1]" Pos="030041EC" Type="0" />
+	<Item Name="Room2.enCurtainsDW_GUI[1]" Pos="030041ED" Type="0" />
+	<Item Name="Room3.lightsSelect" Pos="03004266" Type="0" />
+	<Item Name="Room3.socketsSelect" Pos="03004266" Type="1" />
+	<Item Name="Room3.shuttersSelect" Pos="03004266" Type="2" />
+	<Item Name="Room3.navSelect" Pos="03004267" Type="8" />
+	<Item Name="Room3.AC_Select" Pos="03004266" Type="3" />
+	<Item Name="Room3.motionSensStatus[2]" Pos="03004F4A" Type="1" />
+	<Item Name="Room3.motionSensStatus[1]" Pos="03004F4A" Type="0" />
+	<Item Name="Room3.enableFCU[1]" Pos="03004F8F" Type="0" />
+	<Item Name="Room3.settingsFCU[1].FCU_FanSpeed" Pos="03004F91" Type="8" />
+	<Item Name="Room3.FCU[1].FCU_Status.fanSpeed" Pos="03004F5E" Type="42" />
+	<Item Name="Room3.settingsFCU[1].FCU_Mode" Pos="03004F90" Type="8" />
 	<Item Name="setTempFCU_Room3[1]" Pos="03000A2A" Type="28" />
-	<Item Name="Room3.FCU[1].FCU_Status.valve" Pos="03004F37" Type="42" />
+	<Item Name="Room3.FCU[1].FCU_Status.valve" Pos="03004F62" Type="42" />
 	<Item Name="FCU_Temp_Room3" Pos="00000107" Type="28" />
 	<Item Name="lightsStatusRoom3[1]" Pos="03000A26" Type="0" />
 	<Item Name="lightsStatusRoom3[2]" Pos="03000A26" Type="1" />
 	<Item Name="lightsStatusRoom3[3]" Pos="03000A26" Type="2" />
 	<Item Name="lightsStatusRoom3[4]" Pos="03000A26" Type="3" />
 	<Item Name="lightsStatusRoom3[5]" Pos="03000A26" Type="4" />
-	<Item Name="room3.EnLights[2]" Pos="03004EC2" Type="1" />
-	<Item Name="room3.EnLights[1]" Pos="03004EC2" Type="0" />
-	<Item Name="room3.EnLights[3]" Pos="03004EC2" Type="2" />
-	<Item Name="room3.EnLights[4]" Pos="03004EC2" Type="3" />
-	<Item Name="room3.EnLights[5]" Pos="03004EC2" Type="4" />
+	<Item Name="room3.EnLights[2]" Pos="03004EE1" Type="1" />
+	<Item Name="room3.EnLights[1]" Pos="03004EE1" Type="0" />
+	<Item Name="room3.EnLights[3]" Pos="03004EE1" Type="2" />
+	<Item Name="room3.EnLights[4]" Pos="03004EE1" Type="3" />
+	<Item Name="room3.EnLights[5]" Pos="03004EE1" Type="4" />
 	<Item Name="lightsStatusRoom3[6]" Pos="03000A26" Type="5" />
-	<Item Name="room3.EnLights[6]" Pos="03004EC2" Type="5" />
+	<Item Name="room3.EnLights[6]" Pos="03004EE1" Type="5" />
 	<Item Name="outletsStatusRoom3[1]" Pos="03000A29" Type="0" />
-	<Item Name="Room3.EnOutlets[1]" Pos="03004ED6" Type="0" />
-	<Item Name="Majles.enableFCU[2]" Pos="03002775" Type="1" />
-	<Item Name="Majles.settingsFCU[2].FCU_FanSpeed" Pos="03002779" Type="8" />
-	<Item Name="Majles.FCU[2].FCU_Status.fanSpeed" Pos="03002744" Type="42" />
-	<Item Name="Majles.settingsFCU[2].FCU_Mode" Pos="03002778" Type="8" />
+	<Item Name="Room3.EnOutlets[1]" Pos="03004EF5" Type="0" />
+	<Item Name="Room3.enCurtainsUP_GUI[1]" Pos="03004F34" Type="0" />
+	<Item Name="Room3.enCurtainsDW_GUI[1]" Pos="03004F35" Type="0" />
+	<Item Name="Majles.enableFCU[2]" Pos="0300278D" Type="1" />
+	<Item Name="Majles.settingsFCU[2].FCU_FanSpeed" Pos="03002791" Type="8" />
+	<Item Name="Majles.FCU[2].FCU_Status.fanSpeed" Pos="0300275C" Type="42" />
+	<Item Name="Majles.settingsFCU[2].FCU_Mode" Pos="03002790" Type="8" />
 	<Item Name="setTempFCU_Majles[2]" Pos="03000A12" Type="28" />
-	<Item Name="Majles.FCU[2].FCU_Status.valve" Pos="03002748" Type="42" />
+	<Item Name="Majles.FCU[2].FCU_Status.valve" Pos="03002760" Type="42" />
 	<Item Name="FCU_Temp_Majles2" Pos="00000074" Type="28" />
 	<Item Name="outletsStatusRoom3[2]" Pos="03000A29" Type="1" />
-	<Item Name="Room3.EnOutlets[2]" Pos="03004ED6" Type="1" />
+	<Item Name="Room3.EnOutlets[2]" Pos="03004EF5" Type="1" />
 	<Item Name="outletsStatusMajles[2]" Pos="03000A0D" Type="1" />
 	<Item Name="outletsStatusMajles[3]" Pos="03000A0D" Type="2" />
 	<Item Name="outletsStatusMajles[4]" Pos="03000A0D" Type="3" />

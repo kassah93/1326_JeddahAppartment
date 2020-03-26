@@ -10,6 +10,11 @@ P     0
  CAL  prgMain_L0
 E     0
 
+; Initialize - program
+P     58
+ LEA  Main
+ CAL  prgMain__InstanceInit__
+E     58
 
 
  

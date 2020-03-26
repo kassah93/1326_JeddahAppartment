@@ -701,7 +701,7 @@
 				<block width="90" height="35" border="false" variable="Room2.navSelect" type="USINT" value="2" />
 			</object>
 			<object caption="" X="20" Y="26" xoff="6" yoff="6" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room2.shuttersSelect" vistype="BOOL" visneg="false" Uid="14852" layer="3">
-				<mulimg variable="main.test" type="INT" count="5">
+				<mulimg variable="main.test" type="" count="5">
 					<img name="WINDOW9.PNG" />
 					<img name="WINDOW10.PNG" />
 					<img name="WINDOW11.PNG" />
@@ -710,16 +710,16 @@
 				</mulimg>
 			</object>
 			<object caption="" X="24" Y="39" xoff="6" yoff="7" level="0" readonly="false" front="0" back="14474460" strong="false" italic="false" size="13" transparent="false" visvar="Room2.shuttersSelect" vistype="BOOL" visneg="false" Uid="14853" layer="3">
-				<edit variable="main.test" type="INT" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="32" height="20" tabindex="1" />
+				<edit variable="main.test" type="" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="32" height="20" tabindex="1" />
 			</object>
 			<object caption="%" X="29" Y="40" xoff="0" yoff="0" level="0" readonly="false" front="2565927" back="16777215" strong="false" italic="false" size="15" transparent="true" visvar="Room2.shuttersSelect" vistype="BOOL" visneg="false" Uid="14854" layer="3">
 				<label />
 			</object>
 			<object caption="" X="27" Y="43" xoff="2" yoff="6" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room2.shuttersSelect" vistype="BOOL" visneg="false" Uid="14855" layer="3">
-				<image optcap="" variable="main.test" type="INT" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
+				<image optcap="" variable="main.test" type="" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
 			</object>
 			<object caption="" X="20" Y="43" xoff="7" yoff="6" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room2.shuttersSelect" vistype="BOOL" visneg="false" Uid="14856" layer="3">
-				<image optcap="" variable="main.test" type="INT" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
+				<image optcap="" variable="main.test" type="" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
 			</object>
 			<object caption="" X="38" Y="14" xoff="5" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Room2.AC_Select" vistype="BOOL" visneg="true" Uid="14857">
 				<block dynamic="true" width="90" height="5" border="false" color="1" />
@@ -870,22 +870,22 @@
 		</page>
 		<page caption="Room3" name="ROOM3.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1584613573" width="406" height="718" Uid="14906">
 			<object caption="" X="6" Y="26" xoff="5" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room3.lightsSelect" vistype="BOOL" visneg="false" Uid="14863" layer="6">
-				<image optcap="" variable="main.test" type="INT" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+				<image optcap="" variable="main.test" type="" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
 			</object>
 			<object caption="" X="22" Y="26" xoff="6" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room3.lightsSelect" vistype="BOOL" visneg="false" Uid="14864" layer="6">
-				<image optcap="" variable="main.test" type="INT" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+				<image optcap="" variable="main.test" type="" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
 			</object>
 			<object caption="" X="38" Y="26" xoff="7" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room3.lightsSelect" vistype="BOOL" visneg="false" Uid="14865" layer="6">
-				<image optcap="" variable="main.test" type="INT" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+				<image optcap="" variable="main.test" type="" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
 			</object>
 			<object caption="" X="14" Y="42" xoff="1" yoff="3" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room3.lightsSelect" vistype="BOOL" visneg="false" Uid="14866" layer="6">
-				<image optcap="" variable="main.test" type="INT" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+				<image optcap="" variable="main.test" type="" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
 			</object>
 			<object caption="" X="32" Y="42" xoff="3" yoff="3" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room3.lightsSelect" vistype="BOOL" visneg="false" Uid="14867" layer="6">
-				<image optcap="" variable="main.test" type="INT" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
+				<image optcap="" variable="main.test" type="" on="IDEA_3_1.PNG" off="IDEA_4_1.PNG" />
 			</object>
 			<object caption="" X="24" Y="46" xoff="3" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room3.socketsSelect" vistype="BOOL" visneg="false" Uid="14868" layer="2">
-				<image optcap="" variable="main.test" type="INT" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
+				<image optcap="" variable="main.test" type="" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
 			</object>
 			<object caption="" X="2" Y="2" xoff="2" yoff="6" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="14870">
 				<picture href="" img="TECO-LOG.PNG" />
@@ -939,7 +939,7 @@
 				<block width="90" height="35" border="false" variable="Room3.navSelect" type="USINT" value="2" />
 			</object>
 			<object caption="" X="8" Y="27" xoff="7" yoff="3" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room3.shuttersSelect" vistype="BOOL" visneg="false" Uid="14887" layer="3">
-				<mulimg variable="main.test" type="INT" count="5">
+				<mulimg variable="main.test" type="" count="5">
 					<img name="WINDOW9.PNG" />
 					<img name="WINDOW10.PNG" />
 					<img name="WINDOW11.PNG" />
@@ -948,16 +948,16 @@
 				</mulimg>
 			</object>
 			<object caption="" X="12" Y="40" xoff="7" yoff="4" level="0" readonly="false" front="0" back="14474460" strong="false" italic="false" size="13" transparent="false" visvar="Room3.shuttersSelect" vistype="BOOL" visneg="false" Uid="14888" layer="3">
-				<edit variable="main.test" type="INT" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="32" height="20" tabindex="1" />
+				<edit variable="main.test" type="" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="32" height="20" tabindex="1" />
 			</object>
 			<object caption="%" X="17" Y="40" xoff="1" yoff="5" level="0" readonly="false" front="2565927" back="16777215" strong="false" italic="false" size="15" transparent="true" visvar="Room3.shuttersSelect" vistype="BOOL" visneg="false" Uid="14889" layer="3">
 				<label />
 			</object>
 			<object caption="" X="15" Y="44" xoff="3" yoff="3" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room3.shuttersSelect" vistype="BOOL" visneg="false" Uid="14890" layer="3">
-				<image optcap="" variable="main.test" type="INT" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
+				<image optcap="" variable="main.test" type="" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
 			</object>
 			<object caption="" X="9" Y="44" xoff="0" yoff="3" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room3.shuttersSelect" vistype="BOOL" visneg="false" Uid="14891" layer="3">
-				<image optcap="" variable="main.test" type="INT" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
+				<image optcap="" variable="main.test" type="" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
 			</object>
 			<object caption="" X="38" Y="14" xoff="5" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Room3.AC_Select" vistype="BOOL" visneg="true" Uid="14892">
 				<block dynamic="true" width="90" height="5" border="false" color="1" />
@@ -978,7 +978,7 @@
 				<image optcap="" variable="Room3.motionSensStatus[2]" type="BOOL" on="MOTION_S.GIF" off="MOTION_S.PNG" />
 			</object>
 			<object caption="" X="31" Y="27" xoff="3" yoff="3" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room3.shuttersSelect" vistype="BOOL" visneg="false" Uid="14898" layer="3">
-				<mulimg variable="main.test" type="INT" count="5">
+				<mulimg variable="main.test" type="" count="5">
 					<img name="WINDOW9.PNG" />
 					<img name="WINDOW10.PNG" />
 					<img name="WINDOW11.PNG" />
@@ -987,16 +987,16 @@
 				</mulimg>
 			</object>
 			<object caption="" X="35" Y="40" xoff="3" yoff="4" level="0" readonly="false" front="0" back="14474460" strong="false" italic="false" size="13" transparent="false" visvar="Room3.shuttersSelect" vistype="BOOL" visneg="false" Uid="14899" layer="3">
-				<edit variable="main.test" type="INT" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="32" height="20" tabindex="2" />
+				<edit variable="main.test" type="" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="32" height="20" tabindex="2" />
 			</object>
 			<object caption="%" X="39" Y="40" xoff="5" yoff="5" level="0" readonly="false" front="2565927" back="16777215" strong="false" italic="false" size="15" transparent="true" visvar="Room3.shuttersSelect" vistype="BOOL" visneg="false" Uid="14900" layer="3">
 				<label />
 			</object>
 			<object caption="" X="37" Y="44" xoff="7" yoff="3" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room3.shuttersSelect" vistype="BOOL" visneg="false" Uid="14901" layer="3">
-				<image optcap="" variable="main.test" type="INT" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
+				<image optcap="" variable="main.test" type="" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
 			</object>
 			<object caption="" X="31" Y="44" xoff="4" yoff="3" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room3.shuttersSelect" vistype="BOOL" visneg="false" Uid="14902" layer="3">
-				<image optcap="" variable="main.test" type="INT" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
+				<image optcap="" variable="main.test" type="" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
 			</object>
 			<object caption="" X="12" Y="81" xoff="6" yoff="0" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="14910">
 				<image optcap="" variable="Room3.motionSensStatus[1]" type="BOOL" on="MOTION_S.GIF" off="MOTION_S.PNG" />
@@ -1262,10 +1262,10 @@
 				<label />
 			</object>
 			<object caption="" X="15" Y="44" xoff="6" yoff="3" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room3.socketsSelect" vistype="BOOL" visneg="false" Uid="15204">
-				<image optcap="" variable="main.test" type="INT" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
+				<image optcap="" variable="main.test" type="" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
 			</object>
 			<object caption="" X="33" Y="44" xoff="2" yoff="3" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room3.socketsSelect" vistype="BOOL" visneg="false" Uid="15205">
-				<image optcap="" variable="main.test" type="INT" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
+				<image optcap="" variable="main.test" type="" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
 			</object>
 			<object caption="" X="15" Y="44" xoff="6" yoff="3" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room3.socketsSelect" vistype="BOOL" visneg="false" Uid="15206">
 				<image optcap="" variable="outletsStatusRoom3[1]" type="BOOL" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />

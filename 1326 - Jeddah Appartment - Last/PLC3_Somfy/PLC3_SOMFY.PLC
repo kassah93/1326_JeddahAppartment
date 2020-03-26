@@ -19,7 +19,7 @@ dirs=""
 
 [plcselection]
 connection=4
-openchannel=1
+openchannel=0
 chanel=0
 speed=9
 tout=500
@@ -72,7 +72,7 @@ genrst=0
 askrst=1
 genrunp=1
 genhltp=1
-mode=1
+mode=2
 plcn=0
 checkprgname=1
 onlinechngs=0

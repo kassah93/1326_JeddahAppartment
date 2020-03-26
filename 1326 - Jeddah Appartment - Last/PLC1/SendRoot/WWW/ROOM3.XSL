@@ -15,18 +15,18 @@
 <title>
 <xsl:value-of select="/PAGE/@TITLE" />
 Room3</title>
-<script src="ROOM3.JS?U=1584613573" language="JavaScript" charset="utf-8" />
+<script src="ROOM3.JS?U=1585229249" language="JavaScript" charset="utf-8" />
 <style type="text/css">.mono {font-family: Verdana, Arial, FreeSans, sans-serif;}</style>
 </head>
 <body onload="GetXML('ROOM3.XML'); FunWatchDog();" style="margin: 0px 0px 0px 0px">
-<xsl:if test="1584613573 != ACCESS/@UCID">
+<xsl:if test="1585229249 != ACCESS/@UCID">
 <xsl:attribute name="onload">
 null;
 </xsl:attribute>
 <div id="cachewarning" style="text-align: left;"></div>
 <script src="REFCLR.JS" language="JavaScript" charset="utf-8"></script>
 </xsl:if>
-<xsl:if test="1584613573 = ACCESS/@UCID">
+<xsl:if test="1585229249 = ACCESS/@UCID">
 <table cellpadding="0" cellspacing="0">
 <tr>
 <!--menu-->
@@ -41,16 +41,22 @@ null;
 <input class="mono" tabindex="1" type="text" size="3" style="position: absolute; top: 316px; left: 95px; z-index: 25; border: solid red 2px;" value="? ? ?" readonly="readonly" id="INPUT23" />
 </xsl:if>
 <xsl:if test="INPUT[3]/@VALUE = 0">
-<input class="mono" tabindex="2" type="text" size="3" style="position: absolute; top: 316px; left: 275px; z-index: 36; border: solid red 2px; visibility: hidden;" value="? ? ?" readonly="readonly" id="INPUT34" />
+<input class="mono" tabindex="3" type="text" size="3" style="position: absolute; top: 316px; left: 275px; z-index: 36; border: solid red 2px; visibility: hidden;" value="? ? ?" readonly="readonly" id="INPUT34" />
 </xsl:if>
 <xsl:if test="INPUT[3]/@VALUE != 0">
-<input class="mono" tabindex="2" type="text" size="3" style="position: absolute; top: 316px; left: 275px; z-index: 36; border: solid red 2px;" value="? ? ?" readonly="readonly" id="INPUT34" />
+<input class="mono" tabindex="3" type="text" size="3" style="position: absolute; top: 316px; left: 275px; z-index: 36; border: solid red 2px;" value="? ? ?" readonly="readonly" id="INPUT34" />
 </xsl:if>
 <xsl:if test="INPUT[4]/@VALUE = 0">
-<input class="mono" tabindex="4" type="text" id="INPUT57" style="position: absolute; top: 246px; left: 345px; width: 36px; z-index: 60; background: none; visibility: hidden;" value="{INPUT[13]/@VALUE}" readonly="readonly" />
+<input class="mono" tabindex="5" type="text" id="INPUT57" style="position: absolute; top: 246px; left: 345px; width: 36px; z-index: 60; background: none; visibility: hidden;" value="{INPUT[13]/@VALUE}" readonly="readonly" />
 </xsl:if>
 <xsl:if test="INPUT[4]/@VALUE != 0">
-<input class="mono" tabindex="4" type="text" id="INPUT57" style="position: absolute; top: 246px; left: 345px; width: 36px; z-index: 60; background: none;" value="{INPUT[13]/@VALUE}" readonly="readonly" />
+<input class="mono" tabindex="5" type="text" id="INPUT57" style="position: absolute; top: 246px; left: 345px; width: 36px; z-index: 60; background: none;" value="{INPUT[13]/@VALUE}" readonly="readonly" />
+</xsl:if>
+<xsl:if test="INPUT[3]/@VALUE = 0">
+<input class="mono" tabindex="2" type="text" id="INPUT79" style="position: absolute; top: 311px; left: 190px; width: 30px; z-index: 83; height: 18px; background-color: #DCDCDC; border: none; visibility: hidden;" value="{INPUT[23]/@VALUE}" name="{INPUT[23]/@NAME}" onfocus="SetInputEdited(79, event);" onblur="InputFocused[78]=0" onkeydown="SetInputEdited(79, event);"></input>
+</xsl:if>
+<xsl:if test="INPUT[3]/@VALUE != 0">
+<input class="mono" tabindex="2" type="text" id="INPUT79" style="position: absolute; top: 311px; left: 190px; width: 30px; z-index: 83; height: 18px; background-color: #DCDCDC; border: none;" value="{INPUT[23]/@VALUE}" name="{INPUT[23]/@NAME}" onfocus="SetInputEdited(79, event);" onblur="InputFocused[78]=0" onkeydown="SetInputEdited(79, event);"></input>
 </xsl:if>
 </form>
 <xsl:if test="INPUT[1]/@VALUE = 0">
@@ -222,10 +228,10 @@ null;
 <div id="INPUT32" style="position: absolute; top: 640px; left: 244px; z-index: 34; background-image: url(IMAGES/MOTION_S.GIF); line-height: 78px; height: 78px; width: 63px;"></div>
 </xsl:if>
 <xsl:if test="INPUT[3]/@VALUE = 0">
-<div id="INPUT33" style="border: solid red 2px; position: absolute; top: 211px; left: 243px; z-index: 35; background-image: url(IMAGES/WINDOW9.PNG); line-height: 100px; height: 100px; width: 100px; visibility: hidden;"></div>
+<div id="INPUT33" style="border: solid red 2px; position: absolute; top: 281px; left: 168px; z-index: 35; background-image: url(IMAGES/WINDOW9.PNG); line-height: 100px; height: 100px; width: 100px; visibility: hidden;"></div>
 </xsl:if>
 <xsl:if test="INPUT[3]/@VALUE != 0">
-<div id="INPUT33" style="border: solid red 2px; position: absolute; top: 211px; left: 243px; z-index: 35; background-image: url(IMAGES/WINDOW9.PNG); line-height: 100px; height: 100px; width: 100px;"></div>
+<div id="INPUT33" style="border: solid red 2px; position: absolute; top: 281px; left: 168px; z-index: 35; background-image: url(IMAGES/WINDOW9.PNG); line-height: 100px; height: 100px; width: 100px;"></div>
 </xsl:if>
 <xsl:if test="INPUT[3]/@VALUE = 0">
 <div style="position: absolute; top: 317px; left: 309px; z-index: 37; font-size: 15px; color: #272727; visibility: hidden;" id="INPUT35">%</div>
@@ -546,13 +552,13 @@ null;
 </xsl:if>
 <xsl:if test="INPUT[4]/@VALUE = 0">
 <form action="javascript:PostXML54()" style="position: absolute; top: 246px; left: 100px; z-index: 57; font-size: 13px;">
-<input id="INPUT54" onfocus="document.getElementById('INPUT54x').style.visibility='visible';SetInputEdited(54, event);" onblur="InputFocused[53]=0" onkeydown="SetInputEdited(54, event);" class="mono" tabindex="3" type="text" style="width: 36px; color: #3C3C3C; background: none; display: none;" name="{INPUT[11]/@NAME}" value="{INPUT[11]/@VALUE}" />
+<input id="INPUT54" onfocus="document.getElementById('INPUT54x').style.visibility='visible';SetInputEdited(54, event);" onblur="InputFocused[53]=0" onkeydown="SetInputEdited(54, event);" class="mono" tabindex="4" type="text" style="width: 36px; color: #3C3C3C; background: none; display: none;" name="{INPUT[11]/@NAME}" value="{INPUT[11]/@VALUE}" />
 <input type="submit" id="INPUT54x" style="position: absolute; top: 0px; height: 22px; width: 22px; visibility: hidden;" value="&gt;" />
 </form>
 </xsl:if>
 <xsl:if test="INPUT[4]/@VALUE != 0">
 <form action="javascript:PostXML54()" style="position: absolute; top: 246px; left: 100px; z-index: 57; font-size: 13px;">
-<input id="INPUT54" onfocus="document.getElementById('INPUT54x').style.visibility='visible';SetInputEdited(54, event);" onblur="InputFocused[53]=0" onkeydown="SetInputEdited(54, event);" class="mono" tabindex="3" type="text" style="width: 36px; color: #3C3C3C; background: none;" name="{INPUT[11]/@NAME}" value="{INPUT[11]/@VALUE}" />
+<input id="INPUT54" onfocus="document.getElementById('INPUT54x').style.visibility='visible';SetInputEdited(54, event);" onblur="InputFocused[53]=0" onkeydown="SetInputEdited(54, event);" class="mono" tabindex="4" type="text" style="width: 36px; color: #3C3C3C; background: none;" name="{INPUT[11]/@NAME}" value="{INPUT[11]/@VALUE}" />
 <input type="submit" id="INPUT54x" style="position: absolute; top: 0px; height: 22px; width: 22px; visibility: hidden;" value="&gt;" />
 </form>
 </xsl:if>
@@ -787,6 +793,100 @@ null;
 <div onclick="PostXML77()" id="INPUT77" style="position: absolute; top: 360px; left: 175px; z-index: 80;cursor:pointer;height:70px; width:65px; border: none; background: none;"></div>
 </xsl:if>
 <div style="position: absolute; top: 135px; left: 160px; z-index: 81; font-size: 20px; color: #323232; font-weight: bold;">ROOM3</div>
+<xsl:if test="INPUT[3]/@VALUE = 0">
+<xsl:choose>
+<xsl:when test="INPUT[22]/@VALUE = 0">
+<div id="INPUT78" style="position: absolute; top: 206px; left: 158px; z-index: 82; background-image: url(IMAGES/WINDOW9.PNG); line-height: 100px; height: 100px; width: 100px; visibility: hidden;"></div>
+</xsl:when>
+<xsl:when test="INPUT[22]/@VALUE = 1">
+<div id="INPUT78" style="position: absolute; top: 206px; left: 158px; z-index: 82; background-image: url(IMAGES/WINDOW10.PNG); line-height: 100px; height: 100px; width: 100px; visibility: hidden;"></div>
+</xsl:when>
+<xsl:when test="INPUT[22]/@VALUE = 2">
+<div id="INPUT78" style="position: absolute; top: 206px; left: 158px; z-index: 82; background-image: url(IMAGES/WINDOW11.PNG); line-height: 100px; height: 100px; width: 100px; visibility: hidden;"></div>
+</xsl:when>
+<xsl:when test="INPUT[22]/@VALUE = 3">
+<div id="INPUT78" style="position: absolute; top: 206px; left: 158px; z-index: 82; background-image: url(IMAGES/WINDOW12.PNG); line-height: 100px; height: 100px; width: 100px; visibility: hidden;"></div>
+</xsl:when>
+<xsl:when test="INPUT[22]/@VALUE = 4">
+<div id="INPUT78" style="position: absolute; top: 206px; left: 158px; z-index: 82; background-image: url(IMAGES/WINDOW13.PNG); line-height: 100px; height: 100px; width: 100px; visibility: hidden;"></div>
+</xsl:when>
+<xsl:otherwise>
+<div id="INPUT78" style="position: absolute; top: 206px; left: 158px; z-index: 82; background-image: url(IMAGES/WINDOW13.PNG); line-height: 100px; height: 100px; width: 100px; visibility: hidden; visibility: hidden;"></div>
+</xsl:otherwise>
+</xsl:choose>
+</xsl:if>
+<xsl:if test="INPUT[3]/@VALUE != 0">
+<xsl:choose>
+<xsl:when test="INPUT[22]/@VALUE = 0">
+<div id="INPUT78" style="position: absolute; top: 206px; left: 158px; z-index: 82; background-image: url(IMAGES/WINDOW9.PNG); line-height: 100px; height: 100px; width: 100px;"></div>
+</xsl:when>
+<xsl:when test="INPUT[22]/@VALUE = 1">
+<div id="INPUT78" style="position: absolute; top: 206px; left: 158px; z-index: 82; background-image: url(IMAGES/WINDOW10.PNG); line-height: 100px; height: 100px; width: 100px;"></div>
+</xsl:when>
+<xsl:when test="INPUT[22]/@VALUE = 2">
+<div id="INPUT78" style="position: absolute; top: 206px; left: 158px; z-index: 82; background-image: url(IMAGES/WINDOW11.PNG); line-height: 100px; height: 100px; width: 100px;"></div>
+</xsl:when>
+<xsl:when test="INPUT[22]/@VALUE = 3">
+<div id="INPUT78" style="position: absolute; top: 206px; left: 158px; z-index: 82; background-image: url(IMAGES/WINDOW12.PNG); line-height: 100px; height: 100px; width: 100px;"></div>
+</xsl:when>
+<xsl:when test="INPUT[22]/@VALUE = 4">
+<div id="INPUT78" style="position: absolute; top: 206px; left: 158px; z-index: 82; background-image: url(IMAGES/WINDOW13.PNG); line-height: 100px; height: 100px; width: 100px;"></div>
+</xsl:when>
+<xsl:otherwise>
+<div id="INPUT78" style="position: absolute; top: 206px; left: 158px; z-index: 82; background-image: url(IMAGES/WINDOW13.PNG); line-height: 100px; height: 100px; width: 100px;"></div>
+</xsl:otherwise>
+</xsl:choose>
+</xsl:if>
+<xsl:if test="INPUT[3]/@VALUE = 0">
+<div style="position: absolute; top: 312px; left: 224px; z-index: 84; font-size: 15px; color: #272727; visibility: hidden;" id="INPUT80">%</div>
+</xsl:if>
+<xsl:if test="INPUT[3]/@VALUE != 0">
+<div style="position: absolute; top: 312px; left: 224px; z-index: 84; font-size: 15px; color: #272727;" id="INPUT80">%</div>
+</xsl:if>
+<xsl:if test="INPUT[3]/@VALUE = 0">
+<xsl:if test="INPUT[24]/@VALUE = 0">
+<div id="INPUT81" style="position: absolute; top: 342px; left: 222px; z-index: 85; background-image: url(IMAGES/BTN_BL_5.PNG); line-height: 51px; height: 51px; width: 50px; display: none;"></div>
+</xsl:if>
+<xsl:if test="INPUT[24]/@VALUE != 0">
+<div id="INPUT81" style="position: absolute; top: 342px; left: 222px; z-index: 85; background-image: url(IMAGES/BTN_GREE.PNG); line-height: 50px; height: 50px; width: 50px; display: none;"></div>
+</xsl:if>
+</xsl:if>
+<xsl:if test="INPUT[3]/@VALUE != 0">
+<xsl:if test="INPUT[24]/@VALUE = 0">
+<div id="INPUT81" style="position: absolute; top: 342px; left: 222px; z-index: 85; background-image: url(IMAGES/BTN_BL_5.PNG); line-height: 51px; height: 51px; width: 50px;"></div>
+</xsl:if>
+<xsl:if test="INPUT[24]/@VALUE != 0">
+<div id="INPUT81" style="position: absolute; top: 342px; left: 222px; z-index: 85; background-image: url(IMAGES/BTN_GREE.PNG); line-height: 50px; height: 50px; width: 50px;"></div>
+</xsl:if>
+</xsl:if>
+<xsl:if test="INPUT[3]/@VALUE = 0">
+<xsl:if test="INPUT[25]/@VALUE = 0">
+<div id="INPUT82" style="position: absolute; top: 342px; left: 151px; z-index: 86; background-image: url(IMAGES/BTN_BL_7.PNG); line-height: 51px; height: 51px; width: 50px; display: none;"></div>
+</xsl:if>
+<xsl:if test="INPUT[25]/@VALUE != 0">
+<div id="INPUT82" style="position: absolute; top: 342px; left: 151px; z-index: 86; background-image: url(IMAGES/BTN_GRE1.PNG); line-height: 50px; height: 50px; width: 50px; display: none;"></div>
+</xsl:if>
+</xsl:if>
+<xsl:if test="INPUT[3]/@VALUE != 0">
+<xsl:if test="INPUT[25]/@VALUE = 0">
+<div id="INPUT82" style="position: absolute; top: 342px; left: 151px; z-index: 86; background-image: url(IMAGES/BTN_BL_7.PNG); line-height: 51px; height: 51px; width: 50px;"></div>
+</xsl:if>
+<xsl:if test="INPUT[25]/@VALUE != 0">
+<div id="INPUT82" style="position: absolute; top: 342px; left: 151px; z-index: 86; background-image: url(IMAGES/BTN_GRE1.PNG); line-height: 50px; height: 50px; width: 50px;"></div>
+</xsl:if>
+</xsl:if>
+<xsl:if test="INPUT[3]/@VALUE = 0">
+<div onclick="PostXML83()" id="INPUT83" style="position: absolute; top: 342px; left: 223px; z-index: 87;cursor:pointer;height:50px; width:50px; border: none; background: none; visibility: hidden;"></div>
+</xsl:if>
+<xsl:if test="INPUT[3]/@VALUE != 0">
+<div onclick="PostXML83()" id="INPUT83" style="position: absolute; top: 342px; left: 223px; z-index: 87;cursor:pointer;height:50px; width:50px; border: none; background: none;"></div>
+</xsl:if>
+<xsl:if test="INPUT[3]/@VALUE = 0">
+<div onclick="PostXML84()" id="INPUT84" style="position: absolute; top: 342px; left: 152px; z-index: 88;cursor:pointer;height:50px; width:50px; border: none; background: none; visibility: hidden;"></div>
+</xsl:if>
+<xsl:if test="INPUT[3]/@VALUE != 0">
+<div onclick="PostXML84()" id="INPUT84" style="position: absolute; top: 342px; left: 152px; z-index: 88;cursor:pointer;height:50px; width:50px; border: none; background: none;"></div>
+</xsl:if>
 </div>
 </td>
 </tr>

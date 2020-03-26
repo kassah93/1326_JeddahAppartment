@@ -53,10 +53,7 @@ PROGRAM PrgRoom2
   EnOutletsAN      {PUBLIC_API}       : TEnOutletsAN  ;
   EnCurtainsUp     {PUBLIC_API}       : TEnCurtainsUp ;
   EnCurtainsDw     {PUBLIC_API}       : TEnCurtainsDW ;
-   //EnLightsRoom2AN1  {PUBLIC_API}      : TEnLightsAN1    ;
-   //stLightsRoom2AN  {PUBLIC_API}       : BOOL     ;
-  //curtainsFB       : TCurtainsFB;
-  //CurtainPositWm   : TCurtainPositWm;
+
 
 
   //
@@ -66,11 +63,28 @@ PROGRAM PrgRoom2
   enOutlets_RT : Array[1..NumOfHMIsRoom2,1..NumOfOutletRoom2] of R_TRIG;
   enOutlets_FT : Array[1..NumOfHMIsRoom2,1..NumOfOutletRoom2] of F_TRIG;
 
+
+  // HMIs
   enCurtainsUP_RT : Array[1..NumOfHMIsRoom2,1..NumOfCurtainRoom2] of R_TRIG;
   enCurtainsUP_FT : Array[1..NumOfHMIsRoom2,1..NumOfCurtainRoom2] of F_TRIG;
 
   enCurtainsDW_RT : Array[1..NumOfHMIsRoom2,1..NumOfCurtainRoom2] of R_TRIG;
   enCurtainsDW_FT : Array[1..NumOfHMIsRoom2,1..NumOfCurtainRoom2] of F_TRIG;
+
+
+  // RCU Switches
+  enCurtainsUP_SW_RT : Array[1..NumOfCurtainRoom2] of R_TRIG;
+  enCurtainsUP_SW_FT : Array[1..NumOfCurtainRoom2] of F_TRIG;
+
+  enCurtainsDW_SW_RT : Array[1..NumOfCurtainRoom2] of R_TRIG;
+  enCurtainsDW_SW_FT : Array[1..NumOfCurtainRoom2] of F_TRIG;
+
+  // GUI
+  enCurtainsUP_GUI : Array[1..NumOfCurtainRoom2] of BOOL;
+  enCurtainsDW_GUI : Array[1..NumOfCurtainRoom2] of BOOL;
+
+  CurtStatus_Index : USINT;
+  CurtEn_Index     : USINT;
 
 
 
@@ -140,6 +154,8 @@ PROGRAM PrgRoom2
 
   HMI_Index := 7;
   RCU_Index := 4;
+  CurtStatus_Index := 7;
+  CurtEn_Index  := 7;
   
   
   if GetRemoteIPaddress(chanCode := Eth1_uni3, ethAdr := RCU_ethAdr) then
@@ -199,6 +215,14 @@ PROGRAM PrgRoom2
    for i := 1 to NumOfFCUsRoom2 do
       HMIs_DataWrite[HMI_Index].FCUs_Status[i] := FCU[i].FCU_Status;
    end_for;
+   
+    if NumOfCurtainRoom2 > 0 then
+      for i := 1 to NumOfCurtainRoom2 do
+          HMIs_DataWrite[HMI_Index].shuttersStatus[i].UP.0 := curtainsStatus[CurtStatus_Index - 1 + i].outUP;
+          HMIs_DataWrite[HMI_Index].shuttersStatus[i].Dw.0 := curtainsStatus[CurtStatus_Index - 1 + i].outDW;
+          HMIs_DataWrite[HMI_Index].shuttersStatus[i].pos  := USINT_TO_WORD(curtainsStatus[CurtStatus_Index - 1 + i].pos);
+      end_for;
+   end_if;
 
    for i := 1 to NumOfHMIsRoom2-1 do
      HMIs_DataWrite[HMI_Index+i] := HMIs_DataWrite[HMI_Index];
@@ -254,6 +278,77 @@ PROGRAM PrgRoom2
 
      end_for;
    end_for;
+   
+   for j := 1 to NumOfHMIsRoom2 do
+     for i := 1 to NumOfCurtainRoom2 do
+
+         enCurtainsUP_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].UP.0);
+
+         enCurtainsUP_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].UP.0);
+
+         enCurtainsDW_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].Dw.0);
+
+         enCurtainsDW_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].Dw.0);
+
+         //
+         enCurtainsUP_SW_RT[i](CLK := controlRoom.SwitchUPStatus[i]);
+         enCurtainsUP_SW_FT[i](CLK := controlRoom.SwitchUPStatus[i]);
+
+         enCurtainsDW_SW_RT[i](CLK := controlRoom.SwitchDWStatus[i]);
+         enCurtainsDW_SW_FT[i](CLK := controlRoom.SwitchDWStatus[i]);
+
+         if  enCurtainsUP_RT[j,i].Q  or enCurtainsUP_FT[j,i].Q then
+             enCurtainsUP_GUI[i] := 1;
+         end_if;
+
+         if  enCurtainsDW_RT[j,i].Q  or enCurtainsDW_FT[j,i].Q then
+             enCurtainsDW_GUI[i] := 1;
+         end_if;
+
+         // if up button is pressed and the curtain is not moving up
+
+         if (enCurtainsUP_GUI[i] or enCurtainsUP_SW_RT[i].Q) and not curtainsStatus[CurtStatus_Index - 1 + i].outUP then
+             PLC1_EnCurtains[CurtEn_Index - 1 + i].UP   := 1;
+             PLC1_EnCurtains[CurtEn_Index - 1 + i].DW   := 0;
+             PLC1_EnCurtains[CurtEn_Index - 1 + i].STOP := 0;
+
+             enCurtainsUP_GUI[i] := 0;
+         end_if;
+
+         // if up button is pressed and the curtain is moving up
+
+         if (enCurtainsUP_GUI[i] or enCurtainsUP_SW_FT[i].Q) and curtainsStatus[CurtStatus_Index - 1 + i].outUP then
+             PLC1_EnCurtains[CurtEn_Index - 1 + i].UP   := 0;
+             PLC1_EnCurtains[CurtEn_Index - 1 + i].DW   := 0;
+             PLC1_EnCurtains[CurtEn_Index - 1 + i].STOP := 1;
+
+             enCurtainsUP_GUI[i] := 0;
+         end_if;
+
+
+          // if down button is pressed and the curtain is not moving down
+
+         if (enCurtainsDW_GUI[i] or enCurtainsDW_SW_RT[i].Q) and not curtainsStatus[CurtStatus_Index - 1 + i].outDW then
+             PLC1_EnCurtains[CurtEn_Index - 1 + i].UP   := 0;
+             PLC1_EnCurtains[CurtEn_Index - 1 + i].DW   := 1;
+             PLC1_EnCurtains[CurtEn_Index - 1 + i].STOP := 0;
+
+             enCurtainsDW_GUI[i] := 0;
+         end_if;
+
+         // if down button is pressed and the curtain is moving down
+
+         if (enCurtainsDW_GUI[i] or enCurtainsDW_SW_FT[i].Q) and curtainsStatus[CurtStatus_Index - 1 + i].outDW then
+             PLC1_EnCurtains[CurtEn_Index - 1 + i].UP   := 0;
+             PLC1_EnCurtains[CurtEn_Index - 1 + i].DW   := 0;
+             PLC1_EnCurtains[CurtEn_Index - 1 + i].STOP := 1;
+
+             enCurtainsDW_GUI[i] := 0;
+         end_if;
+
+     end_for;
+   end_for;
+   
 
    for j := 1 to NumOfHMIsRoom2 do
       for i := 1 to NumOfFCUsRoom2 do

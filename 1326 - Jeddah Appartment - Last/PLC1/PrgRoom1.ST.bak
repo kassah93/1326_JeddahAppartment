@@ -149,7 +149,7 @@ PROGRAM PrgRoom1
 
   HMI_Index := 5;
   RCU_Index := 3;
-  CurtStatus_Index := 10;
+  CurtStatus_Index := 6;
   CurtEn_Index  := 6;
 
   if GetRemoteIPaddress(chanCode := Eth1_uni2, ethAdr := RCU_ethAdr) then
@@ -297,7 +297,7 @@ PROGRAM PrgRoom1
              PLC1_EnCurtains[CurtEn_Index - 1 + i].DW   := 0;
              PLC1_EnCurtains[CurtEn_Index - 1 + i].STOP := 1;
 
-            // enCurtainsUP_GUI[i] := 0;
+             enCurtainsUP_GUI[i] := 0;
          end_if;
          
          
@@ -320,7 +320,6 @@ PROGRAM PrgRoom1
 
              enCurtainsDW_GUI[i] := 0;
          end_if;
-         
 
      end_for;
    end_for;

@@ -27,6 +27,8 @@ PROGRAM prgMain
   Trsnsmitter1_ID ,Trsnsmitter2_ID : TVendorID;
   HostID : TVendorID;
   
+  somfyRTSCtrl_Master : fbSomfyRTSCtrl;
+  
   // for test
   test, up, dw, stop, block : BOOl;
   up_RT , dw_RT : R_TRIG;
@@ -76,6 +78,9 @@ PROGRAM prgMain
       curtainsStatus[i].normPos := curtainsStatus[i].pos / 25;
       
   end_for;
+  
+  somfyRTSCtrl_Master(En := true, CH_ID := CH2_UNI, packetsBuffer := packetsBuffer, buffIndex := buffIndex);
+
  (*
   up_RT(CLK := up);
   dw_RT(CLK := dw);

@@ -43,7 +43,7 @@ if(xmlhttpGET.status != 200){
 alert('Problem retrieving XML data ' + xmlhttpGET.statusText + '(' + xmlhttpGET.status + ')');
 document.location.reload(true)
 return;}
-var access = xmlhttpGET.responseXML.documentElement.getElementsByTagName('ACCESS')[0]; if(!access || access.getAttribute('UCID') != 1584613573) {document.location.reload(true); return;}
+var access = xmlhttpGET.responseXML.documentElement.getElementsByTagName('ACCESS')[0]; if(!access || access.getAttribute('UCID') != 1585229249) {document.location.reload(true); return;}
 var pd = '';
 var x=xmlhttpGET.responseXML.documentElement.getElementsByTagName('INPUT');
 if(x[0]) {
@@ -626,6 +626,68 @@ Input77.style.visibility = 'hidden';
 } else {
 Input77.style.visibility = 'visible';
 }
+var Input78 = document.getElementById('INPUT78');
+switch(parseInt(x[21].getAttribute('VALUE'))) {
+case 0 : gTemp = 'url("IMAGES/WINDOW9.PNG")'; break;
+case 1 : gTemp = 'url("IMAGES/WINDOW10.PNG")'; break;
+case 2 : gTemp = 'url("IMAGES/WINDOW11.PNG")'; break;
+case 3 : gTemp = 'url("IMAGES/WINDOW12.PNG")'; break;
+case 4 : gTemp = 'url("IMAGES/WINDOW13.PNG")'; break;
+default: gTemp = ''; }
+if(Input78.style.backgroundImage != gTemp) Input78.style.backgroundImage = gTemp;
+if(x[2].getAttribute('VALUE') == '0') {
+Input78.style.visibility = 'hidden';
+} else {
+Input78.style.visibility = 'visible';
+}
+var Input79 = document.getElementById('INPUT79');
+if(!InputEdited[78]) {
+UpdateValue(Input79, x[22], '#000000');}
+if(x[2].getAttribute('VALUE') == '0') {
+Input79.style.visibility = 'hidden';
+} else {
+Input79.style.visibility = 'visible';
+}
+var Input80 = document.getElementById('INPUT80');
+if(x[2].getAttribute('VALUE') == '0') {
+Input80.style.visibility = 'hidden';
+} else {
+Input80.style.visibility = 'visible';
+}
+var Input81 = document.getElementById('INPUT81');
+if(x[23].getAttribute('VALUE') == '0') {
+SetBg('INPUT81', 'BTN_BL_5.PNG');
+} else {
+SetBg('INPUT81', 'BTN_GREE.PNG');
+}
+if(x[2].getAttribute('VALUE') == '0') {
+Input81.style.display = 'none';
+} else {
+Input81.style.display = 'block';
+}
+var Input82 = document.getElementById('INPUT82');
+if(x[24].getAttribute('VALUE') == '0') {
+SetBg('INPUT82', 'BTN_BL_7.PNG');
+} else {
+SetBg('INPUT82', 'BTN_GRE1.PNG');
+}
+if(x[2].getAttribute('VALUE') == '0') {
+Input82.style.display = 'none';
+} else {
+Input82.style.display = 'block';
+}
+var Input83 = document.getElementById('INPUT83');
+if(x[2].getAttribute('VALUE') == '0') {
+Input83.style.visibility = 'hidden';
+} else {
+Input83.style.visibility = 'visible';
+}
+var Input84 = document.getElementById('INPUT84');
+if(x[2].getAttribute('VALUE') == '0') {
+Input84.style.visibility = 'hidden';
+} else {
+Input84.style.visibility = 'visible';
+}
 } else {document.location.reload(true); return;}
 } catch(err) {console.log(err.message)}
 if(pd!=''){setTimeout("GetXML('ROOM3.XML','"+pd+"')",1);}else{setTimeout("GetXML('ROOM3.XML')",1000);}}
@@ -639,32 +701,32 @@ setTimeout("FunWatchDog()", 20000);
 }
 
 function PostXML19() {
-PostXML('ROOM3.XML', encodeURIComponent('__R16968_USINT_u=0')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R16999_USINT_u=0')); 
 }
 function PostXML20() {
-PostXML('ROOM3.XML', encodeURIComponent('__R16968_USINT_u=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R16999_USINT_u=1')); 
 }
 function PostXML21() {
-PostXML('ROOM3.XML', encodeURIComponent('__R16968_USINT_u=2')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R16999_USINT_u=2')); 
 }
 function PostXML31() {
-PostXML('ROOM3.XML', encodeURIComponent('__R16968_USINT_u=3')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R16999_USINT_u=3')); 
 }
 function PostXML39() {
 var Input39h = document.getElementById('INPUT39h');
 PostXML('ROOM3.XML', encodeURIComponent(Input39h.name+'='+Input39h.value));
 }
 function PostXML48() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20326_USINT_u=0')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20369_USINT_u=0')); 
 }
 function PostXML49() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20326_USINT_u=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20369_USINT_u=1')); 
 }
 function PostXML50() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20326_USINT_u=2')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20369_USINT_u=2')); 
 }
 function PostXML51() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20326_USINT_u=3')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20369_USINT_u=3')); 
 }
 function PostXML53() {
 var Input53h = document.getElementById('INPUT53h');
@@ -681,26 +743,35 @@ var Input55h = document.getElementById('INPUT55h');
 PostXML('ROOM3.XML', encodeURIComponent(Input55h.name+'='+Input55h.value));
 }
 function PostXML69() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20162.1_BOOL_i=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20193.1_BOOL_i=1')); 
 }
 function PostXML70() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20162.0_BOOL_i=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20193.0_BOOL_i=1')); 
 }
 function PostXML71() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20162.2_BOOL_i=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20193.2_BOOL_i=1')); 
 }
 function PostXML72() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20162.3_BOOL_i=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20193.3_BOOL_i=1')); 
 }
 function PostXML73() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20162.4_BOOL_i=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20193.4_BOOL_i=1')); 
 }
 function PostXML75() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20162.5_BOOL_i=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20193.5_BOOL_i=1')); 
 }
 function PostXML77() {
-PostXML('ROOM3.XML', encodeURIComponent('__R20182.0_BOOL_i=1')); 
+PostXML('ROOM3.XML', encodeURIComponent('__R20213.0_BOOL_i=1')); 
+}
+function PostXML83() {
+PostXML('ROOM3.XML', encodeURIComponent('__R20276.0_BOOL_i=1')); 
+}
+function PostXML84() {
+PostXML('ROOM3.XML', encodeURIComponent('__R20277.0_BOOL_i=1')); 
 }
 
 function PostGlobal() {
+var Input79 = document.getElementById('INPUT79');
+PostXML('ROOM3.XML', (InputEdited[78] ? encodeURIComponent(Input79.name)+'='+encodeURIComponent(Input79.value)+'&' : ''));
+InputEdited[78]=0;
 }
