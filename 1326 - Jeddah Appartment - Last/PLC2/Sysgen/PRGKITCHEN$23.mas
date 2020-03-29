@@ -1,4 +1,4 @@
-#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC2\PRGKITCHEN.ST'
+#srcfile 'E:\TECO ME - WORK\PROJECTS\JEDDAH PROJECT\1326_JEDDAHAPPARTMENT\1326 - JEDDAH APPARTMENT - LAST\PLC2\PRGKITCHEN.ST'
 
 ; Global variables
 #def  NumOfLightKitchen 4
@@ -68,7 +68,7 @@
 #table byte __Init____setTempFCU_Kitchen = 
       0,  0,160, 65;
  
-#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC2\PRGKITCHEN.ST'
+#srcfile 'E:\TECO ME - WORK\PROJECTS\JEDDAH PROJECT\1326_JEDDAHAPPARTMENT\1326 - JEDDAH APPARTMENT - LAST\PLC2\PRGKITCHEN.ST'
 #pou PrgKitchen
 #srcline 18 ;PROGRAM PrgKitchen
 #table byte __Init___PrgKitchen_RCU_IP = 
@@ -84,13 +84,13 @@
 #table byte __Init___PrgKitchen_enOutlets_FT = 
       4,  4,  4,  4,  4;
 #table byte __Init___PrgKitchen_enFCUs_FT = 
-      4,155;
+      4,201;
 #table byte __Init___PrgKitchen_enSetTempIncr_FT = 
-      4,203;
+      4, 44;
 #table byte __Init___PrgKitchen_enSetTempDecr_FT = 
-      4,197;
+      4,223;
 #table byte __Init___PrgKitchen_HMI_Addresses = 
-      7,218;
+      7, 26;
 
 #struct PrgKitchen__temp__
   usint P0__st__,

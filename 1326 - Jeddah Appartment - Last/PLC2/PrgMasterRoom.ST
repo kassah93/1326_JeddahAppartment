@@ -273,17 +273,17 @@ PROGRAM PrgMasterRoom
          enCurtainsDW_SW_RT[i](CLK := controlRoom.SwitchDWStatus[i]);
          enCurtainsDW_SW_FT[i](CLK := controlRoom.SwitchDWStatus[i]);
 
-         if  enCurtainsUP_RT[j,i].Q  or enCurtainsUP_FT[j,i].Q then
+          if  enCurtainsUP_RT[j,i].Q  or enCurtainsUP_FT[j,i].Q or enCurtainsUP_SW_RT[i].Q or enCurtainsUP_SW_FT[i].Q then
              enCurtainsUP_GUI[i] := 1;
          end_if;
 
-         if  enCurtainsDW_RT[j,i].Q  or enCurtainsDW_FT[j,i].Q then
+         if  enCurtainsDW_RT[j,i].Q  or enCurtainsDW_FT[j,i].Q or enCurtainsDW_SW_RT[i].Q or enCurtainsDW_SW_FT[i].Q then
              enCurtainsDW_GUI[i] := 1;
          end_if;
 
          // if up button is pressed and the curtain is not moving up
 
-         if (enCurtainsUP_GUI[i] or enCurtainsUP_SW_RT[i].Q) and not curtainsStatus[CurtStatus_Index - 1 + i].outUP then
+         if enCurtainsUP_GUI[i] and not curtainsStatus[CurtStatus_Index - 1 + i].outUP then
              PLC2_EnCurtains[CurtEn_Index - 1 + i].UP   := 1;
              PLC2_EnCurtains[CurtEn_Index - 1 + i].DW   := 0;
              PLC2_EnCurtains[CurtEn_Index - 1 + i].STOP := 0;
@@ -293,7 +293,7 @@ PROGRAM PrgMasterRoom
 
          // if up button is pressed and the curtain is moving up
 
-         if (enCurtainsUP_GUI[i] or enCurtainsUP_SW_FT[i].Q) and curtainsStatus[CurtStatus_Index - 1 + i].outUP then
+         if enCurtainsUP_GUI[i] and curtainsStatus[CurtStatus_Index - 1 + i].outUP then
              PLC2_EnCurtains[CurtEn_Index - 1 + i].UP   := 0;
              PLC2_EnCurtains[CurtEn_Index - 1 + i].DW   := 0;
              PLC2_EnCurtains[CurtEn_Index - 1 + i].STOP := 1;
@@ -304,7 +304,7 @@ PROGRAM PrgMasterRoom
 
           // if down button is pressed and the curtain is not moving down
 
-         if (enCurtainsDW_GUI[i] or enCurtainsDW_SW_RT[i].Q) and not curtainsStatus[CurtStatus_Index - 1 + i].outDW then
+         if enCurtainsDW_GUI[i] and not curtainsStatus[CurtStatus_Index - 1 + i].outDW then
              PLC2_EnCurtains[CurtEn_Index - 1 + i].UP   := 0;
              PLC2_EnCurtains[CurtEn_Index - 1 + i].DW   := 1;
              PLC2_EnCurtains[CurtEn_Index - 1 + i].STOP := 0;
@@ -314,7 +314,7 @@ PROGRAM PrgMasterRoom
 
          // if down button is pressed and the curtain is moving down
 
-         if (enCurtainsDW_GUI[i] or enCurtainsDW_SW_FT[i].Q) and curtainsStatus[CurtStatus_Index - 1 + i].outDW then
+         if enCurtainsDW_GUI[i] and curtainsStatus[CurtStatus_Index - 1 + i].outDW then
              PLC2_EnCurtains[CurtEn_Index - 1 + i].UP   := 0;
              PLC2_EnCurtains[CurtEn_Index - 1 + i].DW   := 0;
              PLC2_EnCurtains[CurtEn_Index - 1 + i].STOP := 1;

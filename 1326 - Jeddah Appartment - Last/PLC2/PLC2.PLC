@@ -18,7 +18,7 @@ dirs=""
 [/compiler]
 
 [plcselection]
-connection=2
+connection=4
 openchannel=1
 chanel=0
 speed=9
@@ -57,9 +57,9 @@ modemphnum=""
 modemtonedial=1
 udpsearchto=3
 slTRdomain="route.tecomat.com"
-slTRname=""
+slTRname="sami"
 slTRpass=""
-slTRplc=""
+slTRplc="Dubai_BMS"
 slTRrembrpass=0
 slTRtout=1000
 slTRaltport=0

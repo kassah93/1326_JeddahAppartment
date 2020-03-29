@@ -1,4 +1,4 @@
-#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\Sysgen\PLC1.mlh'
+#srcfile 'E:\TECO ME - WORK\PROJECTS\JEDDAH PROJECT\1326_JEDDAHAPPARTMENT\1326 - JEDDAH APPARTMENT - LAST\PLC1\Sysgen\PLC1.mlh'
 
 #defpou R_TRIG
   bool CLK,
@@ -5635,15 +5635,6 @@
   uint codePage  ;code page = 1250,...,1255
 
 
-#defpou __LATENT_INSTANCE STRING_HEX_TO_BYTE_ARRAY
-  uint __fc__STRING_HEX_TO_BYTE_ARRAY,
-  uint dataLen,  ;length of input data in bytes
-  pointer data,  ;first byte of input hexadecimal number
-  pointer out,  ;first byte of output binary data
-  udint ptr,
-  udint end
-
-
 #defpou fbMeterPulse
   bool Pulse,  ;Pulses
   bool Reset,  ;Reset pulse counter
@@ -7048,10 +7039,6 @@
 ; Global variables
 #def  CRC0006R_SIZE_NAME 6
 #def  __Init____CRC0006R_SIZE_NAME CRC0006R_SIZE_NAME
-#def  CRC0006R_AUDIO_TYPE_BOSE 1
-#def  __Init____CRC0006R_AUDIO_TYPE_BOSE CRC0006R_AUDIO_TYPE_BOSE
-#def  CRC0006R_AUDIO_TYPE_DENON 2
-#def  __Init____CRC0006R_AUDIO_TYPE_DENON CRC0006R_AUDIO_TYPE_DENON
 
 ; Global types
 #def  TCIB_PAGING_ARR byte[5]
@@ -7149,31 +7136,58 @@
   udint fbPtr  ;function block pointer
 
 ; Global types
-#struct  TCIB_C_RC_0006R_AudioSourceUnit
-  string[7] name,
-  usint volume,
-  bool mute,
-  bool play,
-  bool pause,
-  bool power
+#struct  T_ICONTROL_BOSE_PARAM
+  bool enabled,  ;false - zakázáno, true - povoleno
+  string[33] name  ;Name of BOSE device
 
 ; Global types
-#struct  TCIB_C_RC_0006R_AudioSource_Bose
-  usint audioType,  ;typ audio zarizeni
-  usint num,  ;pocet
-  TCIB_C_RC_0006R_AudioSourceUnit[10] units  ;data zarizeni
+#struct  T_ICONTROL_BOSE_COM_STATE
+  bool found,  ;Result of multicast transmission: true-found, false-not found
+  TIPadr ip_adr,  ;IP address of BOSE device collected from multicast transmission
+  bool comm_err,  ;Indicator of device connection state: true-disconnected, false-connected
+  usint last_comm_err
 
 ; Global types
-#struct  TCIB_C_RC_0006R_AudioZone_Denon
-  usint audioType,  ;typ audio zarizeni
-  usint source,  ;1 - 5
-  usint volume,  ;0 - 100
-  bool mute,
-  string[35] name
+#struct  T_ICONTROL_BOSE_DEVICE_STATE
+  usint volume,  ;Current volume level 0-100%
+  usint state,  ;Operation state 0 - unknown, 1-play, 2-pause, 3-stop, 4-buffering, 5-URLS
+  bool mute,  ;Indicator if volume muted
+  bool play,  ;Play function is active
+  bool pause,  ;Pause function is active
+  bool buffering,  ;Buffering data (preparng to start)
+  bool standby,  ;Power indicator, true-turned off, false-turned on
+  string[33] station_name,  ;Last radio station name preseted
+  string[17] ip_str  ;Device IP address in string format
+
+; Global types
+#struct  T_ICONTROL_BOSE_CONTROL
+  bool volUp,
+  bool volDw,
+  bool mute,  ;Command to mute volume
+  bool play,  ;Command to play
+  bool pause,  ;Command to pause
+  bool power,  ;Command to turn on/off
+  bool preset_1,  ;Command to set audio source internet radio and preset station 1
+  bool preset_2,  ;Command to set audio source internet radio and preset station 2
+  bool preset_3,  ;Command to set audio source internet radio and preset station 3
+  bool preset_4,  ;Command to set audio source internet radio and preset station 4
+  bool preset_5,  ;Command to set audio source internet radio and preset station 5
+  bool preset_6,  ;Command to set audio source internet radio and preset station 6
+  bool sourceAUX,  ;Command to set audio source AUX
+  bool sourceBLUETOOTH  ;Command to set audio source BLUETOOTH
+
+; Global types
+#struct  T_ICONTROL_BOSE_UNIT
+  T_ICONTROL_BOSE_PARAM param,
+  T_ICONTROL_BOSE_COM_STATE com_state,
+  T_ICONTROL_BOSE_DEVICE_STATE device_state,
+  T_ICONTROL_BOSE_CONTROL control
+
+; Global types
+#def  T_ICONTROL_BOSE_UNIT_LIST T_ICONTROL_BOSE_UNIT[10]
 
 #defpou fb_C_RC_0006R
   bool master,  ;Master module
-  bool control,  ;Reset control signals
   udint iDimmer_1,  ;Light dimmer 1
   udint iDimmer_2,  ;Light dimmer 2
   udint iDimmer_3,  ;Light dimmer 3
@@ -7202,12 +7216,9 @@
   real temp,  ;Temperature
   usint RH,  ;Humidity
   uint CO2,  ;CO2 concentrations
-  bool backl,  ;Display backlight
-  bool buzz,  ;Sound signalization
-  byte keyboard,  ;Keyboard backlight intensity 0 - 10 (0 - 100%)
   pointer reqTemp,  ;requested temperature
-  pointer modul_in,  ;input structure (data from module)
-  pointer modul_out,  ;output structure (data for module)
+  pointer modul_in,  ;
+  pointer modul_out,  ;
   TCIB_PAGING_ARR inPaging,  ;vstupni buffer
   TCIB_PAGING_ARR outPaging,  ;vystupni buffer
   TCIB_PAGING_ARR pagingBackup,  ;buffer pro odlozeni neodeslanych dat
@@ -7245,288 +7256,17 @@
   usint jalousieNum,  ;pocet zapojenych zaluzii
   usint jalousieOffs,
   pointer unitListPtr,
-  pointer sourceControlPtr,
-  TCIB_C_RC_0006R_AudioSource_Bose unitList,
-  TCIB_C_RC_0006R_AudioZone_Denon sourceControl,
+  usint boseUnitsNum,
+  usint[10] boseUnits_volume,
+  aligned bool[16] boseUnits_mute,
+  aligned bool[16] boseUnits_play,
+  aligned bool[16] boseUnits_pause,
+  aligned bool[16] boseUnits_standby,
   byte audioState,
-  usint audioType,
-  word audioUpdate,
   byte[12] dataOut,
   byte[12] dataOutPrev,
   byte[5] dataIn,
   string[7] str
-
-
-; Global types
-#struct  TCanvasData1100
-  TCanvasInfo info,  ;informace o bufferu
-  TCanvasTouch touch,  ;informace o dotyku/kliknutí
-  TCanvasHeadBuf bufHead,  ;hlavièka bufferu
-  usint[1100] buf  ;data
-
-; Global types
-#struct  TPolarPoint
-  real d,  ;distance
-  real phi  ;angle
-
-#defpou __LATENT_INSTANCE getPolarCoords
-  TPolarPoint __fc__getPolarCoords,
-  int x,
-  int y
-
-
-#defpou Gauge
-  int R,  ;Radius
-  real startAngle,
-  real endAngle,
-  real sVal,  ;Start Value
-  real eVal,  ;End Value
-  real val,  ;measured value
-  bool filter,  ;show the value with Simulation of first-order system described by differential equation
-  real Step,  ;Step
-  usint labelStep,  ;where to put label ex 1 every 1 big step
-  usint stepDiv,  ;how many small steps btween big steps
-  int imageW,  ;image width (as you like in canvas)
-  int imageH,  ;image Height (as you like in canvas)
-  string[81] imageName,  ;image file name with file extension
-  bool smallCircle,  ;small cicle in center
-  bool scale_outline,  ;if true will draw outlin sircle for gauge
-  TCanvasData128 grData,  ;Data for the drawing canvas
-  fbFirstOrder filer1,
-  TCanvasPoint[4] p,
-  real oldVal,
-  int Gauge_mode
-
-
-#defpou Dim_Button
-  string[81] Name,  ;Button Name
-  real minVal,
-  real maxVal,
-  bool Inc_Dec,  ;0 IS Increase
-  bool image,  ;if you want to add image set 1
-  string[81] image_name,  ;image file name with file extension
-  string[81] image_PressedName,  ;image "when Pressed" file name with file extension
-  int imageW,  ;image width (as you like in canvas)
-  int imageH,  ;image Height (as you like in canvas)
-  int lastState,
-  TON safetyTimer,
-  fbTick buttTck,
-  fbFirstOrder filter,
-  TCanvasData64 grData,  ;Data pro kreslící plátno
-  bool pressed,
-  pointer value
-
-
-#defpou Shutters
-  time step_timehalf,
-  bool full_up_shutt,
-  bool full_dwn_shutt,
-  bool full_dwn,
-  bool full_up,
-  bool y1,
-  bool y2,
-  bool reset_up_dw,
-  bool stop1,
-  R_TRIG op1,
-  bool up_button,  ;short press will open the shutter 25%, long press depending on press time will fully open the shutter
-  bool dwn_button,  ;short press will close the shutter 25 % , long press depending on press time will fully close the shutter
-  time press_time,  ;set the time of the press button ( foe examble press time = 2 Sec ) then short press is less than 2 sec and long press will be more than 2 sec
-  bool en_time_sch,  ;to enable the control through time schedual, if en_time_sch=0 then no control by time setpoint
-  time time_sch_up,  ;user can adjust the time when the shutter will automatically open
-  time time_sch_dwn,  ;user can adjust the time when the shutter will automatically close
-  bool en_sun,  ;to enable control by sun sensor according to the light level ( Lux degree ), if en_sun = 0 then no control by using light sensor
-  real sun_sensor,  ;the value of the slight sensor ( Lux unit )
-  real Lux_user_set,  ;the user will adjust the light level needed ( for example lux_user_set = 2000 then the shutter will open or close acording to the sun_sensor value
-  time up_dwn_time,  ;to adjust the time needed for full open and full close ( each shutter has defferant time, programmer must get this time from the shutter motor )
-  bool fire_alarm,  ;when fire alarm signal comes  all commands will canceled and down command will sent to close the shutter
-  bool open_25percent,  ;shutter opened 25 %
-  bool open_50percent,  ;shutter opened 50 %
-  bool open_75percent,  ;shutter opened 75 %
-  bool status_full_up,  ;shutter fully opened
-  bool status_full_dw,  ;shutter fully closed
-  bool output_up,  ;shutter is opining
-  bool output_dwn,  ;shutter is closing
-  fb_iJalousie shutterts,
-  fb_iJalousie shutt1,
-  bool down_time,
-  bool all_dwn,
-  bool up_time,
-  TON timeon1,
-  TON timeon2,
-  TOF tof1,
-  R_TRIG raise1,
-  R_TRIG raise2,
-  SR flipflop1,
-  bool all_up,
-  TON timeon3,
-  CTU counter1,
-  CTU counter2,
-  TON timeon4,
-  CTU counter3,
-  TON timeon5,
-  R_TRIG r1,
-  R_TRIG r2,
-  R_TRIG r3,
-  F_TRIG f1,
-  R_TRIG r5,
-  SR flip3,
-  R_TRIG r6,
-  CTUD cont1,
-  R_TRIG r7,
-  TON timeon6,
-  SR flip4,
-  F_TRIG f2,
-  bool out1,
-  CTUD ds,
-  bool closed_75percent,
-  bool closed_50percent,
-  bool closed_25percent,
-  RS flip2,
-  SR flip5,
-  bool out2,
-  F_TRIG f5,
-  bool out3,
-  TON timeon7,
-  TON timeon8,
-  TOF f3,
-  TON timeon9,
-  TON ton2,
-  R_TRIG sr1,
-  bool out4,
-  R_TRIG r8,
-  bool out5,
-  R_TRIG rt1,
-  F_TRIG f4,
-  TOF ttof,
-  int ou1,
-  int PLCrun,
-  R_TRIG rr4,
-  TOF tttof,
-  TON TYON,
-  bool OUT6,
-  bool stop,
-  time pasue_time,
-  bool web_u,
-  bool web_d,
-  fb_iJalousie dadm,
-  F_TRIG ft1,
-  F_TRIG ft2,
-  RS rr,
-  TON j,
-  RS rr3,
-  TON j1,
-  SR v1,
-  TOF u1,
-  TON p1,
-  SR v2,
-  TOF u2,
-  TON p2,
-  SR v3,
-  TOF u3,
-  TON p3,
-  SR v4,
-  TOF u4,
-  TON p4,
-  SR v5,
-  TOF u5,
-  TON p5,
-  SR v6,
-  TOF u6,
-  TON p6
-
-
-#defpou CanvasRGBcircle
-  string[81] imageName,  ;image(Circle of colors) file name with file extension (260×260)
-  bool RGB_ON,  ;Tun_ON / OFF the RGB circle
-  bool INC_RGB_Value,  ;Increase The value of RGB led
-  bool DEC_RGB_Value,  ;Decrease The value of RGB led
-  udint colorHue,
-  int posColorX,
-  int posColorY,
-  TColorModelHSV HSV1,
-  TColorModelHSV HSV2,
-  usint ts,
-  TCanvasTouch oldTouch,
-  udint colorSelected,
-  TPolarPoint p,
-  T_RGB_COLOR l,
-  bool once_opcity,
-  fbTick buttTck,
-  fbTick buttTck1,
-  TCanvasData128 grData,
-  udint color,
-  usint red,
-  usint green,
-  usint blue
-
-
-#defpou Slider
-  real vMin,  ;Minimum values
-  real vMax,  ;Maximum value
-  udint color,  ;Slider color
-  bool vertical,  ;1 is Vertical
-  bool direction,  ;right to left of bottom to up
-  bool image,
-  string[81] image_name,
-  int imageW,  ;image width (as you like in canvas)
-  int imageH,
-  int Offset_LeftRight,  ;move the image left & right(-/+)
-  int Offset_UpDown,  ;move the image up & down(-/+)
-  TCanvasData128 grData,  ;Data for the drawing canvas
-  pointer value,
-  bool touch
-
-
-#defpou LinerScale
-  int Slength,
-  int SmajorTickLen,
-  int SminorTickLen,
-  int SgridLength,
-  usint SlabelOffset,
-  usint SlabelDec,
-  real SsVal,
-  real SeVal,
-  real SmajorStep,
-  real SlabelAt,
-  usint SlabelStep,
-  usint SstepDiv,
-  int imageW,  ;image width (as you like in canvas)
-  int imageH,  ;image Height (as you like in canvas)
-  string[41] imageName,  ;image file name with file extension
-  TCanvasData128 grData
-
-
-#defpou YMD_ComboBox
-  usint textSize,
-  TCanvasData1100 Year,
-  string[25] Selected_Year,
-  TCanvasData1100 Month,
-  string[25] Selected_Month,
-  TCanvasData1100 Day,
-  string[25] Selected_Day,
-  usint Selected1,
-  usint Selected2,
-  usint Selected3,
-  string[125] items,
-  string[300] items1,
-  string[775] items2,
-  dword visibility,
-  bool expanded,
-  bool expanded1,
-  bool expanded2,
-  int w,
-  int h,
-  int o,
-  usint i,
-  usint i1,
-  usint i2,
-  bool click,
-  bool click1,
-  bool click2,
-  bool press,
-  bool press1,
-  bool press2,
-  TCanvasPoint[3] pTriangle
 
 
 ; Global types
@@ -7893,7 +7633,7 @@
   fbModbusSlave Mdb
 
  
-#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\Sysgen\PLC1.mlh'
+#srcfile 'E:\TECO ME - WORK\PROJECTS\JEDDAH PROJECT\1326_JEDDAHAPPARTMENT\1326 - JEDDAH APPARTMENT - LAST\PLC1\Sysgen\PLC1.mlh'
 
 
  

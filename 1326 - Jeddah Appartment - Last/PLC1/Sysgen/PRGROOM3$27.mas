@@ -1,4 +1,4 @@
-#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\PRGROOM3.ST'
+#srcfile 'E:\TECO ME - WORK\PROJECTS\JEDDAH PROJECT\1326_JEDDAHAPPARTMENT\1326 - JEDDAH APPARTMENT - LAST\PLC1\PRGROOM3.ST'
 
 ; Global variables
 #def  NumOfLightRoom3 6
@@ -82,7 +82,7 @@
 #table byte __Init____setTempFCU_Room3 = 
       0,  0,160, 65;
  
-#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC1\PRGROOM3.ST'
+#srcfile 'E:\TECO ME - WORK\PROJECTS\JEDDAH PROJECT\1326_JEDDAHAPPARTMENT\1326 - JEDDAH APPARTMENT - LAST\PLC1\PRGROOM3.ST'
 #pou PrgRoom3
 #srcline 18 ;PROGRAM PrgRoom3
 #table byte __Init___PrgRoom3_RCU_IP = 
@@ -1587,7 +1587,7 @@ PrgRoom3_L40:
  WRIB 
  LDY  P24__st__  ; offset instance
  CAL  F_TRIG_L0
-#srcline 275 ;         if  enCurtainsUP_RT[j,i].Q  or enCurtainsUP_FT[j,i].Q then
+#srcline 275 ;         if  enCurtainsUP_RT[j,i].Q  or enCurtainsUP_FT[j,i].Q or enCurtainsUP_SW_RT[i].Q or enCurtainsUP_SW_FT[i].Q then
  LEAX enCurtainsUP_RT
  LDX  j
 #debug usint j
@@ -1621,6 +1621,28 @@ PrgRoom3_L40:
  LDIB 
 #debug bool enCurtainsUP_FT[j,i].Q
  OR  
+ LEAX enCurtainsUP_SW_RT
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enCurtainsUP_SW_RT[i].Q
+ OR  
+ LEAX enCurtainsUP_SW_FT
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enCurtainsUP_SW_FT[i].Q
+ OR  
  JMC  PrgRoom3_L42
 #srcline 276 ;             enCurtainsUP_GUI[i] := 1;
  LD   bool -1      ; true
@@ -1634,7 +1656,7 @@ PrgRoom3_L40:
 #debug_left bool enCurtainsUP_GUI[i]
 #srcline 277 ;         end_if;
 PrgRoom3_L42:
-#srcline 279 ;         if  enCurtainsDW_RT[j,i].Q  or enCurtainsDW_FT[j,i].Q then
+#srcline 279 ;         if  enCurtainsDW_RT[j,i].Q  or enCurtainsDW_FT[j,i].Q or enCurtainsDW_SW_RT[i].Q or enCurtainsDW_SW_FT[i].Q then
  LEAX enCurtainsDW_RT
  LDX  j
 #debug usint j
@@ -1668,6 +1690,28 @@ PrgRoom3_L42:
  LDIB 
 #debug bool enCurtainsDW_FT[j,i].Q
  OR  
+ LEAX enCurtainsDW_SW_RT
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enCurtainsDW_SW_RT[i].Q
+ OR  
+ LEAX enCurtainsDW_SW_FT
+ LDX  i
+#debug usint i
+ SUB  1   ; Low range[1]
+ RCHK 1   ; Range Check
+ ADD     ; + offset 
+ MUL  8   ; -> bool pointer 
+ ADD  1   ; Bool offset 
+ LDIB 
+#debug bool enCurtainsDW_SW_FT[i].Q
+ OR  
  JMC  PrgRoom3_L44
 #srcline 280 ;             enCurtainsDW_GUI[i] := 1;
  LD   bool -1      ; true
@@ -1682,7 +1726,7 @@ PrgRoom3_L42:
 #srcline 281 ;         end_if;
 PrgRoom3_L44:
 #srcline 283 ;         // if up button is pressed and the curtain is not moving up
-#srcline 285 ;         if (enCurtainsUP_GUI[i] or enCurtainsUP_SW_RT[i].Q) and not curtainsStatus[CurtStatus_Index - 1 + i].outUP then
+#srcline 285 ;         if enCurtainsUP_GUI[i] and not curtainsStatus[CurtStatus_Index - 1 + i].outUP then
  LEAX enCurtainsUP_GUI
  LDX  i
 #debug usint i
@@ -1691,17 +1735,6 @@ PrgRoom3_L44:
  ADD     ; + offset 
  LDIB 
 #debug bool enCurtainsUP_GUI[i]
- LEAX enCurtainsUP_SW_RT
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool enCurtainsUP_SW_RT[i].Q
- OR  
  LEA  curtainsStatus
  LDX  CurtStatus_Index
 #debug usint CurtStatus_Index
@@ -1791,7 +1824,7 @@ PrgRoom3_L44:
 #srcline 291 ;         end_if;
 PrgRoom3_L46:
 #srcline 293 ;         // if up button is pressed and the curtain is moving up
-#srcline 295 ;         if (enCurtainsUP_GUI[i] or enCurtainsUP_SW_FT[i].Q) and curtainsStatus[CurtStatus_Index - 1 + i].outUP then
+#srcline 295 ;         if enCurtainsUP_GUI[i] and curtainsStatus[CurtStatus_Index - 1 + i].outUP then
  LEAX enCurtainsUP_GUI
  LDX  i
 #debug usint i
@@ -1800,17 +1833,6 @@ PrgRoom3_L46:
  ADD     ; + offset 
  LDIB 
 #debug bool enCurtainsUP_GUI[i]
- LEAX enCurtainsUP_SW_FT
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool enCurtainsUP_SW_FT[i].Q
- OR  
  LEA  curtainsStatus
  LDX  CurtStatus_Index
 #debug usint CurtStatus_Index
@@ -1899,7 +1921,7 @@ PrgRoom3_L46:
 #srcline 301 ;         end_if;
 PrgRoom3_L48:
 #srcline 304 ;          // if down button is pressed and the curtain is not moving down
-#srcline 306 ;         if (enCurtainsDW_GUI[i] or enCurtainsDW_SW_RT[i].Q) and not curtainsStatus[CurtStatus_Index - 1 + i].outDW then
+#srcline 306 ;         if enCurtainsDW_GUI[i] and not curtainsStatus[CurtStatus_Index - 1 + i].outDW then
  LEAX enCurtainsDW_GUI
  LDX  i
 #debug usint i
@@ -1908,17 +1930,6 @@ PrgRoom3_L48:
  ADD     ; + offset 
  LDIB 
 #debug bool enCurtainsDW_GUI[i]
- LEAX enCurtainsDW_SW_RT
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool enCurtainsDW_SW_RT[i].Q
- OR  
  LEA  curtainsStatus
  LDX  CurtStatus_Index
 #debug usint CurtStatus_Index
@@ -2009,7 +2020,7 @@ PrgRoom3_L48:
 #srcline 312 ;         end_if;
 PrgRoom3_L50:
 #srcline 314 ;         // if down button is pressed and the curtain is moving down
-#srcline 316 ;         if (enCurtainsDW_GUI[i] or enCurtainsDW_SW_FT[i].Q) and curtainsStatus[CurtStatus_Index - 1 + i].outDW then
+#srcline 316 ;         if enCurtainsDW_GUI[i] and curtainsStatus[CurtStatus_Index - 1 + i].outDW then
  LEAX enCurtainsDW_GUI
  LDX  i
 #debug usint i
@@ -2018,17 +2029,6 @@ PrgRoom3_L50:
  ADD     ; + offset 
  LDIB 
 #debug bool enCurtainsDW_GUI[i]
- LEAX enCurtainsDW_SW_FT
- LDX  i
-#debug usint i
- SUB  1   ; Low range[1]
- RCHK 1   ; Range Check
- ADD     ; + offset 
- MUL  8   ; -> bool pointer 
- ADD  1   ; Bool offset 
- LDIB 
-#debug bool enCurtainsDW_SW_FT[i].Q
- OR  
  LEA  curtainsStatus
  LDX  CurtStatus_Index
 #debug usint CurtStatus_Index

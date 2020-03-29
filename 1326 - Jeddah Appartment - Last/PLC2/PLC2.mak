@@ -29,11 +29,11 @@
 #uselib "LocalLib\TimeLib_V15_20170216.mlb"
 #uselib "LocalLib\DataBoxLib_V16_20160713.mlb"
 #uselib "LocalLib\EncryptLib_V12_20160923.mlb"
-#uselib "LocalLib\InternetLib_V48_20190916.mlb"
+#uselib "LocalLib\InternetLib_V48_20190902.mlb"
 #uselib "LocalLib\JsonLibEx_V17_20190625.mlb"
 #uselib "LocalLib\CanvasLib_V23_20190122.mlb"
-#uselib "LocalLib\ConvertLib_V22_20190306.mlb"
-#uselib "LocalLib\iControlLib_V23_20190315.mlb"
+#uselib "LocalLib\ConvertLib_V21_20170222.mlb"
+#uselib "LocalLib\iControlLib_V22_20181210.mlb"
 #uselib "LocalLib\ModbusRTU_V36_20190430.mlb"
 #endlibs
 
