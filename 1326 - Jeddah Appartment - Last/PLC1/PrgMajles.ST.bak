@@ -280,30 +280,6 @@ PROGRAM PrgMajles
          end_if;
      end_for;
    end_for;
-
-
-   for j := 1 to NumOfHMIsMajles do
-     for i := 1 to NumOfCurtainMajles do
-
-         enCurtainsUP_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].UP.0);
-
-         enCurtainsUP_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].UP.0);
-
-         if enCurtainsUP_RT[j,i].Q or enCurtainsUP_FT[j,i].Q then
-            EnCurtainsUp[i] := 1;
-         end_if;
-
-
-         enCurtainsDW_RT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].Dw.0);
-
-         enCurtainsDW_FT[j,i](CLK := HMIs_DataRead[HMI_Index + j - 1].enShutters[i].Dw.0);
-
-         if enCurtainsDW_RT[j,i].Q or enCurtainsDW_FT[j,i].Q then
-            EnCurtainsDw[i] := 1;
-         end_if;
-
-     end_for;
-   end_for;
    
    for j := 1 to NumOfHMIsMajles do
      for i := 1 to NumOfCurtainMajles do

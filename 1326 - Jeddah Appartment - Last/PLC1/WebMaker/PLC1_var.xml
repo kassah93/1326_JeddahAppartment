@@ -41,9 +41,9 @@
 	<Item Name="curtainsStatus[2].outDW" Pos="03000A51" Type="1" />
 	<Item Name="Majles.AC_Select" Pos="03000D99" Type="3" />
 	<Item Name="Majles.motionSensStatus[1]" Pos="0300273C" Type="0" />
-	<Item Name="Room1.AC_Select" Pos="0300282E" Type="3" />
 	<Item Name="Majles.enableFCU[1]" Pos="030027C3" Type="0" />
 	<Item Name="Majles.settingsFCU[1].FCU_FanSpeed" Pos="030027C5" Type="8" />
+	<Item Name="Room1.AC_Select" Pos="0300282E" Type="3" />
 	<Item Name="Majles.FCU[1].FCU_Status.fanSpeed" Pos="03002750" Type="42" />
 	<Item Name="Majles.settingsFCU[1].FCU_Mode" Pos="030027C4" Type="8" />
 	<Item Name="setTempFCU_Majles[1]" Pos="03000A0E" Type="28" />

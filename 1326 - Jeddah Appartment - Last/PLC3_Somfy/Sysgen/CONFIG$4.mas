@@ -87,6 +87,12 @@
   usint ERR,
   uint NUMR,
   TPLCx_ETH1_PLCx0_ADR1_RX_DATA DATA
+#def  TPLCx_ETH1_PLCx0_ADR2_RX_DATA usint[50]
+#struct  TPLCx_ETH1_PLCx0_ADR2_RX
+  usint STAT,
+  usint ERR,
+  uint NUMR,
+  TPLCx_ETH1_PLCx0_ADR2_RX_DATA DATA
 
 ; Global variables
 #input  TCHStatistic r0_p2_CIB_Statistic
@@ -117,8 +123,10 @@
 ; Global variables
 #reg  TPLCx_ETH1_PLCx0_ADR3_TX PLCx_ETH1_PLCx0_ADR3_TX
 #reg  TPLCx_ETH1_PLCx0_ADR1_RX PLCx_ETH1_PLCx0_ADR1_RX
+#reg  TPLCx_ETH1_PLCx0_ADR2_RX PLCx_ETH1_PLCx0_ADR2_RX
 #def  PLC3 PLCx_ETH1_PLCx0_ADR3_TX
 #def  PLC1_Curtains PLCx_ETH1_PLCx0_ADR1_RX
+#def  PLC2_Curtains PLCx_ETH1_PLCx0_ADR2_RX
 
 ; Global variables
 #table byte __Init____r0_p5_AIPW = 

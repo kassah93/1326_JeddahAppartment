@@ -25,6 +25,6 @@ END_VAR
 VAR_GLOBAL
   curtainsStatus AT PLC3.DATA : Array[1..numOfCurtains] of TCurtainStatus;
   PLC1_EnCurtains AT PLC1_Curtains.DATA : Array[1..numOfCurtains_PLC1] of TEnCurtain;
-  PLC2_EnCurtains (*AT PLC2_Curtains.DATA*) : Array[1..numOfCurtains_PLC2] of TEnCurtain;
+  PLC2_EnCurtains AT PLC2_Curtains.DATA : Array[1..numOfCurtains_PLC2] of TEnCurtain;
 END_VAR
 

@@ -3,10 +3,10 @@ Version="xPRO","4.3.00"
 [/desktop]
 
 [dockinfo]
-centralpc=50649656,1,0,1
-leftpane=64654588,0,1,1,266,1
-bottompane=64661816,1,142
-rightpane=64656156,0,312,0
+centralpc=64828760,1,0,1
+leftpane=64855224,0,1,1,266,1
+bottompane=64862452,1,209
+rightpane=64827632,0,312,0
 [/dockinfo]
 
 [closedtextpaneleditors]
@@ -33,7 +33,7 @@ sprompt=0
 iecoperands=1
 ieccomments=1
 implicitseltext=1
-findhistory="EnCurtains ","enCurtains","enCurtainsUP","rotationTime","(HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed = 0)","HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed","FCU_Status","RCU_Index","NumOfLightMajles","RCU1_ethAdr","RCU_ethAdrToSet","RCU_Ch_localPort","controlRoomRCU","numOfLights","FCU_Temp_Room1","RCU_IP_toSet"
+findhistory="USINT_TO_WORD(curtainsStatus[CurtStatus_Index - 1 + i].pos)","EnCurtains ","enCurtains","enCurtainsUP","rotationTime","(HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed = 0)","HMIs_DataRead[HMI_Index + j - 1].enFCUs[i].fanSpeed","FCU_Status","RCU_Index","NumOfLightMajles","RCU1_ethAdr","RCU_ethAdrToSet","RCU_Ch_localPort","controlRoomRCU","numOfLights","FCU_Temp_Room1"
 fifmatchcase=0
 fifwholewords=0
 fifoutinstr=0
@@ -81,25 +81,25 @@ showdetails=1
 [/plcdiskdlg]
 
 [msgwin2]
-window=64661816,1,0,0,113,1642,39,572,113,1276,0,0,1
+window=64862452,1,0,0,180,1642,39,572,180,1276,0,0,1
 [/msgwin2]
 
 [msgwin1]
-window=64661816,1,0,0,113,1642,39,572,113,1276,0,0,0
+window=64862452,1,0,0,180,1642,39,572,180,1276,0,0,0
 [/msgwin1]
 
 [symbwin]
-window=64661816,1,0,0,113,1642,39,572,113,1276,0,0,2
+window=64862452,1,0,0,180,1642,39,572,180,1276,0,0,2
 hdrwidth2=100
 hdrwidth3=100
 [/symbwin]
 
 [openfileswin]
-window=64654588,1,0,0,927,258,956,170,886,258,0,0,2
+window=64855224,1,0,0,927,258,956,170,886,258,0,0,2
 [/openfileswin]
 
 [prjfileswin]
-window=64654588,1,0,0,927,258,956,170,886,258,0,0,1
+window=64855224,1,0,0,927,258,956,170,886,258,0,0,1
 filesheight=350
 relatednamew=110
 relatedcnt=5
@@ -111,7 +111,7 @@ relfile4="Sysgen\PLC1.map"
 [/prjfileswin]
 
 [ctrlswin]
-window=64654588,1,0,0,927,258,600,42,600,258,0,0,0
+window=64855224,1,0,0,927,258,600,42,600,258,0,0,0
 [/ctrlswin]
 
 [accwin]
@@ -145,10 +145,10 @@ font="courier new",1,0,9,-12,0,0,0
 [/memwin2]
 
 [watch2win]
-window=64661816,1,0,0,113,1642,39,572,113,1276,0,0,4
+window=64862452,1,0,0,180,1642,39,572,180,1276,0,0,4
 hdrnamew=326,66,0
 font="courier new",238,0,10,-13,-2147483640,0,0
-defbank="PLCx"
+defbank="Modbus"
 toolbvis=1
 alignnumbers=0
 showanalyserr=0
@@ -166,7 +166,7 @@ window=0,0,52,52,759,1440,176,127,759,1440,0,1,-1
 [/weblc]
 
 [paneltexted]
-editor="XClip-Panel",1,0,1,1,1,1,5059774,1701624,844108476,1701532,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+editor="XClip-Panel",1,0,1,1,1,1,5059774,1701324,844108476,1701232,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 window=0,0,0,93,313,483,313,483,313,483,0,1,-1
 font="Fixedsys",9
 [/paneltexted]
@@ -177,11 +177,11 @@ valobj="0","15","1","19","16","4","3","2","12","20","15.5","15.6","15.7","15.8",
 [/evalmodifdlg]
 
 [Datalogger]
-window=50649656,0,0,0,712,1741,320,145,741,1616,0,0,0
+window=64828760,0,0,0,712,1741,320,145,741,1616,0,0,0
 [/Datalogger]
 
 [IOConfigurator]
-window=64656156,1,0,0,781,304,810,136,886,304,0,0,0
+window=64827632,1,0,0,714,304,810,136,886,304,0,0,0
 [/IOConfigurator]
 
 [PanelSIM_1]
@@ -195,16 +195,16 @@ window=0,0,695,273,317,233,317,233,317,233,0,0,-1
 [PlcNetManager]
 SortItems=1
 SortPlcs=1
-window=64654588,0,0,0,927,258,956,266,886,258,0,0,5
+window=64855224,0,0,0,927,258,956,266,886,258,0,0,5
 [/PlcNetManager]
 
 [FormDesign1]
-window=50649656,1,0,0,781,1642,956,1920,886,1578,0,0,1
+window=64828760,1,0,0,714,1642,956,1920,886,1578,0,0,1
 [/FormDesign1]
 
 [textsyneditor]
-editor="PrgRoom1.ST",1,0,0,17,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=50649656,1,0,0,781,1642,956,1920,545,1403,0,0,2
+editor="PrgRoom1.ST",1,0,0,213,125,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
+window=64828760,1,0,0,714,1642,956,1920,545,1403,0,0,2
 localparams=0,1,1,1,1,30,0,80,1,2,1,0
 font="Courier New",10
 relay=0,0,0,0,0,"",0,0
@@ -214,7 +214,7 @@ debugparams=1,0,1
 
 [textsyneditor]
 editor="fbControlRoom.ST",1,0,0,43,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=50649656,1,0,0,781,1642,956,1920,447,1301,0,0,3
+window=64828760,1,0,0,714,1642,956,1920,447,1301,0,0,3
 localparams=0,1,1,1,1,30,0,80,1,2,1,0
 font="Courier New",10
 relay=0,0,0,0,0,"",0,0
@@ -224,7 +224,7 @@ debugparams=1,0,1
 
 [textsyneditor]
 editor="IOCONFIGURATOR\CONFIG.HWC",1,0,0,664,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=50649656,1,0,0,781,1642,956,1920,447,985,0,0,4
+window=64828760,1,0,0,714,1642,956,1920,447,985,0,0,4
 localparams=0,1,1,1,1,30,0,80,1,4,0,0
 font="Lucida Console",11
 relay=0,0,0,0,0,"",0,0
@@ -234,7 +234,7 @@ debugparams=1,0,1
 
 [textsyneditor]
 editor="PLC1.ST",1,0,0,21,36,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=50649656,1,0,0,781,1642,956,1920,493,1005,0,0,5
+window=64828760,1,0,0,714,1642,956,1920,493,1005,0,0,5
 localparams=0,1,1,1,1,30,0,80,1,2,1,0
 font="Courier New",10
 relay=0,0,0,0,0,"",0,0
@@ -244,7 +244,7 @@ debugparams=1,0,1
 
 [textsyneditor]
 editor="PrgConnectHMIs.ST",1,0,0,82,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=50649656,1,0,0,781,1642,956,1920,645,1286,0,0,6
+window=64828760,1,0,0,714,1642,956,1920,645,1286,0,0,6
 localparams=0,1,1,1,1,30,0,80,1,2,1,0
 font="Courier New",10
 relay=0,0,0,0,0,"",0,0
@@ -254,7 +254,7 @@ debugparams=1,0,1
 
 [textsyneditor]
 editor="fbControlHotelSystem_UDP.ST",1,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=50649656,1,0,0,781,1642,956,1920,702,1602,0,0,7
+window=64828760,1,0,0,714,1642,956,1920,702,1602,0,0,7
 localparams=0,1,1,1,1,30,0,80,1,2,1,0
 font="Courier New",10
 relay=0,0,0,0,0,"",0,0
@@ -264,7 +264,7 @@ debugparams=1,0,1
 
 [textsyneditor]
 editor="PLC1.mcf",1,0,0,2,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=50649656,1,0,0,781,1642,956,1920,738,1602,0,0,8
+window=64828760,1,0,0,714,1642,956,1920,738,1602,0,0,8
 localparams=0,1,1,1,1,30,0,80,1,2,1,0
 font="Courier New",10
 relay=0,0,0,0,0,"",0,0
@@ -273,8 +273,8 @@ debugparams=1,0,1
 [/textsyneditor]
 
 [textsyneditor]
-editor="PrgMajles.ST",1,0,0,282,12,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=50649656,1,0,0,781,1642,956,1920,858,1592,0,0,9
+editor="PrgMajles.ST",1,0,0,248,125,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
+window=64828760,1,0,0,714,1642,956,1920,858,1592,0,0,9
 localparams=0,1,1,1,1,30,0,80,1,2,1,0
 font="Courier New",10
 relay=0,0,0,0,0,"",0,0
@@ -284,7 +284,7 @@ debugparams=1,0,1
 
 [textsyneditor]
 editor="fbControlFCU.ST",1,0,0,11,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=50649656,1,0,0,781,1642,956,1920,840,1276,0,0,10
+window=64828760,1,0,0,714,1642,956,1920,840,1276,0,0,10
 localparams=0,1,1,1,1,30,0,80,1,2,1,0
 font="Courier New",10
 relay=0,0,0,0,0,"",0,0
@@ -294,7 +294,7 @@ debugparams=1,0,1
 
 [textsyneditor]
 editor="prgMain.ST",1,0,0,20,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=50649656,1,0,0,781,1642,956,1920,722,1276,0,0,11
+window=64828760,1,0,0,714,1642,956,1920,722,1276,0,0,11
 localparams=0,1,1,1,1,30,0,80,1,2,1,0
 font="Courier New",10
 relay=0,0,0,0,0,"",0,0
@@ -304,7 +304,7 @@ debugparams=1,0,1
 
 [textsyneditor]
 editor="IOCONFIGURATOR\CONFIG.ST",1,0,0,1,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=50649656,1,0,0,781,1642,956,1920,715,1355,0,0,12
+window=64828760,1,0,0,714,1642,956,1920,715,1355,0,0,12
 localparams=0,1,1,1,1,30,0,80,1,2,1,0
 font="Courier New",10
 relay=0,0,0,0,0,"",0,0
@@ -313,8 +313,8 @@ debugparams=1,0,1
 [/textsyneditor]
 
 [textsyneditor]
-editor="PrgRoom2.ST",1,0,0,256,12,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=50649656,1,0,0,781,1642,956,1920,856,1671,0,0,13
+editor="PrgRoom2.ST",1,0,0,223,125,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
+window=64828760,1,0,0,714,1642,956,1920,856,1671,0,0,13
 localparams=0,1,1,1,1,30,0,80,1,2,1,0
 font="Courier New",10
 relay=0,0,0,0,0,"",0,0
@@ -323,18 +323,18 @@ debugparams=1,0,1
 [/textsyneditor]
 
 [textsyneditor]
-editor="PrgRoom3.ST",1,1,0,255,1,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=50649656,1,0,0,781,1642,956,1920,700,1355,0,0,14
+editor="PrgRoom3.ST",1,0,0,224,57,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
+window=64828760,1,0,0,714,1642,956,1920,700,1355,0,0,14
 localparams=0,1,1,1,1,30,0,80,1,2,1,0
 font="Courier New",10
 relay=0,0,0,0,0,"",0,0
-inspectorctx=""
+inspectorctx="Room3"
 debugparams=1,0,1
 [/textsyneditor]
 
 [textsyneditor]
 editor="PLC1.mos",1,0,0,3,24,1,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1
-window=50649656,1,0,0,781,1642,956,1920,810,1650,0,0,15
+window=64828760,1,0,0,714,1642,956,1920,810,1650,0,0,15
 localparams=0,1,1,1,1,30,0,80,1,8,0,0
 font="Fixedsys",9
 relay=0,0,0,0,0,"",0,0

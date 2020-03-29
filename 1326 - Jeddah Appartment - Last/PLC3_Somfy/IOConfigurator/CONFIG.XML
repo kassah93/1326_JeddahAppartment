@@ -45,7 +45,7 @@
                 <ExpansionMap name="r0_p0_Settings_PLCx_ETH1_PLCx0">11</ExpansionMap>
               </ExpansionMaps>
             </Editor>
-            <Network configFile="..\..\Networks.xml" id="0" addr="3" crc="4568"/>
+            <Network configFile="..\..\Networks.xml" id="0" addr="3" crc="15600"/>
           </Channel>
           <Channel Options="BAC" Name="SOCK3"/>
           <Channel Options="UNI" Name="SOCK4"/>

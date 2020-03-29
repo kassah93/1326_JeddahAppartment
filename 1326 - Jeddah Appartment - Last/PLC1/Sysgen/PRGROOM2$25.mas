@@ -106,9 +106,9 @@
 #table byte __Init___PrgRoom2_enCurtainsDW_FT = 
       4,  4;
 #table byte __Init___PrgRoom2_enCurtainsUP_SW_FT = 
-      4, 94;
+      4,  0;
 #table byte __Init___PrgRoom2_enCurtainsDW_SW_FT = 
-      4,210;
+      4,  0;
 #table byte __Init___PrgRoom2_enFCUs_FT = 
       4,  4;
 #table byte __Init___PrgRoom2_enSetTempIncr_FT = 
@@ -872,7 +872,7 @@ PrgRoom2_L22:
  MUL  8   ; -> bool pointer 
  WRIB 
 #debug_left bool HMIs_DataWrite[HMI_Index].shuttersStatus[i].Dw.0
-#srcline 223 ;          HMIs_DataWrite[HMI_Index].shuttersStatus[i].pos  := USINT_TO_WORD(curtainsStatus[CurtStatus_Index - 1 + i].pos);
+#srcline 223 ;          HMIs_DataWrite[HMI_Index].shuttersStatus[i].pos  := USINT_TO_WORD(curtainsStatus[CurtStatus_Index - 1 + i].normPos);
  LEA  curtainsStatus
  LDX  CurtStatus_Index
 #debug usint CurtStatus_Index
@@ -887,9 +887,9 @@ PrgRoom2_L22:
  RCHK 13   ; Range Check
  MUL  3   ; SizeOf(...)
  ADD     ; + offset 
- ADD  1  ; + offset 
+ ADD  2  ; + offset 
  LDI  
-#debug usint curtainsStatus[CurtStatus_Index-1+i].pos
+#debug usint curtainsStatus[CurtStatus_Index-1+i].normPos
  LEA  HMIs_DataWrite
  LDX  HMI_Index
 #debug usint HMI_Index

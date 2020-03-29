@@ -1,4 +1,4 @@
 [ProjectGroup]
 PLC1\PLC1.plc
-PLC2\PLC2.plc
-*PLC3_Somfy\PLC3_Somfy.plc
+*PLC2\PLC2.plc
+PLC3_Somfy\PLC3_Somfy.plc

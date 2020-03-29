@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="windows-1250" ?>
-<web version="8.1" propfont="true" foot="© 2007 - 2020 Teco a.s." MaxUid="20676" height="754" width="432" menu="false" title="false" border="true" top="0" left="0" iniScale="100" maxScale="100" useIniScale="false" useMaxScale="false" userScale="true" webApp="false" bgdupl="false" bgcolor="16777215" icon="" id18="1" author="Teco a.s." encoding="windows-1250">
+<web version="8.1" propfont="true" foot="© 2007 - 2020 Teco a.s." MaxUid="20697" height="754" width="432" menu="false" title="false" border="true" top="0" left="0" iniScale="100" maxScale="100" useIniScale="false" useMaxScale="false" userScale="true" webApp="false" bgdupl="false" bgcolor="16777215" icon="" id18="1" author="Teco a.s." encoding="windows-1250">
 	<panels></panels>
 	<Grid Enable="1" X="5" Y="5" />
 	<globalset newdim="0" />
@@ -557,7 +557,7 @@
 				<block width="50" height="50" border="false" variable="LivingRoom.enCurtainsDW_GUI[2]" type="BOOL" value="1" />
 			</object>
 		</page>
-		<page caption="MasterRoom" name="MASTER.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1584613324" width="406" height="718" Uid="20401">
+		<page caption="MasterRoom" name="MASTER.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1585234835" width="406" height="718" Uid="20401">
 			<object caption="" X="1" Y="22" xoff="6" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20405" layer="9">
 				<picture href="" img="CONSOLE.PNG" />
 			</object>
@@ -650,48 +650,6 @@
 			</object>
 			<object caption="" X="38" Y="10" xoff="5" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20336" layer="15">
 				<block width="90" height="35" border="false" variable="MasterRoom.navSelect" type="USINT" value="3" />
-			</object>
-			<object caption="" X="8" Y="38" xoff="7" yoff="2" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20342" layer="3">
-				<mulimg variable="main.test" type="" count="5">
-					<img name="WINDOW9.PNG" />
-					<img name="WINDOW10.PNG" />
-					<img name="WINDOW11.PNG" />
-					<img name="WINDOW12.PNG" />
-					<img name="WINDOW13.PNG" />
-				</mulimg>
-			</object>
-			<object caption="" X="12" Y="51" xoff="7" yoff="3" level="0" readonly="false" front="0" back="14474460" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20343" layer="3">
-				<edit variable="main.test" type="" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="27" height="19" tabindex="1" />
-			</object>
-			<object caption="%" X="17" Y="51" xoff="1" yoff="4" level="0" readonly="false" front="2565927" back="16777215" strong="false" italic="false" size="15" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20344" layer="3">
-				<label />
-			</object>
-			<object caption="" X="15" Y="55" xoff="3" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20345" layer="3">
-				<image optcap="" variable="main.test" type="" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
-			</object>
-			<object caption="" X="9" Y="55" xoff="0" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20346" layer="3">
-				<image optcap="" variable="main.test" type="" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
-			</object>
-			<object caption="" X="31" Y="38" xoff="3" yoff="2" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20347" layer="3">
-				<mulimg variable="main.test" type="" count="5">
-					<img name="WINDOW9.PNG" />
-					<img name="WINDOW10.PNG" />
-					<img name="WINDOW11.PNG" />
-					<img name="WINDOW12.PNG" />
-					<img name="WINDOW13.PNG" />
-				</mulimg>
-			</object>
-			<object caption="" X="35" Y="51" xoff="3" yoff="3" level="0" readonly="false" front="0" back="14474460" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20348" layer="3">
-				<edit variable="main.test" type="" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="27" height="19" tabindex="2" />
-			</object>
-			<object caption="%" X="39" Y="51" xoff="5" yoff="4" level="0" readonly="false" front="2565927" back="16777215" strong="false" italic="false" size="15" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20349" layer="3">
-				<label />
-			</object>
-			<object caption="" X="37" Y="55" xoff="7" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20350" layer="3">
-				<image optcap="" variable="main.test" type="" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
-			</object>
-			<object caption="" X="31" Y="55" xoff="4" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20351" layer="3">
-				<image optcap="" variable="main.test" type="" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
 			</object>
 			<object caption="" X="24" Y="47" xoff="1" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.socketsSelect" vistype="BOOL" visneg="false" Uid="20352" layer="2">
 				<image optcap="" variable="outletsStatusMasterRoom[1]" type="BOOL" on="PLUG_G_S.PNG" off="PLUG_S.PNG" />
@@ -833,6 +791,60 @@
 			<object caption="MASTER ROOM" X="16" Y="17" xoff="0" yoff="7" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="20" transparent="true" visneg="false" Uid="20642">
 				<label />
 			</object>
+			<object caption="" X="11" Y="34" xoff="4" yoff="5" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20676" layer="3">
+				<mulimg variable="curtainsStatus[12].normPos" type="USINT" count="5">
+					<img name="WINDOW9.PNG" />
+					<img name="WINDOW10.PNG" />
+					<img name="WINDOW11.PNG" />
+					<img name="WINDOW12.PNG" />
+					<img name="WINDOW13.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="15" Y="47" xoff="4" yoff="6" level="0" readonly="false" front="0" back="14474460" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20677" layer="3">
+				<edit variable="curtainsStatus[12].pos" type="USINT" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="27" height="19" tabindex="1" />
+			</object>
+			<object caption="%" X="19" Y="47" xoff="6" yoff="7" level="0" readonly="false" front="2565927" back="16777215" strong="false" italic="false" size="15" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20678" layer="3">
+				<label />
+			</object>
+			<object caption="" X="19" Y="51" xoff="0" yoff="5" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20679" layer="3">
+				<image optcap="" variable="curtainsStatus[12].outUP" type="BOOL" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
+			</object>
+			<object caption="" X="10" Y="51" xoff="4" yoff="5" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20680" layer="3">
+				<image optcap="" variable="curtainsStatus[12].outDW" type="BOOL" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
+			</object>
+			<object caption="" X="28" Y="34" xoff="7" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20681" layer="3">
+				<mulimg variable="curtainsStatus[13].normPos" type="USINT" count="5">
+					<img name="WINDOW9.PNG" />
+					<img name="WINDOW10.PNG" />
+					<img name="WINDOW11.PNG" />
+					<img name="WINDOW12.PNG" />
+					<img name="WINDOW13.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="32" Y="48" xoff="7" yoff="0" level="0" readonly="false" front="0" back="14474460" strong="false" italic="false" size="13" transparent="false" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20682" layer="3">
+				<edit variable="curtainsStatus[13].pos" type="USINT" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="27" height="19" tabindex="2" />
+			</object>
+			<object caption="%" X="37" Y="48" xoff="1" yoff="1" level="0" readonly="false" front="2565927" back="16777215" strong="false" italic="false" size="15" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20683" layer="3">
+				<label />
+			</object>
+			<object caption="" X="36" Y="51" xoff="0" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20684" layer="3">
+				<image optcap="" variable="curtainsStatus[13].outUP" type="BOOL" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
+			</object>
+			<object caption="" X="27" Y="51" xoff="6" yoff="7" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20685" layer="3">
+				<image optcap="" variable="curtainsStatus[13].outDW" type="BOOL" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
+			</object>
+			<object caption="" X="19" Y="51" xoff="2" yoff="6" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20686" layer="7">
+				<block width="50" height="50" border="false" variable="MasterRoom.enCurtainsUP_GUI[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="10" Y="51" xoff="3" yoff="6" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20687" layer="7">
+				<block width="50" height="50" border="false" variable="MasterRoom.enCurtainsDW_GUI[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="36" Y="51" xoff="1" yoff="6" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20688" layer="7">
+				<block width="50" height="50" border="false" variable="MasterRoom.enCurtainsUP_GUI[2]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="27" Y="51" xoff="6" yoff="6" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="MasterRoom.shuttersSelect" vistype="BOOL" visneg="false" Uid="20689" layer="7">
+				<block width="50" height="50" border="false" variable="MasterRoom.enCurtainsDW_GUI[2]" type="BOOL" value="1" />
+			</object>
 		</page>
 		<page caption="ServiceRoom" name="SERVICE.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1584613331" width="406" height="718" Uid="20402">
 			<object caption="" X="1" Y="22" xoff="6" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20409" layer="9">
@@ -908,7 +920,7 @@
 				<label />
 			</object>
 		</page>
-		<page caption="Room4" name="ROOM4.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1584613339" width="406" height="718" Uid="20403">
+		<page caption="Room4" name="ROOM4.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="1000" level="0" ucid="1585234965" width="406" height="718" Uid="20403">
 			<object caption="" X="1" Y="22" xoff="6" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20410" layer="9">
 				<picture href="" img="CONSOLE.PNG" />
 			</object>
@@ -980,27 +992,6 @@
 			</object>
 			<object caption="" X="27" Y="10" xoff="3" yoff="3" level="0" readonly="false" front="0" back="15597666" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="20382" layer="15">
 				<block width="90" height="35" border="false" variable="Room4.navSelect" type="USINT" value="2" />
-			</object>
-			<object caption="" X="20" Y="38" xoff="6" yoff="2" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20383" layer="3">
-				<mulimg variable="main.test" type="" count="5">
-					<img name="WINDOW9.PNG" />
-					<img name="WINDOW10.PNG" />
-					<img name="WINDOW11.PNG" />
-					<img name="WINDOW12.PNG" />
-					<img name="WINDOW13.PNG" />
-				</mulimg>
-			</object>
-			<object caption="" X="24" Y="51" xoff="6" yoff="3" level="0" readonly="false" front="0" back="14474460" strong="false" italic="false" size="13" transparent="false" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20384" layer="3">
-				<edit variable="main.test" type="" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="27" height="19" tabindex="1" />
-			</object>
-			<object caption="%" X="29" Y="51" xoff="0" yoff="4" level="0" readonly="false" front="2565927" back="16777215" strong="false" italic="false" size="15" transparent="true" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20385" layer="3">
-				<label />
-			</object>
-			<object caption="" X="27" Y="55" xoff="2" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20386" layer="3">
-				<image optcap="" variable="main.test" type="" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
-			</object>
-			<object caption="" X="20" Y="55" xoff="7" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20387" layer="3">
-				<image optcap="" variable="main.test" type="" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
 			</object>
 			<object caption="" X="38" Y="14" xoff="5" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visvar="Room4.AC_Select" vistype="BOOL" visneg="true" Uid="20388">
 				<block dynamic="true" width="90" height="5" border="false" color="1" />
@@ -1153,6 +1144,33 @@
 			</object>
 			<object caption="ROOM4" X="21" Y="17" xoff="0" yoff="7" level="0" readonly="false" front="3289650" back="16777215" strong="true" italic="false" size="20" transparent="true" visneg="false" Uid="20638">
 				<label />
+			</object>
+			<object caption="" X="20" Y="32" xoff="2" yoff="6" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20690" layer="3">
+				<mulimg variable="curtainsStatus[14].normPos" type="USINT" count="5">
+					<img name="WINDOW9.PNG" />
+					<img name="WINDOW10.PNG" />
+					<img name="WINDOW11.PNG" />
+					<img name="WINDOW12.PNG" />
+					<img name="WINDOW13.PNG" />
+				</mulimg>
+			</object>
+			<object caption="" X="24" Y="45" xoff="2" yoff="7" level="0" readonly="false" front="0" back="14474460" strong="false" italic="false" size="13" transparent="false" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20691" layer="3">
+				<edit variable="curtainsStatus[14].pos" type="USINT" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="true" border="false" width="27" height="19" tabindex="1" />
+			</object>
+			<object caption="%" X="28" Y="46" xoff="4" yoff="0" level="0" readonly="false" front="2565927" back="16777215" strong="false" italic="false" size="15" transparent="true" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20692" layer="3">
+				<label />
+			</object>
+			<object caption="" X="27" Y="49" xoff="6" yoff="6" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20693" layer="3">
+				<image optcap="" variable="curtainsStatus[14].outUP" type="BOOL" on="BTN_GREE.PNG" off="BTN_BL_5.PNG" />
+			</object>
+			<object caption="" X="19" Y="49" xoff="2" yoff="6" level="0" readonly="true" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20694" layer="3">
+				<image optcap="" variable="curtainsStatus[14].outDW" type="BOOL" on="BTN_GRE1.PNG" off="BTN_BL_7.PNG" />
+			</object>
+			<object caption="" X="28" Y="49" xoff="0" yoff="7" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20695" layer="7">
+				<block width="50" height="50" border="false" variable="Room4.enCurtainsUP_GUI[1]" type="BOOL" value="1" />
+			</object>
+			<object caption="" X="19" Y="49" xoff="1" yoff="7" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="true" visvar="Room4.shuttersSelect" vistype="BOOL" visneg="false" Uid="20696" layer="7">
+				<block width="50" height="50" border="false" variable="Room4.enCurtainsDW_GUI[1]" type="BOOL" value="1" />
 			</object>
 		</page>
 		<page caption="Interance &amp; Bathroom" name="ENTRANCE.XML" background="" bgcolor="9868950" repeat="false" hidden="false" ajax="true" pause="250" level="0" ucid="1584613346" width="406" height="718" Uid="20439">
@@ -1440,7 +1458,7 @@
 		<layer visible="0" frozen="0" name="AC" />
 		<layer visible="0" frozen="0" name="Lights Transperent" />
 		<layer visible="0" frozen="0" name="Outlets Transperent" />
-		<layer visible="1" frozen="0" name="Curtains Transperent" />
+		<layer visible="0" frozen="0" name="Curtains Transperent" />
 		<layer visible="0" frozen="0" name="AC Transperent" />
 		<layer visible="1" frozen="1" name="Backgrounds" />
 		<layer visible="1" frozen="0" name="" />

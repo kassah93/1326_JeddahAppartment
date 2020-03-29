@@ -155,7 +155,7 @@
 
 #struct _TTS_PLCxINIT_ETH1_PLCx0
         _TTS_PLCxHead Head,
-        _TTS_LPLCx[2] Line
+        _TTS_LPLCx[3] Line
 
 ;CF-1140 - Initialization table of CP-1140 unit
 #table TCIB_1140_init r0_p2_CF_1140_init = $0C38,$0000,$0000,$00,$01,
@@ -294,9 +294,10 @@
                                  $2C,0,0,1
 
 ;ETH1_PLCx0
-#table _TTS_PLCxINIT_ETH1_PLCx0 r0_p0_Table_PLCx_ETH1_PLCx0 = $00C3,$0000,3,3,0,0,0,$11D8,0,$06E1,0,$00000000,$00000000,2,20,
+#table _TTS_PLCxINIT_ETH1_PLCx0 r0_p0_Table_PLCx_ETH1_PLCx0 = $00C3,$0000,3,3,0,0,0,$3CF0,0,$06E1,0,$00000000,$00000000,3,20,
                                                               0,3,238,__offset32(PLCx_ETH1_PLCx0_ADR3_TX),
-                                                              0,1,50,__offset32(PLCx_ETH1_PLCx0_ADR1_RX)
+                                                              0,1,50,__offset32(PLCx_ETH1_PLCx0_ADR1_RX),
+                                                              0,2,50,__offset32(PLCx_ETH1_PLCx0_ADR2_RX)
 
 ;CF-1140
 #module TModulE1 $01,0,2,272,10,2,__offset(r0_p2_CIB_Statistic),__offset(r0_p2_CIB_Control),__indx(r0_p2_Table)

@@ -43,7 +43,7 @@ if(xmlhttpGET.status != 200){
 alert('Problem retrieving XML data ' + xmlhttpGET.statusText + '(' + xmlhttpGET.status + ')');
 document.location.reload(true)
 return;}
-var access = xmlhttpGET.responseXML.documentElement.getElementsByTagName('ACCESS')[0]; if(!access || access.getAttribute('UCID') != 1585234457) {document.location.reload(true); return;}
+var access = xmlhttpGET.responseXML.documentElement.getElementsByTagName('ACCESS')[0]; if(!access || access.getAttribute('UCID') != 1585379888) {document.location.reload(true); return;}
 var pd = '';
 var x=xmlhttpGET.responseXML.documentElement.getElementsByTagName('INPUT');
 if(x[0]) {
@@ -581,7 +581,7 @@ SetBg('INPUT62', 'MOTION_S.GIF');
 }
 var Input63 = document.getElementById('INPUT63');
 var Input63h = document.getElementById('INPUT63h');
-if(Input63h) { vz = x[42].getAttribute('VALUE') == '0'; iz = Input63h.value == '0';
+if(Input63h) { vz = x[41].getAttribute('VALUE') == '0'; iz = Input63h.value == '0';
 if(vz == iz) {
 if(vz) {
 Input63h.value = '1';
@@ -593,18 +593,18 @@ Input63.style.backgroundImage = 'url("IMAGES/ON.PNG")';
 if(Input63.getAttribute('value') != null) {Input63.value = '';
 } else {}
 }}} else {
-if(x[42].getAttribute('VALUE') == '0') {
+if(x[41].getAttribute('VALUE') == '0') {
 SetBg('INPUT63', 'OFF.PNG');
 } else {
 SetBg('INPUT63', 'ON.PNG');
 }}
-if(x[41].getAttribute('VALUE') == '0') {
+if(x[39].getAttribute('VALUE') == '0') {
 Input63.style.display = 'none';
 } else {
 Input63.style.display = 'block';
 }
 var Input64 = document.getElementById('INPUT64');
-switch(parseInt(x[43].getAttribute('VALUE'))) {
+switch(parseInt(x[42].getAttribute('VALUE'))) {
 case 0 : gTemp = 'url("IMAGES/INDICATO.PNG")'; break;
 case 1 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 case 2 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
@@ -617,7 +617,7 @@ Input64.style.visibility = 'hidden';
 Input64.style.visibility = 'visible';
 }
 var Input65 = document.getElementById('INPUT65');
-switch(parseInt(x[43].getAttribute('VALUE'))) {
+switch(parseInt(x[42].getAttribute('VALUE'))) {
 case 0 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 case 1 : gTemp = 'url("IMAGES/INDICATO.PNG")'; break;
 case 2 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
@@ -630,7 +630,7 @@ Input65.style.visibility = 'hidden';
 Input65.style.visibility = 'visible';
 }
 var Input66 = document.getElementById('INPUT66');
-switch(parseInt(x[43].getAttribute('VALUE'))) {
+switch(parseInt(x[42].getAttribute('VALUE'))) {
 case 0 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 case 1 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 case 2 : gTemp = 'url("IMAGES/INDICATO.PNG")'; break;
@@ -643,7 +643,7 @@ Input66.style.visibility = 'hidden';
 Input66.style.visibility = 'visible';
 }
 var Input67 = document.getElementById('INPUT67');
-switch(parseInt(x[43].getAttribute('VALUE'))) {
+switch(parseInt(x[42].getAttribute('VALUE'))) {
 case 0 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 case 1 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
 case 2 : gTemp = 'url("IMAGES/INDICAT1.PNG")'; break;
@@ -656,25 +656,25 @@ Input67.style.visibility = 'hidden';
 Input67.style.visibility = 'visible';
 }
 var Input68 = document.getElementById('INPUT68');
-if(x[41].getAttribute('VALUE') == '0') {
+if(x[43].getAttribute('VALUE') == '0') {
 Input68.style.visibility = 'hidden';
 } else {
 Input68.style.visibility = 'visible';
 }
 var Input69 = document.getElementById('INPUT69');
-if(x[41].getAttribute('VALUE') == '0') {
+if(x[43].getAttribute('VALUE') == '0') {
 Input69.style.visibility = 'hidden';
 } else {
 Input69.style.visibility = 'visible';
 }
 var Input70 = document.getElementById('INPUT70');
-if(x[41].getAttribute('VALUE') == '0') {
+if(x[43].getAttribute('VALUE') == '0') {
 Input70.style.visibility = 'hidden';
 } else {
 Input70.style.visibility = 'visible';
 }
 var Input71 = document.getElementById('INPUT71');
-if(x[41].getAttribute('VALUE') == '0') {
+if(x[43].getAttribute('VALUE') == '0') {
 Input71.style.visibility = 'hidden';
 } else {
 Input71.style.visibility = 'visible';
@@ -745,7 +745,7 @@ var Input78 = document.getElementById('INPUT78');
 if(!InputEdited[77]) {
 UpdateValue(Input78, x[46], '#3C3C3C');}
 var Input78x = document.getElementById('INPUT78x');
-if(x[41].getAttribute('VALUE') == '0') {
+if(x[39].getAttribute('VALUE') == '0') {
 if(Input78x) Input78x.style.visibility = 'hidden';
 Input78.style.display = 'none';
 } else {
@@ -770,50 +770,50 @@ SetBg('INPUT79', 'CONTROL-.PNG');
 } else {
 SetBg('INPUT79', 'CONTROL1.PNG');
 }}
-if(x[41].getAttribute('VALUE') == '0') {
+if(x[39].getAttribute('VALUE') == '0') {
 Input79.style.display = 'none';
 } else {
 Input79.style.display = 'block';
 }
 var Input80 = document.getElementById('INPUT80');
-if(x[41].getAttribute('VALUE') == '0') {
+if(x[39].getAttribute('VALUE') == '0') {
 Input80.style.visibility = 'hidden';
 } else {
 Input80.style.visibility = 'visible';
 }
 var Input81 = document.getElementById('INPUT81');
 Input81.value = x[48].getAttribute('VALUE');
-if(x[41].getAttribute('VALUE') == '0') {
+if(x[39].getAttribute('VALUE') == '0') {
 Input81.style.visibility = 'hidden';
 } else {
 Input81.style.visibility = 'visible';
 }
 var Input82 = document.getElementById('INPUT82');
-if(x[41].getAttribute('VALUE') == '0') {
+if(x[39].getAttribute('VALUE') == '0') {
 Input82.style.visibility = 'hidden';
 } else {
 Input82.style.visibility = 'visible';
 }
 var Input83 = document.getElementById('INPUT83');
-if(x[41].getAttribute('VALUE') == '0') {
+if(x[39].getAttribute('VALUE') == '0') {
 Input83.style.visibility = 'hidden';
 } else {
 Input83.style.visibility = 'visible';
 }
 var Input84 = document.getElementById('INPUT84');
-if(x[41].getAttribute('VALUE') == '0') {
+if(x[43].getAttribute('VALUE') == '0') {
 Input84.style.visibility = 'hidden';
 } else {
 Input84.style.visibility = 'visible';
 }
 var Input85 = document.getElementById('INPUT85');
-if(x[41].getAttribute('VALUE') == '0') {
+if(x[39].getAttribute('VALUE') == '0') {
 Input85.style.visibility = 'hidden';
 } else {
 Input85.style.visibility = 'visible';
 }
 var Input86 = document.getElementById('INPUT86');
-if(x[41].getAttribute('VALUE') == '0') {
+if(x[39].getAttribute('VALUE') == '0') {
 Input86.style.visibility = 'hidden';
 } else {
 Input86.style.visibility = 'visible';
@@ -826,7 +826,7 @@ Input87.innerHTML = 'Cooling';
 SetBg('INPUT87', 'TRANSPE2.PNG');
 Input87.innerHTML = 'Fan only';
 }
-if(x[41].getAttribute('VALUE') == '0') {
+if(x[39].getAttribute('VALUE') == '0') {
 Input87.style.display = 'none';
 } else {
 Input87.style.display = 'block';

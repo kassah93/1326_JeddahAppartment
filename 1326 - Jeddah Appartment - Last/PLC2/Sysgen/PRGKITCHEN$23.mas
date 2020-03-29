@@ -84,13 +84,13 @@
 #table byte __Init___PrgKitchen_enOutlets_FT = 
       4,  4,  4,  4,  4;
 #table byte __Init___PrgKitchen_enFCUs_FT = 
-      4,167;
+      4,155;
 #table byte __Init___PrgKitchen_enSetTempIncr_FT = 
-      4, 22;
+      4,203;
 #table byte __Init___PrgKitchen_enSetTempDecr_FT = 
-      4, 45;
+      4,197;
 #table byte __Init___PrgKitchen_HMI_Addresses = 
-      7,167;
+      7,218;
 
 #struct PrgKitchen__temp__
   usint P0__st__,

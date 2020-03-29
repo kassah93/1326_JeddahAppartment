@@ -873,7 +873,7 @@ PrgMasterRoom_L22:
  MUL  8   ; -> bool pointer 
  WRIB 
 #debug_left bool HMIs_DataWrite[HMI_Index].shuttersStatus[i].Dw.0
-#srcline 222 ;          HMIs_DataWrite[HMI_Index].shuttersStatus[i].pos  := USINT_TO_WORD(curtainsStatus[CurtStatus_Index - 1 + i].pos);
+#srcline 222 ;          HMIs_DataWrite[HMI_Index].shuttersStatus[i].pos  := USINT_TO_WORD(curtainsStatus[CurtStatus_Index - 1 + i].normPos);
  LEA  curtainsStatus
  LDX  CurtStatus_Index
 #debug usint CurtStatus_Index
@@ -888,9 +888,9 @@ PrgMasterRoom_L22:
  RCHK 13   ; Range Check
  MUL  3   ; SizeOf(...)
  ADD     ; + offset 
- ADD  1  ; + offset 
+ ADD  2  ; + offset 
  LDI  
-#debug usint curtainsStatus[CurtStatus_Index-1+i].pos
+#debug usint curtainsStatus[CurtStatus_Index-1+i].normPos
  LEA  HMIs_DataWrite
  LDX  HMI_Index
 #debug usint HMI_Index

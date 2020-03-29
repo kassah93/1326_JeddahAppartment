@@ -18,7 +18,7 @@ END_TYPE
 VAR_GLOBAL CONSTANT
    numOfCurtains      : USINT := 14;
    numOfCurtains_PLC1 : USINT := 9;
-   numOfCurtains_PLC1 : USINT := 5;
+   numOfCurtains_PLC2 : USINT := 5;
    curtUpDwTime      : TIME := T#18s;
 END_VAR
 

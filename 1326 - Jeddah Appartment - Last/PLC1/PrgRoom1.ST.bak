@@ -50,8 +50,6 @@ PROGRAM PrgRoom1
   EnLightsAN       {PUBLIC_API}       : TEnLightsAN   ;
   EnOutlets                           : TEnOutlets    ;
   EnOutletsAN      {PUBLIC_API}       : TEnOutletsAN  ;
-  
-  EnCurtains {PLCNET} : Array[1..NumOfCurtainRoom1] of TEnCurtain;
 
   //
   enLights_RT  : Array[1..NumOfHMIsRoom1,1..NumOfLightRoom1] of R_TRIG;
@@ -80,6 +78,8 @@ PROGRAM PrgRoom1
   enCurtainsUP_GUI : Array[1..NumOfCurtainRoom1] of BOOL;
   enCurtainsDW_GUI : Array[1..NumOfCurtainRoom1] of BOOL;
 
+  CurtStatus_Index : USINT;
+  CurtEn_Index     : USINT;
   
   //
   i , j : USINT;
@@ -119,9 +119,7 @@ PROGRAM PrgRoom1
   // config
   HMI_Index        : USINT;
   RCU_Index        : USINT;
-  CurtStatus_Index : USINT;
-  CurtEn_Index     : USINT;
-  HMI_Addresses  : Array[1..NumOfHMIsRoom1] of USINT := [16, 17];
+  HMI_Addresses    : Array[1..NumOfHMIsRoom1] of USINT := [16, 17];
 
   END_VAR
 
@@ -184,8 +182,6 @@ PROGRAM PrgRoom1
               RCU_CH_IN := void(ETH1_uni2_IN) , LightsStatus := lightsStatusRoom1 ,OutletsStatus := outletsStatusRoom1, MotionSenStatus := motionSensStatus,
               EnLights := EnLights , EnLightsAN := EnLightsAN , EnOutlets := EnOutlets ,EnOutletsAN :=EnOutletsAN ,
               SendIamServer := SendIamServer , GetAllStatus := GetAllStatus);
-
-              //stLightsRoom1AN := lightsStatusRoom1[1];
 
 
    FCU[1](enable := enableFCU[1], mode := settingsFCU[1].FCU_Mode, fanSpeed := settingsFCU[1].FCU_FanSpeed, setTemp := setTempFCU_Room1[1], temp := FCU_Temp_Room1, valve := FCU_valve_Room1, fanLow := FCU_fanLow_Room1,

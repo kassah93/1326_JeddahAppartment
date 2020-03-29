@@ -19,7 +19,7 @@ dirs=""
 
 [plcselection]
 connection=2
-openchannel=0
+openchannel=1
 chanel=0
 speed=9
 tout=500
@@ -101,7 +101,7 @@ fifwhere=0
 fifsubdirs=0
 fif2ndmsg=1
 fif2ndmsg=1
-findhistory="Room1"
+findhistory="USINT_TO_WORD(curtainsStatus[CurtStatus_Index - 1 + i].pos)"
 replacehistory="Room3"
 dirhistory=""
 maskhistory=""
