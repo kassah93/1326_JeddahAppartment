@@ -43,13 +43,20 @@ if(xmlhttpGET.status != 200){
 alert('Problem retrieving XML data ' + xmlhttpGET.statusText + '(' + xmlhttpGET.status + ')');
 document.location.reload(true)
 return;}
-var access = xmlhttpGET.responseXML.documentElement.getElementsByTagName('ACCESS')[0]; if(!access || access.getAttribute('UCID') != 1584950370) {document.location.reload(true); return;}
+var access = xmlhttpGET.responseXML.documentElement.getElementsByTagName('ACCESS')[0]; if(!access || access.getAttribute('UCID') != 1586265660) {document.location.reload(true); return;}
 var pd = '';
 var x=xmlhttpGET.responseXML.documentElement.getElementsByTagName('INPUT');
 if(x[0]) {
 var Input1 = document.getElementById('INPUT1');
 var Input2 = document.getElementById('INPUT2');
 var Input3 = document.getElementById('INPUT3');
+var Input4 = document.getElementById('INPUT4');
+if(!InputEdited[3]) {
+UpdateValue(Input4, x[0], '#000000');}
+var Input5 = document.getElementById('INPUT5');
+var Input6 = document.getElementById('INPUT6');
+var Input7 = document.getElementById('INPUT7');
+var Input8 = document.getElementById('INPUT8');
 } else {document.location.reload(true); return;}
 } catch(err) {console.log(err.message)}
 if(pd!=''){setTimeout("GetXML('PAGE1.XML','"+pd+"')",1);}else{setTimeout("GetXML('PAGE1.XML')",1000);}}
@@ -70,6 +77,24 @@ PostXML('PAGE1.XML', encodeURIComponent('__R2581.2_BOOL_i=1'));
 }
 function PostXML3() {
 PostXML('PAGE1.XML', encodeURIComponent('__R2581.3_BOOL_i=1')); 
+}
+function PostXML4() {
+var Input4 = document.getElementById('INPUT4');
+document.getElementById('INPUT4x').style.visibility = 'hidden';if(InputEdited[3]) {
+PostXML('PAGE1.XML', encodeURIComponent(Input4.name+'='+Input4.value)); InputEdited[3] = 0;
+}
+}
+function PostXML5() {
+PostXML('PAGE1.XML', encodeURIComponent('__R2584.0_BOOL_i=1')); 
+}
+function PostXML6() {
+PostXML('PAGE1.XML', encodeURIComponent('__R2584.1_BOOL_i=1')); 
+}
+function PostXML7() {
+PostXML('PAGE1.XML', encodeURIComponent('__R2584.2_BOOL_i=1')); 
+}
+function PostXML8() {
+PostXML('PAGE1.XML', encodeURIComponent('__R2584.3_BOOL_i=1')); 
 }
 
 function PostGlobal() {

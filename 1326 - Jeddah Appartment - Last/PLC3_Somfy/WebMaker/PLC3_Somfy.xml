@@ -1,31 +1,66 @@
 <?xml version="1.0" encoding="windows-1250" ?>
-<web version="8.1" propfont="true" foot="© 2007 - 2019 Teco a.s." MaxUid="12080">
+<web version="8.1" propfont="true" foot="© 2007 - 2019 Teco a.s." MaxUid="12092">
 	<panels></panels>
 	<Grid Enable="1" X="5" Y="5" />
 	<globalset newdim="1" />
 	<group caption="" Uid="12073">
-		<page caption="Index" name="PAGE1.XML" ajax="true" pause="1000" default="true" Uid="12072" ucid="1584950370" width="254" height="371">
-			<object caption="" X="13" Y="21" xoff="4" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="12074">
+		<page caption="Index" name="PAGE1.XML" ajax="true" pause="1000" default="true" Uid="12072" ucid="1586265660" width="485" height="426">
+			<object caption="" X="4" Y="16" xoff="6" yoff="0" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="12074">
 				<block width="64" height="64" border="true" variable="main.up" type="BOOL" value="1" />
 			</object>
-			<object caption="UP" X="16" Y="31" xoff="5" yoff="0" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="12075">
+			<object caption="UP" X="7" Y="25" xoff="7" yoff="3" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="12075">
 				<label />
 			</object>
-			<object caption="" X="24" Y="21" xoff="6" yoff="5" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="12076">
+			<object caption="" X="16" Y="16" xoff="0" yoff="0" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="12076">
 				<block width="64" height="64" border="true" variable="main.dw" type="BOOL" value="1" />
 			</object>
-			<object caption="DOWN" X="26" Y="31" xoff="0" yoff="0" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="12077">
+			<object caption="DOWN" X="17" Y="25" xoff="2" yoff="3" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="12077">
 				<label />
 			</object>
-			<object caption="" X="17" Y="36" xoff="7" yoff="0" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="12078">
+			<object caption="" X="10" Y="29" xoff="3" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="12078">
 				<block width="64" height="64" border="true" variable="main.stop" type="BOOL" value="1" />
 			</object>
-			<object caption="STOP" X="19" Y="45" xoff="6" yoff="3" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="12079">
+			<object caption="STOP" X="12" Y="38" xoff="2" yoff="4" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="12079">
 				<label />
+			</object>
+			<object caption="" X="39" Y="18" xoff="1" yoff="4" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="12080">
+				<edit variable="main.chNum" type="USINT" intf="0" timf="" align="left" zero="false" prec="-1" size="3" global="false" border="true" width="34" height="22" tabindex="1" />
+			</object>
+			<object caption="" X="4" Y="44" xoff="1" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="12081">
+				<block width="64" height="64" border="true" variable="Main.favPos" type="BOOL" value="1" />
+			</object>
+			<object caption="favPos" X="5" Y="52" xoff="3" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="12082">
+				<label />
+			</object>
+			<object caption="" X="16" Y="44" xoff="0" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="12083">
+				<block width="64" height="64" border="true" variable="Main.setChan" type="BOOL" value="1" />
+			</object>
+			<object caption="set channel" X="15" Y="52" xoff="3" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="12084">
+				<label />
+			</object>
+			<object caption="" X="49" Y="17" xoff="6" yoff="2" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="12085">
+				<block width="64" height="64" border="true" variable="Main.openProg" type="BOOL" value="1" />
+			</object>
+			<object caption="open programming" X="46" Y="25" xoff="5" yoff="3" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="12086">
+				<label />
+			</object>
+			<object caption="" X="28" Y="44" xoff="4" yoff="1" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="12087">
+				<block width="64" height="64" border="true" variable="Main.set_IP" type="BOOL" value="1" />
+			</object>
+			<object caption="set IP" X="30" Y="52" xoff="3" yoff="2" level="0" readonly="false" front="0" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="12088">
+				<label />
+			</object>
+			<object caption="transmitter1" X="6" Y="1" xoff="0" yoff="5" level="0" readonly="false" front="16777215" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="12091">
+				<image optcap="transmitter2" variable="" type="" on="95X85_S.PNG" off="95X85_C.PNG" />
 			</object>
 		</page>
 	</group>
-	<images></images>
+	<images>
+		<img name="45X40_C.PNG" type="PNG" height="40" width="45" longname="45x40_c" />
+		<img name="45X40_S.PNG" type="PNG" height="40" width="45" longname="45x40_s" />
+		<img name="95X85_C.PNG" type="PNG" height="85" width="95" longname="95x85_c" />
+		<img name="95X85_S.PNG" type="PNG" height="85" width="95" longname="95x85_s" />
+	</images>
 	<Languages>
 		<Language Code="5" Editor="1" />
 	</Languages>

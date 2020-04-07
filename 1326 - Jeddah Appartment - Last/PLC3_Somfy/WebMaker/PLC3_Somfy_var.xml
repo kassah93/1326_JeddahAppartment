@@ -2,4 +2,9 @@
 	<Item Name="main.up" Pos="03000A15" Type="1" />
 	<Item Name="main.dw" Pos="03000A15" Type="2" />
 	<Item Name="main.stop" Pos="03000A15" Type="3" />
+	<Item Name="main.chNum" Pos="03000A19" Type="8" />
+	<Item Name="Main.favPos" Pos="03000A18" Type="0" />
+	<Item Name="Main.setChan" Pos="03000A18" Type="1" />
+	<Item Name="Main.openProg" Pos="03000A18" Type="2" />
+	<Item Name="Main.set_IP" Pos="03000A18" Type="3" />
 </Variables>

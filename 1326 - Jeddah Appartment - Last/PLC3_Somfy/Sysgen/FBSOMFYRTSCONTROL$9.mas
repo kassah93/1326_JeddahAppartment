@@ -1,4 +1,4 @@
-#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\FBSOMFYRTSCONTROL.ST'
+#srcfile 'E:\TECO ME - WORK\PROJECTS\JEDDAH PROJECT\1326_JEDDAHAPPARTMENT\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\FBSOMFYRTSCONTROL.ST'
 
 ; Global variables
 #def  BUFFER_SIZE 5
@@ -37,7 +37,7 @@
   bool __fc__fbSomfyRTS_Cmnd,
   usint ChNum,
   TVendorID HostID,  ; 3 hex bytes address set for PLC as non Somfy host
-  TVendorID TrsnsmitterID,  ; ID of Transmitter written on the product
+  TVendorID TransmitterID,  ; ID of Transmitter written on the product
   bool UP,
   bool DW,
   bool favPos,
@@ -64,7 +64,7 @@
   fbSendTo send
 
  
-#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\FBSOMFYRTSCONTROL.ST'
+#srcfile 'E:\TECO ME - WORK\PROJECTS\JEDDAH PROJECT\1326_JEDDAHAPPARTMENT\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\FBSOMFYRTSCONTROL.ST'
 #pou somfyBuffer_Push
 #srcline 24 ;FUNCTION somfyBuffer_Push : BOOL
 
@@ -492,9 +492,9 @@ fbSomfyRTS_Cmnd_L13:
  GT   
  JMD  fbSomfyRTS_Cmnd_L14
  DBG  
-#srcline 159 ;      packet.packet[i] := 255 - TrsnsmitterID[i-5];
+#srcline 159 ;      packet.packet[i] := 255 - TransmitterID[i-5];
  LD   usint 255
- LEAX TrsnsmitterID
+ LEAX TransmitterID
  LDY  i
 #debug usint i
  LD   usint 5
@@ -504,7 +504,7 @@ fbSomfyRTS_Cmnd_L13:
  RCHK 2   ; Range Check
  ADD     ; + offset 
  LDI  
-#debug usint TrsnsmitterID[i-5]
+#debug usint TransmitterID[i-5]
  SUB
  AND  $FF
  LEAX packet

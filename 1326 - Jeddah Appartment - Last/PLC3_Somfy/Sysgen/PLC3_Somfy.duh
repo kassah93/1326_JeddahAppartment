@@ -28,7 +28,7 @@ FUNCTION fbSomfyRTS_Cmnd : BOOL
   VAR_INPUT
     ChNum : USINT;
     HostID : TVendorID; (* 3 hex bytes address set for PLC as non Somfy host*)
-    TrsnsmitterID : TVendorID; (* ID of Transmitter written on the product*)
+    TransmitterID : TVendorID; (* ID of Transmitter written on the product*)
     UP : BOOL;
     DW : BOOL;
     favPos : BOOL;

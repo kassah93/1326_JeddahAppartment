@@ -4448,9 +4448,9 @@ END_FUNCTION
 
 
 
-//{LIBFILE="LOCALLIB\INTERNETLIB_V48_20190916.MLB"}
+//{LIBFILE="LOCALLIB\INTERNETLIB_V48_20190902.MLB"}
 (* Mosaic IDE library *)
-(* File name : D:\MosaicLib\InternetLib_V48_20190916.mlb *)
+(* File name : D:\MosaicLib\InternetLib_V48_20190902.mlb *)
 (* Library : InternetLib 4.8 *)
 (* Author : Teco a.s. *)
 (* Copyright : (c) 2010 - 2019 *)
@@ -7236,16 +7236,16 @@ END_FUNCTION
 
 
 
-//{LIBFILE="LOCALLIB\CONVERTLIB_V22_20190306.MLB"}
+//{LIBFILE="LOCALLIB\CONVERTLIB_V21_20170222.MLB"}
 (* Mosaic IDE library *)
-(* File name : D:\TecoUserLibs\ConvertLib_V22_20190306.mlb *)
-(* Library : ConvertLib 2.2 *)
+(* File name : D:\TecoUserLibs\ConvertLib_V21_20170222.mlb *)
+(* Library : ConvertLib 2.1 *)
 (* Author : Teco a.s. *)
 (* Copyright : (c) 2017 Teco a.s. *)
-(* IEC compiler version : 4.2.2.2 *)
+(* IEC compiler version : 3.12.10.2 *)
 (* Assembler version : 4.3.00 *)
 
-//{Knihovna : ConvertLib 2.2  }
+//{Knihovna : ConvertLib 2.1  }
 (* History: *)
 (*
 v1.0 2010-11-17 Nem First edition
@@ -7265,7 +7265,6 @@ v1.9 2016-01-18 Nem New functions DT_TO_DT_HTTP() and UTF8_TO_CP125x()
                     DT_RFC822_TO_DT fixed for PM
 v2.0 2017-01-19 Byd Fixed block fbMeterCounter for MaxPeriod less than 1000ms
 v2.1 22.02.2017 Byd Added functions CP1250_TO_UTF8, CP1251_TO_UTF8, CP1252_TO_UTF8, CP1253_TO_UTF8, CP1254_TO_UTF8, CP1255_TO_UTF8
-v2.2 06.03.2019 Byd Added function STRING_HEX_TO_BYTE_ARRAY
 *)
 
 (*----------------------------------------------------------------------------*)
@@ -7519,23 +7518,6 @@ __DECL FUNCTION UTF8_TO_CP125x : uint
   END_VAR
 END_FUNCTION
 
-__DECL FUNCTION STRING_HEX_TO_BYTE_ARRAY : uint
-(*Conversion of hexadecimal number in ASCII string to binary value
-ACSII string must have even number of characters, output binary data will have half a size
-funkction returns length of binary data in bytes*)
-  VAR_INPUT
-    dataLen          : uint;  (*length of input data in bytes*)
-  END_VAR
-  VAR_IN_OUT
-    data             : usint;  (*first byte of input hexadecimal number*)
-    out              : usint;  (*first byte of output binary data*)
-  END_VAR
-  VAR
-    ptr              : udint;
-    end              : udint;
-  END_VAR
-END_FUNCTION
-
 __DECL FUNCTION_BLOCK fbMeterPulse
 (*Counts pulses and estaminates their frequency*)
   VAR_INPUT
@@ -7597,9 +7579,6 @@ __DECL FUNCTION_BLOCK fbMeterCounter
     MaxDif           : dint;
     CntOld           : uint;
     Init             : bool;
-  END_VAR
-  VAR CONSTANT
-    MC_MAX_NEG_INT   : dint :=  -2147483648;
   END_VAR
 END_FUNCTION_BLOCK
 
@@ -7835,16 +7814,16 @@ END_FUNCTION
 
 
 
-//{LIBFILE="LOCALLIB\ICONTROLLIB_V23_20190315.MLB"}
+//{LIBFILE="LOCALLIB\ICONTROLLIB_V22_20181210.MLB"}
 (* Mosaic IDE library *)
-(* File name : D:\TecoUserLibs\iControlLib_V23_20190315.mlb *)
-(* Library : iControlLib 2.3 *)
+(* File name : C:\TecoLib\iControlLib_V22_20181210.mlb *)
+(* Library : iControlLib 2.2 *)
 (* Author : Teco a.s. *)
 (* Copyright : (c)2018 Teco a.s. *)
 (* IEC compiler version : 4.2.2.2 *)
 (* Assembler version : 4.3.00 *)
 
-//{Knihovna : iControlLib 2.3  }
+//{Knihovna : iControlLib 2.2  }
 (* History: *)
 (*
 v1.0 2014-12-16 nem  first version for tests
@@ -7875,8 +7854,6 @@ v2.1 2018-03-14 nem  added block fb_iTimeProgWeek3
 	        byd  added pulse lenght control to fbJalousie
 v2.2 2018-12-10 byd  variable showname added to T_TIME_PROG_WEEK_WEB_SETTINGS, which controls visibility of time program name on canvas
                 par  added block fb_C_RC_0006R, modified blocks fb_iDimmer, fb_iJalousie, fb_iRelay, fb_iScene4, fb_iScene8
-v2.3 2018-03-14 par  change of the way of controling audio deviecs in function block fb_C_RC_0006R
-		     requires module C-RC-0006 with firmware 1.7 or higher
 *)
 
 (*----------------------------------------------------------------------------*)
@@ -9413,9 +9390,7 @@ __DECL FUNCTION_BLOCK fb_iFan
 END_FUNCTION_BLOCK
 
 VAR_GLOBAL CONSTANT
- CRC0006R_SIZE_NAME : int :=  6;
- CRC0006R_AUDIO_TYPE_BOSE : usint :=  1;
- CRC0006R_AUDIO_TYPE_DENON : usint :=  2;
+ CRC0006R_SIZE_NAME : int :=   6;
 
 END_VAR
 
@@ -9532,40 +9507,71 @@ TYPE TIDIMMER_UNIT :
   END_STRUCT;
 END_TYPE
 
-TYPE TCIB_C_RC_0006R_AudioSourceUnit :
+TYPE T_ICONTROL_BOSE_PARAM :
   STRUCT
-    name             : string [6];
-    volume           : usint;
-    mute             : bool;
-    play             : bool;
-    pause            : bool;
-    power            : bool;
+    enabled          : bool;  (*false - zakázáno, true - povoleno*)
+    name             : string [32];  (*Name of BOSE device*)
   END_STRUCT;
 END_TYPE
 
-TYPE TCIB_C_RC_0006R_AudioSource_Bose :
+TYPE T_ICONTROL_BOSE_COM_STATE :
   STRUCT
-    audioType {HIDDEN} : usint :=  CRC0006R_AUDIO_TYPE_BOSE;  (*typ audio zarizeni*)
-    num              : usint;  (*pocet*)
-    units            : ARRAY [0..9] OF TCIB_C_RC_0006R_AudioSourceUnit;  (*data zarizeni*)
+    found            : bool;  (*Result of multicast transmission: true-found, false-not found*)
+    ip_adr           : TIPadr;  (*IP address of BOSE device collected from multicast transmission*)
+    comm_err         : bool :=   true;  (*Indicator of device connection state: true-disconnected, false-connected*)
+    last_comm_err {HIDDEN} : usint :=   5;
   END_STRUCT;
 END_TYPE
 
-TYPE TCIB_C_RC_0006R_AudioZone_Denon :
+TYPE T_ICONTROL_BOSE_DEVICE_STATE :
   STRUCT
-    audioType {HIDDEN} : usint :=  CRC0006R_AUDIO_TYPE_DENON;  (*typ audio zarizeni*)
-    source           : usint;  (*1 - 5*)
-    volume           : usint;  (*0 - 100*)
-    mute             : bool;
-    name             : ARRAY [0..4] OF string [6];
+    volume           : usint;  (*Current volume level 0-100%*)
+    state            : usint;  (*Operation state 0 - unknown, 1-play, 2-pause, 3-stop, 4-buffering, 5-URLS*)
+    mute             : bool;  (*Indicator if volume muted*)
+    play             : bool;  (*Play function is active*)
+    pause            : bool;  (*Pause function is active*)
+    buffering        : bool;  (*Buffering data (preparng to start)*)
+    standby          : bool;  (*Power indicator, true-turned off, false-turned on*)
+    station_name     : string [32];  (*Last radio station name preseted*)
+    ip_str           : string [16];  (*Device IP address in string format*)
   END_STRUCT;
+END_TYPE
+
+TYPE T_ICONTROL_BOSE_CONTROL :
+  STRUCT
+    volUp            : bool;
+    volDw            : bool;
+    mute             : bool;  (*Command to mute volume*)
+    play             : bool;  (*Command to play*)
+    pause            : bool;  (*Command to pause*)
+    power            : bool;  (*Command to turn on/off*)
+    preset_1         : bool;  (*Command to set audio source internet radio and preset station 1*)
+    preset_2         : bool;  (*Command to set audio source internet radio and preset station 2*)
+    preset_3         : bool;  (*Command to set audio source internet radio and preset station 3*)
+    preset_4         : bool;  (*Command to set audio source internet radio and preset station 4*)
+    preset_5         : bool;  (*Command to set audio source internet radio and preset station 5*)
+    preset_6         : bool;  (*Command to set audio source internet radio and preset station 6*)
+    sourceAUX        : bool;  (*Command to set audio source AUX*)
+    sourceBLUETOOTH  : bool;  (*Command to set audio source BLUETOOTH*)
+  END_STRUCT;
+END_TYPE
+
+TYPE T_ICONTROL_BOSE_UNIT :
+  STRUCT
+    param            : T_ICONTROL_BOSE_PARAM;
+    com_state        : T_ICONTROL_BOSE_COM_STATE;
+    device_state     : T_ICONTROL_BOSE_DEVICE_STATE;
+    control          : T_ICONTROL_BOSE_CONTROL;
+  END_STRUCT;
+END_TYPE
+
+TYPE  T_ICONTROL_BOSE_UNIT_LIST : ARRAY [0..9] OF T_ICONTROL_BOSE_UNIT;
 END_TYPE
 
 __DECL FUNCTION_BLOCK fb_C_RC_0006R
 (*Control of the modul C-RC-0006R*)
   VAR_INPUT
     master           : bool :=  0;  (*Master module*)
-    control          : bool :=  0;  (*Reset control signals*)
     iDimmer_1        : udint :=  0;  (*Light dimmer 1*)
     iDimmer_2        : udint :=  0;  (*Light dimmer 2*)
     iDimmer_3        : udint :=  0;  (*Light dimmer 3*)
@@ -9594,14 +9600,11 @@ __DECL FUNCTION_BLOCK fb_C_RC_0006R
     temp             : real;  (*Temperature*)
     RH               : usint;  (*Humidity*)
     CO2              : uint;  (*CO2 concentrations*)
-    backl            : bool;  (*Display backlight*)
-    buzz             : bool;  (*Sound signalization*)
-    keyboard         : byte;  (*Keyboard backlight intensity 0 - 10 (0 - 100%)*)
   END_VAR
   VAR_IN_OUT
     reqTemp          : real;  (*requested temperature*)
-    modul_in         : TCIB_C_RC_0006R_IN;  (*input structure (data from module)*)
-    modul_out        : TCIB_C_RC_0006R_OUT;  (*output structure (data for module)*)
+    modul_in         : TCIB_C_RC_0006R_IN;  (**)
+    modul_out        : TCIB_C_RC_0006R_OUT;  (**)
   END_VAR
   VAR
     inPaging         : TCIB_PAGING_ARR;  (*vstupni buffer*)
@@ -9640,13 +9643,14 @@ __DECL FUNCTION_BLOCK fb_C_RC_0006R
     jalousiePos      : ARRAY [0..7] OF usint;  (*stav az 8 zaluzii (polona v %)*)
     jalousieNum      : usint;  (*pocet zapojenych zaluzii*)
     jalousieOffs     : usint;
-    unitListPtr      : PTR_TO TCIB_C_RC_0006R_AudioSource_Bose;
-    sourceControlPtr : PTR_TO TCIB_C_RC_0006R_AudioZone_Denon;
-    unitList         : TCIB_C_RC_0006R_AudioSource_Bose;
-    sourceControl    : TCIB_C_RC_0006R_AudioZone_Denon;
+    unitListPtr      : PTR_TO T_ICONTROL_BOSE_UNIT_LIST;
+    boseUnitsNum     : usint;
+    boseUnits_volume : ARRAY [0..9] OF usint;
+    boseUnits_mute   : ARRAY [0..9] OF bool;
+    boseUnits_play   : ARRAY [0..9] OF bool;
+    boseUnits_pause  : ARRAY [0..9] OF bool;
+    boseUnits_standby : ARRAY [0..9] OF bool;
     audioState       : byte;
-    audioType        : usint;
-    audioUpdate      : word;
     dataOut          : ARRAY [0..11] OF byte;
     dataOutPrev      : ARRAY [0..11] OF byte;
     dataIn           : ARRAY [0..4] OF byte;

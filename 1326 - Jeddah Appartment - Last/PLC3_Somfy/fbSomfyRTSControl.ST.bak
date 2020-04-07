@@ -156,7 +156,7 @@ FUNCTION fbSomfyRTS_Cmnd : BOOL
       packet.packet[i] := 255 - HostID[i-2];
   end_for;
   for i := 6 to 8  do
-      packet.packet[i] := 255 - TransmitterID[i-5];
+      packet.packet[i] := 255 - TrsnsmitterID[i-5];
   end_for;
 
   frameChksum := CheckSum(ptr := adr(packet) , length := length-2);

@@ -1,4 +1,4 @@
-#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\Sysgen\PLC3_SOMFY.mlh'
+#srcfile 'E:\TECO ME - WORK\PROJECTS\JEDDAH PROJECT\1326_JEDDAHAPPARTMENT\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\Sysgen\PLC3_SOMFY.mlh'
 
 #defpou R_TRIG
   bool CLK,
@@ -5182,15 +5182,6 @@
   uint codePage  ;code page = 1250,...,1255
 
 
-#defpou __LATENT_INSTANCE STRING_HEX_TO_BYTE_ARRAY
-  uint __fc__STRING_HEX_TO_BYTE_ARRAY,
-  uint dataLen,  ;length of input data in bytes
-  pointer data,  ;first byte of input hexadecimal number
-  pointer out,  ;first byte of output binary data
-  udint ptr,
-  udint end
-
-
 #defpou fbMeterPulse
   bool Pulse,  ;Pulses
   bool Reset,  ;Reset pulse counter
@@ -6595,10 +6586,6 @@
 ; Global variables
 #def  CRC0006R_SIZE_NAME 6
 #def  __Init____CRC0006R_SIZE_NAME CRC0006R_SIZE_NAME
-#def  CRC0006R_AUDIO_TYPE_BOSE 1
-#def  __Init____CRC0006R_AUDIO_TYPE_BOSE CRC0006R_AUDIO_TYPE_BOSE
-#def  CRC0006R_AUDIO_TYPE_DENON 2
-#def  __Init____CRC0006R_AUDIO_TYPE_DENON CRC0006R_AUDIO_TYPE_DENON
 
 ; Global types
 #def  TCIB_PAGING_ARR byte[5]
@@ -6696,31 +6683,58 @@
   udint fbPtr  ;function block pointer
 
 ; Global types
-#struct  TCIB_C_RC_0006R_AudioSourceUnit
-  string[7] name,
-  usint volume,
-  bool mute,
-  bool play,
-  bool pause,
-  bool power
+#struct  T_ICONTROL_BOSE_PARAM
+  bool enabled,  ;false - zakázáno, true - povoleno
+  string[33] name  ;Name of BOSE device
 
 ; Global types
-#struct  TCIB_C_RC_0006R_AudioSource_Bose
-  usint audioType,  ;typ audio zarizeni
-  usint num,  ;pocet
-  TCIB_C_RC_0006R_AudioSourceUnit[10] units  ;data zarizeni
+#struct  T_ICONTROL_BOSE_COM_STATE
+  bool found,  ;Result of multicast transmission: true-found, false-not found
+  TIPadr ip_adr,  ;IP address of BOSE device collected from multicast transmission
+  bool comm_err,  ;Indicator of device connection state: true-disconnected, false-connected
+  usint last_comm_err
 
 ; Global types
-#struct  TCIB_C_RC_0006R_AudioZone_Denon
-  usint audioType,  ;typ audio zarizeni
-  usint source,  ;1 - 5
-  usint volume,  ;0 - 100
-  bool mute,
-  string[35] name
+#struct  T_ICONTROL_BOSE_DEVICE_STATE
+  usint volume,  ;Current volume level 0-100%
+  usint state,  ;Operation state 0 - unknown, 1-play, 2-pause, 3-stop, 4-buffering, 5-URLS
+  bool mute,  ;Indicator if volume muted
+  bool play,  ;Play function is active
+  bool pause,  ;Pause function is active
+  bool buffering,  ;Buffering data (preparng to start)
+  bool standby,  ;Power indicator, true-turned off, false-turned on
+  string[33] station_name,  ;Last radio station name preseted
+  string[17] ip_str  ;Device IP address in string format
+
+; Global types
+#struct  T_ICONTROL_BOSE_CONTROL
+  bool volUp,
+  bool volDw,
+  bool mute,  ;Command to mute volume
+  bool play,  ;Command to play
+  bool pause,  ;Command to pause
+  bool power,  ;Command to turn on/off
+  bool preset_1,  ;Command to set audio source internet radio and preset station 1
+  bool preset_2,  ;Command to set audio source internet radio and preset station 2
+  bool preset_3,  ;Command to set audio source internet radio and preset station 3
+  bool preset_4,  ;Command to set audio source internet radio and preset station 4
+  bool preset_5,  ;Command to set audio source internet radio and preset station 5
+  bool preset_6,  ;Command to set audio source internet radio and preset station 6
+  bool sourceAUX,  ;Command to set audio source AUX
+  bool sourceBLUETOOTH  ;Command to set audio source BLUETOOTH
+
+; Global types
+#struct  T_ICONTROL_BOSE_UNIT
+  T_ICONTROL_BOSE_PARAM param,
+  T_ICONTROL_BOSE_COM_STATE com_state,
+  T_ICONTROL_BOSE_DEVICE_STATE device_state,
+  T_ICONTROL_BOSE_CONTROL control
+
+; Global types
+#def  T_ICONTROL_BOSE_UNIT_LIST T_ICONTROL_BOSE_UNIT[10]
 
 #defpou fb_C_RC_0006R
   bool master,  ;Master module
-  bool control,  ;Reset control signals
   udint iDimmer_1,  ;Light dimmer 1
   udint iDimmer_2,  ;Light dimmer 2
   udint iDimmer_3,  ;Light dimmer 3
@@ -6749,12 +6763,9 @@
   real temp,  ;Temperature
   usint RH,  ;Humidity
   uint CO2,  ;CO2 concentrations
-  bool backl,  ;Display backlight
-  bool buzz,  ;Sound signalization
-  byte keyboard,  ;Keyboard backlight intensity 0 - 10 (0 - 100%)
   pointer reqTemp,  ;requested temperature
-  pointer modul_in,  ;input structure (data from module)
-  pointer modul_out,  ;output structure (data for module)
+  pointer modul_in,  ;
+  pointer modul_out,  ;
   TCIB_PAGING_ARR inPaging,  ;vstupni buffer
   TCIB_PAGING_ARR outPaging,  ;vystupni buffer
   TCIB_PAGING_ARR pagingBackup,  ;buffer pro odlozeni neodeslanych dat
@@ -6792,19 +6803,20 @@
   usint jalousieNum,  ;pocet zapojenych zaluzii
   usint jalousieOffs,
   pointer unitListPtr,
-  pointer sourceControlPtr,
-  TCIB_C_RC_0006R_AudioSource_Bose unitList,
-  TCIB_C_RC_0006R_AudioZone_Denon sourceControl,
+  usint boseUnitsNum,
+  usint[10] boseUnits_volume,
+  aligned bool[16] boseUnits_mute,
+  aligned bool[16] boseUnits_play,
+  aligned bool[16] boseUnits_pause,
+  aligned bool[16] boseUnits_standby,
   byte audioState,
-  usint audioType,
-  word audioUpdate,
   byte[12] dataOut,
   byte[12] dataOutPrev,
   byte[5] dataIn,
   string[7] str
 
  
-#srcfile 'E:\PROJECTS\PROJECTS\1326 - OSAMA - JEDDAH APPARTMENT - DREAMS TOWERS\IMPLEMENTATION\CODES\MOSAIC\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\Sysgen\PLC3_SOMFY.mlh'
+#srcfile 'E:\TECO ME - WORK\PROJECTS\JEDDAH PROJECT\1326_JEDDAHAPPARTMENT\1326 - JEDDAH APPARTMENT - LAST\PLC3_SOMFY\Sysgen\PLC3_SOMFY.mlh'
 
 
  

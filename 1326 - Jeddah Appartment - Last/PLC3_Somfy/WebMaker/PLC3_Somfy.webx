@@ -8,8 +8,13 @@ Tab=0
 DockPos=1
 StayOnTop=0
 CanDock=0
-Height=635
-Width=1161
+Height=419
+Width=777
 Top=0
 Left=0
 LeftPanel=145
+[FormImageManager]
+Height=397
+Width=536
+Top=213
+Left=500

@@ -24,7 +24,7 @@ PROGRAM prgMain
   i : USINT;
   curIndex : USINT;
   
-  Trsnsmitter1_ID ,Trsnsmitter2_ID : TVendorID;
+  Transmitter1_ID ,Transmitter2_ID : TVendorID;
   HostID : TVendorID;
   
   somfyRTSCtrl_Master : fbSomfyRTSCtrl;
@@ -32,6 +32,10 @@ PROGRAM prgMain
   // for test
   test, up, dw, stop, block : BOOl;
   up_RT , dw_RT : R_TRIG;
+  favPos, setChan, openProg, set_IP : BOOl;
+  chNum : USINT;
+  transmitter_ID : TVendorID;
+  selectTrans : BOOL;
   
   END_VAR
   VAR_TEMP
@@ -50,16 +54,18 @@ PROGRAM prgMain
       
       
       // Generate RTS control packets
+      
+      // need to check each motor which transmitter is belong to
       if EnCurtains_RT[i].UP.Q then
-         fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TrsnsmitterID := Trsnsmitter1_ID, UP := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
+         fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TransmitterID := Transmitter1_ID, UP := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
       end_if;
       
        if EnCurtains_RT[i].DW.Q then
-         fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TrsnsmitterID := Trsnsmitter1_ID, DW := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
+         fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TransmitterID := Transmitter1_ID, DW := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
       end_if;
       
        if EnCurtains_RT[i].STOP.Q then
-         fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TrsnsmitterID := Trsnsmitter1_ID, stop := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
+         fbSomfyRTS_Cmnd(ChNum := i, HostID := HostID, TransmitterID := Transmitter1_ID, stop := 1,  packetsBuffer := packetsBuffer, buffIndex := buffIndex);
       end_if;
 
 
@@ -79,6 +85,19 @@ PROGRAM prgMain
       
   end_for;
   
+
+  // Programming
+  if selectTrans then
+     transmitter_ID := Transmitter1_ID;
+  else
+     transmitter_ID := Transmitter2_ID;
+  end_if;
+  
+  fbSomfyRTS_Cmnd(ChNum := chNum, HostID := HostID, TransmitterID := transmitter_ID, UP := up, DW := dw, favPos := favPos,
+                  stop := stop, setChannel := setChan, openProg := openProg, set_IP := set_IP, packetsBuffer := packetsBuffer, buffIndex := buffIndex);
+
+  up := 0; dw := 0; favPos := 0; stop := 0; setChan := 0; openProg := 0; set_IP := 0;
+
   somfyRTSCtrl_Master(En := true, CH_ID := CH2_UNI, packetsBuffer := packetsBuffer, buffIndex := buffIndex);
 
  (*
