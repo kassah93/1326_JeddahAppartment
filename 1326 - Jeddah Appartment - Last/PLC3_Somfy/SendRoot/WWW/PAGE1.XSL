@@ -15,18 +15,18 @@
 <title>
 <xsl:value-of select="/PAGE/@TITLE" />
 Index</title>
-<script src="PAGE1.JS?U=1586265660" language="JavaScript" charset="utf-8" />
+<script src="PAGE1.JS?U=1586609307" language="JavaScript" charset="utf-8" />
 <style type="text/css">.mono {font-family: Verdana, Arial, FreeSans, sans-serif;}</style>
 </head>
 <body onload="GetXML('PAGE1.XML'); FunWatchDog();">
-<xsl:if test="1586265660 != ACCESS/@UCID">
+<xsl:if test="1586609307 != ACCESS/@UCID">
 <xsl:attribute name="onload">
 null;
 </xsl:attribute>
 <div id="cachewarning" style="text-align: left;"></div>
 <script src="REFCLR.JS" language="JavaScript" charset="utf-8"></script>
 </xsl:if>
-<xsl:if test="1586265660 = ACCESS/@UCID">
+<xsl:if test="1586609307 = ACCESS/@UCID">
 <table cellpadding="0" cellspacing="0">
 <tr style="height: 40px;">
 <!--logo-->
@@ -74,7 +74,16 @@ Index</span>
 <div style="position: absolute; top: 195px; left: 365px; z-index: 13;">open programming</div>
 <div onclick="PostXML8()" id="INPUT8" style="position: absolute; top: 345px; left: 220px; z-index: 14;cursor:pointer;height:62px; width:62px; border: 1px solid #000000; background-color: #F0F0F0;"></div>
 <div style="position: absolute; top: 410px; left: 235px; z-index: 15;">set IP</div>
-<div style="border: solid red 2px; position: absolute; top: 5px; left: 40px; z-index: 16; background-image: url(IMAGES/95X85_C.PNG); line-height: 85px; height: 85px; width: 95px; color: #FFFFFF;">transmitter1</div>
+<form style="position: absolute; top: 5px; left: 40px; z-index: 16;">
+<xsl:if test="INPUT[2]/@VALUE = 0">
+<input id="INPUT9h" type="hidden" name="{INPUT[2]/@NAME}" value="1" />
+<div id="INPUT9" class="imgsub" onclick="PostXML9()" style="background-image: url(IMAGES/95X85_C.PNG); line-height: 85px; height: 85px; width: 95px; color: #FFFFFF;">transmitter1</div>
+</xsl:if>
+<xsl:if test="INPUT[2]/@VALUE != 0">
+<input id="INPUT9h" type="hidden" name="{INPUT[2]/@NAME}" value="0" />
+<div id="INPUT9" class="imgsub" onclick="PostXML9()" style="background-image: url(IMAGES/95X85_S.PNG); line-height: 85px; height: 85px; width: 95px; color: #FFFFFF;">transmitter2</div>
+</xsl:if>
+</form>
 </div>
 </td>
 </tr>

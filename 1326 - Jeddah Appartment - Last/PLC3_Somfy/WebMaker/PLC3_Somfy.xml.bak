@@ -4,7 +4,7 @@
 	<Grid Enable="1" X="5" Y="5" />
 	<globalset newdim="1" />
 	<group caption="" Uid="12073">
-		<page caption="Index" name="PAGE1.XML" ajax="true" pause="1000" default="true" Uid="12072" ucid="1586265660" width="485" height="426">
+		<page caption="Index" name="PAGE1.XML" ajax="true" pause="1000" default="true" Uid="12072" ucid="1586609307" width="485" height="426">
 			<object caption="" X="4" Y="16" xoff="6" yoff="0" level="0" readonly="false" front="0" back="15790320" strong="false" italic="false" size="13" transparent="false" visneg="false" Uid="12074">
 				<block width="64" height="64" border="true" variable="main.up" type="BOOL" value="1" />
 			</object>
@@ -51,7 +51,7 @@
 				<label />
 			</object>
 			<object caption="transmitter1" X="6" Y="1" xoff="0" yoff="5" level="0" readonly="false" front="16777215" back="16777215" strong="false" italic="false" size="13" transparent="true" visneg="false" Uid="12091">
-				<image optcap="transmitter2" variable="" type="" on="95X85_S.PNG" off="95X85_C.PNG" />
+				<image optcap="transmitter2" variable="main.selectTrans" type="BOOL" on="95X85_S.PNG" off="95X85_C.PNG" />
 			</object>
 		</page>
 	</group>

@@ -94,7 +94,9 @@ PROGRAM prgMain
   end_if;
   
   fbSomfyRTS_Cmnd(ChNum := chNum, HostID := HostID, TransmitterID := transmitter_ID, UP := up, DW := dw, favPos := favPos,
-                  stop := stop, setChannel := setChan, openProg := openProg, set_IP := set_IP, packetsBuffer := packetsBuffer, buffIndex := buffIndex);
+                 stop := stop, setChannel := setChan, openProg := openProg, set_IP := set_IP, packetsBuffer := packetsBuffer, buffIndex := buffIndex);
+                  
+
 
   up := 0; dw := 0; favPos := 0; stop := 0; setChan := 0; openProg := 0; set_IP := 0;
 

@@ -163,11 +163,17 @@ FUNCTION fbSomfyRTS_Cmnd : BOOL
   packet.packet[length-1] := frameChksum;
   packet.length := length;
   
-  if somfyBuffer_Push(newPacket := packet, buffer := packetsBuffer, index := buffIndex) then
-     fbSomfyRTS_Cmnd := 0;
+  if up or DW or openProg or setChannel or set_IP or stop or favPos then
+     if somfyBuffer_Push(newPacket := packet, buffer := packetsBuffer, index := buffIndex) then
+       fbSomfyRTS_Cmnd := 1;
+     else
+       fbSomfyRTS_Cmnd := 0;
+     end_if;
   else
-     fbSomfyRTS_Cmnd := 1;
+     fbSomfyRTS_Cmnd := 0;
   end_if;
+  
+
 
 END_FUNCTION
 

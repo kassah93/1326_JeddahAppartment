@@ -769,7 +769,7 @@ prgMain_L14:
 #debug bool favPos
  WR   __Instance__fbSomfyRTS_Cmnd~favPos
 #debug_left bool __Instance__fbSomfyRTS_Cmnd~favPos
-#srcline 97 ;                  stop := stop, setChannel := setChan, openProg := openProg, set_IP := set_IP, packetsBuffer := packetsBuffer, buffIndex := buffIndex);
+#srcline 97 ;                 stop := stop, setChannel := setChan, openProg := openProg, set_IP := set_IP, packetsBuffer := packetsBuffer, buffIndex := buffIndex);
  LDX  stop
 #debug bool stop
  WR   __Instance__fbSomfyRTS_Cmnd~stop
@@ -795,7 +795,8 @@ prgMain_L14:
  PRV
  LEA  __Instance__fbSomfyRTS_Cmnd
  CAL  fbSomfyRTS_Cmnd_L0
-#srcline 99 ;  up := 0; dw := 0; favPos := 0; stop := 0; setChan := 0; openProg := 0; set_IP := 0;
+#srcline 98 ;                  
+#srcline 101 ;  up := 0; dw := 0; favPos := 0; stop := 0; setChan := 0; openProg := 0; set_IP := 0;
  LD   bool 0       ; false
  WRX  up
 #debug_left bool up
@@ -817,7 +818,7 @@ prgMain_L14:
  LD   bool 0       ; false
  WRX  set_IP
 #debug_left bool set_IP
-#srcline 101 ;  somfyRTSCtrl_Master(En := true, CH_ID := CH2_UNI, packetsBuffer := packetsBuffer, buffIndex := buffIndex);
+#srcline 103 ;  somfyRTSCtrl_Master(En := true, CH_ID := CH2_UNI, packetsBuffer := packetsBuffer, buffIndex := buffIndex);
  LD   bool -1       ; true
  WRX  somfyRTSCtrl_Master~En
 #debug_left bool somfyRTSCtrl_Master~En
@@ -832,21 +833,21 @@ prgMain_L14:
 #debug_left pointer somfyRTSCtrl_Master.buffIndex
  LEAX somfyRTSCtrl_Master
  CAL  fbSomfyRTSCtrl_L0
-#srcline 103 ; (*
-#srcline 104 ;  up_RT(CLK := up);
-#srcline 105 ;  dw_RT(CLK := dw);
-#srcline 107 ;  if (up_RT.Q and curtainsFB[1].outDw) or (dw_RT.Q and curtainsFB[1].outUp) then
-#srcline 108 ;     curtainsFB[1].up := 0;
-#srcline 109 ;     curtainsFB[1].dw := 0;
-#srcline 110 ;     curtainsFB[1](stop := 1, upDwTime := curtUpDwTime) ;
-#srcline 111 ;     test := 1;
-#srcline 112 ;  else
-#srcline 113 ;     curtainsFB[1](up := up, dw := dw, stop := STOP, upDwTime := curtUpDwTime) ;
-#srcline 114 ;     up   := 0;
-#srcline 115 ;     dw   := 0;
-#srcline 116 ;     stop := 0;
-#srcline 117 ;  end_if;  *)
-#srcline 119 ;END_PROGRAM
+#srcline 105 ; (*
+#srcline 106 ;  up_RT(CLK := up);
+#srcline 107 ;  dw_RT(CLK := dw);
+#srcline 109 ;  if (up_RT.Q and curtainsFB[1].outDw) or (dw_RT.Q and curtainsFB[1].outUp) then
+#srcline 110 ;     curtainsFB[1].up := 0;
+#srcline 111 ;     curtainsFB[1].dw := 0;
+#srcline 112 ;     curtainsFB[1](stop := 1, upDwTime := curtUpDwTime) ;
+#srcline 113 ;     test := 1;
+#srcline 114 ;  else
+#srcline 115 ;     curtainsFB[1](up := up, dw := dw, stop := STOP, upDwTime := curtUpDwTime) ;
+#srcline 116 ;     up   := 0;
+#srcline 117 ;     dw   := 0;
+#srcline 118 ;     stop := 0;
+#srcline 119 ;  end_if;  *)
+#srcline 121 ;END_PROGRAM
  ULNK
 RET
 E     61

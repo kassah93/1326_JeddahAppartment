@@ -7,4 +7,5 @@
 	<Item Name="Main.setChan" Pos="03000A18" Type="1" />
 	<Item Name="Main.openProg" Pos="03000A18" Type="2" />
 	<Item Name="Main.set_IP" Pos="03000A18" Type="3" />
+	<Item Name="main.selectTrans" Pos="03000A1D" Type="0" />
 </Variables>

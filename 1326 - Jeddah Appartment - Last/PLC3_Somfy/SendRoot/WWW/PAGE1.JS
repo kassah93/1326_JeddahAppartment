@@ -43,7 +43,7 @@ if(xmlhttpGET.status != 200){
 alert('Problem retrieving XML data ' + xmlhttpGET.statusText + '(' + xmlhttpGET.status + ')');
 document.location.reload(true)
 return;}
-var access = xmlhttpGET.responseXML.documentElement.getElementsByTagName('ACCESS')[0]; if(!access || access.getAttribute('UCID') != 1586265660) {document.location.reload(true); return;}
+var access = xmlhttpGET.responseXML.documentElement.getElementsByTagName('ACCESS')[0]; if(!access || access.getAttribute('UCID') != 1586609307) {document.location.reload(true); return;}
 var pd = '';
 var x=xmlhttpGET.responseXML.documentElement.getElementsByTagName('INPUT');
 if(x[0]) {
@@ -57,6 +57,27 @@ var Input5 = document.getElementById('INPUT5');
 var Input6 = document.getElementById('INPUT6');
 var Input7 = document.getElementById('INPUT7');
 var Input8 = document.getElementById('INPUT8');
+var Input9 = document.getElementById('INPUT9');
+var Input9h = document.getElementById('INPUT9h');
+if(Input9h) { vz = x[1].getAttribute('VALUE') == '0'; iz = Input9h.value == '0';
+if(vz == iz) {
+if(vz) {
+Input9h.value = '1';
+Input9.style.backgroundImage = 'url("IMAGES/95X85_C.PNG")';
+if(Input9.getAttribute('value') != null) {Input9.value = 'transmitter1';} else {Input9.innerHTML = 'transmitter1';}
+} else {
+Input9h.value = '0';
+Input9.style.backgroundImage = 'url("IMAGES/95X85_S.PNG")';
+if(Input9.getAttribute('value') != null) {Input9.value = 'transmitter2';
+} else {Input9.innerHTML = 'transmitter2';}
+}}} else {
+if(x[1].getAttribute('VALUE') == '0') {
+SetBg('INPUT9', '95X85_C.PNG');
+Input9.innerHTML = 'transmitter1';
+} else {
+SetBg('INPUT9', '95X85_S.PNG');
+Input9.innerHTML = 'transmitter2';
+}}
 } else {document.location.reload(true); return;}
 } catch(err) {console.log(err.message)}
 if(pd!=''){setTimeout("GetXML('PAGE1.XML','"+pd+"')",1);}else{setTimeout("GetXML('PAGE1.XML')",1000);}}
@@ -95,6 +116,10 @@ PostXML('PAGE1.XML', encodeURIComponent('__R2584.2_BOOL_i=1'));
 }
 function PostXML8() {
 PostXML('PAGE1.XML', encodeURIComponent('__R2584.3_BOOL_i=1')); 
+}
+function PostXML9() {
+var Input9h = document.getElementById('INPUT9h');
+PostXML('PAGE1.XML', encodeURIComponent(Input9h.name+'='+Input9h.value));
 }
 
 function PostGlobal() {
